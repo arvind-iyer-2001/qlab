@@ -1,0 +1,105 @@
+{
+  "name": "qlab",
+  "displayName": "qLab",
+  "description": "kdb+/q competitive coding challenges — browse problems, run tests, submit solutions",
+  "version": "0.1.0",
+  "publisher": "qlab",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onUri"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "qlab-explorer",
+          "title": "qLab",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "qlab-explorer": [
+        {
+          "id": "qlab.problems",
+          "name": "Problems",
+          "type": "tree"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "qlab.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)",
+        "category": "qLab"
+      },
+      {
+        "command": "qlab.openProblem",
+        "title": "Open Problem",
+        "category": "qLab"
+      },
+      {
+        "command": "qlab.submitActive",
+        "title": "Submit Active File",
+        "category": "qLab"
+      },
+      {
+        "command": "qlab.setApiUrl",
+        "title": "Set API URL",
+        "category": "qLab"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "qlab.refresh",
+          "when": "view == qlab.problems",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "qlab.submitActive",
+          "when": "resourceExtname == .q",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "qLab",
+      "properties": {
+        "qlab.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "qLab FastAPI base URL"
+        },
+        "qlab.solutionsDir": {
+          "type": "string",
+          "default": "",
+          "description": "Directory to store solution files. Defaults to a 'qlab-solutions' folder in your workspace."
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "qlab.submitActive",
+        "key": "ctrl+shift+s",
+        "when": "resourceExtname == .q"
+      }
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf out *.vsix",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && npx @vscode/vsce package --no-dependencies --allow-missing-repository",
+    "install-ext": "npm run package && code --install-extension qlab-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.0"
+  }
+}
