@@ -1,0 +1,28 @@
+# Local env (has machine-specific paths and secrets)
+.env
+
+# kdb+ data
+db/data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# Temp/judge artifacts
+/tmp/qlab_*
+
+# Logs
+*.log
+
+# VS Code extension — user workspace solution files (auto-created by extension)
+qlab-solutions/
+
+# OS
+.DS_Store
