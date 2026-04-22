@@ -1,154 +1,141 @@
 # qLab — Production Readiness Plan
 
-Scope document for migrating qLab to a production-grade backend with MongoDB and Clerk authentication.
+> Last updated: 2026-04-22
 
 ---
 
-## Current architecture (dev-only)
+## Current state (MVP)
 
 ```
-Browser → Vite (5173) → proxy /api/* → FastAPI (8000) → kdb+ db (5000)
-                                              ↓
-                                    q judge subprocess (per submission)
+VS Code extension → FastAPI (8000) → kdb+ db (5000)
+                          ↓
+                  q judge subprocess (per submission)
+                  q notebook process (5001, persistent)
 ```
 
-- **Persistence**: in-memory kdb+ `submissions` table, flushed to `db/data/submissions` on disk
+- **Persistence**: in-memory kdb+ `submissions` table, flushed to `db/data/` on disk
 - **Problem metadata**: filesystem JSON files (`problems/{slug}/problem.json`)
-- **Auth**: none
+- **Auth**: none — handles are freeform strings, anyone can submit as anyone
+- **Judge isolation**: none — user code runs as a subprocess with full OS permissions
 - **Deployment**: local only
 
 ---
 
-## Target architecture
+## The real gaps
 
-```
-Browser / VS Code extension
-        ↓  (JWT via Clerk)
-    FastAPI (8000)
-        ↓            ↓
-  MongoDB Atlas   q judge subprocess
-  (motor async)   (unchanged)
-```
+### 1. Judge sandboxing — most urgent
 
----
+User-submitted q code runs in a subprocess with **no isolation**. Someone can submit `func:{system "rm -rf /"}` and it executes with the server process's permissions. This must be resolved before any public-facing URL exists.
 
-## What changes
+Needs:
+- A restricted OS user or Linux namespaces for judge execution
+- Filesystem isolation: no network access, no disk writes, read-only problem files only
+- CPU and memory hard limits beyond just a timeout
 
-### 1. Database — MongoDB
+Options: Docker-per-submission (simple, slow), Linux namespaces/seccomp (fast, complex), or a dedicated sandboxed worker service.
 
-Replace kdb+ persistence and filesystem JSON with four collections:
+### 2. Identity & authentication
 
-| Collection | Contents |
-|---|---|
-| `problems` | narrative, input/output spec, hints, difficulty, concepts, public examples, posted_date |
-| `test_cases` | hidden test inputs/outputs per problem (linked by problem id) |
-| `submissions` | user id, problem id, code, status, timing_ms, char_count, submitted_at |
-| `users` | Clerk user id, display name, email, solve counts, join date |
+No auth at all — anyone can submit as anyone. Needs Clerk (or equivalent) for OAuth-backed identity before real users are involved. Also requires a decision: **invite-only** (kdb+ community is small and known) or **open registration**?
 
-**What stays on disk**: `test_gen.q` and `reference.q` per problem — the judge subprocess needs them at runtime. Test case *results* move to Mongo; the q scripts stay on the filesystem.
-
-**Migration**: a one-off seed script imports the existing 4 problems from JSON files into MongoDB on first deploy.
-
-**Driver**: replace `pykx` for persistence with `motor` (async MongoDB driver). The `pykx` import for the judge subprocess is unaffected.
-
-### 2. Authentication — Clerk
-
-Clerk handles OAuth (GitHub, Google, etc.), session management, and JWT issuance. No passwords stored.
-
-- **Frontend**: `@clerk/clerk-react` — wrap app in `<ClerkProvider>`, add `<SignIn>` / `<UserButton>` components, protect routes
-- **Backend**: FastAPI middleware verifies Clerk JWTs on protected endpoints using Clerk's public JWKS endpoint
-- **VS Code extension**: auth flow opens a browser to Clerk sign-in, token stored in `vscode.SecretStorage`, attached as `Authorization: Bearer <token>` on submit requests
+Clerk handles OAuth (GitHub, Google, etc.), session management, and JWT issuance:
+- **Backend**: FastAPI middleware verifying Clerk JWTs via the public JWKS endpoint
+- **VS Code extension**: auth flow via `vscode.env.openExternal`, token stored in `vscode.SecretStorage`, attached as `Authorization: Bearer` on all requests
 
 Protected endpoints (require auth):
 - `POST /submissions`
 - `GET /me`
 - `GET /users/:id/submissions`
 
-Public endpoints (no auth):
-- `GET /problems`
-- `GET /problems/:slug`
-- `GET /leaderboard`
+Public endpoints:
+- `GET /problems`, `GET /problems/:slug`
+- `GET /problems/:slug/leaderboard`
 
-### 3. API changes
+### 3. kdb+ licensing
 
-- All submission routes require a valid Clerk JWT
-- New routes: `GET /me`, `GET /users/:id/submissions`, paginated `GET /leaderboard`
-- Replace `pykx.AsyncQConnection` db calls with `motor` async calls
-- Problem metadata served from MongoDB instead of filesystem JSON reads
+The personal licence explicitly prohibits production/commercial use. This is a hard external blocker. Options:
 
-### 4. Frontend changes
+- **Reach out to KX** — they've done community deals before; worth asking before assuming the worst
+- **Narrow the scope**: keep kdb+ only for the judge subprocess (not as a persistence server) and argue it's a dev tool
+- **Commercial licence**: required if this becomes a real product with paying users
 
-- Clerk provider wrapping the React app
-- Sign-in page with OAuth buttons (configured in Clerk dashboard — no code changes for adding new providers)
-- Submission history per user on the problem page
-- User profile page
-- Richer leaderboard (usernames, avatars from Clerk)
+### 4. Persistence — MongoDB
 
-### 5. VS Code extension changes
+The kdb+ db is in-memory with disk snapshots. A crash mid-write loses data; it also doesn't scale past one process. Replace with MongoDB:
 
-- Auth flow: `vscode.env.openExternal` → Clerk sign-in → user pastes token back (or device code flow)
-- `vscode.SecretStorage` for token persistence
-- Token attached to all submit requests
+| Collection | Contents |
+|---|---|
+| `problems` | narrative, spec, hints, difficulty, concepts, examples, posted_date |
+| `test_cases` | hidden test inputs/outputs per problem |
+| `submissions` | user id, problem id, code, status, timing_ms, char_count, submitted_at |
+| `users` | Clerk user id, display name, email, solve counts, join date |
+
+`test_gen.q` and `reference.q` stay on disk — the judge subprocess needs them at runtime. Replace `pykx.AsyncQConnection` for persistence with `motor` (async MongoDB driver).
+
+Migration: a one-off seed script imports the existing 4 problems from JSON files into MongoDB on first deploy.
+
+### 5. Rate limiting & abuse prevention
+
+No throttling on submissions. A user can spam judge processes and take down the server. Needs:
+- Per-user rate limits on `POST /submissions`
+- A job queue (e.g. Redis + worker) so submissions don't pile up as concurrent subprocesses
+- Global concurrency cap on simultaneous judge processes
+
+### 6. Reliability & observability
+
+- No error tracking — errors go to stdout and disappear
+- No uptime monitoring
+- No structured logging
+- CORS is currently `allow_origins=["*"]` — needs locking to the actual domain
+
+Minimum bar: Sentry for error tracking, structured logs, a health check that actually tests kdb+ connectivity.
+
+### 7. CI/CD
+
+Everything is manual. Needs at minimum:
+- A test suite for the API (judge pipeline especially)
+- A build + deploy pipeline (GitHub Actions → Railway/Render)
+- Environment-based config (dev / staging / prod)
 
 ---
 
-## What stays the same
+## Priority order
 
-- q judge subprocess pipeline — temp `.q` file written, stdout captured, JSON parsed
-- `test_gen.q` / `reference.q` files on disk
-- Vite SPA structure, Monaco editor, q tokenizer
+| Priority | Item |
+|---|---|
+| Before any public URL | Judge sandboxing, auth, rate limiting |
+| Before real users | kdb+ licensing resolved, MongoDB, CORS locked |
+| Should-have early | Error tracking, structured logging, CI/CD |
+| Can wait | Admin UI, email notifications, global leaderboard |
+
+---
+
+## Deployment target
+
+- **MongoDB**: Atlas free tier (512 MB) to start
+- **App**: Railway or Render — supports Python + persistent filesystem for `.q` files
+- **kdb+ judge**: runs as a subprocess on the same host; no separate deployment needed
 
 ---
 
 ## Open decisions
 
-### kdb+ licensing
-The personal/non-commercial kdb+ license restricts production use. Options:
-- Keep kdb+ for judging only (subprocess, not a server) — may fall within personal use
-- Replace the kdb+ *db process* (port 5000) with MongoDB entirely and keep kdb+ only for the judge subprocess
-- Purchase a commercial kdb+ license if this becomes a real product
-
-### Deployment target
-Recommended stack:
-- **MongoDB**: Atlas free tier (512 MB) to start, scales up as needed
-- **App**: Railway or Render — supports Python + persistent filesystem for the `.q` files
-- **Frontend**: same host or Vercel/Netlify
-
-### Admin interface
-Currently problems are authored by writing JSON + q files directly. Options:
-- Keep filesystem authoring (simpler, no UI needed)
-- Build a basic admin panel for problem CRUD via the API
-
-### Leaderboard scope
-- Global only (across all problems)?
-- Per-problem rankings?
-- Both?
-
----
-
-## Rough effort estimate
-
-| Area | Effort |
+| Decision | Options |
 |---|---|
-| MongoDB schemas + motor async setup | Small |
-| Problem seed/migration script | Small |
-| Clerk backend JWT middleware | Small |
-| Clerk frontend integration | Small |
-| API route updates (submissions, users) | Medium |
-| User profile + submission history UI | Medium |
-| VS Code extension auth flow | Medium |
-| Deployment config + env management | Medium |
-| Admin problem management UI | Large (if needed) |
-
-**Total without admin UI**: 2–3 focused sessions.
+| Invite-only vs open registration | Invite-only is safer to start; open later |
+| Judge isolation approach | Docker-per-submission vs Linux namespaces |
+| kdb+ licensing | Contact KX vs narrow usage vs commercial licence |
+| Admin interface | Filesystem authoring (current) vs API-backed admin panel |
+| Leaderboard scope | Per-problem only vs global across all problems |
 
 ---
 
 ## Suggested order of work
 
-1. MongoDB setup + motor driver + problem migration script
-2. Clerk backend middleware + protect submission routes
-3. Clerk frontend integration (sign-in, user button)
-4. User profile + submission history
-5. VS Code extension auth
-6. Deployment
+1. **Judge sandboxing** — resolve before anything goes public
+2. **kdb+ licensing** — contact KX in parallel; unblocks everything else
+3. **MongoDB + motor** — replace kdb+ persistence, seed existing problems
+4. **Clerk auth** — backend JWT middleware + VS Code extension auth flow
+5. **Rate limiting + job queue** — before opening to more than a handful of users
+6. **CI/CD + observability** — Sentry, structured logs, GitHub Actions deploy
+7. **Admin tooling** — only if filesystem authoring becomes a bottleneck
