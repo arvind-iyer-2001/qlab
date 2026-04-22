@@ -1,0 +1,30 @@
+{
+  "id": 2,
+  "slug": "p002_brogans_badges",
+  "title": "Brogan's Badges",
+  "difficulty": "easy",
+  "concepts": ["ceiling", "each", "arithmetic", "float-division", "sum"],
+  "posted_date": "2026-03-26",
+  "judge_seed": 99,
+  "solve_count": 0,
+  "narrative": "Brogan is having a \"United are back — Carrick is at the wheel\" party, and he has decided to invite his n friends.\n\nHe's good with his hands and wants to make invitations in the form of Man United Badges. For each invitation he needs **2 black sheets**, **5 yellow sheets**, and **8 red sheets**.\n\nThe store sells notebooks of a single colour, each containing exactly k sheets. Find the minimum number of notebooks Brogan needs to buy to make all n invitations.",
+  "input_spec": "x is a 2-element integer list `(n; k)` where n is the number of friends and k is the number of sheets per notebook. Both n and k are positive integers.",
+  "output_spec": "Return the minimum total number of notebooks Brogan must buy (a single integer).",
+  "examples": [
+    {"input": "func (3;5)", "output": "10", "note": "2 black notebooks (ceil 6%5=2), 3 yellow (ceil 15%5=3), 5 red (ceil 24%5=5). Total: 10."},
+    {"input": "func (15;6)", "output": "38", "note": "5 black + 13 yellow + 20 red = 38."},
+    {"input": "func (1;1)", "output": "15", "note": "2+5+8 = 15 notebooks of 1 sheet each."},
+    {"input": "func (100000000;1)", "output": "1500000000"},
+    {"input": "func (1;100000000)", "output": "3", "note": "1 notebook of each colour suffices."},
+    {"input": "func (96865066;63740710)", "output": "25"},
+    {"input": "func (58064619;65614207)", "output": "15"}
+  ],
+  "hints": [
+    "For each colour, the number of notebooks needed is `ceiling(sheets_needed % k)`. In q, `ceiling` rounds up.",
+    "For n friends you need 2*n black sheets, 5*n yellow sheets, and 8*n red sheets.",
+    "In q, `2 5 8 * n` multiplies the whole list at once. Then `% k` divides each element.",
+    "Use `sum` to add up the three notebook counts in one go."
+  ],
+  "winning_criteria": "SHORTEST correct code wins (measured with `-2+count string func`). If tied on length, fastest timing breaks the tie.",
+  "test_call": "func each ((3;5);(15;6);(1;1);(100000000;1);(1;100000000);(96865066;63740710);(58064619;65614207))"
+}

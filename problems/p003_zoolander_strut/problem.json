@@ -1,0 +1,32 @@
+{
+  "id": 3,
+  "slug": "p003_zoolander_strut",
+  "title": "Zoolander's Strut",
+  "difficulty": "medium",
+  "concepts": ["combinatorics", "grid-paths", "over", "integer-division", "til"],
+  "posted_date": "2026-04-09",
+  "judge_seed": 137,
+  "solve_count": 0,
+  "narrative": "When Sam's not doing Q quiz challenges he's a huge movie buff. His favourite movie of all time is Zoolander.\n\nIn honour of Zoolander's infamous ability to NEVER turn left, Sam's designed a catwalk where you can only move **right** or **down**.\n\nZoolander starts at the top-left corner (A) of an x-columns by y-rows grid and needs to strut to the bottom-right corner (B).\n\nFor a 2×2 grid there are 2 ways: Right then Down (RD), or Down then Right (DR).\n\nFor a 3×3 grid there are 6 ways: RRDD, RDRD, RDDR, DRRD, DRDR, DDRR.\n\nHow many distinct paths can Zoolander take?",
+  "input_spec": "x is a 2-element integer list `(cols; rows)` where 2 ≤ cols, rows ≤ 50.",
+  "output_spec": "Return the total number of distinct paths from top-left to bottom-right, moving only right or down.",
+  "examples": [
+    {"input": "func (2;2)", "output": "2", "note": "RD or DR."},
+    {"input": "func (3;3)", "output": "6", "note": "RRDD, RDRD, RDDR, DRRD, DRDR, DDRR."},
+    {"input": "func (2;3)", "output": "3", "note": "RDD, DRD, DDR."},
+    {"input": "func (4;4)", "output": "20"},
+    {"input": "func (4;5)", "output": "35"},
+    {"input": "func (5;5)", "output": "70"},
+    {"input": "func (10;10)", "output": "48620"},
+    {"input": "func (20;5)", "output": "8855"},
+    {"input": "func (20;50)", "output": "33516481089577200"}
+  ],
+  "hints": [
+    "To get from top-left to bottom-right of a cols×rows grid, you must take exactly (cols-1) rights and (rows-1) downs — a total of (cols+rows-2) steps.",
+    "The answer is a binomial coefficient: how many ways can you choose which steps are 'right' from all your steps? C(cols+rows-2, min(cols,rows)-1).",
+    "Compute C(n,k) iteratively to stay in long integers: start with 1 and repeatedly multiply by (n-i) then divide by (i+1) for i from 0 to k-1.",
+    "The over adverb `/` with two argument lists can replace a do loop. Try: `{(x*y) div z}/[1; numerator_list; denominator_list]`"
+  ],
+  "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
+  "test_call": "func each ((2;2);(3;3);(2;3);(4;4);(4;5);(5;5);(10;10);(20;5);(20;50))"
+}

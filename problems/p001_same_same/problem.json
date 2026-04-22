@@ -1,0 +1,30 @@
+{
+  "id": 1,
+  "slug": "p001_same_same",
+  "title": "Same-Same",
+  "difficulty": "easy",
+  "concepts": ["strings", "char-indexing", "each", "any", "in", "matrix-indexing"],
+  "posted_date": "2026-04-01",
+  "judge_seed": 42,
+  "solve_count": 0,
+  "narrative": "Nicolas owns a small pub on the outskirts of London. He loves to take long walks, watch sunsets aaaaand hustle tourists in cards who come to his pub. His favourite game is called \"Same-Same\".\n\nTo play Same-Same, you need a standard pack of 52 cards. Each card has a suit (Diamonds — D, Clubs — C, Spades — S, or Hearts — H), and a rank (2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, or A).\n\nAt the start of the game, there is one card on the table and you have five cards in your hand. You can play a card from your hand if and only if it has the same rank or the same suit as the card on the table.\n\nIn order to check if you'd be a good person to try to hustle, Nicolas has prepared a test for you. Given the card on the table and five cards in your hand, check if you can play at least one card.",
+  "input_spec": "x is a 2-element list:\n  x[0]: a string — the card on the table (e.g. \"AS\" = Ace of Spades)\n  x[1]: a list of 5 strings — the cards in your hand\n\nEach card string is 2 characters: rank in {2,3,4,5,6,7,8,9,T,J,Q,K,A} and suit in {D,C,S,H}.\nAll cards in the input are different.",
+  "output_spec": "Return the string \"YES\" if you can play at least one card, otherwise \"NO\".",
+  "examples": [
+    {"input": "func (\"AS\";(\"2H\";\"4C\";\"TH\";\"JH\";\"AD\"))", "output": "\"YES\"", "note": "AS on table. AD in hand shares rank (Ace). Play it."},
+    {"input": "func (\"2H\";(\"3D\";\"4C\";\"AC\";\"KD\";\"AS\"))", "output": "\"NO\"", "note": "Nothing shares rank 2 or suit H."},
+    {"input": "func (\"4D\";(\"AS\";\"AC\";\"AD\";\"AH\";\"5H\"))", "output": "\"YES\"", "note": "AD shares suit D with 4D."},
+    {"input": "func (\"KH\";(\"3C\";\"QD\";\"9S\";\"KS\";\"8D\"))", "output": "\"YES\"", "note": "KS shares rank K with KH."},
+    {"input": "func (\"4H\";(\"JH\";\"QC\";\"5H\";\"9H\";\"KD\"))", "output": "\"YES\"", "note": "JH, 5H, 9H all share suit H."},
+    {"input": "func (\"9H\";(\"KC\";\"6D\";\"KD\";\"4C\";\"2S\"))", "output": "\"NO\"", "note": "Nothing shares rank 9 or suit H."}
+  ],
+  "hints": [
+    "Cards are just strings — x[0] is a 2-char string like \"AS\". x[0][0] is the rank char 'A', x[0][1] is the suit char 'S'.",
+    "x[1] is a list of 5 strings. To get all ranks: x[1][;0]. To get all suits: x[1][;1]. This is matrix indexing — try it in q!",
+    "Use `any` to check if any element of a boolean list is true.",
+    "Use `in` or `=` to compare a char against a list of chars.",
+    "Use `\\t` to measure how fast your function is: `\\t:1000 func each x`"
+  ],
+  "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
+  "test_call": "func each ((\"AS\";(\"2H\";\"4C\";\"TH\";\"JH\";\"AD\"));(\"2H\";(\"3D\";\"4C\";\"AC\";\"KD\";\"AS\"));(\"4D\";(\"AS\";\"AC\";\"AD\";\"AH\";\"5H\"));(\"KH\";(\"3C\";\"QD\";\"9S\";\"KS\";\"8D\"));(\"4H\";(\"JH\";\"QC\";\"5H\";\"9H\";\"KD\"));(\"9H\";(\"KC\";\"6D\";\"KD\";\"4C\";\"2S\")))"
+}
