@@ -9,7 +9,15 @@
 
 A competitive coding platform for kdb+/q developers. Users submit a q function named `func` via a VS Code extension. The backend judges it for correctness, times it, and ranks it on a per-problem leaderboard. Think Leetcode but for q, scored by execution speed then code length.
 
-The **only client** is the VS Code extension (`vscode-extension/`). There is no web frontend and none should be built.
+The primary client is the VS Code extension (`vscode-extension/`), which handles all competitive coding interaction — browsing problems, submitting solutions, running code in the notebook, and viewing the leaderboard.
+
+A web frontend will be built eventually, but **not during the current production phase**. When it does come, its scope is:
+- Authentication flows (sign in, sign up, OAuth callbacks)
+- User profiles, submission history, global leaderboard
+- Problem browsing and descriptions (read-only — no in-browser code editor initially)
+- Potentially: an online VS Code sandbox (e.g. code-server or a WebContainer) for users without the extension
+
+**Do not build the web frontend now.** The API should be designed with it in mind — clean REST endpoints, proper auth middleware, CORS configured for a future web origin — but no frontend code should be written yet.
 
 ---
 
@@ -225,7 +233,7 @@ Before opening to more than a handful of users:
 
 | Do not | Why |
 |---|---|
-| Build a web frontend | VS Code extension is the only client |
+| Build a web frontend now | Planned for a later phase — VS Code extension is the client for the current build |
 | Touch `api/services/judge.py` logic | It works; sandboxing wraps around it |
 | Touch `judge/harness.q` or `judge/sandbox.q` | Core judge logic, already correct |
 | Use `pykx.SyncQConnection` | Deadlocks off the main thread |
