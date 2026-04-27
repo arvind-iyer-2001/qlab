@@ -30,7 +30,6 @@ class SubmitRequest(BaseModel):
     problem_id: int
     code: str
     language: Language = Language.q
-    handle: str = "anonymous"
 
     @field_validator("code")
     @classmethod
@@ -133,3 +132,14 @@ class LeaderboardEntry(BaseModel):
     char_count: int
     language: Language
     submitted_at: str
+
+
+class MySubmissionEntry(BaseModel):
+    problem_id: int
+    handle: str
+    status: SubmissionStatus
+    timing_ms: Optional[int] = None
+    char_count: Optional[int] = None
+    language: Language
+    submitted_at: str
+    is_best: bool

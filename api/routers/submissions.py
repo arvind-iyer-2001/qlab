@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from deps import get_db
-from models import SubmitRequest, SubmissionResponse, SubmissionStatus
+from models import MySubmissionEntry, SubmitRequest, SubmissionResponse, SubmissionStatus
 from services.judge import run_judge
 from services.auth import verify_clerk_token
 import services.problems as problems_svc
 import services.submissions as submissions_svc
+import services.users as users_svc
 
 router = APIRouter(prefix="/submissions", tags=["submissions"])
 
@@ -18,6 +19,11 @@ async def submit(
     db: AsyncIOMotorDatabase = Depends(get_db),
 ):
     user_id = claims["sub"]
+
+    # Resolve handle from stored user profile
+    user = await users_svc.get_by_clerk_id(db, user_id)
+    handle = (user.get("nickname") or user.get("display_name") or user_id) if user else user_id
+
     doc = await problems_svc.get_by_id(db, req.problem_id)
 
     result = await run_judge(
@@ -31,7 +37,7 @@ async def submit(
             db=db,
             problem_id=req.problem_id,
             user_id=user_id,
-            handle=req.handle,
+            handle=handle,
             language=req.language.value,
             code=req.code,
             char_count=result.char_count,
@@ -67,3 +73,13 @@ async def submit(
         expected_output=result.expected_output,
         actual_output=result.actual_output,
     )
+
+
+@router.get("/me", response_model=list[MySubmissionEntry])
+async def get_my_submissions(
+    problem_id: int = Query(...),
+    claims: dict = Depends(verify_clerk_token),
+    db: AsyncIOMotorDatabase = Depends(get_db),
+):
+    user_id = claims["sub"]
+    return await submissions_svc.get_for_user(db, user_id, problem_id)
