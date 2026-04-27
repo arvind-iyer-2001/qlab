@@ -80,8 +80,10 @@ async def get_for_user(
     best_chars: int | None = None
     for i, r in enumerate(rows):
         if r.get("status") == "correct":
-            t = r.get("timing_ms") or 0
-            c = r.get("char_count") or 0
+            t = r.get("timing_ms")
+            c = r.get("char_count")
+            if t is None:
+                continue
             if best_idx is None or t < best_time or (t == best_time and c < best_chars):
                 best_idx = i
                 best_time = t
