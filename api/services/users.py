@@ -12,15 +12,34 @@ async def upsert(
     clerk_user_id: str,
     display_name: str,
     email: str,
+    avatar_url: str | None = None,
+    username: str | None = None,
 ) -> None:
     await db.users.update_one(
         {"clerk_user_id": clerk_user_id},
         {
-            "$set": {"display_name": display_name, "email": email},
+            "$set": {
+                "display_name": display_name,
+                "email": email,
+                "avatar_url": avatar_url,
+                "username": username,
+            },
             "$setOnInsert": {
                 "clerk_user_id": clerk_user_id,
+                "nickname": None,
                 "created_at": datetime.now(timezone.utc),
             },
         },
         upsert=True,
+    )
+
+
+async def set_nickname(
+    db: AsyncIOMotorDatabase,
+    clerk_user_id: str,
+    nickname: str,
+) -> None:
+    await db.users.update_one(
+        {"clerk_user_id": clerk_user_id},
+        {"$set": {"nickname": nickname}},
     )

@@ -57,3 +57,39 @@ async def get_leaderboard(
         }
         for i, r in enumerate(rows)
     ]
+
+
+async def get_for_user(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    problem_id: int,
+) -> list[dict]:
+    from datetime import datetime
+    cursor = (
+        db.submissions.find(
+            {"user_id": user_id, "problem_id": problem_id},
+            {"_id": 0},
+        )
+        .sort("submitted_at", -1)
+        .limit(100)
+    )
+    rows = await cursor.to_list(length=100)
+
+    # Find best correct submission index (lowest timing_ms, then char_count)
+    best_idx: int | None = None
+    best_time: int | None = None
+    best_chars: int | None = None
+    for i, r in enumerate(rows):
+        if r.get("status") == "correct":
+            t = r.get("timing_ms") or 0
+            c = r.get("char_count") or 0
+            if best_idx is None or t < best_time or (t == best_time and c < best_chars):
+                best_idx = i
+                best_time = t
+                best_chars = c
+
+    for i, r in enumerate(rows):
+        r["is_best"] = (i == best_idx)
+        if isinstance(r.get("submitted_at"), datetime):
+            r["submitted_at"] = r["submitted_at"].isoformat()
+    return rows
