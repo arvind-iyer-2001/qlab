@@ -1,52 +1,30 @@
-import json
-import os
-from pathlib import Path
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends
+from motor.motor_asyncio import AsyncIOMotorDatabase
+
+from deps import get_db
 from models import SubmitRequest, SubmissionResponse, SubmissionStatus
 from services.judge import run_judge
-from services import db
+import services.problems as problems_svc
+import services.submissions as submissions_svc
 
 router = APIRouter(prefix="/submissions", tags=["submissions"])
 
-PROBLEMS_DIR = Path(os.getenv("PROBLEMS_DIR", "/problems"))
-
-
-def _get_problem_meta(problem_id: int) -> dict:
-    for p in PROBLEMS_DIR.iterdir():
-        meta_path = p / "problem.json"
-        if not meta_path.exists():
-            continue
-        data = json.loads(meta_path.read_text())
-        if data["id"] == problem_id:
-            return data, p.name
-    raise HTTPException(status_code=404, detail=f"Problem {problem_id} not found")
-
 
 @router.post("", response_model=SubmissionResponse)
-async def submit(req: SubmitRequest):
-    """
-    Submit a func definition for judging.
-
-    The judge will:
-    1. Validate it's a single-param func
-    2. Run it against generated test cases
-    3. Compare to reference outputs
-    4. Time it if correct (timing_ms, char_count)
-    5. Persist to kdb+ and return leaderboard rank
-    """
-    meta, problem_dir_name = _get_problem_meta(req.problem_id)
+async def submit(req: SubmitRequest, db: AsyncIOMotorDatabase = Depends(get_db)):
+    doc = await problems_svc.get_by_id(db, req.problem_id)
 
     result = await run_judge(
         user_code=req.code,
-        problem_id=problem_dir_name,
-        seed=meta.get("judge_seed", 42),
+        problem_id=doc["slug"],
+        seed=doc.get("judge_seed", 42),
     )
 
-    # Persist to kdb+
     try:
-        await db.insert_submission(
+        await submissions_svc.insert(
+            db=db,
             problem_id=req.problem_id,
-            user_id=0,
+            user_id=None,
             handle=req.handle,
             language=req.language.value,
             code=req.code,
@@ -55,22 +33,15 @@ async def submit(req: SubmitRequest):
             timing_ms=result.timing_ms,
             error_msg=result.error or "",
         )
+        if result.status == SubmissionStatus.correct:
+            await problems_svc.increment_solve_count(db, req.problem_id)
     except Exception as e:
-        # Non-fatal: judge result still returned, just not persisted
-        print(f"[warn] kdb+ insert failed: {e}")
+        print(f"[warn] db write failed: {e}")
 
-    # Compute leaderboard rank for correct submissions
     rank = None
     if result.status == SubmissionStatus.correct and result.timing_ms is not None:
         try:
-            lb = await db.get_leaderboard(req.problem_id, limit=1000)
-            rank = next(
-                (e["rank"] for e in lb
-                 if e["timing_ms"] > result.timing_ms
-                 or (e["timing_ms"] == result.timing_ms and e["char_count"] >= result.char_count)),
-                len(lb)
-            )
-            # rank = position of this submission (1-indexed)
+            lb = await submissions_svc.get_leaderboard(db, req.problem_id, limit=1000)
             rank = sum(
                 1 for e in lb
                 if e["timing_ms"] < result.timing_ms
