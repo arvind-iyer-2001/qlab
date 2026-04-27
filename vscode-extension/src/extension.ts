@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
 
-  // Show welcome prompt once if not signed in
+  // Show welcome prompt on each activation while no token is stored
   getToken().then(token => {
     if (!token) {
       vscode.window.showInformationMessage(
@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext): void {
   })
 
   const signIn = vscode.commands.registerCommand('qlab.signIn', async () => {
-    const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:3000'
+    const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:9091'
     await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/sign-in`))
   })
 

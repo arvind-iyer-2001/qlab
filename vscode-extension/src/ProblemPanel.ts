@@ -654,7 +654,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
     <!-- ── MY SUBMISSIONS ─────────────────────────────────────── -->
     <div class="tab-pane" id="mysubmissions">
-      <div id="mySubContent"><span class="spinner">⟳</span> Loading…</div>
+      <div id="mySubContent"><p style="color:var(--vscode-descriptionForeground)">Select this tab to load your submissions.</p></div>
     </div>
 
     <!-- ── COMMUNITY ───────────────────────────────────────────── -->
@@ -673,9 +673,6 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
   <script nonce="${n}">
     const vscode = acquireVsCodeApi();
     const PROBLEM = ${problemJson};
-
-    // ── Persist state across hidden/reveal ──────────────────────
-    const state = vscode.getState() || {};
 
     // ── Tab switching ─────────────────────────────────────────
     document.querySelectorAll('.tab').forEach(tab => {
