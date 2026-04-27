@@ -27,3 +27,5 @@ qlab-solutions/
 
 # OS
 .DS_Store
+
+**/.next/**
