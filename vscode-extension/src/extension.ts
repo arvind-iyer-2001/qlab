@@ -11,6 +11,18 @@ export function activate(context: vscode.ExtensionContext): void {
 
   const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
 
+  // Show welcome prompt once if not signed in
+  getToken().then(token => {
+    if (!token) {
+      vscode.window.showInformationMessage(
+        'Welcome to qLab! Sign in to submit solutions.',
+        'Sign In'
+      ).then(action => {
+        if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
+      })
+    }
+  })
+
   const api = () => new QLabApi(
     cfg().get<string>('apiUrl') ?? 'http://localhost:8000',
     getToken
@@ -104,6 +116,11 @@ export function activate(context: vscode.ExtensionContext): void {
     await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/sign-in`))
   })
 
+  const openProfile = vscode.commands.registerCommand('qlab.openProfile', async () => {
+    const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:9091'
+    await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/profile`))
+  })
+
   // ── URI handler — handles /open and /auth paths ───────────────────────────
   const uriHandler = vscode.window.registerUriHandler({
     async handleUri(uri: vscode.Uri) {
@@ -143,7 +160,7 @@ export function activate(context: vscode.ExtensionContext): void {
   })
 
   context.subscriptions.push(
-    tree, refresh, openProblem, submitActive, setApiUrl, signIn, uriHandler, configWatcher
+    tree, refresh, openProblem, submitActive, setApiUrl, signIn, openProfile, uriHandler, configWatcher
   )
 }
 
