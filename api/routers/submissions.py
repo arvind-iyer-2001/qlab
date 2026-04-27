@@ -1,7 +1,11 @@
+import logging
+
 from fastapi import APIRouter, Depends, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from deps import get_db
+
+logger = logging.getLogger(__name__)
 from models import MySubmissionEntry, SubmitRequest, SubmissionResponse, SubmissionStatus
 from services.judge import run_judge
 from services.auth import verify_clerk_token
@@ -48,7 +52,7 @@ async def submit(
         if result.status == SubmissionStatus.correct:
             await problems_svc.increment_solve_count(db, req.problem_id)
     except Exception as e:
-        print(f"[warn] db write failed: {e}")
+        logger.warning("db write failed: %s", e)
 
     rank = None
     if result.status == SubmissionStatus.correct and result.timing_ms is not None:
@@ -60,7 +64,7 @@ async def submit(
                 or (e["timing_ms"] == result.timing_ms and e["char_count"] < result.char_count)
             ) + 1
         except Exception as e:
-            print(f"[warn] leaderboard rank failed: {e}")
+            logger.warning("leaderboard rank failed: %s", e)
 
     return SubmissionResponse(
         problem_id=req.problem_id,

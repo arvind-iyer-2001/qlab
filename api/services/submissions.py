@@ -67,7 +67,16 @@ async def get_for_user(
     cursor = (
         db.submissions.find(
             {"user_id": user_id, "problem_id": problem_id},
-            {"_id": 0},
+            {
+                "_id": 0,
+                "problem_id": 1,
+                "handle": 1,
+                "status": 1,
+                "timing_ms": 1,
+                "char_count": 1,
+                "language": 1,
+                "submitted_at": 1,
+            },
         )
         .sort("submitted_at", -1)
         .limit(100)
@@ -82,7 +91,7 @@ async def get_for_user(
         if r.get("status") == "correct":
             t = r.get("timing_ms")
             c = r.get("char_count")
-            if t is None:
+            if t is None or c is None:
                 continue
             if best_idx is None or t < best_time or (t == best_time and c < best_chars):
                 best_idx = i
