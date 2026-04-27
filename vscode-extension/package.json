@@ -53,12 +53,23 @@
         "command": "qlab.signIn",
         "title": "Sign In",
         "category": "qLab"
+      },
+      {
+        "command": "qlab.openProfile",
+        "title": "Open Profile",
+        "icon": "$(account)",
+        "category": "qLab"
       }
     ],
     "menus": {
       "view/title": [
         {
           "command": "qlab.refresh",
+          "when": "view == qlab.problems",
+          "group": "navigation"
+        },
+        {
+          "command": "qlab.openProfile",
           "when": "view == qlab.problems",
           "group": "navigation"
         }
