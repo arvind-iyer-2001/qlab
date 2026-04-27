@@ -3,7 +3,6 @@ import pytest
 from unittest.mock import MagicMock, patch
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import serialization
 import jwt
 from fastapi import HTTPException
 from fastapi.security import HTTPAuthorizationCredentials

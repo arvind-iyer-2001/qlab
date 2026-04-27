@@ -4,8 +4,6 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import jwt
 from jwt import PyJWKClient
 
-CLERK_JWKS_URL = os.getenv("CLERK_JWKS_URL", "")
-
 _jwks_client: PyJWKClient | None = None
 
 bearer = HTTPBearer()
@@ -14,7 +12,8 @@ bearer = HTTPBearer()
 def _get_jwks_client() -> PyJWKClient:
     global _jwks_client
     if _jwks_client is None:
-        _jwks_client = PyJWKClient(CLERK_JWKS_URL, cache_keys=True)
+        url = os.getenv("CLERK_JWKS_URL", "")
+        _jwks_client = PyJWKClient(url, cache_keys=True)
     return _jwks_client
 
 
