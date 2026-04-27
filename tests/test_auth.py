@@ -78,7 +78,7 @@ async def test_invalid_token_raises_401():
     assert exc.value.status_code == 401
 
 
-def test_submit_without_token_returns_403():
+def test_submit_without_token_returns_401():
     import importlib, sys
     # Ensure fresh import
     for key in list(sys.modules.keys()):
@@ -92,4 +92,4 @@ def test_submit_without_token_returns_403():
         "code": "func:{[x] \"YES\"}",
         "handle": "test"
     })
-    assert resp.status_code in (401, 403)  # No bearer header → 401/403 from HTTPBearer (version-dependent)
+    assert resp.status_code == 401
