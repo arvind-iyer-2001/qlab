@@ -11,15 +11,14 @@ import services.users as users_svc
 router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 logger = logging.getLogger(__name__)
 
-CLERK_WEBHOOK_SECRET = os.getenv("CLERK_WEBHOOK_SECRET", "")
-
 
 @router.post("/clerk")
 async def clerk_webhook(
     request: Request,
     db: AsyncIOMotorDatabase = Depends(get_db),
 ) -> dict:
-    if not CLERK_WEBHOOK_SECRET:
+    secret = os.getenv("CLERK_WEBHOOK_SECRET", "")
+    if not secret:
         raise HTTPException(status_code=500, detail="CLERK_WEBHOOK_SECRET not configured")
 
     body = await request.body()
@@ -30,7 +29,7 @@ async def clerk_webhook(
     }
 
     try:
-        wh = Webhook(CLERK_WEBHOOK_SECRET)
+        wh = Webhook(secret)
         payload = wh.verify(body, headers)
     except WebhookVerificationError:
         raise HTTPException(status_code=400, detail="Invalid webhook signature")
@@ -53,14 +52,20 @@ async def clerk_webhook(
         avatar_url = data.get("image_url") or data.get("profile_image_url")
         username = data.get("username")
 
-        await users_svc.upsert(
-            db,
-            clerk_user_id=clerk_user_id,
-            display_name=display_name,
-            email=email,
-            avatar_url=avatar_url,
-            username=username,
-        )
-        logger.info("Upserted user %s via %s", clerk_user_id, event_type)
+        try:
+            await users_svc.upsert(
+                db,
+                clerk_user_id=clerk_user_id,
+                display_name=display_name,
+                email=email,
+                avatar_url=avatar_url,
+                username=username,
+            )
+            logger.info("Upserted user %s via %s", clerk_user_id, event_type)
+        except Exception as exc:
+            logger.error("Failed to upsert user %s: %s", clerk_user_id, exc)
+            raise
+    else:
+        logger.debug("Ignoring unhandled Clerk event type: %s", event_type)
 
     return {"status": "ok"}
