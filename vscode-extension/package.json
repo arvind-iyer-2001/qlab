@@ -6,6 +6,7 @@
   "publisher": "qlab",
   "engines": { "vscode": "^1.85.0" },
   "categories": ["Other"],
+  "icon": "media/icon.png",
   "activationEvents": ["onUri"],
   "main": "./out/extension.js",
   "contributes": {
@@ -14,7 +15,7 @@
         {
           "id": "qlab-explorer",
           "title": "qLab",
-          "icon": "media/icon.svg"
+          "icon": "media/icon.png"
         }
       ]
     },
