@@ -6,6 +6,7 @@ from cryptography.hazmat.backends import default_backend
 import jwt
 from fastapi import HTTPException
 from fastapi.security import HTTPAuthorizationCredentials
+from fastapi.testclient import TestClient
 
 
 def make_rsa_key_pair():
@@ -75,3 +76,20 @@ async def test_invalid_token_raises_401():
             await verify_clerk_token(credentials)
 
     assert exc.value.status_code == 401
+
+
+def test_submit_without_token_returns_403():
+    import importlib, sys
+    # Ensure fresh import
+    for key in list(sys.modules.keys()):
+        if "api." in key:
+            del sys.modules[key]
+
+    from api.main import app
+    client = TestClient(app, raise_server_exceptions=False)
+    resp = client.post("/submissions", json={
+        "problem_id": 1,
+        "code": "func:{[x] \"YES\"}",
+        "handle": "test"
+    })
+    assert resp.status_code in (401, 403)  # No bearer header → 401/403 from HTTPBearer (version-dependent)

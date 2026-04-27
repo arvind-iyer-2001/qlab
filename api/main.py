@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from routers import notebook, problems, submissions
+from routers import notebook, problems, submissions, users
 
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 MONGODB_DB = os.getenv("MONGODB_DB", "qlab")
@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(problems.router)
 app.include_router(submissions.router)
 app.include_router(notebook.router)
+app.include_router(users.router)
 
 
 @app.get("/health")

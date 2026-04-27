@@ -4,6 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from deps import get_db
 from models import SubmitRequest, SubmissionResponse, SubmissionStatus
 from services.judge import run_judge
+from services.auth import verify_clerk_token
 import services.problems as problems_svc
 import services.submissions as submissions_svc
 
@@ -11,7 +12,12 @@ router = APIRouter(prefix="/submissions", tags=["submissions"])
 
 
 @router.post("", response_model=SubmissionResponse)
-async def submit(req: SubmitRequest, db: AsyncIOMotorDatabase = Depends(get_db)):
+async def submit(
+    req: SubmitRequest,
+    claims: dict = Depends(verify_clerk_token),
+    db: AsyncIOMotorDatabase = Depends(get_db),
+):
+    user_id = claims["sub"]
     doc = await problems_svc.get_by_id(db, req.problem_id)
 
     result = await run_judge(
@@ -24,7 +30,7 @@ async def submit(req: SubmitRequest, db: AsyncIOMotorDatabase = Depends(get_db))
         await submissions_svc.insert(
             db=db,
             problem_id=req.problem_id,
-            user_id=None,
+            user_id=user_id,
             handle=req.handle,
             language=req.language.value,
             code=req.code,
