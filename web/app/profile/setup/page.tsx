@@ -1,9 +1,9 @@
 'use client'
 import { useAuth } from '@clerk/nextjs'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 
-export default function ProfileSetup() {
+function ProfileSetupInner() {
   const { getToken } = useAuth()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -23,6 +23,11 @@ export default function ProfileSetup() {
 
     try {
       const token = await getToken()
+      if (!token) {
+        setError('Session expired. Please refresh the page.')
+        setSaving(false)
+        return
+      }
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/nickname`, {
         method: 'PATCH',
@@ -78,5 +83,13 @@ export default function ProfileSetup() {
         </button>
       </form>
     </div>
+  )
+}
+
+export default function ProfileSetup() {
+  return (
+    <Suspense>
+      <ProfileSetupInner />
+    </Suspense>
   )
 }
