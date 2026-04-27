@@ -1,5 +1,6 @@
 # Local env (has machine-specific paths and secrets)
 .env
+.env.local
 
 # kdb+ data
 db/data/
