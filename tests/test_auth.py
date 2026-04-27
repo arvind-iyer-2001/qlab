@@ -1,3 +1,4 @@
+import sys
 import time
 import pytest
 from unittest.mock import MagicMock, patch
@@ -79,7 +80,6 @@ async def test_invalid_token_raises_401():
 
 
 def test_submit_without_token_returns_401():
-    import importlib, sys
     # Ensure fresh import
     for key in list(sys.modules.keys()):
         if "api." in key:
@@ -92,4 +92,15 @@ def test_submit_without_token_returns_401():
         "code": "func:{[x] \"YES\"}",
         "handle": "test"
     })
+    assert resp.status_code == 401
+
+
+def test_get_me_without_token_returns_401():
+    for key in list(sys.modules.keys()):
+        if "api." in key:
+            del sys.modules[key]
+
+    from api.main import app
+    client = TestClient(app, raise_server_exceptions=False)
+    resp = client.get("/users/me")
     assert resp.status_code == 401
