@@ -35,10 +35,12 @@ class SubmitRequest(BaseModel):
     @field_validator("code")
     @classmethod
     def code_must_define_func(cls, v: str) -> str:
-        stripped = v.strip()
-        if not stripped.startswith("func:"):
+        # Strip leading q comment lines (start with /) and blank lines
+        lines = v.strip().splitlines()
+        code_lines = [l for l in lines if l.strip() and not l.strip().startswith("/")]
+        if not code_lines or not code_lines[0].startswith("func:"):
             raise ValueError("Submission must start with 'func:' — define a function named func")
-        return stripped
+        return "\n".join(code_lines)
 
     @field_validator("code")
     @classmethod
