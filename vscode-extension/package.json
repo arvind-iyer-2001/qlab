@@ -48,6 +48,11 @@
         "command": "qlab.setApiUrl",
         "title": "Set API URL",
         "category": "qLab"
+      },
+      {
+        "command": "qlab.signIn",
+        "title": "Sign In",
+        "category": "qLab"
       }
     ],
     "menus": {
@@ -78,6 +83,11 @@
           "type": "string",
           "default": "",
           "description": "Directory to store solution files. Defaults to a 'qlab-solutions' folder in your workspace."
+        },
+        "qlab.webUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "qLab web app URL (used for sign-in)"
         }
       }
     },

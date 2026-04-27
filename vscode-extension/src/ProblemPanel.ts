@@ -126,6 +126,17 @@ export class ProblemPanel {
         code ?? '',
         handle || 'anonymous'
       )
+      if (result.status === 'unauthorized') {
+        this._post({ type: 'submitResult', data: result })
+        const action = await vscode.window.showErrorMessage(
+          'Please sign in to submit solutions.',
+          'Sign In'
+        )
+        if (action === 'Sign In') {
+          vscode.commands.executeCommand('qlab.signIn')
+        }
+        return
+      }
       this._post({ type: 'submitResult', data: result })
       if (result.status === 'correct') {
         await this._sendLeaderboard()

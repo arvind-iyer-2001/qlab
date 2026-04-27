@@ -4,9 +4,17 @@ import { ProblemsProvider } from './ProblemsProvider'
 import { ProblemPanel } from './ProblemPanel'
 import type { ProblemSummary } from './api'
 
+const TOKEN_KEY = 'qlab.token'
+
 export function activate(context: vscode.ExtensionContext): void {
   const cfg = () => vscode.workspace.getConfiguration('qlab')
-  const api = () => new QLabApi(cfg().get<string>('apiUrl') ?? 'http://localhost:8000')
+
+  const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
+
+  const api = () => new QLabApi(
+    cfg().get<string>('apiUrl') ?? 'http://localhost:8000',
+    getToken
+  )
 
   // ── Sidebar tree ─────────────────────────────────────────────────────────
   const provider = new ProblemsProvider(api())
@@ -18,7 +26,6 @@ export function activate(context: vscode.ExtensionContext): void {
   // ── Commands ──────────────────────────────────────────────────────────────
 
   const refresh = vscode.commands.registerCommand('qlab.refresh', () => {
-    // Re-create provider with fresh API URL in case it changed
     provider['api'] = api()
     provider.refresh()
   })
@@ -27,9 +34,7 @@ export function activate(context: vscode.ExtensionContext): void {
     'qlab.openProblem',
     async (problem?: ProblemSummary) => {
       if (!problem) {
-        // Called from command palette — let user pick
         const problems = await api().getProblems().catch(() => null)
-
         if (!problems?.length) {
           vscode.window.showErrorMessage('Could not load problems. Is qLab running? (./start.sh)')
           return
@@ -66,7 +71,6 @@ export function activate(context: vscode.ExtensionContext): void {
       return
     }
 
-    // Try to find which problem this file belongs to from the filename
     const fileName = editor.document.fileName
     const slugMatch = fileName.match(/([^/\\]+)\.q$/)
     if (!slugMatch) {
@@ -75,7 +79,6 @@ export function activate(context: vscode.ExtensionContext): void {
     }
     const slug = slugMatch[1]
 
-    // Open the panel (it will handle the submit after load)
     await ProblemPanel.open(slug, api(), context.extensionUri).catch(err => {
       vscode.window.showErrorMessage(`Failed to open problem panel: ${err}`)
     })
@@ -96,19 +99,38 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   })
 
-  // ── URI handler — vscode://qlab.qlab/open?slug=<slug> ────────────────────
+  const signIn = vscode.commands.registerCommand('qlab.signIn', async () => {
+    const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:3000'
+    await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/sign-in`))
+  })
+
+  // ── URI handler — handles /open and /auth paths ───────────────────────────
   const uriHandler = vscode.window.registerUriHandler({
     async handleUri(uri: vscode.Uri) {
-      if (uri.path !== '/open') return
-      const params = new URLSearchParams(uri.query)
-      const slug = params.get('slug')
-      if (!slug) {
-        vscode.window.showErrorMessage('qLab URI missing ?slug= parameter.')
+      if (uri.path === '/open') {
+        const params = new URLSearchParams(uri.query)
+        const slug = params.get('slug')
+        if (!slug) {
+          vscode.window.showErrorMessage('qLab URI missing ?slug= parameter.')
+          return
+        }
+        await ProblemPanel.open(slug, api(), context.extensionUri).catch(err => {
+          vscode.window.showErrorMessage(`Failed to open problem: ${err}`)
+        })
         return
       }
-      await ProblemPanel.open(slug, api(), context.extensionUri).catch(err => {
-        vscode.window.showErrorMessage(`Failed to open problem: ${err}`)
-      })
+
+      if (uri.path === '/auth') {
+        const params = new URLSearchParams(uri.query)
+        const token = params.get('token')
+        if (!token) {
+          vscode.window.showErrorMessage('qLab: sign-in failed — no token received.')
+          return
+        }
+        await context.secrets.store(TOKEN_KEY, token)
+        vscode.window.showInformationMessage('Signed in to qLab.')
+        return
+      }
     },
   })
 
@@ -121,13 +143,7 @@ export function activate(context: vscode.ExtensionContext): void {
   })
 
   context.subscriptions.push(
-    tree,
-    refresh,
-    openProblem,
-    submitActive,
-    setApiUrl,
-    uriHandler,
-    configWatcher
+    tree, refresh, openProblem, submitActive, setApiUrl, signIn, uriHandler, configWatcher
   )
 }
 
