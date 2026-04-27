@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import * as crypto from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
-import type { QLabApi, ProblemDetail, LeaderboardEntry, SubmitResult, ExecuteResult } from './api'
+import type { QLabApi, ProblemDetail, LeaderboardEntry, SubmitResult, ExecuteResult, UserSubmission } from './api'
 
 /** One panel per problem slug; re-reveals if already open. */
 export class ProblemPanel {
@@ -84,7 +84,7 @@ export class ProblemPanel {
         break
 
       case 'submit':
-        await this._handleSubmit(msg.code, msg.handle)
+        await this._handleSubmit(msg.code)
         break
 
       case 'runTest':
@@ -97,6 +97,10 @@ export class ProblemPanel {
 
       case 'openInEditor':
         await ProblemPanel.openSolutionFile(this.problem)
+        break
+
+      case 'getMySubmissions':
+        await this._sendMySubmissions()
         break
     }
   }
@@ -118,13 +122,12 @@ export class ProblemPanel {
     this._post({ type: 'editorCode', target, code })
   }
 
-  private async _handleSubmit(code: string | undefined, handle: string | undefined): Promise<void> {
+  private async _handleSubmit(code: string | undefined): Promise<void> {
     this._post({ type: 'submitStatus', status: 'judging' })
     try {
       const result: SubmitResult = await this.api.submitSolution(
         this.problem.id,
-        code ?? '',
-        handle || 'anonymous'
+        code ?? ''
       )
       if (result.status === 'unauthorized') {
         const action = await vscode.window.showErrorMessage(
@@ -170,6 +173,11 @@ export class ProblemPanel {
     } catch {
       // Non-fatal — leaderboard just stays as-is
     }
+  }
+
+  private async _sendMySubmissions(): Promise<void> {
+    const rows = await this.api.getMySubmissions(this.problem.id).catch(() => null)
+    this._post({ type: 'mySubmissions', data: rows })
   }
 
   private _post(msg: ExtensionMessage): void {
@@ -231,10 +239,9 @@ export class ProblemPanel {
 // ── Message types ─────────────────────────────────────────────────────────
 
 interface WebviewMessage {
-  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor'
+  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor' | 'getMySubmissions'
   target?: string
   code?: string
-  handle?: string
 }
 
 interface ExtensionMessage {
@@ -525,6 +532,12 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     tr:hover td { background: var(--vscode-list-hoverBackground); }
     .lb-handle { color: var(--vscode-textLink-foreground); }
 
+    /* ── My Submissions ── */
+    .best-row td { font-weight: 600; }
+    .best-star { color: #f5a623; margin-right: 3px; }
+    .sub-correct { color: var(--vscode-testing-iconPassed); }
+    .sub-wrong, .sub-error, .sub-timeout { color: var(--vscode-testing-iconFailed); }
+
     /* ── Info / notice ── */
     .notice {
       padding: 10px 12px;
@@ -557,9 +570,9 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
   <!-- Tab bar -->
   <div class="tab-bar">
     <button class="tab active" data-tab="description">Description</button>
-    <button class="tab" data-tab="examples">Examples</button>
     <button class="tab" data-tab="test">Test</button>
     <button class="tab" data-tab="submit">Submit</button>
+    <button class="tab" data-tab="mysubmissions">My Submissions</button>
     <button class="tab" data-tab="community">Community</button>
   </div>
 
@@ -582,16 +595,13 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
       ${hints}
 
+      <h3>Examples</h3>
+      ${examples}
+      <pre style="margin-top:8px">${esc(p.test_call)}</pre>
+
       <div class="btn-row" style="margin-top:16px">
         <button class="btn-secondary" id="openInEditorBtn">📝 Open Solution File</button>
       </div>
-    </div>
-
-    <!-- ── EXAMPLES ────────────────────────────────────────────── -->
-    <div class="tab-pane" id="examples">
-      ${examples}
-      <h3 style="margin-top:18px">Test call</h3>
-      <pre>${esc(p.test_call)}</pre>
     </div>
 
     <!-- ── TEST ────────────────────────────────────────────────── -->
@@ -628,11 +638,6 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
         <br>Shortcut: <code>Ctrl+Shift+S</code> while in the solution file.
       </div>
 
-      <div class="field">
-        <label for="handle">Handle (optional)</label>
-        <input type="text" id="handle" placeholder="your name / alias" maxlength="32">
-      </div>
-
       <div class="btn-row">
         <button class="btn-secondary" id="loadForSubmitBtn">↓ Load from Editor</button>
         <button class="btn-primary" id="submitBtn" disabled>⚡ Submit</button>
@@ -645,6 +650,11 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
       </div>
 
       <div id="submitResultWrap" style="display:none"></div>
+    </div>
+
+    <!-- ── MY SUBMISSIONS ─────────────────────────────────────── -->
+    <div class="tab-pane" id="mysubmissions">
+      <div id="mySubContent"><span class="spinner">⟳</span> Loading…</div>
     </div>
 
     <!-- ── COMMUNITY ───────────────────────────────────────────── -->
@@ -666,7 +676,6 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
     // ── Persist state across hidden/reveal ──────────────────────
     const state = vscode.getState() || {};
-    if (state.handle) document.getElementById('handle').value = state.handle;
 
     // ── Tab switching ─────────────────────────────────────────
     document.querySelectorAll('.tab').forEach(tab => {
@@ -676,6 +685,11 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
+    });
+
+    // Load My Submissions when that tab is selected
+    document.querySelector('.tab[data-tab="mysubmissions"]').addEventListener('click', () => {
+      vscode.postMessage({ type: 'getMySubmissions' });
     });
 
     // ── Open solution file ────────────────────────────────────
@@ -704,19 +718,13 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
       vscode.postMessage({ type: 'getEditorCode', target: 'submit' });
     });
 
-    document.getElementById('handle').addEventListener('input', function() {
-      state.handle = this.value;
-      vscode.setState(state);
-    });
-
     document.getElementById('submitBtn').addEventListener('click', () => {
       if (!submitCode) return;
-      const handle = document.getElementById('handle').value.trim();
       const resultWrap = document.getElementById('submitResultWrap');
       resultWrap.style.display = 'block';
       resultWrap.innerHTML = '<div class="result"><span class="spinner">⟳</span> Judging your solution…</div>';
       document.getElementById('submitBtn').disabled = true;
-      vscode.postMessage({ type: 'submit', code: submitCode, handle });
+      vscode.postMessage({ type: 'submit', code: submitCode });
     });
 
     document.getElementById('refreshLbBtn').addEventListener('click', () => {
@@ -771,6 +779,11 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
         case 'leaderboard': {
           renderLeaderboard(msg.data);
+          break;
+        }
+
+        case 'mySubmissions': {
+          renderMySubmissions(msg.data);
           break;
         }
       }
@@ -837,6 +850,34 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
                 '<td class="lb-handle">' + e(r.handle) + '</td>' +
                 '<td>' + r.timing_ms + '</td>' +
                 '<td>' + r.char_count + '</td>' +
+                '<td>' + e(r.language) + '</td></tr>';
+      }
+      html += '</tbody></table>';
+      el.innerHTML = html;
+    }
+
+    function renderMySubmissions(rows) {
+      const el = document.getElementById('mySubContent');
+      if (rows === null) {
+        el.innerHTML = '<p style="color:var(--vscode-descriptionForeground)">Sign in to qLab to see your submissions.</p>';
+        return;
+      }
+      if (!rows.length) {
+        el.innerHTML = '<p style="color:var(--vscode-descriptionForeground)">No submissions yet for this problem.</p>';
+        return;
+      }
+      let html = '<table><thead><tr><th>Date</th><th>Status</th><th>ms</th><th>chars</th><th>lang</th></tr></thead><tbody>';
+      for (const r of rows) {
+        const date = new Date(r.submitted_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const statusClass = 'sub-' + r.status;
+        const star = r.is_best ? '<span class="best-star">★</span>' : '';
+        const ms = r.timing_ms != null ? r.timing_ms : '—';
+        const chars = r.char_count != null ? r.char_count : '—';
+        html += '<tr class="' + (r.is_best ? 'best-row' : '') + '">' +
+                '<td>' + e(date) + '</td>' +
+                '<td class="' + statusClass + '">' + star + e(r.status) + '</td>' +
+                '<td>' + ms + '</td>' +
+                '<td>' + chars + '</td>' +
                 '<td>' + e(r.language) + '</td></tr>';
       }
       html += '</tbody></table>';
