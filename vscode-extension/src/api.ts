@@ -58,7 +58,10 @@ export interface ExecuteResult {
 }
 
 export class QLabApi {
-  constructor(private baseUrl: string) {}
+  constructor(
+    private baseUrl: string,
+    private getToken?: () => Promise<string | undefined>
+  ) {}
 
   private async get<T>(path: string): Promise<T> {
     const res = await fetch(`${this.baseUrl}${path}`)
@@ -69,9 +72,18 @@ export class QLabApi {
   }
 
   private async post<T>(path: string, body: unknown): Promise<{ status: number; data: T }> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+
+    if (this.getToken) {
+      const token = await this.getToken()
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`
+      }
+    }
+
     const res = await fetch(`${this.baseUrl}${path}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify(body),
     })
     const data = (await res.json()) as T
@@ -100,6 +112,9 @@ export class QLabApi {
       '/submissions',
       { problem_id: problemId, code, language, handle }
     )
+    if (status === 401 || status === 403) {
+      return { status: 'unauthorized', error: 'Please sign in to submit' }
+    }
     if (status === 422) {
       const detail = (data as { detail?: Array<{ msg?: string }> }).detail
       const msg = detail?.[0]?.msg ?? JSON.stringify(detail)
