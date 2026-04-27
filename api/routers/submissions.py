@@ -4,14 +4,14 @@ from fastapi import APIRouter, Depends, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from deps import get_db
-
-logger = logging.getLogger(__name__)
 from models import MySubmissionEntry, SubmitRequest, SubmissionResponse, SubmissionStatus
 from services.judge import run_judge
 from services.auth import verify_clerk_token
 import services.problems as problems_svc
 import services.submissions as submissions_svc
 import services.users as users_svc
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/submissions", tags=["submissions"])
 

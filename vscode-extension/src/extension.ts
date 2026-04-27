@@ -11,17 +11,21 @@ export function activate(context: vscode.ExtensionContext): void {
 
   const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
 
-  // Show welcome prompt on each activation while no token is stored
-  getToken().then(token => {
-    if (!token) {
-      vscode.window.showInformationMessage(
-        'Welcome to qLab! Sign in to submit solutions.',
-        'Sign In'
-      ).then(action => {
-        if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
-      })
-    }
-  })
+  // Show welcome prompt once on first install (not on every activation)
+  const welcomed = context.globalState.get<boolean>('qlab.welcomed')
+  if (!welcomed) {
+    context.globalState.update('qlab.welcomed', true)
+    getToken().then(token => {
+      if (!token) {
+        vscode.window.showInformationMessage(
+          'Welcome to qLab! Sign in to submit solutions.',
+          'Sign In'
+        ).then(action => {
+          if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
+        })
+      }
+    })
+  }
 
   const api = () => new QLabApi(
     cfg().get<string>('apiUrl') ?? 'http://localhost:8000',
