@@ -1,0 +1,34 @@
+{
+  "id": 5,
+  "slug": "p005_arvind_travels",
+  "title": "Arvind Travels",
+  "difficulty": "medium",
+  "concepts": ["greedy", "arithmetic-series", "conditionals", "closed-form"],
+  "posted_date": "2026-04-23",
+  "judge_seed": 423,
+  "solve_count": 0,
+  "narrative": "Arvind loves to travel. There are n cities in the country where he lives, all located on one straight line numbered 1 to n. The distance between adjacent cities is 1 kilometre, and roads are one-way — you can only travel from city x to city y if x < y.\n\nArvind is going on a grand tour in his beloved Nissan Micra. The tank capacity is v litres, and the car burns exactly 1 litre per kilometre. The tank starts empty at city 1. In city i, fuel costs exactly i dollars per litre.\n\nArvind wants to reach city n as cheaply as possible. He can stop and buy fuel at any city along the way. How much will the trip cost?",
+  "input_spec": "x is a 2-element list:\n  x[0]: n — integer, number of cities (2 ≤ n ≤ 100)\n  x[1]: v — integer, tank capacity in litres (1 ≤ v ≤ 100)\n\nCity i has fuel price i dollars per litre. The tank starts empty at city 1.",
+  "output_spec": "Return the minimum total cost (in dollars) to travel from city 1 to city n.",
+  "examples": [
+    {"input": "func (4;2)", "output": "4", "note": "Buy 2 litres at city 1 ($2), drive to city 2 (1 litre left), buy 1 litre at city 2 ($2), drive to city 4. Total = $4."},
+    {"input": "func (7;6)", "output": "6", "note": "Tank capacity 6 covers the full 6 km. Fill up at city 1 for $6 and drive straight to city 7."},
+    {"input": "func (10;3)", "output": "30", "note": "Buy 3 at city 1, top up by 1 at cities 2–7 ($2+3+4+5+6+7), then coast to city 10."},
+    {"input": "func (12;89)", "output": "11", "note": "Tank capacity 89 covers 11 km easily. Buy 11 litres at city 1 for $11."},
+    {"input": "func (32;15)", "output": "167"},
+    {"input": "func (77;1)", "output": "2926", "note": "Tank holds only 1 litre — must buy 1 litre at every city 1 through 76. Sum = 1+2+...+76 = 2926."},
+    {"input": "func (2;56)", "output": "1"},
+    {"input": "func (100;100)", "output": "99"},
+    {"input": "func (91;14)", "output": "3016"},
+    {"input": "func (56;13)", "output": "958"}
+  ],
+  "hints": [
+    "Fuel prices strictly increase city by city (city 1 is cheapest, city n is most expensive). What does that tell you about WHEN to buy fuel?",
+    "Since every future city is more expensive than where you are now, you should always buy as much fuel as you can carry — unless you already have enough to reach city n.",
+    "Try simulating: loop through cities 1 to n-1. If current fuel < distance remaining, fill the tank to v. Then subtract 1 for the drive to the next city.",
+    "There are only two cases: if v ≥ n-1, just fill n-1 litres at city 1. Otherwise you top up at each city until you have enough to coast the last v cities.",
+    "The total cost has a closed form: the sum 1 + 2 + ... + (n-v) plus (v-1) extra from topping up. Simplify to v + sum(2..n-v) = v + (n-v)*(n-v+1)%2 - 1."
+  ],
+  "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
+  "test_call": "func each ((4;2);(7;6);(10;3);(12;89);(32;15);(77;1);(2;56);(100;100);(91;14);(56;13))"
+}
