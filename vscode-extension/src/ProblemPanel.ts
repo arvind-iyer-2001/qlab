@@ -127,7 +127,6 @@ export class ProblemPanel {
         handle || 'anonymous'
       )
       if (result.status === 'unauthorized') {
-        this._post({ type: 'submitResult', data: result })
         const action = await vscode.window.showErrorMessage(
           'Please sign in to submit solutions.',
           'Sign In'
