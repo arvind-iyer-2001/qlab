@@ -64,7 +64,6 @@ async def get_for_user(
     user_id: str,
     problem_id: int,
 ) -> list[dict]:
-    from datetime import datetime
     cursor = (
         db.submissions.find(
             {"user_id": user_id, "problem_id": problem_id},
