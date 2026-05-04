@@ -654,17 +654,23 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
     <!-- ── MY SUBMISSIONS ─────────────────────────────────────── -->
     <div class="tab-pane" id="mysubmissions">
-      <div id="mySubContent"><p style="color:var(--vscode-descriptionForeground)">Select this tab to load your submissions.</p></div>
-    </div>
-
-    <!-- ── COMMUNITY ───────────────────────────────────────────── -->
-    <div class="tab-pane" id="community">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <h3 style="margin:0;border:none">Leaderboard</h3>
         <button class="btn-secondary" id="refreshLbBtn" style="font-size:0.78em;padding:3px 10px">↻ Refresh</button>
       </div>
       <div id="leaderboard">
         <span class="spinner">⟳</span> Loading…
+      </div>
+      <h3 style="margin-top:20px">Your Submissions</h3>
+      <div id="mySubContent"><p style="color:var(--vscode-descriptionForeground)">Loading…</p></div>
+    </div>
+
+    <!-- ── COMMUNITY ───────────────────────────────────────────── -->
+    <div class="tab-pane" id="community">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:var(--vscode-descriptionForeground);padding:32px 16px;text-align:center">
+        <span style="font-size:2em">💬</span>
+        <p style="font-size:0.95em;font-weight:600;color:var(--vscode-foreground)">Community Forum</p>
+        <p style="font-size:0.85em;line-height:1.6">Discuss problems, share approaches, and learn from other q developers.<br>Coming soon.</p>
       </div>
     </div>
 
@@ -684,9 +690,10 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
       });
     });
 
-    // Load My Submissions when that tab is selected
+    // Load leaderboard + submissions when My Submissions tab is selected
     document.querySelector('.tab[data-tab="mysubmissions"]').addEventListener('click', () => {
       vscode.postMessage({ type: 'getMySubmissions' });
+      vscode.postMessage({ type: 'refreshLeaderboard' });
     });
 
     // ── Open solution file ────────────────────────────────────

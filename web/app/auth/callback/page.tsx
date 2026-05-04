@@ -22,6 +22,13 @@ export default function AuthCallback() {
         const res = await fetch(`${apiUrl}/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
+        if (res.status === 404) {
+          // New user — webhook hasn't fired yet or is still propagating.
+          // Send them to nickname setup; the webhook will create the record
+          // (or PATCH /users/me/nickname will 404, handled there).
+          window.location.href = '/profile/setup?from=vscode'
+          return
+        }
         if (res.ok) {
           const user = await res.json()
           if (!user.nickname) {
