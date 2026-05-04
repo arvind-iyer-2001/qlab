@@ -33,3 +33,5 @@ graphify-out/.graphify_python
 .DS_Store
 
 **/.next/**
+# Visual brainstorming session files
+.superpowers/
