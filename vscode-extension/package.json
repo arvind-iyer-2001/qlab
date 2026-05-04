@@ -60,6 +60,18 @@
         "title": "Open Profile",
         "icon": "$(account)",
         "category": "qLab"
+      },
+      {
+        "command": "qlab.signInToolbar",
+        "title": "Sign In",
+        "icon": "$(sign-in)",
+        "category": "qLab"
+      },
+      {
+        "command": "qlab.signOut",
+        "title": "Sign Out",
+        "icon": "$(sign-out)",
+        "category": "qLab"
       }
     ],
     "menus": {
@@ -71,7 +83,17 @@
         },
         {
           "command": "qlab.openProfile",
-          "when": "view == qlab.problems",
+          "when": "view == qlab.problems && qlab.signedIn",
+          "group": "navigation"
+        },
+        {
+          "command": "qlab.signInToolbar",
+          "when": "view == qlab.problems && !qlab.signedIn",
+          "group": "navigation"
+        },
+        {
+          "command": "qlab.signOut",
+          "when": "view == qlab.problems && qlab.signedIn",
           "group": "navigation"
         }
       ],

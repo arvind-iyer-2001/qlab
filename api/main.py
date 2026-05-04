@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
@@ -10,13 +12,28 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from routers import notebook, problems, submissions, users, webhooks
 
+logger = logging.getLogger("qlab.startup")
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 MONGODB_DB = os.getenv("MONGODB_DB", "qlab")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    client = AsyncIOMotorClient(MONGODB_URI)
+    logger.info("Connecting to MongoDB (%s)…", MONGODB_DB)
+    client = AsyncIOMotorClient(MONGODB_URI, serverSelectionTimeoutMS=10_000)
+    try:
+        await client.admin.command("ping")
+        logger.info("MongoDB connection OK")
+    except Exception as exc:
+        logger.error("MongoDB connection failed: %s", exc)
+        logger.error(
+            "Common causes: IP not on Atlas allowlist, wrong URI, or network issue. "
+            "Check MONGODB_URI in .env and add your IP at cloud.mongodb.com → Network Access."
+        )
+        client.close()
+        sys.exit(1)
     app.state.mongo_client = client
     app.state.db = client[MONGODB_DB]
     yield

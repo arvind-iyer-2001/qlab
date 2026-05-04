@@ -6,10 +6,24 @@ import type { ProblemSummary } from './api'
 
 const TOKEN_KEY = 'qlab.token'
 
+async function setSignedInContext(token: string | undefined): Promise<void> {
+  await vscode.commands.executeCommand('setContext', 'qlab.signedIn', !!token)
+}
+
 export function activate(context: vscode.ExtensionContext): void {
   const cfg = () => vscode.workspace.getConfiguration('qlab')
 
   const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
+
+  // Sync sign-in context on activation
+  getToken().then(setSignedInContext)
+
+  // Update context whenever the secret changes (e.g. sign-in via URI handler)
+  context.secrets.onDidChange(async e => {
+    if (e.key === TOKEN_KEY) {
+      setSignedInContext(await getToken())
+    }
+  })
 
   // Show welcome prompt once on first install (not on every activation)
   const welcomed = context.globalState.get<boolean>('qlab.welcomed')
@@ -120,9 +134,36 @@ export function activate(context: vscode.ExtensionContext): void {
     await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/sign-in`))
   })
 
+  const signInToolbar = vscode.commands.registerCommand('qlab.signInToolbar', async () => {
+    vscode.commands.executeCommand('qlab.signIn')
+  })
+
   const openProfile = vscode.commands.registerCommand('qlab.openProfile', async () => {
     const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:9091'
     await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/profile`))
+  })
+
+  const signOut = vscode.commands.registerCommand('qlab.signOut', async () => {
+    const token = await getToken()
+    if (!token) {
+      vscode.window.showInformationMessage('You are not signed in to qLab.')
+      return
+    }
+    const confirm = await vscode.window.showWarningMessage(
+      'Sign out of qLab?',
+      { modal: true },
+      'Sign Out'
+    )
+    if (confirm !== 'Sign Out') return
+
+    await context.secrets.delete(TOKEN_KEY)
+    await setSignedInContext(undefined)
+    provider['api'] = api()
+    provider.refresh()
+
+    const webUrl = cfg().get<string>('webUrl') ?? 'http://localhost:9091'
+    await vscode.env.openExternal(vscode.Uri.parse(`${webUrl}/sign-out`))
+    vscode.window.showInformationMessage('Signed out of qLab.')
   })
 
   // ── URI handler — handles /open and /auth paths ───────────────────────────
@@ -164,7 +205,7 @@ export function activate(context: vscode.ExtensionContext): void {
   })
 
   context.subscriptions.push(
-    tree, refresh, openProblem, submitActive, setApiUrl, signIn, openProfile, uriHandler, configWatcher
+    tree, refresh, openProblem, submitActive, setApiUrl, signIn, signInToolbar, openProfile, signOut, uriHandler, configWatcher
   )
 }
 
