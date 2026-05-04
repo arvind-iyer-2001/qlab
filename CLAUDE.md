@@ -10,24 +10,27 @@ qLab — a competitive coding platform for kdb+/q developers. Users submit a q f
 
 ```bash
 cd ~/qlab
-./start.sh          # launches kdb+ db (5000) + notebook q (5001) + FastAPI (8000)
+./start.sh          # launches notebook q (5001) + FastAPI (8000)
 ```
 
 Individual processes:
 ```bash
-# kdb+ db
-/home/aiyer/.kx/bin/q db/schema.q -p 5000
-
 # Notebook q process (persistent, stateful)
 /home/aiyer/.kx/bin/q -p 5001 -q
 
 # FastAPI
 PROBLEMS_DIR=/home/aiyer/qlab/problems \
 QLAB_Q_BINARY=/home/aiyer/.kx/bin/q \
-QLAB_DB_HOST=localhost QLAB_DB_PORT=5000 \
 QLAB_NB_PORT=5001 \
+MONGODB_URI=mongodb://localhost:27017 \
+MONGODB_DB=qlab \
 PYTHONPATH=/home/aiyer/qlab/api \
 python3 -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Seed problems into MongoDB on first run (idempotent, safe to re-run):
+```bash
+python3 scripts/seed_problems.py
 ```
 
 API docs at `http://localhost:8000/docs`.
@@ -38,26 +41,61 @@ API docs at `http://localhost:8000/docs`.
 |---|---|---|
 | `QLAB_Q_BINARY` | `q` | Path to q binary — on this machine: `/home/aiyer/.kx/bin/q` |
 | `PROBLEMS_DIR` | `/problems` | Absolute path to problems directory |
-| `QLAB_DB_HOST/PORT` | `localhost:5000` | kdb+ db process address |
 | `QLAB_NB_PORT` | `5001` | Notebook q process port |
 | `QLAB_JUDGE_TIMEOUT` | `10` | Seconds before judge kills a q subprocess |
+| `MONGODB_URI` | `mongodb://localhost:27017` | MongoDB connection string (Atlas in prod) |
+| `MONGODB_DB` | `qlab` | MongoDB database name |
+| `CLERK_JWKS_URL` | — | Clerk JWKS endpoint for JWT verification |
+| `CLERK_SECRET_KEY` | — | Clerk secret key (used by web frontend) |
+| `CLERK_WEBHOOK_SECRET` | — | Svix signing secret for `/webhooks/clerk` |
+
+See `.env.example` for the full template.
 
 ## Architecture
 
 ```
-VS Code extension → FastAPI (8000) → kdb+ db (5000)
-                          ↓                ↓
-                  q judge subprocess   notebook q (5001)
-                    (per submission)   (persistent state)
+Web (Next.js :9091)  VS Code extension
+        ↓                    ↓
+     Clerk auth         FastAPI (8000)
+                              ↓
+                    ┌─────────┴─────────┐
+                 MongoDB          notebook q (5001)
+          (problems, submissions,  (persistent state)
+               users)
+                                        ↓
+                               q judge subprocess
+                                 (per submission)
 ```
 
-**Three separate processes must all be running:**
+**Single data store — MongoDB** (motor/`AsyncIOMotorClient`). Three collections:
+- `problems` — seeded from `problems/*/problem.json` via `scripts/seed_problems.py`; `solve_count` is live-incremented on correct submissions
+- `submissions` — one document per judge run, indexed on `(problem_id, status, timing_ms, char_count)`
+- `users` — synced from Clerk via webhook; queried at submit time to resolve the handle
 
-1. **kdb+ db** (`db/schema.q`) — in-memory `submissions` table, persisted to `db/data/submissions` after every insert. IPC API: `.db.insertSubmission`, `.db.leaderboard`, `.db.solveCount`. Python connects via `pykx.AsyncQConnection` — all db-touching route handlers must be `async def`.
+MongoDB is injected via `deps.get_db` → `request.app.state.db`. All route handlers that touch it are `async def`.
 
-2. **kdb+ notebook** — plain q process on port 5001, no script. Keeps global state between cells; `value "code"` evaluates in its global scope. Reset by killing and restarting the process (`api/services/notebook.py`).
+**kdb+ is notebook-only.** The kdb+ db process (`db/schema.q`) has been retired — `start.sh` no longer launches it. Only the notebook q process (port 5001) remains. `PYTHONPATH` must include the `api/` dir since imports are flat (`from models import ...`, not `from api.models import ...`). Routers: `problems`, `submissions`, `notebook`, `users`, `webhooks`.
 
-3. **FastAPI** (`api/`) — all route handlers are `async def` (required by pykx). `PYTHONPATH` must include the `api/` dir since imports are flat (`from models import ...`, not `from api.models import ...`). Problem metadata is read from `problems/{slug}/problem.json` — no db involved for problem content. Routers: `problems`, `submissions`, `notebook`.
+## Auth (Clerk)
+
+FastAPI uses Clerk JWT verification (`api/services/auth.py`). Protected routes depend on `verify_clerk_token` via `Depends`:
+- `GET /users/me` — returns or auto-creates the MongoDB user record for the calling Clerk user
+- `PATCH /users/me/nickname` — sets display nickname
+- `POST /webhooks/clerk` — Svix-verified webhook that upserts user records on `user.created` / `user.updated` events; requires `CLERK_WEBHOOK_SECRET`
+
+Auth is RS256 JWT verified against `CLERK_JWKS_URL`. The JWKS client is a module-level singleton with key caching.
+
+## Web frontend (`web/`)
+
+Next.js 14 app with `@clerk/nextjs`, runs on port 9091. Wraps the whole app in `ClerkProvider`. Pages: sign-in, sign-up, auth callback, profile. Not the primary client (VS Code extension is) — this is the web-facing companion for auth flows and profile management.
+
+```bash
+cd web
+npm install
+npm run dev    # http://localhost:9091
+```
+
+Requires `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in `web/.env.local`.
 
 ## VS Code extension (`vscode-extension/`)
 
@@ -78,15 +116,27 @@ npm run install-ext   # compile → package → code --install-extension
 
 `qlab.apiUrl` setting defaults to `http://localhost:8000`.
 
+## Running tests
+
+```bash
+pytest                        # run all tests from repo root
+pytest tests/test_auth.py     # run a single test file
+pytest -k test_valid_token    # run a single test by name
+```
+
+`pytest.ini` sets `asyncio_mode = auto` and `pythonpath = . api` — no extra env needed for the auth unit tests. Integration tests that hit kdb+ or MongoDB require the stack to be running.
+
 ## Judge pipeline
 
 Every `POST /submissions` triggers this flow in `api/services/judge.py`:
 
 1. Python regex validates `func` has exactly one parameter (fast reject before spawning q)
-2. A self-contained q script is written to a temp file — it `\l`-loads `problems/{id}/test_gen.q` and `problems/{id}/reference.q` using **absolute paths** (the script runs from `/tmp`, relative paths break)
+2. A self-contained q script is written to a temp file — it `\l`-loads `judge/harness.q`, then `problems/{id}/test_gen.q` and `problems/{id}/reference.q` using **absolute paths** (the script runs from `/tmp`, relative paths break)
 3. `q <tempfile>` is spawned as a subprocess with a timeout
 4. The q script outputs exactly one JSON line to stdout: `{"status":..., "timing_ms":..., "char_count":...}` (or an error variant)
 5. Python parses that line and returns `JudgeResult`
+
+**`judge/harness.q`** defines shared helpers loaded into every judge script: `.qlab.out` (JSON stdout), `.qlab.safe` (error-catching wrapper), `.qlab.firstMismatch` (element-wise list comparison), `.qlab.fmt` (value formatter). Edit this file to change harness behavior — don't duplicate these utilities in generated scripts.
 
 **Critical q gotcha:** A bare `/` on its own line in a `.q` file starts a block comment that silently swallows everything after it until `\`. Never embed q code with bare `/` lines — always `\l` load files instead of inlining them.
 
@@ -101,7 +151,12 @@ Create `problems/{slug}/`:
 - `test_gen.q` — defines global `x` (the judge input). No bare `/` lines. The seed is set by the harness before this file is loaded.
 - `reference.q` — defines `func` — the canonical correct solution. No bare `/` lines.
 
-The `test_gen.q` for p001 mirrors the exact test data the problem creator used: `a:"23456789TJQKA"; b:?:[?[100;a],'100?"DCHS"]; c:-1_5 cut b; x:(enlist each c 0),'enlist each c -5#til #:[c];`
+After adding files, seed into MongoDB:
+```bash
+python3 scripts/seed_problems.py   # idempotent — safe to re-run
+```
+
+The API reads problems from MongoDB, not from disk at request time. `solve_count` is managed by the DB; `scripts/seed_problems.py` uses `$setOnInsert` so re-seeding never resets it.
 
 ## Submission rules enforced
 
@@ -111,6 +166,16 @@ The `test_gen.q` for p001 mirrors the exact test data the problem creator used: 
 - Ranking: timing_ms ASC, then char_count ASC (`-2+count string func`)
 - K submissions must include a Q equivalent
 
-## pykx threading constraint
+## Async constraint
 
-`pykx.SyncQConnection` cannot open sockets off the main thread — FastAPI's threadpool triggers this. All functions in `api/services/db.py` are `async` and use `AsyncQConnection`. Any new route handlers that call `db.*` must be `async def`.
+All route handlers must be `async def`. MongoDB (motor) and the notebook service both require it. There is no pykx in the API — the kdb+ db process has been retired.
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- **Before opening any source file to understand the codebase** (including during `/init`, architecture reviews, or bug investigations), read `graphify-out/GRAPH_REPORT.md` first. This is the entry point — it tells you which nodes are most connected and which communities exist, so you know where to look instead of guessing.
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
