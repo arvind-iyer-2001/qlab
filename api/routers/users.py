@@ -17,8 +17,7 @@ async def get_me(
     user_id = claims["sub"]
     user = await users_svc.get_by_clerk_id(db, user_id)
     if not user:
-        await users_svc.upsert(db, clerk_user_id=user_id, display_name="", email="")
-        user = {"clerk_user_id": user_id, "display_name": "", "email": "", "nickname": None}
+        raise HTTPException(status_code=404, detail="User not found")
     return user
 
 
@@ -31,7 +30,7 @@ async def set_nickname(
     user_id = claims["sub"]
     user = await users_svc.get_by_clerk_id(db, user_id)
     if not user:
-        await users_svc.upsert(db, clerk_user_id=user_id, display_name="", email="")
+        raise HTTPException(status_code=404, detail="User not found")
     await users_svc.set_nickname(db, user_id, body.nickname)
     updated = await users_svc.get_by_clerk_id(db, user_id)
     if not updated:
