@@ -10,12 +10,30 @@ async function setSignedInContext(token: string | undefined): Promise<void> {
   await vscode.commands.executeCommand('setContext', 'qlab.signedIn', !!token)
 }
 
+function jwtIsExpired(token: string): boolean {
+  try {
+    const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64url').toString())
+    return typeof payload.exp === 'number' && payload.exp * 1000 < Date.now()
+  } catch {
+    return true
+  }
+}
+
 export function activate(context: vscode.ExtensionContext): void {
   const cfg = () => vscode.workspace.getConfiguration('qlab')
 
-  const getToken = () => Promise.resolve(context.secrets.get(TOKEN_KEY))
+  const getToken = async (): Promise<string | undefined> => {
+    const token = await context.secrets.get(TOKEN_KEY)
+    if (!token) return undefined
+    if (jwtIsExpired(token)) {
+      await context.secrets.delete(TOKEN_KEY)
+      await setSignedInContext(undefined)
+      return undefined
+    }
+    return token
+  }
 
-  // Sync sign-in context on activation
+  // Sync sign-in context on activation, clearing any expired token
   getToken().then(setSignedInContext)
 
   // Update context whenever the secret changes (e.g. sign-in via URI handler)

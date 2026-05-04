@@ -64,11 +64,19 @@ export default function ProfilePage() {
       {email && <p style={{ color: '#888', fontSize: '14px' }}>{email}</p>}
 
       {!loadingQlab && (
-        <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+        <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
           {qlabUser?.nickname ? (
-            <p style={{ fontSize: '15px' }}>
-              Handle: <strong>{qlabUser.nickname}</strong>
-            </p>
+            <>
+              <p style={{ fontSize: '15px' }}>
+                Handle: <strong>{qlabUser.nickname}</strong>
+              </p>
+              <a
+                href="/profile/setup"
+                style={{ fontSize: '13px', color: '#0070f3', textDecoration: 'none' }}
+              >
+                Change nickname
+              </a>
+            </>
           ) : (
             <p style={{ color: '#c00', fontSize: '14px' }}>
               No nickname set.{' '}

@@ -20,6 +20,8 @@ class SubmissionStatus(str, Enum):
     correct = "correct"
     wrong = "wrong"
     error = "error"
+    error_runtime = "error_runtime"
+    error_parse = "error_parse"
     timeout = "timeout"
     invalid = "invalid"
 

@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from pymongo.errors import DuplicateKeyError
 
 
 async def get_by_clerk_id(db: AsyncIOMotorDatabase, clerk_user_id: str) -> dict | None:
@@ -39,7 +40,10 @@ async def set_nickname(
     clerk_user_id: str,
     nickname: str,
 ) -> None:
-    await db.users.update_one(
-        {"clerk_user_id": clerk_user_id},
-        {"$set": {"nickname": nickname}},
-    )
+    try:
+        await db.users.update_one(
+            {"clerk_user_id": clerk_user_id},
+            {"$set": {"nickname": nickname}},
+        )
+    except DuplicateKeyError:
+        raise ValueError("That nickname is already taken. Please choose another.")

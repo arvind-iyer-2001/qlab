@@ -35,7 +35,13 @@ async def lifespan(app: FastAPI):
         client.close()
         sys.exit(1)
     app.state.mongo_client = client
-    app.state.db = client[MONGODB_DB]
+    db = client[MONGODB_DB]
+    app.state.db = db
+    await db.users.create_index("clerk_user_id", unique=True)
+    await db.users.create_index("nickname", unique=True, sparse=True)
+    await db.submissions.create_index([("user_id", 1), ("problem_id", 1)])
+    await db.submissions.create_index([("problem_id", 1), ("status", 1), ("timing_ms", 1), ("char_count", 1)])
+    logger.info("MongoDB indexes ensured")
     yield
     client.close()
 

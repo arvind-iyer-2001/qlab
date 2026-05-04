@@ -65,6 +65,11 @@ async def clerk_webhook(
         except Exception as exc:
             logger.error("Failed to upsert user %s: %s", clerk_user_id, exc)
             raise
+    elif event_type == "user.deleted":
+        clerk_user_id = data.get("id", "")
+        if clerk_user_id:
+            result = await db.users.delete_one({"clerk_user_id": clerk_user_id})
+            logger.info("Deleted user %s (matched %d doc)", clerk_user_id, result.deleted_count)
     else:
         logger.debug("Ignoring unhandled Clerk event type: %s", event_type)
 

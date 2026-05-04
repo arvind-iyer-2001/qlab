@@ -176,8 +176,17 @@ export class ProblemPanel {
   }
 
   private async _sendMySubmissions(): Promise<void> {
-    const rows = await this.api.getMySubmissions(this.problem.id).catch(() => null)
-    this._post({ type: 'mySubmissions', data: rows })
+    const result = await this.api.getMySubmissions(this.problem.id).catch(() => null)
+    if (result === 'expired') {
+      const action = await vscode.window.showWarningMessage(
+        'Your qLab session has expired. Please sign in again.',
+        'Sign In'
+      )
+      if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
+      this._post({ type: 'mySubmissions', data: null })
+      return
+    }
+    this._post({ type: 'mySubmissions', data: result })
   }
 
   private _post(msg: ExtensionMessage): void {

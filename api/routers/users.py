@@ -31,7 +31,10 @@ async def set_nickname(
     user = await users_svc.get_by_clerk_id(db, user_id)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
-    await users_svc.set_nickname(db, user_id, body.nickname)
+    try:
+        await users_svc.set_nickname(db, user_id, body.nickname)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc))
     updated = await users_svc.get_by_clerk_id(db, user_id)
     if not updated:
         raise HTTPException(status_code=404, detail="User not found")

@@ -101,15 +101,15 @@ export class QLabApi {
     return { status: res.status, data }
   }
 
-  private async authGet<T>(path: string): Promise<T | null> {
+  private async authGet<T>(path: string): Promise<T | null | 'expired'> {
     const headers: Record<string, string> = {}
     if (this.getToken) {
       const token = await this.getToken()
-      if (!token) return null
+      if (!token) return 'expired'
       headers['Authorization'] = `Bearer ${token}`
     }
     const res = await fetch(`${this.baseUrl}${path}`, { headers })
-    if (res.status === 401 || res.status === 403) return null
+    if (res.status === 401 || res.status === 403) return 'expired'
     if (!res.ok) throw new Error(`API ${path} returned ${res.status}`)
     return res.json() as Promise<T>
   }
@@ -126,7 +126,7 @@ export class QLabApi {
     return this.get<LeaderboardEntry[]>(`/problems/${slug}/leaderboard?limit=${limit}`)
   }
 
-  async getMySubmissions(problemId: number): Promise<UserSubmission[] | null> {
+  async getMySubmissions(problemId: number): Promise<UserSubmission[] | null | 'expired'> {
     return this.authGet<UserSubmission[]>(`/submissions/me?problem_id=${problemId}`)
   }
 
