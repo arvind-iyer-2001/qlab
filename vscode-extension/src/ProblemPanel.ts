@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import * as crypto from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
-import type { QLabApi, ProblemDetail, LeaderboardEntry, SubmitResult, ExecuteResult, UserSubmission } from './api'
+import type { QLabApi, ProblemDetail, LeaderboardEntry, SubmitResult, ExecuteResult, UserSubmission, SolutionsResponse, HintRevealResult } from './api'
 
 /** One panel per problem slug; re-reveals if already open. */
 export class ProblemPanel {
@@ -102,6 +102,14 @@ export class ProblemPanel {
       case 'getMySubmissions':
         await this._sendMySubmissions()
         break
+
+      case 'getSolutions':
+        await this._sendSolutions()
+        break
+
+      case 'revealNextHint':
+        await this._revealNextHint()
+        break
     }
   }
 
@@ -189,6 +197,27 @@ export class ProblemPanel {
     this._post({ type: 'mySubmissions', data: result })
   }
 
+  private async _sendSolutions(): Promise<void> {
+    const result = await this.api.getSolutions(this.problem.slug).catch(() => null)
+    if (result === 'expired') {
+      const action = await vscode.window.showWarningMessage('Your qLab session has expired.', 'Sign In')
+      if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
+      this._post({ type: 'solutions', data: null })
+      return
+    }
+    this._post({ type: 'solutions', data: result })
+  }
+
+  private async _revealNextHint(): Promise<void> {
+    const result = await this.api.revealNextHint(this.problem.slug).catch(() => null)
+    if (result === 'expired') {
+      const action = await vscode.window.showWarningMessage('Your qLab session has expired.', 'Sign In')
+      if (action === 'Sign In') vscode.commands.executeCommand('qlab.signIn')
+      return
+    }
+    this._post({ type: 'hintRevealed', data: result })
+  }
+
   private _post(msg: ExtensionMessage): void {
     this._panel.webview.postMessage(msg)
   }
@@ -248,7 +277,7 @@ export class ProblemPanel {
 // ── Message types ─────────────────────────────────────────────────────────
 
 interface WebviewMessage {
-  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor' | 'getMySubmissions'
+  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor' | 'getMySubmissions' | 'getSolutions' | 'revealNextHint'
   target?: string
   code?: string
 }
@@ -309,7 +338,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     slug: p.slug,
     title: p.title,
     test_call: p.test_call,
-  })
+  }).replace(/`/g, '\\u0060')
 
   return /* html */`<!DOCTYPE html>
 <html lang="en">
@@ -562,6 +591,25 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     /* ── Spinner ── */
     @keyframes spin { to { transform: rotate(360deg); } }
     .spinner { display: inline-block; animation: spin 1s linear infinite; }
+
+    /* ── Solutions sub-tabs ── */
+    .sub-bar { display:flex; border-bottom:1px solid var(--vscode-panel-border); margin-bottom:12px; overflow-x:auto; }
+    .sub-bar::-webkit-scrollbar { height:0; }
+    .sub-btn { padding:5px 12px; cursor:pointer; border:none; background:transparent; color:var(--vscode-tab-inactiveForeground); font-family:var(--vscode-font-family); font-size:calc(var(--vscode-font-size) - 1px); border-bottom:2px solid transparent; white-space:nowrap; flex-shrink:0; }
+    .sub-btn:hover { color:var(--vscode-tab-activeForeground); }
+    .sub-btn.active { color:var(--vscode-tab-activeForeground); border-bottom-color:var(--vscode-focusBorder); }
+    .sub-pane { display:none; }
+    .sub-pane.active { display:block; }
+    .hint-card { border-left:2px solid var(--vscode-focusBorder); background:var(--vscode-textCodeBlock-background); padding:7px 10px; margin-bottom:6px; font-size:0.9em; line-height:1.55; border-radius:0 3px 3px 0; }
+    .reveal-btn { border:1px dashed var(--vscode-focusBorder); padding:6px 12px; color:var(--vscode-focusBorder); font-size:0.85em; border-radius:3px; cursor:pointer; background:transparent; margin-top:6px; width:100%; text-align:center; }
+    .reveal-btn:hover { background:var(--vscode-list-hoverBackground); }
+    .lock-overlay { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; text-align:center; gap:10px; }
+    .lock-overlay .lock-icon { font-size:2em; }
+    .lock-overlay .lock-title { font-weight:600; font-size:1em; }
+    .lock-overlay .lock-msg { color:var(--vscode-descriptionForeground); font-size:0.85em; line-height:1.6; }
+    .sub-lock { display:flex; flex-direction:column; align-items:center; padding:28px 16px; gap:8px; text-align:center; color:var(--vscode-descriptionForeground); }
+    .sub-lock .sub-lock-icon { font-size:1.6em; }
+    .sub-lock .sub-lock-msg { font-size:0.85em; line-height:1.6; }
   </style>
 </head>
 <body>
@@ -583,6 +631,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     <button class="tab" data-tab="submit">Submit</button>
     <button class="tab" data-tab="mysubmissions">My Submissions</button>
     <button class="tab" data-tab="community">Community</button>
+    <button class="tab" data-tab="solutions">Solutions</button>
   </div>
 
   <!-- Tab panes -->
@@ -681,6 +730,11 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
         <p style="font-size:0.95em;font-weight:600;color:var(--vscode-foreground)">Community Forum</p>
         <p style="font-size:0.85em;line-height:1.6">Discuss problems, share approaches, and learn from other q developers.<br>Coming soon.</p>
       </div>
+    </div>
+
+    <!-- ── SOLUTIONS ──────────────────────────────────────────── -->
+    <div class="tab-pane" id="solutions">
+      <div id="solContent"><p style="color:var(--vscode-descriptionForeground)">Click to load…</p></div>
     </div>
 
   </div><!-- /.tab-body -->
@@ -799,6 +853,18 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
           renderMySubmissions(msg.data);
           break;
         }
+
+        case 'solutions': {
+          renderSolutions(msg.data);
+          break;
+        }
+
+        case 'hintRevealed': {
+          if (!msg.data) break;
+          solLoaded = false;
+          vscode.postMessage({ type: 'getSolutions' });
+          break;
+        }
       }
     });
 
@@ -899,6 +965,163 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
     function e(s) {
       return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // ── Solutions tab ──────────────────────────────────────────
+    var solLoaded = false;
+
+    document.querySelector('.tab[data-tab="solutions"]').addEventListener('click', function() {
+      if (!solLoaded) {
+        solLoaded = true;
+        document.getElementById('solContent').innerHTML =
+          '<p style="color:var(--vscode-descriptionForeground)"><span class="spinner">&#x27F3;</span> Loading…</p>';
+        vscode.postMessage({ type: 'getSolutions' });
+      }
+    });
+
+    function switchSubTab(name) {
+      document.querySelectorAll('.sub-btn').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.sub-pane').forEach(function(p) { p.classList.remove('active'); });
+      var btn = document.querySelector('.sub-btn[data-sub="' + name + '"]');
+      var pane = document.getElementById('sub-' + name);
+      if (btn) btn.classList.add('active');
+      if (pane) pane.classList.add('active');
+    }
+
+    function renderSolutions(data) {
+      var el = document.getElementById('solContent');
+      if (!data) {
+        el.innerHTML = '<p style="color:var(--vscode-descriptionForeground)">Sign in to view solutions.</p>';
+        return;
+      }
+      if (data.attempt_count === 0) {
+        el.innerHTML =
+          '<div class="lock-overlay">' +
+          '<div class="lock-icon">&#x1F512;</div>' +
+          '<div class="lock-title">Solutions are locked</div>' +
+          '<div class="lock-msg">Submit at least one attempt to unlock hints.<br>Solve the problem to unlock the editorial and reference solution.</div>' +
+          '<button class="btn-primary" style="margin-top:6px" id="goSubmitBtn">Go to Submit →</button>' +
+          '</div>';
+        document.getElementById('goSubmitBtn').addEventListener('click', function() {
+          document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+          document.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+          document.querySelector('.tab[data-tab="submit"]').classList.add('active');
+          document.getElementById('submit').classList.add('active');
+        });
+        return;
+      }
+
+      var html =
+        '<div class="sub-bar" id="solSubBar">' +
+        '<button class="sub-btn active" data-sub="hints">Hints</button>' +
+        '<button class="sub-btn" data-sub="editorial">Editorial</button>' +
+        '<button class="sub-btn" data-sub="reference">Reference</button>' +
+        '<button class="sub-btn" data-sub="community">Community</button>' +
+        '</div>';
+
+      // Hints pane
+      html += '<div class="sub-pane active" id="sub-hints">';
+      html += '<p style="font-size:0.78em;color:var(--vscode-descriptionForeground);margin-bottom:8px">' +
+              data.hints_revealed + ' of ' + data.hints_total + ' revealed</p>';
+      for (var i = 0; i < data.hints.length; i++) {
+        html += '<div class="hint-card">&#x1F4A1; ' + e(data.hints[i]) + '</div>';
+      }
+      if (data.hints_revealed < data.hints_total) {
+        html += '<button class="reveal-btn" id="revealBtn">&#x1F441; Reveal next hint (' +
+                (data.hints_total - data.hints_revealed) + ' remaining)</button>';
+      } else {
+        html += '<p style="font-size:0.82em;color:var(--vscode-descriptionForeground);margin-top:6px">All hints revealed.</p>';
+      }
+      html += '</div>';
+
+      // Editorial pane
+      html += '<div class="sub-pane" id="sub-editorial">';
+      if (data.editorial.locked) {
+        html += '<div class="sub-lock"><div class="sub-lock-icon">&#x1F512;</div>' +
+                '<div class="sub-lock-msg">' + e(data.editorial.reason) + '</div></div>';
+      } else if (data.editorial.content) {
+        html += '<div style="line-height:1.7;font-size:0.9em">' + renderMd(data.editorial.content) + '</div>';
+      } else {
+        html += '<p style="color:var(--vscode-descriptionForeground)">No editorial yet.</p>';
+      }
+      html += '</div>';
+
+      // Reference pane
+      html += '<div class="sub-pane" id="sub-reference">';
+      if (data.reference.locked) {
+        html += '<div class="sub-lock"><div class="sub-lock-icon">&#x1F3C6;</div>' +
+                '<div class="sub-lock-msg">' + e(data.reference.reason) + '</div></div>';
+      } else if (data.reference.code) {
+        html += '<h3>Canonical Solution</h3><pre>' + e(data.reference.code) + '</pre>';
+      } else {
+        html += '<p style="color:var(--vscode-descriptionForeground)">Reference solution not available.</p>';
+      }
+      html += '</div>';
+
+      // Community pane
+      html += '<div class="sub-pane" id="sub-community">';
+      if (!data.community.length) {
+        html += '<p style="color:var(--vscode-descriptionForeground)">No community solutions yet.</p>';
+      } else {
+        var medals = { 1: '&#x1F947;', 2: '&#x1F948;', 3: '&#x1F949;' };
+        for (var j = 0; j < data.community.length; j++) {
+          var sol = data.community[j];
+          html += '<div style="margin-bottom:14px">' +
+                  '<div style="font-size:0.82em;color:var(--vscode-descriptionForeground);margin-bottom:4px">' +
+                  (medals[sol.rank] || '#' + sol.rank) + ' <span class="lb-handle">' + e(sol.handle) + '</span>' +
+                  ' · ' + sol.timing_ms + 'ms · ' + sol.char_count + ' chars</div>' +
+                  '<pre style="margin:0">' + e(sol.code) + '</pre></div>';
+        }
+      }
+      html += '</div>';
+
+      el.innerHTML = html;
+
+      document.getElementById('solSubBar').addEventListener('click', function(ev) {
+        var btn = ev.target.closest('.sub-btn');
+        if (btn) switchSubTab(btn.dataset.sub);
+      });
+      var revBtn = document.getElementById('revealBtn');
+      if (revBtn) {
+        revBtn.addEventListener('click', function() {
+          revBtn.disabled = true;
+          revBtn.textContent = '⟳ Revealing…';
+          vscode.postMessage({ type: 'revealNextHint' });
+        });
+      }
+    }
+
+    function renderMd(md) {
+      var tick3 = String.fromCharCode(96, 96, 96);
+      var parts = md.split(tick3);
+      var out = '';
+      for (var i = 0; i < parts.length; i++) {
+        if (i % 2 === 1) {
+          var nl = parts[i].indexOf('\\n');
+          var code = nl !== -1 ? parts[i].substring(nl + 1) : parts[i];
+          out += '<pre>' + e(code.trim()) + '</pre>';
+        } else {
+          var lines = parts[i].split('\\n');
+          for (var k = 0; k < lines.length; k++) {
+            var line = lines[k];
+            if (line.indexOf('### ') === 0) {
+              out += '<h3 style="font-size:0.85em">' + boldify(line.slice(4)) + '</h3>';
+            } else if (line.indexOf('## ') === 0) {
+              out += '<h3>' + boldify(line.slice(3)) + '</h3>';
+            } else {
+              out += boldify(line) + '<br>';
+            }
+          }
+        }
+      }
+      return out;
+    }
+
+    function boldify(s) {
+      var segs = s.split('**');
+      return segs.map(function(seg, i) {
+        return i % 2 === 1 ? '<strong>' + e(seg) + '</strong>' : e(seg);
+      }).join('');
     }
   </script>
 </body>

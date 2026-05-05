@@ -68,6 +68,43 @@ export interface UserSubmission {
   is_best: boolean
 }
 
+export interface CommunitySolution {
+  rank: number
+  handle: string
+  timing_ms: number
+  char_count: number
+  language: string
+  code: string
+}
+
+export interface EditorialTier {
+  locked: boolean
+  reason?: string
+  content?: string
+}
+
+export interface ReferenceTier {
+  locked: boolean
+  reason?: string
+  code?: string
+}
+
+export interface SolutionsResponse {
+  attempt_count: number
+  hints_revealed: number
+  hints_total: number
+  hints: string[]
+  editorial: EditorialTier
+  reference: ReferenceTier
+  community: CommunitySolution[]
+}
+
+export interface HintRevealResult {
+  hint: string
+  revealed: number
+  total: number
+}
+
 export class QLabApi {
   constructor(
     private baseUrl: string,
@@ -101,6 +138,19 @@ export class QLabApi {
     return { status: res.status, data }
   }
 
+  private async authPost<T>(path: string): Promise<T | null | 'expired'> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+    if (this.getToken) {
+      const token = await this.getToken()
+      if (!token) return 'expired'
+      headers['Authorization'] = `Bearer ${token}`
+    }
+    const res = await fetch(`${this.baseUrl}${path}`, { method: 'POST', headers, body: '{}' })
+    if (res.status === 401 || res.status === 403) return 'expired'
+    if (!res.ok) throw new Error(`API ${path} returned ${res.status}`)
+    return res.json() as Promise<T>
+  }
+
   private async authGet<T>(path: string): Promise<T | null | 'expired'> {
     const headers: Record<string, string> = {}
     if (this.getToken) {
@@ -128,6 +178,15 @@ export class QLabApi {
 
   async getMySubmissions(problemId: number): Promise<UserSubmission[] | null | 'expired'> {
     return this.authGet<UserSubmission[]>(`/submissions/me?problem_id=${problemId}`)
+  }
+
+  async getSolutions(slug: string): Promise<SolutionsResponse | 'expired'> {
+    const result = await this.authGet<SolutionsResponse>(`/problems/${slug}/solutions`)
+    return result === null ? 'expired' : result
+  }
+
+  async revealNextHint(slug: string): Promise<HintRevealResult | null | 'expired'> {
+    return this.authPost<HintRevealResult>(`/problems/${slug}/solutions/hints/reveal`)
   }
 
   async submitSolution(
