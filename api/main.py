@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from routers import notebook, problems, submissions, users, webhooks
+from routers import notebook, problems, submissions, users, webhooks, solutions
 
 logger = logging.getLogger("qlab.startup")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -41,6 +41,9 @@ async def lifespan(app: FastAPI):
     await db.users.create_index("nickname", unique=True, sparse=True)
     await db.submissions.create_index([("user_id", 1), ("problem_id", 1)])
     await db.submissions.create_index([("problem_id", 1), ("status", 1), ("timing_ms", 1), ("char_count", 1)])
+    await db.hint_reveals.create_index(
+        [("clerk_user_id", 1), ("problem_id", 1)], unique=True
+    )
     logger.info("MongoDB indexes ensured")
     yield
     client.close()
@@ -65,6 +68,7 @@ app.include_router(submissions.router)
 app.include_router(notebook.router)
 app.include_router(users.router)
 app.include_router(webhooks.router)
+app.include_router(solutions.router)
 
 
 @app.get("/health")
