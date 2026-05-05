@@ -149,3 +149,112 @@ async def test_increment_hint_reveals_at_max_returns_none():
 
     result = await increment_hint_reveals(db, "user_abc", 1, max_count=3)
     assert result is None
+
+
+import time
+from fastapi.testclient import TestClient
+from unittest.mock import patch
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.backends import default_backend
+import jwt
+
+
+def make_rsa_key_pair():
+    private_key = rsa.generate_private_key(
+        public_exponent=65537, key_size=2048, backend=default_backend()
+    )
+    return private_key, private_key.public_key()
+
+
+def make_token(private_key, payload: dict) -> str:
+    return jwt.encode(payload, private_key, algorithm="RS256")
+
+
+def make_signing_key_mock(public_key):
+    mock = MagicMock()
+    mock.key = public_key
+    return mock
+
+
+def make_mock_db_for_router(attempt_count=0, correct_count=0):
+    db = MagicMock()
+    db.submissions.count_documents = AsyncMock(side_effect=[attempt_count, correct_count])
+    db.hint_reveals.find_one = AsyncMock(return_value=None)
+    db.submissions.find = MagicMock()
+    db.submissions.find.return_value.sort.return_value.limit.return_value.to_list = AsyncMock(return_value=[])
+    db.users.find_one = AsyncMock(return_value={"clerk_user_id": "user_abc"})
+    db.problems.find_one = AsyncMock(return_value={
+        "id": 1, "slug": "p001_same_same",
+        "hints": ["h1", "h2", "h3"],
+        "editorial": "## editorial",
+        "reference_solution": "func:{x}",
+        "solutions_config": {
+            "editorial":  {"gate": "attempts", "attempts_required": 3},
+            "reference":  {"gate": "correct"},
+            "community":  {"gate": "attempts", "attempts_required": 1},
+        },
+    })
+    return db
+
+
+@pytest.mark.asyncio
+async def test_get_solutions_requires_auth():
+    from api.main import app
+    client = TestClient(app)
+    resp = client.get("/problems/p001_same_same/solutions")
+    assert resp.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_get_solutions_returns_locked_for_new_user():
+    from api.main import app
+    from deps import get_db
+    from services.auth import verify_clerk_token
+
+    mock_db = make_mock_db_for_router(attempt_count=0, correct_count=0)
+    app.dependency_overrides[get_db] = lambda: mock_db
+    app.dependency_overrides[verify_clerk_token] = lambda: {"sub": "user_abc"}
+    client = TestClient(app)
+    resp = client.get("/problems/p001_same_same/solutions")
+    app.dependency_overrides.clear()
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["attempt_count"] == 0
+    assert data["editorial"]["locked"] is True
+    assert data["reference"]["locked"] is True
+    assert data["community"] == []
+
+
+@pytest.mark.asyncio
+async def test_reveal_hint_returns_next_hint():
+    from api.main import app
+    from deps import get_db
+    from services.auth import verify_clerk_token
+
+    mock_db = MagicMock()
+    mock_db.problems.find_one = AsyncMock(return_value={
+        "id": 1, "slug": "p001_same_same",
+        "hints": ["h1", "h2", "h3"],
+        "editorial": None, "reference_solution": None,
+        "solutions_config": {},
+    })
+    mock_db.hint_reveals.find_one = AsyncMock(return_value={"revealed_count": 0})
+    mock_db.hint_reveals.find_one_and_update = AsyncMock(return_value={"revealed_count": 1})
+    mock_db.users.find_one = AsyncMock(return_value={"clerk_user_id": "user_abc"})
+
+    app.dependency_overrides[get_db] = lambda: mock_db
+    app.dependency_overrides[verify_clerk_token] = lambda: {"sub": "user_abc"}
+    client = TestClient(app)
+    resp = client.post("/problems/p001_same_same/solutions/hints/reveal")
+    app.dependency_overrides.clear()
+
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["hint"] == "h1"
+    assert data["revealed"] == 1
+    assert data["total"] == 3
