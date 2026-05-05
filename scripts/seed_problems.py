@@ -39,6 +39,9 @@ async def main() -> None:
         [("problem_id", 1), ("status", 1), ("timing_ms", 1), ("char_count", 1)]
     )
     await db.users.create_index("clerk_user_id", unique=True)
+    await db.hint_reveals.create_index(
+        [("clerk_user_id", 1), ("problem_id", 1)], unique=True
+    )
 
     print(f"Seeding problems from {PROBLEMS_DIR}...")
     count = 0
@@ -48,6 +51,9 @@ async def main() -> None:
             continue
         data = json.loads(meta_path.read_text())
         data["slug"] = p.name
+        ref_path = p / "reference.q"
+        if ref_path.exists():
+            data["reference_solution"] = ref_path.read_text().strip()
         await problems_svc.upsert_from_json(db, data)
         print(f"  {p.name}")
         count += 1
