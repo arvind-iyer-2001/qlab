@@ -631,8 +631,8 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     <button class="tab" data-tab="test">Test</button>
     <button class="tab" data-tab="submit">Submit</button>
     <button class="tab" data-tab="mysubmissions">My Submissions</button>
-    <button class="tab" data-tab="community">Community</button>
     <button class="tab" data-tab="solutions">Solutions</button>
+    <button class="tab" data-tab="community">Community</button>
   </div>
 
   <!-- Tab panes -->
