@@ -26,5 +26,11 @@
     "Use `\\t` to measure how fast your function is: `\\t:1000 func each x`"
   ],
   "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
-  "test_call": "func each ((\"AS\";(\"2H\";\"4C\";\"TH\";\"JH\";\"AD\"));(\"2H\";(\"3D\";\"4C\";\"AC\";\"KD\";\"AS\"));(\"4D\";(\"AS\";\"AC\";\"AD\";\"AH\";\"5H\"));(\"KH\";(\"3C\";\"QD\";\"9S\";\"KS\";\"8D\"));(\"4H\";(\"JH\";\"QC\";\"5H\";\"9H\";\"KD\"));(\"9H\";(\"KC\";\"6D\";\"KD\";\"4C\";\"2S\")))"
+  "test_call": "func each ((\"AS\";(\"2H\";\"4C\";\"TH\";\"JH\";\"AD\"));(\"2H\";(\"3D\";\"4C\";\"AC\";\"KD\";\"AS\"));(\"4D\";(\"AS\";\"AC\";\"AD\";\"AH\";\"5H\"));(\"KH\";(\"3C\";\"QD\";\"9S\";\"KS\";\"8D\"));(\"4H\";(\"JH\";\"QC\";\"5H\";\"9H\";\"KD\"));(\"9H\";(\"KC\";\"6D\";\"KD\";\"4C\";\"2S\")))",
+  "solutions_config": {
+    "editorial": { "gate": "attempts", "attempts_required": 3 },
+    "reference": { "gate": "correct" },
+    "community": { "gate": "attempts", "attempts_required": 1 }
+  },
+  "editorial": "## Approach\n\nGiven a table card `x[0]` and a hand `x[1]` (5 cards), you need to check if any card shares a rank **or** suit.\n\n### Key q insight: matrix indexing\n\nIn q, a list of 2-char strings is a matrix. You can extract a whole column in one shot:\n\n```q\nx[1][;0]  / all rank chars, e.g. \"ATJK2\"\nx[1][;1]  / all suit chars, e.g. \"HCSDH\"\n```\n\n### Step-by-step\n\n1. Extract the table rank: `x[0;0]` and table suit: `x[0;1]`\n2. Check `x[0;0] in x[1][;0]` — is the rank in any hand card?\n3. Check `x[0;1] in x[1][;1]` — is the suit in any hand card?\n4. Return `\"YES\"` if either is true, else `\"NO\"`\n\n```q\nfunc:{$[x[0;0]in x[1;;0];\"YES\";x[0;1]in x[1;;1];\"YES\";\"NO\"]}\n```\n\n`$[cond;true;cond2;true2;false]` is q's multi-way conditional — it short-circuits on the first true condition.\n\n### Optimising further\n\nCan you express both checks as a single `any` over a combined boolean list? Try `any x[0]in'flip x[1]`."
 }

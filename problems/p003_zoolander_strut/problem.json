@@ -28,5 +28,11 @@
     "The over adverb `/` with two argument lists can replace a do loop. Try: `{(x*y) div z}/[1; numerator_list; denominator_list]`"
   ],
   "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
-  "test_call": "func each ((2;2);(3;3);(2;3);(4;4);(4;5);(5;5);(10;10);(20;5);(20;50))"
+  "test_call": "func each ((2;2);(3;3);(2;3);(4;4);(4;5);(5;5);(10;10);(20;5);(20;50))",
+  "solutions_config": {
+    "editorial": { "gate": "attempts", "attempts_required": 3 },
+    "reference": { "gate": "correct" },
+    "community": { "gate": "attempts", "attempts_required": 1 }
+  },
+  "editorial": "## Approach\n\nTo go from top-left to bottom-right in a `cols × rows` grid you must make exactly `(cols-1)` right moves and `(rows-1)` down moves. The number of distinct orderings is the **binomial coefficient**:\n\n```\nC(cols + rows - 2,  min(cols, rows) - 1)\n```\n\n### Why this formula?\n\nYou have `(cols+rows-2)` total moves, and you choose which `min(cols,rows)-1` of them are in the minority direction. The rest follow automatically.\n\n### Computing C(n, k) iteratively in q\n\nUsing the multiplicative formula `C(n,k) = n/1 * (n-1)/2 * ... * (n-k+1)/k`:\n\n```q\nfunc:{{(x*y)div z}/[1;-2+sum[x]-t;1+t:til -1+min x]}\n```\n\nBreaking it down:\n- `t: til -1+min x` — indices `0 1 ... (k-2)` where `k = min(cols,rows)`\n- `-2+sum[x]-t` — numerator terms `(n-k+1) ... n` where `n = cols+rows-2`\n- `1+t` — denominator terms `1 2 ... (k-1)`\n- `/[seed; nums; denoms]` — over with 3 arguments: applies `{(acc*num)div den}` across paired lists\n\n### Simpler starting point\n\nBefore going for the closed form, try a dynamic programming approach — build a `cols × rows` grid where each cell = left neighbour + top neighbour."
 }

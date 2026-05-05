@@ -26,5 +26,11 @@
     "Use `sum` to add up the three notebook counts in one go."
   ],
   "winning_criteria": "SHORTEST correct code wins (measured with `-2+count string func`). If tied on length, fastest timing breaks the tie.",
-  "test_call": "func each ((3;5);(15;6);(1;1);(100000000;1);(1;100000000);(96865066;63740710);(58064619;65614207))"
+  "test_call": "func each ((3;5);(15;6);(1;1);(100000000;1);(1;100000000);(96865066;63740710);(58064619;65614207))",
+  "solutions_config": {
+    "editorial": { "gate": "attempts", "attempts_required": 3 },
+    "reference": { "gate": "correct" },
+    "community": { "gate": "attempts", "attempts_required": 1 }
+  },
+  "editorial": "## Approach\n\nYou need `2*n` black sheets, `5*n` yellow sheets, and `8*n` red sheets. Each notebook holds `k` sheets, so you need `ceil(sheets_needed / k)` notebooks per colour.\n\n### Key q insight: implicit iteration over lists\n\nInstead of looping over the three colours, operate on the list `2 5 8` all at once:\n\n```q\n(2 5 8) * x[0]    / total sheets per colour (a 3-element list)\n% x[1]            / divide each by k (q's % is float division)\nceiling           / ceil each result element-wise\nsum               / add all three together\n```\n\nCombined into one expression:\n\n```q\nfunc:{sum ceiling(2 5 8)*x[0]%x 1}\n```\n\n`ceiling` applies element-wise to lists in q — no explicit loop needed. This is the idiomatic q approach: express the computation as a data transformation over the whole list."
 }

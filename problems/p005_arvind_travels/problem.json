@@ -30,5 +30,11 @@
     "The total cost has a closed form: the sum 1 + 2 + ... + (n-v) plus (v-1) extra from topping up. Simplify to v + sum(2..n-v) = v + (n-v)*(n-v+1)%2 - 1."
   ],
   "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
-  "test_call": "func each ((4;2);(7;6);(10;3);(12;89);(32;15);(77;1);(2;56);(100;100);(91;14);(56;13))"
+  "test_call": "func each ((4;2);(7;6);(10;3);(12;89);(32;15);(77;1);(2;56);(100;100);(91;14);(56;13))",
+  "solutions_config": {
+    "editorial": { "gate": "attempts", "attempts_required": 3 },
+    "reference": { "gate": "correct" },
+    "community": { "gate": "attempts", "attempts_required": 1 }
+  },
+  "editorial": "## Approach\n\nCity prices are strictly increasing: city 1 costs $1/L, city 2 costs $2/L, and so on. Since future fuel is **always more expensive**, the optimal strategy is to buy as much cheap fuel as possible now.\n\n### Greedy insight\n\nAt every city, fill the tank to capacity `v`. This maximises the amount of cheap fuel you carry forward. Never leave a cheap city with a partially full tank.\n\n### Special case\n\nIf `v >= n-1`, a single fill at city 1 (`n-1` litres at $1 each) gets you all the way to city n. Cost = `n-1`.\n\n### General case (`v < n-1`)\n\nYou make stops at cities `1, v+1, 2v+1, 3v+1, ...` — each time filling to `v` (or however much you need to reach city n).\n\nA clear simulation:\n\n```q\nfunc:{[x]\n  n:x[0]; v:x[1]; pos:1; fuel:0f; cost:0f;\n  while[pos<n;\n    need:(n-pos)&v;         / litres needed: cap at v or distance to n\n    buy:need-fuel;           / only buy what we lack\n    if[0<buy; cost+:buy*pos; fuel+:buy];\n    pos+:1; fuel-:1;\n  ];\n  `long$cost}\n```\n\nAt each city: compute how many litres you need (to reach n or fill tank, whichever is less), buy the shortfall at the current price, then drive one kilometre."
 }
