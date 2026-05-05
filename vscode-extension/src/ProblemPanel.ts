@@ -151,6 +151,7 @@ export class ProblemPanel {
       if (result.status === 'correct') {
         await this._sendLeaderboard()
       }
+      await this._sendSolutions()
     } catch (e) {
       this._post({
         type: 'submitResult',
@@ -855,6 +856,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
         }
 
         case 'solutions': {
+          solLoaded = true;
           renderSolutions(msg.data);
           break;
         }
