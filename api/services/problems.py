@@ -11,6 +11,9 @@ _SUMMARY_PROJECTION = {
     "winning_criteria": 0,
     "test_call": 0,
     "judge_seed": 0,
+    "editorial": 0,
+    "reference_solution": 0,
+    "solutions_config": 0,
 }
 
 
