@@ -1,5 +1,5 @@
 from pydantic import BaseModel, field_validator
-from typing import Optional
+from typing import Literal, Optional
 from enum import Enum
 
 
@@ -145,3 +145,51 @@ class MySubmissionEntry(BaseModel):
     language: Language
     submitted_at: str
     is_best: bool
+
+
+class TierConfig(BaseModel):
+    gate: Literal["attempts", "correct"]
+    attempts_required: Optional[int] = None
+
+
+class SolutionsConfig(BaseModel):
+    editorial: TierConfig = TierConfig(gate="correct")
+    reference: TierConfig = TierConfig(gate="correct")
+    community: TierConfig = TierConfig(gate="attempts", attempts_required=1)
+
+
+class EditorialTier(BaseModel):
+    locked: bool
+    reason: Optional[str] = None
+    content: Optional[str] = None
+
+
+class ReferenceTier(BaseModel):
+    locked: bool
+    reason: Optional[str] = None
+    code: Optional[str] = None
+
+
+class CommunitySolution(BaseModel):
+    rank: int
+    handle: str
+    timing_ms: int
+    char_count: int
+    language: Language
+    code: str
+
+
+class SolutionsResponse(BaseModel):
+    attempt_count: int
+    hints_revealed: int
+    hints_total: int
+    hints: list[str]
+    editorial: EditorialTier
+    reference: ReferenceTier
+    community: list[CommunitySolution]
+
+
+class HintRevealResponse(BaseModel):
+    hint: str
+    revealed: int
+    total: int
