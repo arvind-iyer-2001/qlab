@@ -58,6 +58,7 @@ export interface MySubmissionEntry {
   language: Language
   submitted_at: string
   is_best: boolean
+  code: string
 }
 
 export interface EditorialTier {
@@ -151,8 +152,11 @@ export const api = {
   getSolutions: (slug: string, token: string | null) =>
     apiFetch<SolutionsResponse>(`/problems/${slug}/solutions`, token),
 
-  getMySubmissions: (token: string | null) =>
-    apiFetch<MySubmissionEntry[]>('/submissions/me', token),
+  getMySubmissions: (token: string | null, problemId?: number) =>
+    apiFetch<MySubmissionEntry[]>(
+      problemId ? `/submissions/me?problem_id=${problemId}` : '/submissions/me',
+      token,
+    ),
 
   submit: (
     body: { problem_id: number; code: string; language?: Language },

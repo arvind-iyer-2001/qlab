@@ -3,14 +3,14 @@ import { useAuth } from '@clerk/nextjs'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/api'
 
-export function useMySubmissions() {
+export function useMySubmissions(problemId?: number) {
   const { getToken, isSignedIn } = useAuth()
   return useQuery({
-    queryKey: ['mySubmissions'],
+    queryKey: ['mySubmissions', problemId],
     queryFn: async () => {
       const token = await getToken()
-      return api.getMySubmissions(token)
+      return api.getMySubmissions(token, problemId)
     },
-    enabled: !!isSignedIn,
+    enabled: !!isSignedIn && (problemId == null || (Number.isInteger(problemId) && problemId > 0)),
   })
 }

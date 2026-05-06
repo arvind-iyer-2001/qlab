@@ -5,11 +5,12 @@ import { CodeEditor } from '@/components/CodeEditor'
 import { DescriptionTab } from '@/components/tabs/DescriptionTab'
 import { TestTab } from '@/components/tabs/TestTab'
 import { SubmitTab } from '@/components/tabs/SubmitTab'
+import { MySubmissionsTab } from '@/components/tabs/MySubmissionsTab'
 import { SolutionsTab } from '@/components/tabs/SolutionsTab'
 import { LeaderboardTab } from '@/components/tabs/LeaderboardTab'
 
-type Tab = 'description' | 'test' | 'submit' | 'solutions' | 'leaderboard'
-const TABS: Tab[] = ['description', 'test', 'submit', 'solutions', 'leaderboard']
+type Tab = 'description' | 'test' | 'submit' | 'mysubmissions' | 'solutions' | 'leaderboard'
+const TABS: Tab[] = ['description', 'test', 'submit', 'mysubmissions', 'solutions', 'leaderboard']
 
 interface Props {
   problem: ProblemDetail
@@ -22,6 +23,25 @@ function starterCode(slug: string) {
 export function ProblemLayout({ problem }: Props) {
   const [activeTab, setActiveTab] = useState<Tab>('description')
   const [code, setCode] = useState(() => starterCode(problem.slug))
+  const initialCode = starterCode(problem.slug)
+
+  function handleLoadCode(loaded: string) {
+    const isDirty = code !== initialCode
+    if (isDirty) {
+      const ok = window.confirm('Replace current editor code with this submission?')
+      if (!ok) return
+    }
+    setCode(loaded)
+  }
+
+  const TAB_LABELS: Record<Tab, string> = {
+    description: 'Description',
+    test: 'Test',
+    submit: 'Submit',
+    mysubmissions: 'My Submissions',
+    solutions: 'Solutions',
+    leaderboard: 'Leaderboard',
+  }
 
   return (
     <div style={{ display: 'flex', height: 'calc(100vh - 56px)', overflow: 'hidden' }}>
@@ -41,12 +61,11 @@ export function ProblemLayout({ problem }: Props) {
                 color: activeTab === tab ? '#ffa116' : '#aba9b0',
                 cursor: 'pointer',
                 fontSize: '13px',
-                textTransform: 'capitalize',
                 marginBottom: '-1px',
                 whiteSpace: 'nowrap',
               }}
             >
-              {tab}
+              {TAB_LABELS[tab]}
             </button>
           ))}
         </div>
@@ -56,6 +75,9 @@ export function ProblemLayout({ problem }: Props) {
           {activeTab === 'description' && <DescriptionTab problem={problem} />}
           {activeTab === 'test' && <TestTab problem={problem} code={code} />}
           {activeTab === 'submit' && <SubmitTab problem={problem} code={code} />}
+          {activeTab === 'mysubmissions' && (
+            <MySubmissionsTab problemId={problem.id} onLoadCode={handleLoadCode} />
+          )}
           {activeTab === 'solutions' && <SolutionsTab slug={problem.slug} />}
           {activeTab === 'leaderboard' && <LeaderboardTab slug={problem.slug} />}
         </div>
