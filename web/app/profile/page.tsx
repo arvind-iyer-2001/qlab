@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Crumbs } from '@/components/ui/Crumbs'
 import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
 
 interface QLabUser {
   nickname: string | null
@@ -119,7 +120,12 @@ export default function ProfilePage() {
           </div>
         )}
 
-        <p className="text-zinc-500 text-xs mt-6">Signed in to qLab</p>
+        <div className="flex items-center justify-between mt-6">
+          <p className="text-zinc-500 text-xs">Signed in to qLab</p>
+          <Button as="link" href="/sign-out" variant="secondary">
+            Sign out
+          </Button>
+        </div>
       </div>
     </div>
   )
