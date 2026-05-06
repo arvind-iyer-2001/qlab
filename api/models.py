@@ -145,6 +145,7 @@ class MySubmissionEntry(BaseModel):
     language: Language
     submitted_at: str
     is_best: bool
+    code: str
 
 
 class TierConfig(BaseModel):

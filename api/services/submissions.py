@@ -76,6 +76,7 @@ async def get_for_user(
                 "char_count": 1,
                 "language": 1,
                 "submitted_at": 1,
+                "code": 1,
             },
         )
         .sort("submitted_at", -1)
