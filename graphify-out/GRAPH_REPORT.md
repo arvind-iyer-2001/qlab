@@ -1,7 +1,7 @@
 # Graph Report - qlab  (2026-05-06)
 
 ## Corpus Check
-- 60 files · ~58,878 words
+- 60 files · ~59,843 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
