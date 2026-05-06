@@ -32,6 +32,32 @@ applies once the basic flows are wired up.
 
 ---
 
+## Home Screen
+
+A real landing page at `/` that captures the spirit of qLab — competitive q practice — instead of
+dropping users straight into the problems list. Full brief at
+`docs/spec/home-screen-brief.md`.
+
+- [ ] Hero with animated headline + dual CTA (Start solving · Capstones teaser)
+- [ ] Live submissions ticker — scrolling marquee of recent correct solves with timing/char count
+- [ ] Three-pillar bento: Problems · Capstones · Leaderboard
+- [ ] Capstone preview cards — partitioned DBs, joins under load, tickerplant, optimization, schema design (all "coming soon")
+- [ ] Top-5 global leaderboard strip + weekly solve count
+- [ ] "Hiring q devs?" interviewer CTA (future monetization hook, low priority)
+
+### Capstones (future scope, separate from home screen)
+
+Multi-file scenarios that test what single-function problems can't. Each capstone is a workspace
+with its own dataset and a battery of judged queries.
+
+- [ ] Partitioned DBs — `.Q.dpft` a year of trade ticks, answer time-window queries under a memory budget
+- [ ] Joins under load — `aj` / `wj` / `lj` over realistic order/quote books, judged on correctness *and* throughput
+- [ ] Tickerplant scenarios — feed handlers, RDB → HDB end-of-day, recovery semantics
+- [ ] Optimization gauntlets — beat a slow reference query by 5× without changing the schema
+- [ ] Schema design challenges — open-ended, judged against a battery of analytical queries
+
+---
+
 ## VS Code Extension
 
 The extension was the original client and is still primary for many users. Items here split into
