@@ -2,16 +2,17 @@
 import { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { Difficulty, MySubmissionEntry, ProblemSummary } from '@/lib/api'
+import { Pill } from '@/components/ui/Pill'
 
 interface Props {
   problems: ProblemSummary[]
   mySubmissions: MySubmissionEntry[]
 }
 
-const DIFF_COLORS: Record<Difficulty, string> = {
-  easy: '#00b8a3',
-  medium: '#ffc01e',
-  hard: '#ef4743',
+const DIFF_TEXT: Record<Difficulty, string> = {
+  easy: 'text-emerald-400',
+  medium: 'text-amber-400',
+  hard: 'text-rose-400',
 }
 
 const FILTERS = ['All', 'Easy', 'Medium', 'Hard'] as const
@@ -41,38 +42,22 @@ export function ProblemsTable({ problems, mySubmissions }: Props) {
 
   return (
     <div>
-      {/* Filter pills */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+      <div className="flex gap-2 mb-4">
         {FILTERS.map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            style={{
-              padding: '4px 14px',
-              borderRadius: '9999px',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '13px',
-              fontWeight: filter === f ? 600 : 400,
-              background: filter === f ? '#ffa116' : '#282828',
-              color: filter === f ? '#1a1a1a' : '#aba9b0',
-              transition: 'background 0.15s',
-            }}
-          >
+          <Pill key={f} active={filter === f} onClick={() => setFilter(f)}>
             {f}
-          </button>
+          </Pill>
         ))}
       </div>
 
-      {/* Table */}
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+      <table className="w-full border-collapse text-sm">
         <thead>
-          <tr style={{ color: '#aba9b0', borderBottom: '1px solid #3a3a3a' }}>
-            <th style={{ textAlign: 'left', padding: '8px 12px', width: '48px' }}>#</th>
-            <th style={{ textAlign: 'left', padding: '8px 12px' }}>Title</th>
-            <th style={{ textAlign: 'left', padding: '8px 12px', width: '100px' }}>Difficulty</th>
-            <th style={{ textAlign: 'left', padding: '8px 12px' }}>Concepts</th>
-            <th style={{ textAlign: 'right', padding: '8px 12px', width: '100px' }}>Status</th>
+          <tr className="text-zinc-500 border-b border-zinc-800 text-[11px] uppercase tracking-wider">
+            <th className="text-left px-3 py-2 w-12">#</th>
+            <th className="text-left px-3 py-2">Title</th>
+            <th className="text-left px-3 py-2 w-24">Difficulty</th>
+            <th className="text-left px-3 py-2">Concepts</th>
+            <th className="text-right px-3 py-2 w-24">Best</th>
           </tr>
         </thead>
         <tbody>
@@ -82,35 +67,23 @@ export function ProblemsTable({ problems, mySubmissions }: Props) {
               <tr
                 key={p.id}
                 onClick={() => router.push(`/problems/${p.slug}`)}
-                style={{
-                  borderBottom: '1px solid #3a3a3a',
-                  cursor: 'pointer',
-                  transition: 'background 0.1s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#282828')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                className="border-b border-zinc-900 cursor-pointer hover:bg-zinc-900/50 transition"
               >
-                <td style={{ padding: '12px 12px', color: '#5a5a5a' }}>{p.id}</td>
-                <td style={{ padding: '12px 12px', color: '#eff1f6', fontWeight: 500 }}>{p.title}</td>
-                <td style={{ padding: '12px 12px' }}>
-                  <span
-                    style={{
-                      color: DIFF_COLORS[p.difficulty],
-                      fontWeight: 500,
-                      textTransform: 'capitalize',
-                    }}
-                  >
+                <td className="px-3 py-3 text-zinc-600">{p.id}</td>
+                <td className="px-3 py-3 text-zinc-50 font-medium">{p.title}</td>
+                <td className="px-3 py-3">
+                  <span className={`${DIFF_TEXT[p.difficulty]} font-medium capitalize`}>
                     {p.difficulty}
                   </span>
                 </td>
-                <td style={{ padding: '12px 12px', color: '#aba9b0', fontSize: '12px' }}>
+                <td className="px-3 py-3 text-zinc-400 text-xs">
                   {p.concepts.join(', ')}
                 </td>
-                <td style={{ padding: '12px 12px', textAlign: 'right' }}>
+                <td className="px-3 py-3 text-right">
                   {bestMs != null ? (
-                    <span style={{ color: '#00b8a3', fontWeight: 600 }}>✓ {bestMs}ms</span>
+                    <span className="text-emerald-400 font-mono">✓ {bestMs}ms</span>
                   ) : (
-                    <span style={{ color: '#5a5a5a' }}>—</span>
+                    <span className="text-zinc-700">—</span>
                   )}
                 </td>
               </tr>
