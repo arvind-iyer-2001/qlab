@@ -1,17 +1,153 @@
-# Future Improvements
+# qLab — Future Scope
 
-| # | Priority | Item | Description | Effort |
-|---|----------|------|-------------|--------|
-| 1 | P0 | Persistent handle | Store handle in `qlab.handle` setting or `globalState` so the Submit tab pre-fills it across sessions | XS |
-| 2 | P0 | Solved/attempted markers in sidebar | After a correct submission, mark the `ProblemItem` with a checkmark icon using `context.globalState` keyed by `slug → status` | S |
-| 3 | P0 | Copy deep-link button | One-click button in the panel header that writes `vscode://qlab.qlab/open?slug=...` to the clipboard | XS |
-| 4 | P1 | Keybinding for Run Test | Add a second keybinding (e.g. `Ctrl+Shift+T`) for "Run Test" to complete the inner loop without the mouse | XS |
-| 5 | P1 | Wrong-answer diff | Side-by-side or inline diff of `expected_output` vs `actual_output` when a submission fails | S |
-| 6 | P1 | Tab state memory per panel | Remember the last active tab per slug in `globalState` so returning to a problem drops you where you left off | XS |
-| 7 | P1 | Auto-refresh leaderboard feedback | Show a subtle "Leaderboard updated" notice on the Community tab after a correct submission refreshes it | XS |
-| 8 | P2 | My Submissions history tab | Sixth panel tab showing the user's past submissions (status, timing, char count, timestamp); needs new API endpoint `GET /submissions?problem_id=&handle=` | M |
-| 9 | P2 | Problem filter in sidebar | Filter input at the top of the tree view to narrow problems by title or concept as the problem count grows | M |
-| 10 | P2 | Global stats / profile view | Second tree view section or webview showing handle, # problems solved, overall rank — derivable from existing leaderboard endpoints | M |
-| 11 | P3 | Extract HTML/CSS/JS from ProblemPanel.ts | Move the ~400-line `buildHtml()` to a `.html` file loaded via `webview.asWebviewUri`; decouples UI from TypeScript logic | M |
-| 12 | P3 | API health indicator | Status bar item showing green/red based on a periodic `GET /health` ping instead of only surfacing errors on tree load failure | S |
-| 13 | P3 | Panel restore on restart | Save open slugs to `workspaceState` on dispose and re-open them on activation so panels survive VS Code restarts | S |
+Single source of truth for everything still to build, plus a record of what's been done. Both
+the web app (`web/`) and the VS Code extension (`vscode-extension/`) are first-class clients;
+parity between them is a long-term goal.
+
+Completed items stay in this file (checked) so we don't re-propose them.
+
+---
+
+## Web App
+
+The web app is the newer client. The split-view problem page (CodeMirror editor + tabbed panel)
+was scaffolded in May 2026 with TanStack Query, Tailwind, and Clerk. Most polish work below
+applies once the basic flows are wired up.
+
+- [x] Filterable problem list (`/problems`) — difficulty + search filters
+- [x] Problem detail split view (`/problems/[slug]`) — editor on the left, tabbed panel on the right
+- [x] Description / Test / Submit / Solutions / Leaderboard tabs (component scaffolds)
+- [x] CodeMirror 6 integration with Tailwind globals and TanStack Query hooks
+- [x] Test tab handles q-level errors separately from HTTP errors
+- [ ] Wrong-answer diff in Submit tab — side-by-side view of `expected_output` vs `actual_output` when a submission fails
+- [ ] My Submissions tab on the web — same data the VS Code extension shows (`GET /submissions/me`)
+- [ ] Sidebar / list-page solved markers — checkmark on problems the signed-in user has solved
+- [ ] Profile page beyond Clerk data — display MongoDB nickname, total solves, per-difficulty stats
+- [ ] Global stats / leaderboard page — aggregate ranking across all problems
+- [ ] Keyboard shortcuts — Cmd/Ctrl+Enter to submit, Cmd/Ctrl+R for Run Test, Cmd/Ctrl+\ to toggle panel
+- [ ] Tab-state memory per slug — return to the same tab the user left on a problem
+- [ ] Mobile / narrow-viewport layout — at minimum a read-only fallback (problem text + leaderboard)
+- [ ] Deep-link copy button — share a URL that opens the problem at a specific tab
+- [ ] Subtle "Leaderboard updated" notice after a correct submission
+
+---
+
+## VS Code Extension
+
+The extension was the original client and is still primary for many users. Items here split into
+**polish** (small UX wins) and **structural** (the `ProblemPanel.ts` god-file refactor).
+
+### Polish
+
+- [x] My Submissions tab in panel — table with date, status, timing, chars, language, ★ on best correct (Phase 4)
+- [x] Welcome prompt on first activation — gated on `globalState` so it fires once
+- [x] `qlab.openProfile` command + sidebar icon
+- [x] Server-side handle resolution — handle no longer asked for in the Submit tab
+- [ ] Solved/attempted markers in sidebar — checkmark icon on `ProblemItem` keyed by `slug → status` in `globalState`
+- [ ] Wrong-answer diff in Submit tab — same idea as web, render `expected_output` vs `actual_output` inline
+- [ ] Keybinding for Run Test — `Ctrl+Shift+T` to complement `Ctrl+Shift+S` for Submit
+- [ ] Tab-state memory per panel — remember last active tab per slug in `globalState`
+- [ ] Copy deep-link button in panel header — writes `vscode://qlab.qlab/open?slug=…` to clipboard
+- [ ] Auto-refresh leaderboard feedback — subtle notice on the Community tab after a correct submission
+- [ ] Problem filter in sidebar — filter input as the problem count grows
+- [ ] API health indicator in status bar — green/red from periodic `GET /health`
+- [ ] Panel restore on restart — save open slugs to `workspaceState` and re-open on activation
+- [ ] My Submissions tab auto-load on panel open — currently only fetches when clicked
+- [ ] `qlab.signOut` command — clears `SecretStorage` without making the user dig into settings
+
+### Structural refactor of `ProblemPanel.ts`
+
+`ProblemPanel.ts` is currently ~1100 lines doing extension-host logic, HTML templating, CSS, and
+webview JS in one file. The template-literal escaping has caused real bugs (the Solutions tab
+backtick incident). Three options, in increasing scope:
+
+- [ ] **Option A — Split files (1–2 hrs):** extract `panel.html`, `panel.css`, `panel.js` into
+      `src/webview/`, load them via `webview.asWebviewUri`. `ProblemPanel.ts` shrinks to ~200 lines
+      of pure host logic. Real syntax highlighting, no more backtick fragility.
+- [ ] **Option B — esbuild + TypeScript webview (½ day):** builds on Option A. Two compilation
+      targets — `tsc` for the host, `esbuild` for `src/webview/panel.ts`. Webview becomes typed
+      TypeScript, shared message interfaces with the host, `--watch` mode, `script-src ${cspSource}`
+      with no inline-script hack.
+- [ ] **Option C — React webview (days):** revisit only if the panel grows substantially in
+      interactivity. Vanilla JS is fast enough today.
+
+Recommended path: Option A immediately, Option B as the follow-up.
+
+---
+
+## Backend / API
+
+- [x] MongoDB migration (Phase 2) — `motor` async client, three service modules, seed script
+- [x] Clerk JWT auth on `POST /submissions` and `GET /users/me`
+- [x] `POST /webhooks/clerk` — Svix-verified user.created / user.updated upsert
+- [x] `PATCH /users/me/nickname` — set leaderboard handle
+- [x] `GET /submissions/me?problem_id=` — user's history with `is_best` flag
+- [x] Server-side handle resolution on `POST /submissions`
+- [x] `submission_id` returned in `SubmissionResponse` (May 2026)
+- [x] Notebook execute supports multi-statement code (newlines → semicolons; May 2026)
+- [ ] `error_runtime` / `error_parse` admitted into `SubmissionStatus` enum — judge already emits them, Python currently raises `ValueError` on parse
+- [ ] Return `expected_output` and `actual_output` on **correct** submissions too — currently only populated on mismatch; useful for the web Test tab to show what ran
+- [ ] `user.deleted` webhook handling — currently ignored; user documents never removed
+- [ ] Update-nickname flow (`PATCH` again) — UI and endpoint to change a nickname after first set
+- [ ] Nickname uniqueness enforcement — two users can currently pick the same handle
+- [ ] MongoDB indexes on `users.clerk_user_id` and `submissions.{user_id, problem_id}` — collection scans today; fine at current scale
+- [ ] Rate limiting on `POST /submissions` and `POST /notebook/execute` — abuse / runaway-loop protection
+- [ ] Structured logging + request IDs — currently `print` / default uvicorn logs
+- [ ] Long-lived Clerk JWT via Clerk dashboard template — current ~60s expiry forces re-auth more often than ideal
+
+---
+
+## Auth & Users
+
+- [x] Clerk sign-in / sign-up / OAuth callback in web app
+- [x] VS Code URI handler captures token into `SecretStorage`
+- [x] Nickname registration flow (`/profile/setup`)
+- [x] First-sign-in race handling (stub user upsert before nickname set)
+- [ ] Web `/profile` shows MongoDB nickname (not just Clerk data) — needs a `GET /users/me` call from web
+- [ ] `/auth/callback` checks `isSignedIn` explicitly — currently relies on middleware redirect
+- [ ] `qlab.signOut` command in extension (covered above)
+- [ ] `CLERK_SECRET_KEY` actually used — present in `.env` for future Clerk REST calls (avatar refresh, metadata)
+
+---
+
+## Content & Problems
+
+- [x] Five seed problems (`p001`–`p005`)
+- [x] Problem authoring schema — `problem.json` + `test_gen.q` + `reference.q` + `\S` seed
+- [x] Hint authoring infrastructure (Solutions tab Hints tier) — design done in `docs/superpowers/specs/2026-05-04-solutions-tab-design.md`
+- [x] K-language coexistence rule — K submissions must include a Q equivalent (per CLAUDE.md)
+- [ ] More problems — five is the current count; the platform needs depth to be useful
+- [ ] Problem-authoring CLI / scaffolder — `qlab new-problem <slug>` to generate the directory + boilerplate and run a seed
+- [ ] Difficulty calibration — currently free-text; could be derived from solve rate / median timing
+- [ ] Tags / topics on problems — beyond difficulty, e.g. `joins`, `aggregations`, `temporal`
+- [ ] K-language judge mode — actually validate that K submissions have a Q equivalent rather than relying on the spec
+- [ ] Editorial / reference solutions populated for every problem — Solutions tab tiers exist but content is sparse
+
+---
+
+## Infrastructure & Quality
+
+- [x] Pytest suite for auth (5 tests passing)
+- [x] Pytest suite for solutions service
+- [x] graphify knowledge graph wired into the repo with `update` hook
+- [ ] Frontend test harness — none today; Next.js + TanStack Query + CodeMirror is testable but no setup
+- [ ] VS Code extension tests — currently no test runner configured
+- [ ] CI — GitHub Actions running pytest + `tsc --noEmit` (web) + extension build
+- [ ] Production deployment story — see `PRODUCTION.md` (last updated Apr 22, predates the web UI work and needs a refresh)
+- [ ] Observability dashboard — submission throughput, judge latency, MongoDB query times
+- [ ] `.env.example` parity — keep in sync as new env vars are added
+
+---
+
+## Cross-cutting (web ↔ extension parity)
+
+These live in both client lists above but track them here too — losing parity is a frequent
+bug source.
+
+| Feature | Web | VS Code | Notes |
+|---|---|---|---|
+| Wrong-answer diff | [ ] | [ ] | Same data shape from `SubmissionResponse`; render differently |
+| Solved markers in problem list | [ ] | [ ] | Web reads from `GET /submissions/me`; VS Code from `globalState` cache |
+| My Submissions view | [ ] | [x] | VS Code has it; web doesn't yet |
+| Tab-state memory | [ ] | [ ] | Per-slug in localStorage / `globalState` |
+| Deep-link to problem | [ ] | [ ] | Web URL is already deep-linkable; extension needs the copy button |
