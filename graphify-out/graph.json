@@ -89,7 +89,7 @@
       "file_type": "code",
       "source_file": "tests/__init__.py",
       "source_location": "L1",
-      "community": 24,
+      "community": 36,
       "norm_label": "__init__.py",
       "id": "tests_init_py"
     },
@@ -98,7 +98,7 @@
       "file_type": "code",
       "source_file": "scripts/seed_problems.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "seed_problems.py",
       "id": "scripts_seed_problems_py"
     },
@@ -107,7 +107,7 @@
       "file_type": "code",
       "source_file": "scripts/seed_problems.py",
       "source_location": "L31",
-      "community": 5,
+      "community": 4,
       "norm_label": "main()",
       "id": "scripts_seed_problems_main"
     },
@@ -116,7 +116,7 @@
       "file_type": "code",
       "source_file": "web/middleware.ts",
       "source_location": "L1",
-      "community": 25,
+      "community": 37,
       "norm_label": "middleware.ts",
       "id": "web_middleware_ts"
     },
@@ -125,7 +125,7 @@
       "file_type": "code",
       "source_file": "web/next.config.js",
       "source_location": "L1",
-      "community": 26,
+      "community": 38,
       "norm_label": "next.config.js",
       "id": "web_next_config_js"
     },
@@ -134,7 +134,7 @@
       "file_type": "code",
       "source_file": "web/next-env.d.ts",
       "source_location": "L1",
-      "community": 27,
+      "community": 39,
       "norm_label": "next-env.d.ts",
       "id": "web_next_env_d_ts"
     },
@@ -151,7 +151,7 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "web/app/layout.tsx",
-      "source_location": "L9",
+      "source_location": "L7",
       "community": 19,
       "norm_label": "rootlayout()",
       "id": "app_layout_rootlayout"
@@ -179,7 +179,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L1",
-      "community": 17,
+      "community": 18,
       "norm_label": "page.tsx",
       "id": "web_app_profile_page_tsx"
     },
@@ -206,7 +206,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-up/[[...sign-up]]/page.tsx",
       "source_location": "L1",
-      "community": 28,
+      "community": 40,
       "norm_label": "page.tsx",
       "id": "web_app_sign_up_sign_up_page_tsx"
     },
@@ -215,7 +215,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-in/[[...sign-in]]/page.tsx",
       "source_location": "L1",
-      "community": 29,
+      "community": 41,
       "norm_label": "page.tsx",
       "id": "web_app_sign_in_sign_in_page_tsx"
     },
@@ -242,7 +242,7 @@
       "file_type": "code",
       "source_file": "api/__init__.py",
       "source_location": "L1",
-      "community": 30,
+      "community": 42,
       "norm_label": "__init__.py",
       "id": "api_init_py"
     },
@@ -440,7 +440,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "problems.py",
       "id": "api_routers_problems_py"
     },
@@ -449,7 +449,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L13",
-      "community": 5,
+      "community": 4,
       "norm_label": "list_problems()",
       "id": "routers_problems_list_problems"
     },
@@ -458,7 +458,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L19",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_problem()",
       "id": "routers_problems_get_problem"
     },
@@ -467,7 +467,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L25",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_leaderboard()",
       "id": "routers_problems_get_leaderboard"
     },
@@ -503,7 +503,7 @@
       "file_type": "code",
       "source_file": "api/routers/__init__.py",
       "source_location": "L1",
-      "community": 31,
+      "community": 43,
       "norm_label": "__init__.py",
       "id": "api_routers_init_py"
     },
@@ -548,7 +548,7 @@
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "submissions.py",
       "id": "api_routers_submissions_py"
     },
@@ -557,7 +557,7 @@
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
       "source_location": "L20",
-      "community": 5,
+      "community": 4,
       "norm_label": "submit()",
       "id": "routers_submissions_submit"
     },
@@ -565,8 +565,8 @@
       "label": "get_my_submissions()",
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L83",
-      "community": 5,
+      "source_location": "L85",
+      "community": 4,
       "norm_label": "get_my_submissions()",
       "id": "routers_submissions_get_my_submissions"
     },
@@ -683,7 +683,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "problems.py",
       "id": "api_services_problems_py"
     },
@@ -692,7 +692,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L20",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_all()",
       "id": "services_problems_get_all"
     },
@@ -701,7 +701,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L25",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_by_slug()",
       "id": "services_problems_get_by_slug"
     },
@@ -710,7 +710,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L32",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_by_id()",
       "id": "services_problems_get_by_id"
     },
@@ -719,7 +719,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L39",
-      "community": 5,
+      "community": 4,
       "norm_label": "increment_solve_count()",
       "id": "services_problems_increment_solve_count"
     },
@@ -728,7 +728,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L43",
-      "community": 5,
+      "community": 4,
       "norm_label": "upsert_from_json()",
       "id": "services_problems_upsert_from_json"
     },
@@ -773,7 +773,7 @@
       "file_type": "code",
       "source_file": "api/services/__init__.py",
       "source_location": "L1",
-      "community": 32,
+      "community": 44,
       "norm_label": "__init__.py",
       "id": "api_services_init_py"
     },
@@ -817,7 +817,7 @@
       "label": "reset_notebook()",
       "file_type": "code",
       "source_file": "api/services/notebook.py",
-      "source_location": "L92",
+      "source_location": "L95",
       "community": 7,
       "norm_label": "reset_notebook()",
       "id": "services_notebook_reset_notebook"
@@ -890,7 +890,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "submissions.py",
       "id": "api_services_submissions_py"
     },
@@ -899,7 +899,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L6",
-      "community": 5,
+      "community": 4,
       "norm_label": "insert()",
       "id": "services_submissions_insert"
     },
@@ -908,7 +908,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L33",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_leaderboard()",
       "id": "services_submissions_get_leaderboard"
     },
@@ -917,7 +917,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L62",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_for_user()",
       "id": "services_submissions_get_for_user"
     },
@@ -1326,7 +1326,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 33,
+      "community": 45,
       "norm_label": "qlab readme",
       "id": "readme_qlab"
     },
@@ -1443,7 +1443,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "qlab vs code extension icon (svg)",
       "id": "icon_svg"
     },
@@ -1456,7 +1456,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "qlab vs code extension icon (png)",
       "id": "icon_png"
     },
@@ -1781,7 +1781,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "qlab brand icon concept",
       "id": "icon_concept_qlab_brand"
     },
@@ -1821,7 +1821,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "qlab platform",
       "id": "claude_qlab_platform"
     },
@@ -1834,7 +1834,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "fastapi backend",
       "id": "claude_fastapi_backend"
     },
@@ -1847,7 +1847,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "mongodb",
       "id": "claude_mongodb"
     },
@@ -1860,7 +1860,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "notebook q process",
       "id": "claude_notebook_q_process"
     },
@@ -1873,7 +1873,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "q judge subprocess",
       "id": "claude_q_judge_subprocess"
     },
@@ -1886,7 +1886,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "clerk auth",
       "id": "claude_clerk_auth"
     },
@@ -1899,7 +1899,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "next.js web frontend",
       "id": "claude_nextjs_web_frontend"
     },
@@ -1912,7 +1912,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "vs code extension",
       "id": "claude_vscode_extension"
     },
@@ -1925,7 +1925,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "judge/harness.q",
       "id": "claude_judge_harness_q"
     },
@@ -1938,7 +1938,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "problems mongodb collection",
       "id": "claude_problems_collection"
     },
@@ -1951,7 +1951,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "submissions mongodb collection",
       "id": "claude_submissions_collection"
     },
@@ -1964,7 +1964,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "users mongodb collection",
       "id": "claude_users_collection"
     },
@@ -1977,7 +1977,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "scripts/seed_problems.py",
       "id": "claude_seed_problems_script"
     },
@@ -1990,7 +1990,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "api/services/auth.py",
       "id": "claude_api_services_auth"
     },
@@ -2003,7 +2003,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "api/services/judge.py",
       "id": "claude_api_services_judge"
     },
@@ -2016,7 +2016,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "deps.get_db",
       "id": "claude_deps_get_db"
     },
@@ -2029,7 +2029,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "verify_clerk_token",
       "id": "claude_verify_clerk_token"
     },
@@ -2042,7 +2042,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "svix webhook",
       "id": "claude_svix_webhook"
     },
@@ -2055,7 +2055,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "problemsprovider",
       "id": "claude_problems_provider"
     },
@@ -2068,7 +2068,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "problempanel",
       "id": "claude_problem_panel"
     },
@@ -2081,7 +2081,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "judgeresult",
       "id": "claude_judge_result"
     },
@@ -2094,7 +2094,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "problem.json",
       "id": "claude_problem_json"
     },
@@ -2107,7 +2107,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "test_gen.q",
       "id": "claude_test_gen_q"
     },
@@ -2120,7 +2120,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "reference.q",
       "id": "claude_reference_q"
     },
@@ -2133,7 +2133,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "func submission",
       "id": "claude_func_submission"
     },
@@ -2146,7 +2146,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "start.sh",
       "id": "claude_start_sh"
     },
@@ -2159,7 +2159,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "graphify knowledge graph",
       "id": "claude_graphify_knowledge_graph"
     },
@@ -2168,7 +2168,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-out/page.tsx",
       "source_location": "L1",
-      "community": 34,
+      "community": 46,
       "norm_label": "page.tsx",
       "id": "web_app_sign_out_page_tsx"
     },
@@ -2238,7 +2238,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 47,
       "norm_label": "health",
       "id": "main_health"
     },
@@ -2316,7 +2316,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 48,
       "norm_label": "claude.md",
       "id": "claude_md"
     },
@@ -2377,513 +2377,513 @@
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L1",
-      "id": "tests_test_solutions_py",
       "community": 6,
-      "norm_label": "test_solutions.py"
+      "norm_label": "test_solutions.py",
+      "id": "tests_test_solutions_py"
     },
     {
       "label": "test_solutions_config_defaults()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L7",
-      "id": "tests_test_solutions_test_solutions_config_defaults",
       "community": 6,
-      "norm_label": "test_solutions_config_defaults()"
+      "norm_label": "test_solutions_config_defaults()",
+      "id": "tests_test_solutions_test_solutions_config_defaults"
     },
     {
       "label": "test_solutions_response_locked()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L14",
-      "id": "tests_test_solutions_test_solutions_response_locked",
       "community": 0,
-      "norm_label": "test_solutions_response_locked()"
+      "norm_label": "test_solutions_response_locked()",
+      "id": "tests_test_solutions_test_solutions_response_locked"
     },
     {
       "label": "test_community_solution_model()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L28",
-      "id": "tests_test_solutions_test_community_solution_model",
       "community": 6,
-      "norm_label": "test_community_solution_model()"
+      "norm_label": "test_community_solution_model()",
+      "id": "tests_test_solutions_test_community_solution_model"
     },
     {
       "label": "make_problem()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L40",
-      "id": "tests_test_solutions_make_problem",
       "community": 6,
-      "norm_label": "make_problem()"
+      "norm_label": "make_problem()",
+      "id": "tests_test_solutions_make_problem"
     },
     {
       "label": "test_no_attempts_returns_all_locked()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L56",
-      "id": "tests_test_solutions_test_no_attempts_returns_all_locked",
       "community": 6,
-      "norm_label": "test_no_attempts_returns_all_locked()"
+      "norm_label": "test_no_attempts_returns_all_locked()",
+      "id": "tests_test_solutions_test_no_attempts_returns_all_locked"
     },
     {
       "label": "test_one_attempt_unlocks_community_not_editorial()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L75",
-      "id": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
       "community": 6,
-      "norm_label": "test_one_attempt_unlocks_community_not_editorial()"
+      "norm_label": "test_one_attempt_unlocks_community_not_editorial()",
+      "id": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial"
     },
     {
       "label": "test_three_attempts_unlocks_editorial()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L97",
-      "id": "tests_test_solutions_test_three_attempts_unlocks_editorial",
       "community": 6,
-      "norm_label": "test_three_attempts_unlocks_editorial()"
+      "norm_label": "test_three_attempts_unlocks_editorial()",
+      "id": "tests_test_solutions_test_three_attempts_unlocks_editorial"
     },
     {
       "label": "test_correct_submission_unlocks_reference()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L115",
-      "id": "tests_test_solutions_test_correct_submission_unlocks_reference",
       "community": 6,
-      "norm_label": "test_correct_submission_unlocks_reference()"
+      "norm_label": "test_correct_submission_unlocks_reference()",
+      "id": "tests_test_solutions_test_correct_submission_unlocks_reference"
     },
     {
       "label": "test_increment_hint_reveals_returns_new_count()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L132",
-      "id": "tests_test_solutions_test_increment_hint_reveals_returns_new_count",
       "community": 6,
-      "norm_label": "test_increment_hint_reveals_returns_new_count()"
+      "norm_label": "test_increment_hint_reveals_returns_new_count()",
+      "id": "tests_test_solutions_test_increment_hint_reveals_returns_new_count"
     },
     {
       "label": "test_increment_hint_reveals_at_max_returns_none()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L144",
-      "id": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none",
       "community": 6,
-      "norm_label": "test_increment_hint_reveals_at_max_returns_none()"
+      "norm_label": "test_increment_hint_reveals_at_max_returns_none()",
+      "id": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none"
     },
     {
       "label": "make_rsa_key_pair()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L166",
-      "id": "tests_test_solutions_make_rsa_key_pair",
       "community": 6,
-      "norm_label": "make_rsa_key_pair()"
+      "norm_label": "make_rsa_key_pair()",
+      "id": "tests_test_solutions_make_rsa_key_pair"
     },
     {
       "label": "make_token()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L173",
-      "id": "tests_test_solutions_make_token",
       "community": 6,
-      "norm_label": "make_token()"
+      "norm_label": "make_token()",
+      "id": "tests_test_solutions_make_token"
     },
     {
       "label": "make_signing_key_mock()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L177",
-      "id": "tests_test_solutions_make_signing_key_mock",
       "community": 6,
-      "norm_label": "make_signing_key_mock()"
+      "norm_label": "make_signing_key_mock()",
+      "id": "tests_test_solutions_make_signing_key_mock"
     },
     {
       "label": "make_mock_db_for_router()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L183",
-      "id": "tests_test_solutions_make_mock_db_for_router",
       "community": 6,
-      "norm_label": "make_mock_db_for_router()"
+      "norm_label": "make_mock_db_for_router()",
+      "id": "tests_test_solutions_make_mock_db_for_router"
     },
     {
       "label": "test_get_solutions_requires_auth()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L205",
-      "id": "tests_test_solutions_test_get_solutions_requires_auth",
       "community": 6,
-      "norm_label": "test_get_solutions_requires_auth()"
+      "norm_label": "test_get_solutions_requires_auth()",
+      "id": "tests_test_solutions_test_get_solutions_requires_auth"
     },
     {
       "label": "test_get_solutions_returns_locked_for_new_user()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L213",
-      "id": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
       "community": 6,
-      "norm_label": "test_get_solutions_returns_locked_for_new_user()"
+      "norm_label": "test_get_solutions_returns_locked_for_new_user()",
+      "id": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user"
     },
     {
       "label": "test_reveal_hint_returns_next_hint()",
       "file_type": "code",
       "source_file": "tests/test_solutions.py",
       "source_location": "L234",
-      "id": "tests_test_solutions_test_reveal_hint_returns_next_hint",
       "community": 6,
-      "norm_label": "test_reveal_hint_returns_next_hint()"
+      "norm_label": "test_reveal_hint_returns_next_hint()",
+      "id": "tests_test_solutions_test_reveal_hint_returns_next_hint"
     },
     {
       "label": "fetchQlabUser()",
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L28",
-      "id": "profile_page_fetchqlabuser",
-      "community": 17,
-      "norm_label": "fetchqlabuser()"
+      "community": 18,
+      "norm_label": "fetchqlabuser()",
+      "id": "profile_page_fetchqlabuser"
     },
     {
       "label": "TierConfig",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L150",
-      "id": "api_models_tierconfig",
       "community": 0,
-      "norm_label": "tierconfig"
+      "norm_label": "tierconfig",
+      "id": "api_models_tierconfig"
     },
     {
       "label": "SolutionsConfig",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L155",
-      "id": "api_models_solutionsconfig",
       "community": 0,
-      "norm_label": "solutionsconfig"
+      "norm_label": "solutionsconfig",
+      "id": "api_models_solutionsconfig"
     },
     {
       "label": "EditorialTier",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L161",
-      "id": "api_models_editorialtier",
       "community": 0,
-      "norm_label": "editorialtier"
+      "norm_label": "editorialtier",
+      "id": "api_models_editorialtier"
     },
     {
       "label": "ReferenceTier",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L167",
-      "id": "api_models_referencetier",
       "community": 0,
-      "norm_label": "referencetier"
+      "norm_label": "referencetier",
+      "id": "api_models_referencetier"
     },
     {
       "label": "CommunitySolution",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L173",
-      "id": "api_models_communitysolution",
       "community": 0,
-      "norm_label": "communitysolution"
+      "norm_label": "communitysolution",
+      "id": "api_models_communitysolution"
     },
     {
       "label": "SolutionsResponse",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L182",
-      "id": "api_models_solutionsresponse",
       "community": 0,
-      "norm_label": "solutionsresponse"
+      "norm_label": "solutionsresponse",
+      "id": "api_models_solutionsresponse"
     },
     {
       "label": "HintRevealResponse",
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L192",
-      "id": "api_models_hintrevealresponse",
       "community": 0,
-      "norm_label": "hintrevealresponse"
+      "norm_label": "hintrevealresponse",
+      "id": "api_models_hintrevealresponse"
     },
     {
       "label": "solutions.py",
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
-      "id": "api_routers_solutions_py",
-      "community": 5,
-      "norm_label": "solutions.py"
+      "community": 4,
+      "norm_label": "solutions.py",
+      "id": "api_routers_solutions_py"
     },
     {
       "label": "get_solutions()",
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L14",
-      "id": "routers_solutions_get_solutions",
-      "community": 5,
-      "norm_label": "get_solutions()"
+      "community": 4,
+      "norm_label": "get_solutions()",
+      "id": "routers_solutions_get_solutions"
     },
     {
       "label": "reveal_hint()",
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L31",
-      "id": "routers_solutions_reveal_hint",
-      "community": 5,
-      "norm_label": "reveal_hint()"
+      "community": 4,
+      "norm_label": "reveal_hint()",
+      "id": "routers_solutions_reveal_hint"
     },
     {
       "label": "solutions.py",
       "file_type": "code",
       "source_file": "api/services/solutions.py",
       "source_location": "L1",
-      "id": "api_services_solutions_py",
       "community": 6,
-      "norm_label": "solutions.py"
+      "norm_label": "solutions.py",
+      "id": "api_services_solutions_py"
     },
     {
       "label": "_is_unlocked()",
       "file_type": "code",
       "source_file": "api/services/solutions.py",
       "source_location": "L5",
-      "id": "services_solutions_is_unlocked",
       "community": 6,
-      "norm_label": "_is_unlocked()"
+      "norm_label": "_is_unlocked()",
+      "id": "services_solutions_is_unlocked"
     },
     {
       "label": "compute_solutions()",
       "file_type": "code",
       "source_file": "api/services/solutions.py",
       "source_location": "L18",
-      "id": "services_solutions_compute_solutions",
       "community": 6,
-      "norm_label": "compute_solutions()"
+      "norm_label": "compute_solutions()",
+      "id": "services_solutions_compute_solutions"
     },
     {
       "label": "_get_top_community()",
       "file_type": "code",
       "source_file": "api/services/solutions.py",
       "source_location": "L71",
-      "id": "services_solutions_get_top_community",
       "community": 6,
-      "norm_label": "_get_top_community()"
+      "norm_label": "_get_top_community()",
+      "id": "services_solutions_get_top_community"
     },
     {
       "label": "increment_hint_reveals()",
       "file_type": "code",
       "source_file": "api/services/solutions.py",
       "source_location": "L84",
-      "id": "services_solutions_increment_hint_reveals",
       "community": 6,
-      "norm_label": "increment_hint_reveals()"
+      "norm_label": "increment_hint_reveals()",
+      "id": "services_solutions_increment_hint_reveals"
     },
     {
       "label": "._sendSolutions()",
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L201",
-      "id": "src_problempanel_problempanel_sendsolutions",
       "community": 1,
-      "norm_label": "._sendsolutions()"
+      "norm_label": "._sendsolutions()",
+      "id": "src_problempanel_problempanel_sendsolutions"
     },
     {
       "label": "._revealNextHint()",
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L212",
-      "id": "src_problempanel_problempanel_revealnexthint",
       "community": 1,
-      "norm_label": "._revealnexthint()"
+      "norm_label": "._revealnexthint()",
+      "id": "src_problempanel_problempanel_revealnexthint"
     },
     {
       "label": ".authPost()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
       "source_location": "L141",
-      "id": "src_api_qlabapi_authpost",
       "community": 1,
-      "norm_label": ".authpost()"
+      "norm_label": ".authpost()",
+      "id": "src_api_qlabapi_authpost"
     },
     {
       "label": ".getSolutions()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
       "source_location": "L183",
-      "id": "src_api_qlabapi_getsolutions",
       "community": 1,
-      "norm_label": ".getsolutions()"
+      "norm_label": ".getsolutions()",
+      "id": "src_api_qlabapi_getsolutions"
     },
     {
       "label": ".revealNextHint()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
       "source_location": "L188",
-      "id": "src_api_qlabapi_revealnexthint",
       "community": 1,
-      "norm_label": ".revealnexthint()"
+      "norm_label": ".revealnexthint()",
+      "id": "src_api_qlabapi_revealnexthint"
     },
     {
       "label": "jwtIsExpired()",
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L13",
-      "id": "src_extension_jwtisexpired",
       "community": 13,
-      "norm_label": "jwtisexpired()"
+      "norm_label": "jwtisexpired()",
+      "id": "src_extension_jwtisexpired"
     },
     {
       "label": "test_solutions.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_tests_test_solutions_py",
       "community": 6,
-      "norm_label": "test_solutions.py"
+      "norm_label": "test_solutions.py",
+      "id": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "label": "seed_problems.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/scripts/seed_problems.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_scripts_seed_problems_py",
-      "community": 5,
-      "norm_label": "seed_problems.py"
+      "community": 4,
+      "norm_label": "seed_problems.py",
+      "id": "home_aiyer_qlab_scripts_seed_problems_py"
     },
     {
       "label": "middleware.ts",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/middleware.ts",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_web_middleware_ts",
-      "community": 37,
-      "norm_label": "middleware.ts"
+      "community": 49,
+      "norm_label": "middleware.ts",
+      "id": "home_aiyer_qlab_web_middleware_ts"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/auth/callback/page.tsx",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_web_app_auth_callback_page_tsx",
       "community": 16,
-      "norm_label": "page.tsx"
+      "norm_label": "page.tsx",
+      "id": "home_aiyer_qlab_web_app_auth_callback_page_tsx"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/profile/page.tsx",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_web_app_profile_page_tsx",
-      "community": 17,
-      "norm_label": "page.tsx"
+      "community": 18,
+      "norm_label": "page.tsx",
+      "id": "home_aiyer_qlab_web_app_profile_page_tsx"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/sign-out/page.tsx",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_web_app_sign_out_page_tsx",
-      "community": 38,
-      "norm_label": "page.tsx"
+      "community": 50,
+      "norm_label": "page.tsx",
+      "id": "home_aiyer_qlab_web_app_sign_out_page_tsx"
     },
     {
       "label": "models.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_models_py",
       "community": 0,
-      "norm_label": "models.py"
+      "norm_label": "models.py",
+      "id": "home_aiyer_qlab_api_models_py"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/main.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_main_py",
       "community": 14,
-      "norm_label": "main.py"
+      "norm_label": "main.py",
+      "id": "home_aiyer_qlab_api_main_py"
     },
     {
       "label": "webhooks.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/webhooks.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_routers_webhooks_py",
       "community": 8,
-      "norm_label": "webhooks.py"
+      "norm_label": "webhooks.py",
+      "id": "home_aiyer_qlab_api_routers_webhooks_py"
     },
     {
       "label": "users.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/users.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_routers_users_py",
       "community": 8,
-      "norm_label": "users.py"
+      "norm_label": "users.py",
+      "id": "home_aiyer_qlab_api_routers_users_py"
     },
     {
       "label": "solutions.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/solutions.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_routers_solutions_py",
-      "community": 5,
-      "norm_label": "solutions.py"
+      "community": 4,
+      "norm_label": "solutions.py",
+      "id": "home_aiyer_qlab_api_routers_solutions_py"
     },
     {
       "label": "problems.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/services/problems.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_services_problems_py",
-      "community": 5,
-      "norm_label": "problems.py"
+      "community": 4,
+      "norm_label": "problems.py",
+      "id": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "label": "users.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/services/users.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_services_users_py",
       "community": 8,
-      "norm_label": "users.py"
+      "norm_label": "users.py",
+      "id": "home_aiyer_qlab_api_services_users_py"
     },
     {
       "label": "solutions.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/services/solutions.py",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_api_services_solutions_py",
       "community": 6,
-      "norm_label": "solutions.py"
+      "norm_label": "solutions.py",
+      "id": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
       "label": "ProblemPanel.ts",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
       "community": 1,
-      "norm_label": "problempanel.ts"
+      "norm_label": "problempanel.ts",
+      "id": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
     },
     {
       "label": "api.ts",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_vscode_extension_src_api_ts",
       "community": 1,
-      "norm_label": "api.ts"
+      "norm_label": "api.ts",
+      "id": "home_aiyer_qlab_vscode_extension_src_api_ts"
     },
     {
       "label": "extension.ts",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/extension.ts",
       "source_location": "L1",
-      "id": "home_aiyer_qlab_vscode_extension_src_extension_ts",
       "community": 13,
-      "norm_label": "extension.ts"
+      "norm_label": "extension.ts",
+      "id": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
     {
       "label": "VS Code Extension Structural Improvements",
@@ -2894,9 +2894,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_vscode_extension_structural_improvements",
       "community": 10,
-      "norm_label": "vs code extension structural improvements"
+      "norm_label": "vs code extension structural improvements",
+      "id": "new_future_vscode_extension_structural_improvements"
     },
     {
       "label": "ProblemPanel.ts god file (1131 lines)",
@@ -2907,9 +2907,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_problempanel_ts_god_file",
       "community": 10,
-      "norm_label": "problempanel.ts god file (1131 lines)"
+      "norm_label": "problempanel.ts god file (1131 lines)",
+      "id": "new_future_problempanel_ts_god_file"
     },
     {
       "label": "Option A: Split Files (Quick Win)",
@@ -2920,9 +2920,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_option_a_split_files",
       "community": 10,
-      "norm_label": "option a: split files (quick win)"
+      "norm_label": "option a: split files (quick win)",
+      "id": "new_future_option_a_split_files"
     },
     {
       "label": "Option B: esbuild + TypeScript Webview",
@@ -2933,9 +2933,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_option_b_esbuild_typescript_webview",
       "community": 10,
-      "norm_label": "option b: esbuild + typescript webview"
+      "norm_label": "option b: esbuild + typescript webview",
+      "id": "new_future_option_b_esbuild_typescript_webview"
     },
     {
       "label": "Option C: React Webview (Full GitLens-style)",
@@ -2946,9 +2946,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_option_c_react_webview",
       "community": 10,
-      "norm_label": "option c: react webview (full gitlens-style)"
+      "norm_label": "option c: react webview (full gitlens-style)",
+      "id": "new_future_option_c_react_webview"
     },
     {
       "label": "src/webview/panel.html",
@@ -2959,9 +2959,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_webview_panel_html",
       "community": 10,
-      "norm_label": "src/webview/panel.html"
+      "norm_label": "src/webview/panel.html",
+      "id": "new_future_webview_panel_html"
     },
     {
       "label": "src/webview/panel.css",
@@ -2972,9 +2972,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_webview_panel_css",
       "community": 10,
-      "norm_label": "src/webview/panel.css"
+      "norm_label": "src/webview/panel.css",
+      "id": "new_future_webview_panel_css"
     },
     {
       "label": "src/webview/panel.ts",
@@ -2985,9 +2985,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_webview_panel_ts",
       "community": 10,
-      "norm_label": "src/webview/panel.ts"
+      "norm_label": "src/webview/panel.ts",
+      "id": "new_future_webview_panel_ts"
     },
     {
       "label": "esbuild.js build script",
@@ -2998,9 +2998,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_esbuild_build_script",
       "community": 10,
-      "norm_label": "esbuild.js build script"
+      "norm_label": "esbuild.js build script",
+      "id": "new_future_esbuild_build_script"
     },
     {
       "label": "Template Literal Backtick Escaping Bug",
@@ -3011,9 +3011,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "new_future_template_literal_backtick_bug",
       "community": 10,
-      "norm_label": "template literal backtick escaping bug"
+      "norm_label": "template literal backtick escaping bug",
+      "id": "new_future_template_literal_backtick_bug"
     },
     {
       "label": "Solutions / Editorial Tab Implementation Plan",
@@ -3024,9 +3024,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_implementation_plan",
       "community": 3,
-      "norm_label": "solutions / editorial tab implementation plan"
+      "norm_label": "solutions / editorial tab implementation plan",
+      "id": "solutions_tab_plan_implementation_plan"
     },
     {
       "label": "Solutions Tab (VS Code Panel)",
@@ -3037,9 +3037,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_tab",
       "community": 10,
-      "norm_label": "solutions tab (vs code panel)"
+      "norm_label": "solutions tab (vs code panel)",
+      "id": "solutions_tab_plan_solutions_tab"
     },
     {
       "label": "solutions_config (problem.json field)",
@@ -3050,9 +3050,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_config",
       "community": 3,
-      "norm_label": "solutions_config (problem.json field)"
+      "norm_label": "solutions_config (problem.json field)",
+      "id": "solutions_tab_plan_solutions_config"
     },
     {
       "label": "hint_reveals MongoDB collection",
@@ -3063,9 +3063,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_hint_reveals_collection",
       "community": 3,
-      "norm_label": "hint_reveals mongodb collection"
+      "norm_label": "hint_reveals mongodb collection",
+      "id": "solutions_tab_plan_hint_reveals_collection"
     },
     {
       "label": "GET /problems/:slug/solutions endpoint",
@@ -3076,9 +3076,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_get_solutions_endpoint",
       "community": 3,
-      "norm_label": "get /problems/:slug/solutions endpoint"
+      "norm_label": "get /problems/:slug/solutions endpoint",
+      "id": "solutions_tab_plan_get_solutions_endpoint"
     },
     {
       "label": "POST /problems/:slug/solutions/hints/reveal endpoint",
@@ -3089,9 +3089,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_post_reveal_hint_endpoint",
       "community": 3,
-      "norm_label": "post /problems/:slug/solutions/hints/reveal endpoint"
+      "norm_label": "post /problems/:slug/solutions/hints/reveal endpoint",
+      "id": "solutions_tab_plan_post_reveal_hint_endpoint"
     },
     {
       "label": "api/routers/solutions.py",
@@ -3102,9 +3102,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_router",
       "community": 3,
-      "norm_label": "api/routers/solutions.py"
+      "norm_label": "api/routers/solutions.py",
+      "id": "solutions_tab_plan_solutions_router"
     },
     {
       "label": "api/services/solutions.py",
@@ -3115,9 +3115,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_service",
       "community": 3,
-      "norm_label": "api/services/solutions.py"
+      "norm_label": "api/services/solutions.py",
+      "id": "solutions_tab_plan_solutions_service"
     },
     {
       "label": "compute_solutions function",
@@ -3128,9 +3128,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_compute_solutions",
       "community": 3,
-      "norm_label": "compute_solutions function"
+      "norm_label": "compute_solutions function",
+      "id": "solutions_tab_plan_compute_solutions"
     },
     {
       "label": "increment_hint_reveals function",
@@ -3141,9 +3141,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_increment_hint_reveals",
       "community": 3,
-      "norm_label": "increment_hint_reveals function"
+      "norm_label": "increment_hint_reveals function",
+      "id": "solutions_tab_plan_increment_hint_reveals"
     },
     {
       "label": "SolutionsConfig Pydantic model",
@@ -3154,9 +3154,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_config_model",
       "community": 23,
-      "norm_label": "solutionsconfig pydantic model"
+      "norm_label": "solutionsconfig pydantic model",
+      "id": "solutions_tab_plan_solutions_config_model"
     },
     {
       "label": "SolutionsResponse Pydantic model",
@@ -3167,9 +3167,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_solutions_response_model",
       "community": 15,
-      "norm_label": "solutionsresponse pydantic model"
+      "norm_label": "solutionsresponse pydantic model",
+      "id": "solutions_tab_plan_solutions_response_model"
     },
     {
       "label": "HintRevealResponse Pydantic model",
@@ -3180,9 +3180,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_hint_reveal_response_model",
-      "community": 39,
-      "norm_label": "hintrevealresponse pydantic model"
+      "community": 51,
+      "norm_label": "hintrevealresponse pydantic model",
+      "id": "solutions_tab_plan_hint_reveal_response_model"
     },
     {
       "label": "TierConfig Pydantic model",
@@ -3193,9 +3193,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_tier_config_model",
       "community": 23,
-      "norm_label": "tierconfig pydantic model"
+      "norm_label": "tierconfig pydantic model",
+      "id": "solutions_tab_plan_tier_config_model"
     },
     {
       "label": "EditorialTier Pydantic model",
@@ -3206,9 +3206,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_editorial_tier_model",
       "community": 15,
-      "norm_label": "editorialtier pydantic model"
+      "norm_label": "editorialtier pydantic model",
+      "id": "solutions_tab_plan_editorial_tier_model"
     },
     {
       "label": "ReferenceTier Pydantic model",
@@ -3219,9 +3219,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_reference_tier_model",
       "community": 15,
-      "norm_label": "referencetier pydantic model"
+      "norm_label": "referencetier pydantic model",
+      "id": "solutions_tab_plan_reference_tier_model"
     },
     {
       "label": "CommunitySolution Pydantic model",
@@ -3232,9 +3232,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_community_solution_model",
       "community": 15,
-      "norm_label": "communitysolution pydantic model"
+      "norm_label": "communitysolution pydantic model",
+      "id": "solutions_tab_plan_community_solution_model"
     },
     {
       "label": "reference_solution field (problems collection)",
@@ -3245,9 +3245,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_reference_solution_field",
       "community": 3,
-      "norm_label": "reference_solution field (problems collection)"
+      "norm_label": "reference_solution field (problems collection)",
+      "id": "solutions_tab_plan_reference_solution_field"
     },
     {
       "label": "scripts/seed_problems.py",
@@ -3258,9 +3258,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_seed_problems_py",
       "community": 3,
-      "norm_label": "scripts/seed_problems.py"
+      "norm_label": "scripts/seed_problems.py",
+      "id": "solutions_tab_plan_seed_problems_py"
     },
     {
       "label": "vscode-extension/src/api.ts",
@@ -3271,9 +3271,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_api_ts",
       "community": 3,
-      "norm_label": "vscode-extension/src/api.ts"
+      "norm_label": "vscode-extension/src/api.ts",
+      "id": "solutions_tab_plan_api_ts"
     },
     {
       "label": "getSolutions TypeScript method",
@@ -3284,9 +3284,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_get_solutions_ts",
       "community": 3,
-      "norm_label": "getsolutions typescript method"
+      "norm_label": "getsolutions typescript method",
+      "id": "solutions_tab_plan_get_solutions_ts"
     },
     {
       "label": "revealNextHint TypeScript method",
@@ -3297,9 +3297,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_reveal_next_hint_ts",
       "community": 3,
-      "norm_label": "revealnexthint typescript method"
+      "norm_label": "revealnexthint typescript method",
+      "id": "solutions_tab_plan_reveal_next_hint_ts"
     },
     {
       "label": "authPost private TypeScript method",
@@ -3310,9 +3310,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_auth_post_ts",
       "community": 3,
-      "norm_label": "authpost private typescript method"
+      "norm_label": "authpost private typescript method",
+      "id": "solutions_tab_plan_auth_post_ts"
     },
     {
       "label": "tests/test_solutions.py",
@@ -3323,9 +3323,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_test_solutions_py",
-      "community": 40,
-      "norm_label": "tests/test_solutions.py"
+      "community": 52,
+      "norm_label": "tests/test_solutions.py",
+      "id": "solutions_tab_plan_test_solutions_py"
     },
     {
       "label": "_SUMMARY_PROJECTION (problems service)",
@@ -3336,9 +3336,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_plan_summary_projection",
       "community": 3,
-      "norm_label": "_summary_projection (problems service)"
+      "norm_label": "_summary_projection (problems service)",
+      "id": "solutions_tab_plan_summary_projection"
     },
     {
       "label": "Solutions / Editorial Tab Design Spec",
@@ -3349,9 +3349,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_solutions_tab_design",
       "community": 3,
-      "norm_label": "solutions / editorial tab design spec"
+      "norm_label": "solutions / editorial tab design spec",
+      "id": "solutions_tab_design_solutions_tab_design"
     },
     {
       "label": "Content Tiers (Hints/Editorial/Reference/Community)",
@@ -3362,9 +3362,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_content_tiers",
       "community": 3,
-      "norm_label": "content tiers (hints/editorial/reference/community)"
+      "norm_label": "content tiers (hints/editorial/reference/community)",
+      "id": "solutions_tab_design_content_tiers"
     },
     {
       "label": "Hints Tier",
@@ -3375,9 +3375,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_hints_tier",
       "community": 3,
-      "norm_label": "hints tier"
+      "norm_label": "hints tier",
+      "id": "solutions_tab_design_hints_tier"
     },
     {
       "label": "Editorial Tier",
@@ -3388,9 +3388,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_editorial_tier",
       "community": 3,
-      "norm_label": "editorial tier"
+      "norm_label": "editorial tier",
+      "id": "solutions_tab_design_editorial_tier"
     },
     {
       "label": "Reference Tier",
@@ -3401,9 +3401,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_reference_tier",
       "community": 3,
-      "norm_label": "reference tier"
+      "norm_label": "reference tier",
+      "id": "solutions_tab_design_reference_tier"
     },
     {
       "label": "Community Tier",
@@ -3414,9 +3414,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_community_tier",
       "community": 3,
-      "norm_label": "community tier"
+      "norm_label": "community tier",
+      "id": "solutions_tab_design_community_tier"
     },
     {
       "label": "gate: attempts unlock rule",
@@ -3427,9 +3427,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_gate_attempts",
       "community": 3,
-      "norm_label": "gate: attempts unlock rule"
+      "norm_label": "gate: attempts unlock rule",
+      "id": "solutions_tab_design_gate_attempts"
     },
     {
       "label": "gate: correct unlock rule",
@@ -3440,9 +3440,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_gate_correct",
       "community": 3,
-      "norm_label": "gate: correct unlock rule"
+      "norm_label": "gate: correct unlock rule",
+      "id": "solutions_tab_design_gate_correct"
     },
     {
       "label": "Lock Overlay (no attempts state)",
@@ -3453,9 +3453,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_lock_overlay",
       "community": 3,
-      "norm_label": "lock overlay (no attempts state)"
+      "norm_label": "lock overlay (no attempts state)",
+      "id": "solutions_tab_design_lock_overlay"
     },
     {
       "label": "Server-side Content Gating",
@@ -3466,9 +3466,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_server_side_gating",
       "community": 3,
-      "norm_label": "server-side content gating"
+      "norm_label": "server-side content gating",
+      "id": "solutions_tab_design_server_side_gating"
     },
     {
       "label": "Lazy Loading (solutions fetch on tab click)",
@@ -3479,9 +3479,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_lazy_loading",
       "community": 3,
-      "norm_label": "lazy loading (solutions fetch on tab click)"
+      "norm_label": "lazy loading (solutions fetch on tab click)",
+      "id": "solutions_tab_design_lazy_loading"
     },
     {
       "label": "Mermaid Diagram Rendering (out of scope)",
@@ -3492,9 +3492,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_mermaid_out_of_scope",
       "community": 3,
-      "norm_label": "mermaid diagram rendering (out of scope)"
+      "norm_label": "mermaid diagram rendering (out of scope)",
+      "id": "solutions_tab_design_mermaid_out_of_scope"
     },
     {
       "label": "editorial field (problems collection, markdown string)",
@@ -3505,9 +3505,324 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "solutions_tab_design_editorial_field",
       "community": 3,
-      "norm_label": "editorial field (problems collection, markdown string)"
+      "norm_label": "editorial field (problems collection, markdown string)",
+      "id": "solutions_tab_design_editorial_field"
+    },
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "web/postcss.config.js",
+      "source_location": "L1",
+      "id": "web_postcss_config_js",
+      "community": 53,
+      "norm_label": "postcss.config.js"
+    },
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "web/tailwind.config.js",
+      "source_location": "L1",
+      "id": "web_tailwind_config_js",
+      "community": 54,
+      "norm_label": "tailwind.config.js"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "web/app/problems/page.tsx",
+      "source_location": "L1",
+      "id": "web_app_problems_page_tsx",
+      "community": 55,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "web/app/problems/[slug]/page.tsx",
+      "source_location": "L1",
+      "id": "web_app_problems_slug_page_tsx",
+      "community": 56,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "useMySubmissions.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useMySubmissions.ts",
+      "source_location": "L1",
+      "id": "web_hooks_usemysubmissions_ts",
+      "community": 24,
+      "norm_label": "usemysubmissions.ts"
+    },
+    {
+      "label": "useMySubmissions()",
+      "file_type": "code",
+      "source_file": "web/hooks/useMySubmissions.ts",
+      "source_location": "L6",
+      "id": "hooks_usemysubmissions_usemysubmissions",
+      "community": 24,
+      "norm_label": "usemysubmissions()"
+    },
+    {
+      "label": "useProblem.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useProblem.ts",
+      "source_location": "L1",
+      "id": "web_hooks_useproblem_ts",
+      "community": 25,
+      "norm_label": "useproblem.ts"
+    },
+    {
+      "label": "useProblem()",
+      "file_type": "code",
+      "source_file": "web/hooks/useProblem.ts",
+      "source_location": "L6",
+      "id": "hooks_useproblem_useproblem",
+      "community": 25,
+      "norm_label": "useproblem()"
+    },
+    {
+      "label": "useProblems.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useProblems.ts",
+      "source_location": "L1",
+      "id": "web_hooks_useproblems_ts",
+      "community": 26,
+      "norm_label": "useproblems.ts"
+    },
+    {
+      "label": "useProblems()",
+      "file_type": "code",
+      "source_file": "web/hooks/useProblems.ts",
+      "source_location": "L6",
+      "id": "hooks_useproblems_useproblems",
+      "community": 26,
+      "norm_label": "useproblems()"
+    },
+    {
+      "label": "useTest.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useTest.ts",
+      "source_location": "L1",
+      "id": "web_hooks_usetest_ts",
+      "community": 27,
+      "norm_label": "usetest.ts"
+    },
+    {
+      "label": "useTest()",
+      "file_type": "code",
+      "source_file": "web/hooks/useTest.ts",
+      "source_location": "L6",
+      "id": "hooks_usetest_usetest",
+      "community": 27,
+      "norm_label": "usetest()"
+    },
+    {
+      "label": "useSolutions.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useSolutions.ts",
+      "source_location": "L1",
+      "id": "web_hooks_usesolutions_ts",
+      "community": 28,
+      "norm_label": "usesolutions.ts"
+    },
+    {
+      "label": "useSolutions()",
+      "file_type": "code",
+      "source_file": "web/hooks/useSolutions.ts",
+      "source_location": "L6",
+      "id": "hooks_usesolutions_usesolutions",
+      "community": 28,
+      "norm_label": "usesolutions()"
+    },
+    {
+      "label": "useSubmit.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useSubmit.ts",
+      "source_location": "L1",
+      "id": "web_hooks_usesubmit_ts",
+      "community": 29,
+      "norm_label": "usesubmit.ts"
+    },
+    {
+      "label": "useSubmit()",
+      "file_type": "code",
+      "source_file": "web/hooks/useSubmit.ts",
+      "source_location": "L6",
+      "id": "hooks_usesubmit_usesubmit",
+      "community": 29,
+      "norm_label": "usesubmit()"
+    },
+    {
+      "label": "useRevealHint.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useRevealHint.ts",
+      "source_location": "L1",
+      "id": "web_hooks_userevealhint_ts",
+      "community": 30,
+      "norm_label": "userevealhint.ts"
+    },
+    {
+      "label": "useRevealHint()",
+      "file_type": "code",
+      "source_file": "web/hooks/useRevealHint.ts",
+      "source_location": "L6",
+      "id": "hooks_userevealhint_userevealhint",
+      "community": 30,
+      "norm_label": "userevealhint()"
+    },
+    {
+      "label": "useLeaderboard.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useLeaderboard.ts",
+      "source_location": "L1",
+      "id": "web_hooks_useleaderboard_ts",
+      "community": 31,
+      "norm_label": "useleaderboard.ts"
+    },
+    {
+      "label": "useLeaderboard()",
+      "file_type": "code",
+      "source_file": "web/hooks/useLeaderboard.ts",
+      "source_location": "L6",
+      "id": "hooks_useleaderboard_useleaderboard",
+      "community": 31,
+      "norm_label": "useleaderboard()"
+    },
+    {
+      "label": "ProblemLayout.tsx",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L1",
+      "id": "web_components_problemlayout_tsx",
+      "community": 32,
+      "norm_label": "problemlayout.tsx"
+    },
+    {
+      "label": "starterCode()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L18",
+      "id": "components_problemlayout_startercode",
+      "community": 32,
+      "norm_label": "startercode()"
+    },
+    {
+      "label": "ProblemsTable.tsx",
+      "file_type": "code",
+      "source_file": "web/components/ProblemsTable.tsx",
+      "source_location": "L1",
+      "id": "web_components_problemstable_tsx",
+      "community": 57,
+      "norm_label": "problemstable.tsx"
+    },
+    {
+      "label": "CodeEditor.tsx",
+      "file_type": "code",
+      "source_file": "web/components/CodeEditor.tsx",
+      "source_location": "L1",
+      "id": "web_components_codeeditor_tsx",
+      "community": 33,
+      "norm_label": "codeeditor.tsx"
+    },
+    {
+      "label": "CodeEditor()",
+      "file_type": "code",
+      "source_file": "web/components/CodeEditor.tsx",
+      "source_location": "L13",
+      "id": "components_codeeditor_codeeditor",
+      "community": 33,
+      "norm_label": "codeeditor()"
+    },
+    {
+      "label": "LeaderboardTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/LeaderboardTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_leaderboardtab_tsx",
+      "community": 58,
+      "norm_label": "leaderboardtab.tsx"
+    },
+    {
+      "label": "DescriptionTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/DescriptionTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_descriptiontab_tsx",
+      "community": 59,
+      "norm_label": "descriptiontab.tsx"
+    },
+    {
+      "label": "TestTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/TestTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_testtab_tsx",
+      "community": 34,
+      "norm_label": "testtab.tsx"
+    },
+    {
+      "label": "handleRun()",
+      "file_type": "code",
+      "source_file": "web/components/tabs/TestTab.tsx",
+      "source_location": "L13",
+      "id": "tabs_testtab_handlerun",
+      "community": 34,
+      "norm_label": "handlerun()"
+    },
+    {
+      "label": "SubmitTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/SubmitTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_submittab_tsx",
+      "community": 4,
+      "norm_label": "submittab.tsx"
+    },
+    {
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "web/components/tabs/SubmitTab.tsx",
+      "source_location": "L33",
+      "id": "tabs_submittab_handlesubmit",
+      "community": 4,
+      "norm_label": "handlesubmit()"
+    },
+    {
+      "label": "SolutionsTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/SolutionsTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_solutionstab_tsx",
+      "community": 60,
+      "norm_label": "solutionstab.tsx"
+    },
+    {
+      "label": "api.ts",
+      "file_type": "code",
+      "source_file": "web/lib/api.ts",
+      "source_location": "L1",
+      "id": "web_lib_api_ts",
+      "community": 35,
+      "norm_label": "api.ts"
+    },
+    {
+      "label": "apiFetch()",
+      "file_type": "code",
+      "source_file": "web/lib/api.ts",
+      "source_location": "L121",
+      "id": "lib_api_apifetch",
+      "community": 35,
+      "norm_label": "apifetch()"
+    },
+    {
+      "label": "Kill whatever is running on NB_PORT and spawn a fresh q process there.     Uses",
+      "file_type": "rationale",
+      "source_file": "api/services/notebook.py",
+      "source_location": "L96",
+      "id": "services_notebook_rationale_96",
+      "community": 7,
+      "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses"
     }
   ],
   "links": [
@@ -3771,15 +4086,15 @@
       "weight": 1.0,
       "_src": "scripts_seed_problems_main",
       "_tgt": "home_aiyer_qlab_scripts_seed_problems_py",
+      "confidence_score": 1.0,
       "source": "scripts_seed_problems_main",
-      "target": "home_aiyer_qlab_scripts_seed_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_scripts_seed_problems_py"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/app/layout.tsx",
-      "source_location": "L9",
+      "source_location": "L7",
       "weight": 1.0,
       "_src": "web_app_layout_tsx",
       "_tgt": "app_layout_rootlayout",
@@ -3807,9 +4122,9 @@
       "weight": 1.0,
       "_src": "callback_page_handlecallback",
       "_tgt": "home_aiyer_qlab_web_app_auth_callback_page_tsx",
+      "confidence_score": 1.0,
       "source": "callback_page_handlecallback",
-      "target": "home_aiyer_qlab_web_app_auth_callback_page_tsx",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_web_app_auth_callback_page_tsx"
     },
     {
       "relation": "contains",
@@ -3819,9 +4134,9 @@
       "weight": 1.0,
       "_src": "web_app_profile_page_tsx",
       "_tgt": "profile_page_fetchqlabuser",
+      "confidence_score": 1.0,
       "source": "web_app_profile_page_tsx",
-      "target": "profile_page_fetchqlabuser",
-      "confidence_score": 1.0
+      "target": "profile_page_fetchqlabuser"
     },
     {
       "relation": "contains",
@@ -4047,9 +4362,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_tierconfig",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_tierconfig",
-      "confidence_score": 1.0
+      "target": "api_models_tierconfig"
     },
     {
       "relation": "contains",
@@ -4059,9 +4374,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_solutionsconfig",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_solutionsconfig",
-      "confidence_score": 1.0
+      "target": "api_models_solutionsconfig"
     },
     {
       "relation": "contains",
@@ -4071,9 +4386,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_editorialtier",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_editorialtier",
-      "confidence_score": 1.0
+      "target": "api_models_editorialtier"
     },
     {
       "relation": "contains",
@@ -4083,9 +4398,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_referencetier",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_referencetier",
-      "confidence_score": 1.0
+      "target": "api_models_referencetier"
     },
     {
       "relation": "contains",
@@ -4095,9 +4410,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_communitysolution",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_communitysolution",
-      "confidence_score": 1.0
+      "target": "api_models_communitysolution"
     },
     {
       "relation": "contains",
@@ -4107,9 +4422,9 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_solutionsresponse",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_solutionsresponse",
-      "confidence_score": 1.0
+      "target": "api_models_solutionsresponse"
     },
     {
       "relation": "contains",
@@ -4119,14 +4434,14 @@
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_hintrevealresponse",
+      "confidence_score": 1.0,
       "source": "api_models_py",
-      "target": "api_models_hintrevealresponse",
-      "confidence_score": 1.0
+      "target": "api_models_hintrevealresponse"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L6",
       "weight": 1.0,
       "_src": "api_models_difficulty",
@@ -4138,7 +4453,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L6",
       "weight": 1.0,
       "_src": "api_models_difficulty",
@@ -4155,14 +4470,14 @@
       "weight": 1.0,
       "_src": "api_models_difficulty",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_difficulty",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L12",
       "weight": 1.0,
       "_src": "str",
@@ -4174,7 +4489,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L17",
       "weight": 1.0,
       "_src": "str",
@@ -4200,7 +4515,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/notebook.py",
-      "source_location": "L64",
+      "source_location": "L67",
       "weight": 1.0,
       "_src": "str",
       "_tgt": "services_notebook_execute_cell",
@@ -4212,7 +4527,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/notebook.py",
-      "source_location": "L111",
+      "source_location": "L114",
       "weight": 1.0,
       "_src": "str",
       "_tgt": "services_notebook_reset_notebook",
@@ -4258,7 +4573,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L12",
       "weight": 1.0,
       "_src": "enum",
@@ -4270,7 +4585,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L17",
       "weight": 1.0,
       "_src": "enum",
@@ -4287,9 +4602,9 @@
       "weight": 1.0,
       "_src": "enum",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "enum",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4299,9 +4614,9 @@
       "weight": 1.0,
       "_src": "api_models_language",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_language",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "uses",
@@ -4395,14 +4710,14 @@
       "weight": 1.0,
       "_src": "api_models_submissionstatus",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_submissionstatus",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L31",
       "weight": 1.0,
       "_src": "api_models_submitrequest",
@@ -4419,14 +4734,14 @@
       "weight": 1.0,
       "_src": "api_models_submitrequest",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_submitrequest",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L59",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4438,7 +4753,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L75",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4450,7 +4765,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L85",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4462,7 +4777,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L91",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4474,7 +4789,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L107",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4486,7 +4801,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L117",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4498,7 +4813,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L130",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4510,7 +4825,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L139",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4534,86 +4849,86 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L150",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_tierconfig",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_tierconfig",
-      "confidence_score": 1.0
+      "target": "api_models_tierconfig"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L155",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_solutionsconfig",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_solutionsconfig",
-      "confidence_score": 1.0
+      "target": "api_models_solutionsconfig"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L161",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_editorialtier",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_editorialtier",
-      "confidence_score": 1.0
+      "target": "api_models_editorialtier"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L167",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_referencetier",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_referencetier",
-      "confidence_score": 1.0
+      "target": "api_models_referencetier"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L173",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_communitysolution",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_communitysolution",
-      "confidence_score": 1.0
+      "target": "api_models_communitysolution"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L182",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_solutionsresponse",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_solutionsresponse",
-      "confidence_score": 1.0
+      "target": "api_models_solutionsresponse"
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_file": "api/models.py",
       "source_location": "L192",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_hintrevealresponse",
+      "confidence_score": 1.0,
       "source": "basemodel",
-      "target": "api_models_hintrevealresponse",
-      "confidence_score": 1.0
+      "target": "api_models_hintrevealresponse"
     },
     {
       "relation": "contains",
@@ -4623,9 +4938,9 @@
       "weight": 1.0,
       "_src": "api_models_code_must_define_func",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_code_must_define_func",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4635,9 +4950,9 @@
       "weight": 1.0,
       "_src": "api_models_code_must_be_single_param",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_code_must_be_single_param",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4647,9 +4962,9 @@
       "weight": 1.0,
       "_src": "api_models_nicknamerequest",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_nicknamerequest",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4659,9 +4974,9 @@
       "weight": 1.0,
       "_src": "api_models_validate_nickname",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_validate_nickname",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
@@ -4683,9 +4998,9 @@
       "weight": 1.0,
       "_src": "api_models_problemsummary",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_problemsummary",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4695,9 +5010,9 @@
       "weight": 1.0,
       "_src": "api_models_example",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_example",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
@@ -4719,9 +5034,9 @@
       "weight": 1.0,
       "_src": "api_models_problemdetail",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_problemdetail",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "uses",
@@ -4827,16 +5142,16 @@
       "weight": 1.0,
       "_src": "api_models_judgeresult",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_judgeresult",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0,
       "_src": "api_models_submissionresponse",
       "_tgt": "routers_submissions_submit",
@@ -4851,9 +5166,9 @@
       "weight": 1.0,
       "_src": "api_models_submissionresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_submissionresponse",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
@@ -4875,9 +5190,9 @@
       "weight": 1.0,
       "_src": "api_models_leaderboardentry",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_leaderboardentry",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4887,9 +5202,9 @@
       "weight": 1.0,
       "_src": "api_models_mysubmissionentry",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_mysubmissionentry",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -4935,9 +5250,9 @@
       "weight": 1.0,
       "_src": "routers_webhooks_clerk_webhook",
       "_tgt": "home_aiyer_qlab_api_routers_webhooks_py",
+      "confidence_score": 1.0,
       "source": "routers_webhooks_clerk_webhook",
-      "target": "home_aiyer_qlab_api_routers_webhooks_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_routers_webhooks_py"
     },
     {
       "relation": "contains",
@@ -5067,9 +5382,9 @@
       "weight": 1.0,
       "_src": "routers_users_get_me",
       "_tgt": "home_aiyer_qlab_api_routers_users_py",
+      "confidence_score": 1.0,
       "source": "routers_users_get_me",
-      "target": "home_aiyer_qlab_api_routers_users_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_routers_users_py"
     },
     {
       "relation": "calls",
@@ -5103,9 +5418,9 @@
       "weight": 1.0,
       "_src": "routers_users_set_nickname",
       "_tgt": "home_aiyer_qlab_api_routers_users_py",
+      "confidence_score": 1.0,
       "source": "routers_users_set_nickname",
-      "target": "home_aiyer_qlab_api_routers_users_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_routers_users_py"
     },
     {
       "relation": "contains",
@@ -5183,7 +5498,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L83",
+      "source_location": "L85",
       "weight": 1.0,
       "_src": "api_routers_submissions_py",
       "_tgt": "routers_submissions_get_my_submissions",
@@ -5244,7 +5559,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_submissions_insert",
@@ -5256,7 +5571,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_problems_increment_solve_count",
@@ -5268,7 +5583,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_submissions_get_leaderboard",
@@ -5279,8 +5594,20 @@
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "web/components/tabs/SubmitTab.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "routers_submissions_submit",
+      "_tgt": "tabs_submittab_handlesubmit",
+      "source": "routers_submissions_submit",
+      "target": "tabs_submittab_handlesubmit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L89",
+      "source_location": "L91",
       "weight": 1.0,
       "_src": "routers_submissions_get_my_submissions",
       "_tgt": "services_submissions_get_for_user",
@@ -5547,9 +5874,9 @@
       "weight": 1.0,
       "_src": "services_problems_get_all",
       "_tgt": "home_aiyer_qlab_api_services_problems_py",
+      "confidence_score": 1.0,
       "source": "services_problems_get_all",
-      "target": "home_aiyer_qlab_api_services_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "relation": "calls",
@@ -5583,9 +5910,9 @@
       "weight": 1.0,
       "_src": "services_problems_get_by_slug",
       "_tgt": "home_aiyer_qlab_api_services_problems_py",
+      "confidence_score": 1.0,
       "source": "services_problems_get_by_slug",
-      "target": "home_aiyer_qlab_api_services_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "relation": "contains",
@@ -5595,9 +5922,9 @@
       "weight": 1.0,
       "_src": "services_problems_get_by_id",
       "_tgt": "home_aiyer_qlab_api_services_problems_py",
+      "confidence_score": 1.0,
       "source": "services_problems_get_by_id",
-      "target": "home_aiyer_qlab_api_services_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "relation": "contains",
@@ -5607,9 +5934,9 @@
       "weight": 1.0,
       "_src": "services_problems_increment_solve_count",
       "_tgt": "home_aiyer_qlab_api_services_problems_py",
+      "confidence_score": 1.0,
       "source": "services_problems_increment_solve_count",
-      "target": "home_aiyer_qlab_api_services_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "relation": "contains",
@@ -5619,9 +5946,9 @@
       "weight": 1.0,
       "_src": "services_problems_upsert_from_json",
       "_tgt": "home_aiyer_qlab_api_services_problems_py",
+      "confidence_score": 1.0,
       "source": "services_problems_upsert_from_json",
-      "target": "home_aiyer_qlab_api_services_problems_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_problems_py"
     },
     {
       "relation": "contains",
@@ -5667,9 +5994,9 @@
       "weight": 1.0,
       "_src": "services_users_get_by_clerk_id",
       "_tgt": "home_aiyer_qlab_api_services_users_py",
+      "confidence_score": 1.0,
       "source": "services_users_get_by_clerk_id",
-      "target": "home_aiyer_qlab_api_services_users_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_users_py"
     },
     {
       "relation": "contains",
@@ -5679,9 +6006,9 @@
       "weight": 1.0,
       "_src": "services_users_upsert",
       "_tgt": "home_aiyer_qlab_api_services_users_py",
+      "confidence_score": 1.0,
       "source": "services_users_upsert",
-      "target": "home_aiyer_qlab_api_services_users_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_users_py"
     },
     {
       "relation": "contains",
@@ -5691,9 +6018,9 @@
       "weight": 1.0,
       "_src": "services_users_set_nickname",
       "_tgt": "home_aiyer_qlab_api_services_users_py",
+      "confidence_score": 1.0,
       "source": "services_users_set_nickname",
-      "target": "home_aiyer_qlab_api_services_users_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_users_py"
     },
     {
       "relation": "contains",
@@ -5735,7 +6062,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/services/notebook.py",
-      "source_location": "L92",
+      "source_location": "L95",
       "weight": 1.0,
       "_src": "api_services_notebook_py",
       "_tgt": "services_notebook_reset_notebook",
@@ -5759,7 +6086,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "api/services/notebook.py",
-      "source_location": "L60",
+      "source_location": "L63",
       "weight": 1.0,
       "_src": "services_notebook_conn",
       "_tgt": "services_notebook_execute_cell",
@@ -5771,7 +6098,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "api/services/notebook.py",
-      "source_location": "L56",
+      "source_location": "L59",
       "weight": 1.0,
       "_src": "services_notebook_escape",
       "_tgt": "services_notebook_execute_cell",
@@ -5814,6 +6141,18 @@
       "confidence_score": 1.0,
       "source": "services_notebook_reset_notebook",
       "target": "services_notebook_rationale_93"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/notebook.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "services_notebook_reset_notebook",
+      "_tgt": "services_notebook_rationale_96",
+      "source": "services_notebook_reset_notebook",
+      "target": "services_notebook_rationale_96",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5950,7 +6289,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L16",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -5962,7 +6301,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L54",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -5974,7 +6313,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L80",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -5986,7 +6325,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L116",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -5998,7 +6337,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L133",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6010,7 +6349,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L163",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6022,7 +6361,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L178",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6034,7 +6373,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L187",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6046,7 +6385,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L222",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6058,7 +6397,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L226",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6070,7 +6409,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L233",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6082,26 +6421,26 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L201",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
       "_tgt": "src_problempanel_problempanel_sendsolutions",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel",
-      "target": "src_problempanel_problempanel_sendsolutions",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_sendsolutions"
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L212",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
       "_tgt": "src_problempanel_problempanel_revealnexthint",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel",
-      "target": "src_problempanel_problempanel_revealnexthint",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_revealnexthint"
     },
     {
       "relation": "contains",
@@ -6111,14 +6450,14 @@
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L49",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_open",
@@ -6142,7 +6481,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L63",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_constructor",
@@ -6154,7 +6493,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L75",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_constructor",
@@ -6166,7 +6505,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L83",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6178,7 +6517,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L87",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6190,7 +6529,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L91",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6202,7 +6541,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L95",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6214,7 +6553,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L99",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6226,7 +6565,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L103",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6238,31 +6577,31 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L107",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
       "_tgt": "src_problempanel_problempanel_sendsolutions",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel_handlemessage",
-      "target": "src_problempanel_problempanel_sendsolutions",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_sendsolutions"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L111",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
       "_tgt": "src_problempanel_problempanel_revealnexthint",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel_handlemessage",
-      "target": "src_problempanel_problempanel_revealnexthint",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_revealnexthint"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L125",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendeditorcode",
@@ -6274,7 +6613,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L134",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
@@ -6286,7 +6625,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L152",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
@@ -6310,19 +6649,19 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L154",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
       "_tgt": "src_problempanel_problempanel_sendsolutions",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel_handlesubmit",
-      "target": "src_problempanel_problempanel_sendsolutions",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_sendsolutions"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L164",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handleruntest",
@@ -6346,7 +6685,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L181",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendleaderboard",
@@ -6370,7 +6709,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L195",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendmysubmissions",
@@ -6394,26 +6733,26 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L206",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_post",
       "_tgt": "src_problempanel_problempanel_sendsolutions",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel_post",
-      "target": "src_problempanel_problempanel_sendsolutions",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_sendsolutions"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L219",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_post",
       "_tgt": "src_problempanel_problempanel_revealnexthint",
+      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel_post",
-      "target": "src_problempanel_problempanel_revealnexthint",
-      "confidence_score": 1.0
+      "target": "src_problempanel_problempanel_revealnexthint"
     },
     {
       "relation": "calls",
@@ -6430,7 +6769,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L306",
       "weight": 1.0,
       "_src": "src_problempanel_nonce",
@@ -6447,14 +6786,14 @@
       "weight": 1.0,
       "_src": "src_problempanel_nonce",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0,
       "source": "src_problempanel_nonce",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L351",
       "weight": 1.0,
       "_src": "src_problempanel_esc",
@@ -6471,9 +6810,9 @@
       "weight": 1.0,
       "_src": "src_problempanel_esc",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0,
       "source": "src_problempanel_esc",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
     },
     {
       "relation": "contains",
@@ -6483,9 +6822,9 @@
       "weight": 1.0,
       "_src": "src_problempanel_buildhtml",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0,
       "source": "src_problempanel_buildhtml",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
     },
     {
       "relation": "contains",
@@ -6646,7 +6985,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L109",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6658,7 +6997,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L114",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6670,7 +7009,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L122",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6682,7 +7021,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L154",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6694,7 +7033,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L167",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6706,7 +7045,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L171",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6718,7 +7057,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L175",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6730,7 +7069,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L179",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6742,7 +7081,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L192",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6754,7 +7093,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L212",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6766,7 +7105,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L217",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
@@ -6778,38 +7117,38 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L141",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_authpost",
+      "confidence_score": 1.0,
       "source": "src_api_qlabapi",
-      "target": "src_api_qlabapi_authpost",
-      "confidence_score": 1.0
+      "target": "src_api_qlabapi_authpost"
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L183",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getsolutions",
+      "confidence_score": 1.0,
       "source": "src_api_qlabapi",
-      "target": "src_api_qlabapi_getsolutions",
-      "confidence_score": 1.0
+      "target": "src_api_qlabapi_getsolutions"
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L188",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_revealnexthint",
+      "confidence_score": 1.0,
       "source": "src_api_qlabapi",
-      "target": "src_api_qlabapi_revealnexthint",
-      "confidence_score": 1.0
+      "target": "src_api_qlabapi_revealnexthint"
     },
     {
       "relation": "contains",
@@ -6819,14 +7158,14 @@
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_api_ts",
+      "confidence_score": 1.0,
       "source": "src_api_qlabapi",
-      "target": "home_aiyer_qlab_vscode_extension_src_api_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_api_ts"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L168",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
@@ -6838,7 +7177,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L172",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
@@ -6850,7 +7189,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L176",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
@@ -6934,7 +7273,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L218",
       "weight": 1.0,
       "_src": "src_api_qlabapi_post",
@@ -6958,7 +7297,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L180",
       "weight": 1.0,
       "_src": "src_api_qlabapi_authget",
@@ -7011,9 +7350,9 @@
       "weight": 1.0,
       "_src": "vscode_extension_src_extension_ts",
       "_tgt": "src_extension_jwtisexpired",
+      "confidence_score": 1.0,
       "source": "vscode_extension_src_extension_ts",
-      "target": "src_extension_jwtisexpired",
-      "confidence_score": 1.0
+      "target": "src_extension_jwtisexpired"
     },
     {
       "relation": "contains",
@@ -7023,9 +7362,9 @@
       "weight": 1.0,
       "_src": "src_extension_activate",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_extension_ts",
+      "confidence_score": 1.0,
       "source": "src_extension_activate",
-      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
     {
       "relation": "contains",
@@ -7035,9 +7374,9 @@
       "weight": 1.0,
       "_src": "src_extension_deactivate",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_extension_ts",
+      "confidence_score": 1.0,
       "source": "src_extension_deactivate",
-      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
     {
       "relation": "references",
@@ -7815,9 +8154,9 @@
       "weight": 1.0,
       "_src": "api_main_lifespan",
       "_tgt": "home_aiyer_qlab_api_main_py",
+      "confidence_score": 1.0,
       "source": "api_main_lifespan",
-      "target": "home_aiyer_qlab_api_main_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_main_py"
     },
     {
       "relation": "contains",
@@ -7839,9 +8178,9 @@
       "weight": 1.0,
       "_src": "api_main_health",
       "_tgt": "home_aiyer_qlab_api_main_py",
+      "confidence_score": 1.0,
       "source": "api_main_health",
-      "target": "home_aiyer_qlab_api_main_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_main_py"
     },
     {
       "relation": "references",
@@ -8355,9 +8694,9 @@
       "weight": 1.0,
       "_src": "src_extension_setsignedincontext",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_extension_ts",
+      "confidence_score": 1.0,
       "source": "src_extension_setsignedincontext",
-      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
     {
       "relation": "references",
@@ -8547,9 +8886,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_solutions_config_defaults",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_solutions_config_defaults",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_solutions_config_defaults"
     },
     {
       "relation": "contains",
@@ -8559,9 +8898,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_solutions_response_locked",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_solutions_response_locked",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_solutions_response_locked"
     },
     {
       "relation": "contains",
@@ -8571,9 +8910,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_community_solution_model",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_community_solution_model",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_community_solution_model"
     },
     {
       "relation": "contains",
@@ -8583,9 +8922,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_make_problem",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_make_problem",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_make_problem"
     },
     {
       "relation": "contains",
@@ -8595,9 +8934,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_no_attempts_returns_all_locked",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_no_attempts_returns_all_locked",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_no_attempts_returns_all_locked"
     },
     {
       "relation": "contains",
@@ -8607,9 +8946,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial"
     },
     {
       "relation": "contains",
@@ -8619,9 +8958,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_three_attempts_unlocks_editorial",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_three_attempts_unlocks_editorial",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_three_attempts_unlocks_editorial"
     },
     {
       "relation": "contains",
@@ -8631,9 +8970,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_correct_submission_unlocks_reference",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_correct_submission_unlocks_reference",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_correct_submission_unlocks_reference"
     },
     {
       "relation": "contains",
@@ -8643,9 +8982,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_increment_hint_reveals_returns_new_count",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_increment_hint_reveals_returns_new_count",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_increment_hint_reveals_returns_new_count"
     },
     {
       "relation": "contains",
@@ -8655,9 +8994,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none"
     },
     {
       "relation": "contains",
@@ -8667,9 +9006,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_make_rsa_key_pair",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_make_rsa_key_pair",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_make_rsa_key_pair"
     },
     {
       "relation": "contains",
@@ -8679,9 +9018,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_make_token",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_make_token",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_make_token"
     },
     {
       "relation": "contains",
@@ -8691,9 +9030,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_make_signing_key_mock",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_make_signing_key_mock",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_make_signing_key_mock"
     },
     {
       "relation": "contains",
@@ -8703,9 +9042,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_make_mock_db_for_router",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_make_mock_db_for_router",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_make_mock_db_for_router"
     },
     {
       "relation": "contains",
@@ -8715,9 +9054,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_get_solutions_requires_auth",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_get_solutions_requires_auth",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_get_solutions_requires_auth"
     },
     {
       "relation": "contains",
@@ -8727,9 +9066,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user"
     },
     {
       "relation": "contains",
@@ -8739,9 +9078,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_py",
       "_tgt": "tests_test_solutions_test_reveal_hint_returns_next_hint",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_py",
-      "target": "tests_test_solutions_test_reveal_hint_returns_next_hint",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_reveal_hint_returns_next_hint"
     },
     {
       "relation": "calls",
@@ -8763,9 +9102,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_solutions_config_defaults",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_solutions_config_defaults",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8811,9 +9150,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_solutions_response_locked",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_solutions_response_locked",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8835,57 +9174,57 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_community_solution_model",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_community_solution_model",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
+      "source_file": "tests/test_solutions.py",
       "source_location": "L65",
       "weight": 1.0,
       "_src": "tests_test_solutions_make_problem",
       "_tgt": "tests_test_solutions_test_no_attempts_returns_all_locked",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_problem",
-      "target": "tests_test_solutions_test_no_attempts_returns_all_locked",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_no_attempts_returns_all_locked"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
+      "source_file": "tests/test_solutions.py",
       "source_location": "L86",
       "weight": 1.0,
       "_src": "tests_test_solutions_make_problem",
       "_tgt": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_problem",
-      "target": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
+      "source_file": "tests/test_solutions.py",
       "source_location": "L106",
       "weight": 1.0,
       "_src": "tests_test_solutions_make_problem",
       "_tgt": "tests_test_solutions_test_three_attempts_unlocks_editorial",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_problem",
-      "target": "tests_test_solutions_test_three_attempts_unlocks_editorial",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_three_attempts_unlocks_editorial"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
+      "source_file": "tests/test_solutions.py",
       "source_location": "L124",
       "weight": 1.0,
       "_src": "tests_test_solutions_make_problem",
       "_tgt": "tests_test_solutions_test_correct_submission_unlocks_reference",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_problem",
-      "target": "tests_test_solutions_test_correct_submission_unlocks_reference",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_correct_submission_unlocks_reference"
     },
     {
       "relation": "contains",
@@ -8895,9 +9234,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_make_problem",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_problem",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8919,9 +9258,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_no_attempts_returns_all_locked",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_no_attempts_returns_all_locked",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8943,9 +9282,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_one_attempt_unlocks_community_not_editorial",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8967,9 +9306,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_three_attempts_unlocks_editorial",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_three_attempts_unlocks_editorial",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -8991,9 +9330,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_correct_submission_unlocks_reference",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_correct_submission_unlocks_reference",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -9015,9 +9354,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_increment_hint_reveals_returns_new_count",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_increment_hint_reveals_returns_new_count",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
@@ -9039,9 +9378,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_increment_hint_reveals_at_max_returns_none",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9051,9 +9390,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_make_rsa_key_pair",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_rsa_key_pair",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9063,9 +9402,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_make_token",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_token",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9075,21 +9414,21 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_make_signing_key_mock",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_signing_key_mock",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/tests/test_solutions.py",
+      "source_file": "tests/test_solutions.py",
       "source_location": "L218",
       "weight": 1.0,
       "_src": "tests_test_solutions_make_mock_db_for_router",
       "_tgt": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_mock_db_for_router",
-      "target": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
-      "confidence_score": 1.0
+      "target": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user"
     },
     {
       "relation": "contains",
@@ -9099,9 +9438,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_make_mock_db_for_router",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_make_mock_db_for_router",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9111,9 +9450,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_get_solutions_requires_auth",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_get_solutions_requires_auth",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9123,9 +9462,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_get_solutions_returns_locked_for_new_user",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9135,9 +9474,9 @@
       "weight": 1.0,
       "_src": "tests_test_solutions_test_reveal_hint_returns_next_hint",
       "_tgt": "home_aiyer_qlab_tests_test_solutions_py",
+      "confidence_score": 1.0,
       "source": "tests_test_solutions_test_reveal_hint_returns_next_hint",
-      "target": "home_aiyer_qlab_tests_test_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_tests_test_solutions_py"
     },
     {
       "relation": "contains",
@@ -9147,9 +9486,9 @@
       "weight": 1.0,
       "_src": "profile_page_fetchqlabuser",
       "_tgt": "home_aiyer_qlab_web_app_profile_page_tsx",
+      "confidence_score": 1.0,
       "source": "profile_page_fetchqlabuser",
-      "target": "home_aiyer_qlab_web_app_profile_page_tsx",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_web_app_profile_page_tsx"
     },
     {
       "relation": "contains",
@@ -9159,9 +9498,9 @@
       "weight": 1.0,
       "_src": "api_models_tierconfig",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_tierconfig",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -9171,9 +9510,9 @@
       "weight": 1.0,
       "_src": "api_models_solutionsconfig",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_solutionsconfig",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -9183,9 +9522,9 @@
       "weight": 1.0,
       "_src": "api_models_editorialtier",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_editorialtier",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -9195,9 +9534,9 @@
       "weight": 1.0,
       "_src": "api_models_referencetier",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_referencetier",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -9207,9 +9546,9 @@
       "weight": 1.0,
       "_src": "api_models_communitysolution",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_communitysolution",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
@@ -9231,9 +9570,9 @@
       "weight": 1.0,
       "_src": "api_models_solutionsresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_solutionsresponse",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "calls",
@@ -9255,9 +9594,9 @@
       "weight": 1.0,
       "_src": "api_models_hintrevealresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0,
       "source": "api_models_hintrevealresponse",
-      "target": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_models_py"
     },
     {
       "relation": "contains",
@@ -9267,9 +9606,9 @@
       "weight": 1.0,
       "_src": "api_routers_solutions_py",
       "_tgt": "routers_solutions_get_solutions",
+      "confidence_score": 1.0,
       "source": "api_routers_solutions_py",
-      "target": "routers_solutions_get_solutions",
-      "confidence_score": 1.0
+      "target": "routers_solutions_get_solutions"
     },
     {
       "relation": "contains",
@@ -9279,9 +9618,9 @@
       "weight": 1.0,
       "_src": "api_routers_solutions_py",
       "_tgt": "routers_solutions_reveal_hint",
+      "confidence_score": 1.0,
       "source": "api_routers_solutions_py",
-      "target": "routers_solutions_reveal_hint",
-      "confidence_score": 1.0
+      "target": "routers_solutions_reveal_hint"
     },
     {
       "relation": "calls",
@@ -9303,9 +9642,9 @@
       "weight": 1.0,
       "_src": "routers_solutions_get_solutions",
       "_tgt": "home_aiyer_qlab_api_routers_solutions_py",
+      "confidence_score": 1.0,
       "source": "routers_solutions_get_solutions",
-      "target": "home_aiyer_qlab_api_routers_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_routers_solutions_py"
     },
     {
       "relation": "calls",
@@ -9327,9 +9666,9 @@
       "weight": 1.0,
       "_src": "routers_solutions_reveal_hint",
       "_tgt": "home_aiyer_qlab_api_routers_solutions_py",
+      "confidence_score": 1.0,
       "source": "routers_solutions_reveal_hint",
-      "target": "home_aiyer_qlab_api_routers_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_routers_solutions_py"
     },
     {
       "relation": "contains",
@@ -9339,9 +9678,9 @@
       "weight": 1.0,
       "_src": "api_services_solutions_py",
       "_tgt": "services_solutions_is_unlocked",
+      "confidence_score": 1.0,
       "source": "api_services_solutions_py",
-      "target": "services_solutions_is_unlocked",
-      "confidence_score": 1.0
+      "target": "services_solutions_is_unlocked"
     },
     {
       "relation": "contains",
@@ -9351,9 +9690,9 @@
       "weight": 1.0,
       "_src": "api_services_solutions_py",
       "_tgt": "services_solutions_compute_solutions",
+      "confidence_score": 1.0,
       "source": "api_services_solutions_py",
-      "target": "services_solutions_compute_solutions",
-      "confidence_score": 1.0
+      "target": "services_solutions_compute_solutions"
     },
     {
       "relation": "contains",
@@ -9363,9 +9702,9 @@
       "weight": 1.0,
       "_src": "api_services_solutions_py",
       "_tgt": "services_solutions_get_top_community",
+      "confidence_score": 1.0,
       "source": "api_services_solutions_py",
-      "target": "services_solutions_get_top_community",
-      "confidence_score": 1.0
+      "target": "services_solutions_get_top_community"
     },
     {
       "relation": "contains",
@@ -9375,9 +9714,9 @@
       "weight": 1.0,
       "_src": "api_services_solutions_py",
       "_tgt": "services_solutions_increment_hint_reveals",
+      "confidence_score": 1.0,
       "source": "api_services_solutions_py",
-      "target": "services_solutions_increment_hint_reveals",
-      "confidence_score": 1.0
+      "target": "services_solutions_increment_hint_reveals"
     },
     {
       "relation": "contains",
@@ -9387,21 +9726,21 @@
       "weight": 1.0,
       "_src": "services_solutions_is_unlocked",
       "_tgt": "home_aiyer_qlab_api_services_solutions_py",
+      "confidence_score": 1.0,
       "source": "services_solutions_is_unlocked",
-      "target": "home_aiyer_qlab_api_services_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/api/services/solutions.py",
+      "source_file": "api/services/solutions.py",
       "source_location": "L58",
       "weight": 1.0,
       "_src": "services_solutions_compute_solutions",
       "_tgt": "services_solutions_get_top_community",
+      "confidence_score": 1.0,
       "source": "services_solutions_compute_solutions",
-      "target": "services_solutions_get_top_community",
-      "confidence_score": 1.0
+      "target": "services_solutions_get_top_community"
     },
     {
       "relation": "contains",
@@ -9411,9 +9750,9 @@
       "weight": 1.0,
       "_src": "services_solutions_compute_solutions",
       "_tgt": "home_aiyer_qlab_api_services_solutions_py",
+      "confidence_score": 1.0,
       "source": "services_solutions_compute_solutions",
-      "target": "home_aiyer_qlab_api_services_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
       "relation": "contains",
@@ -9423,9 +9762,9 @@
       "weight": 1.0,
       "_src": "services_solutions_get_top_community",
       "_tgt": "home_aiyer_qlab_api_services_solutions_py",
+      "confidence_score": 1.0,
       "source": "services_solutions_get_top_community",
-      "target": "home_aiyer_qlab_api_services_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
       "relation": "contains",
@@ -9435,9 +9774,9 @@
       "weight": 1.0,
       "_src": "services_solutions_increment_hint_reveals",
       "_tgt": "home_aiyer_qlab_api_services_solutions_py",
+      "confidence_score": 1.0,
       "source": "services_solutions_increment_hint_reveals",
-      "target": "home_aiyer_qlab_api_services_solutions_py",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
       "relation": "calls",
@@ -9466,14 +9805,14 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_file": "vscode-extension/src/api.ts",
       "source_location": "L189",
       "weight": 1.0,
       "_src": "src_api_qlabapi_authpost",
       "_tgt": "src_api_qlabapi_revealnexthint",
+      "confidence_score": 1.0,
       "source": "src_api_qlabapi_authpost",
-      "target": "src_api_qlabapi_revealnexthint",
-      "confidence_score": 1.0
+      "target": "src_api_qlabapi_revealnexthint"
     },
     {
       "relation": "contains",
@@ -9483,9 +9822,9 @@
       "weight": 1.0,
       "_src": "src_extension_jwtisexpired",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_extension_ts",
+      "confidence_score": 1.0,
       "source": "src_extension_jwtisexpired",
-      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts",
-      "confidence_score": 1.0
+      "target": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
     {
       "relation": "identifies_problem",
@@ -10230,6 +10569,162 @@
       "_tgt": "solutions_tab_design_server_side_gating",
       "source": "solutions_tab_design_gate_correct",
       "target": "solutions_tab_design_server_side_gating"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useMySubmissions.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_usemysubmissions_ts",
+      "_tgt": "hooks_usemysubmissions_usemysubmissions",
+      "source": "web_hooks_usemysubmissions_ts",
+      "target": "hooks_usemysubmissions_usemysubmissions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useProblem.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_useproblem_ts",
+      "_tgt": "hooks_useproblem_useproblem",
+      "source": "web_hooks_useproblem_ts",
+      "target": "hooks_useproblem_useproblem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useProblems.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_useproblems_ts",
+      "_tgt": "hooks_useproblems_useproblems",
+      "source": "web_hooks_useproblems_ts",
+      "target": "hooks_useproblems_useproblems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useTest.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_usetest_ts",
+      "_tgt": "hooks_usetest_usetest",
+      "source": "web_hooks_usetest_ts",
+      "target": "hooks_usetest_usetest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useSolutions.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_usesolutions_ts",
+      "_tgt": "hooks_usesolutions_usesolutions",
+      "source": "web_hooks_usesolutions_ts",
+      "target": "hooks_usesolutions_usesolutions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useSubmit.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_usesubmit_ts",
+      "_tgt": "hooks_usesubmit_usesubmit",
+      "source": "web_hooks_usesubmit_ts",
+      "target": "hooks_usesubmit_usesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useRevealHint.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_userevealhint_ts",
+      "_tgt": "hooks_userevealhint_userevealhint",
+      "source": "web_hooks_userevealhint_ts",
+      "target": "hooks_userevealhint_userevealhint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useLeaderboard.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_useleaderboard_ts",
+      "_tgt": "hooks_useleaderboard_useleaderboard",
+      "source": "web_hooks_useleaderboard_ts",
+      "target": "hooks_useleaderboard_useleaderboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_startercode",
+      "source": "web_components_problemlayout_tsx",
+      "target": "components_problemlayout_startercode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/CodeEditor.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "web_components_codeeditor_tsx",
+      "_tgt": "components_codeeditor_codeeditor",
+      "source": "web_components_codeeditor_tsx",
+      "target": "components_codeeditor_codeeditor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/tabs/TestTab.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "web_components_tabs_testtab_tsx",
+      "_tgt": "tabs_testtab_handlerun",
+      "source": "web_components_tabs_testtab_tsx",
+      "target": "tabs_testtab_handlerun",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/tabs/SubmitTab.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "web_components_tabs_submittab_tsx",
+      "_tgt": "tabs_submittab_handlesubmit",
+      "source": "web_components_tabs_submittab_tsx",
+      "target": "tabs_submittab_handlesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/lib/api.ts",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "web_lib_api_ts",
+      "_tgt": "lib_api_apifetch",
+      "source": "web_lib_api_ts",
+      "target": "lib_api_apifetch",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": []
