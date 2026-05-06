@@ -1,14 +1,56 @@
 {
   "directed": false,
   "multigraph": false,
-  "graph": {},
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "hyper_my_submissions_tab_stack",
+        "label": "My Submissions Tab end-to-end stack",
+        "members": [
+          "spec_my_submissions_tab_component",
+          "spec_use_my_submissions_hook",
+          "spec_submissions_me_endpoint",
+          "spec_get_for_user_service",
+          "spec_my_submission_entry_model"
+        ],
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md"
+      },
+      {
+        "id": "hyper_click_to_load",
+        "label": "Click-to-load with dirty-check confirm",
+        "members": [
+          "spec_my_submissions_tab_component",
+          "spec_problem_layout",
+          "spec_click_to_load_flow",
+          "plan_window_confirm"
+        ],
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md"
+      },
+      {
+        "id": "hyper_plan_spec_future_alignment",
+        "label": "Plan-Spec-Roadmap alignment for web My Submissions",
+        "members": [
+          "plan_web_submissions_tab",
+          "spec_web_submissions_tab_design",
+          "future_my_submissions_web"
+        ],
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md"
+      }
+    ]
+  },
   "nodes": [
     {
       "label": "test_auth.py",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 12,
       "norm_label": "test_auth.py",
       "id": "tests_test_auth_py"
     },
@@ -17,7 +59,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L13",
-      "community": 11,
+      "community": 12,
       "norm_label": "make_rsa_key_pair()",
       "id": "tests_test_auth_make_rsa_key_pair"
     },
@@ -26,7 +68,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L20",
-      "community": 11,
+      "community": 12,
       "norm_label": "make_token()",
       "id": "tests_test_auth_make_token"
     },
@@ -35,7 +77,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L24",
-      "community": 11,
+      "community": 12,
       "norm_label": "make_signing_key_mock()",
       "id": "tests_test_auth_make_signing_key_mock"
     },
@@ -44,7 +86,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L31",
-      "community": 11,
+      "community": 12,
       "norm_label": "test_valid_token_returns_claims()",
       "id": "tests_test_auth_test_valid_token_returns_claims"
     },
@@ -53,7 +95,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L48",
-      "community": 11,
+      "community": 12,
       "norm_label": "test_expired_token_raises_401()",
       "id": "tests_test_auth_test_expired_token_raises_401"
     },
@@ -62,7 +104,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L67",
-      "community": 11,
+      "community": 12,
       "norm_label": "test_invalid_token_raises_401()",
       "id": "tests_test_auth_test_invalid_token_raises_401"
     },
@@ -71,7 +113,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L82",
-      "community": 1,
+      "community": 2,
       "norm_label": "test_submit_without_token_returns_401()",
       "id": "tests_test_auth_test_submit_without_token_returns_401"
     },
@@ -80,7 +122,7 @@
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L98",
-      "community": 1,
+      "community": 2,
       "norm_label": "test_get_me_without_token_returns_401()",
       "id": "tests_test_auth_test_get_me_without_token_returns_401"
     },
@@ -89,7 +131,7 @@
       "file_type": "code",
       "source_file": "tests/__init__.py",
       "source_location": "L1",
-      "community": 36,
+      "community": 38,
       "norm_label": "__init__.py",
       "id": "tests_init_py"
     },
@@ -98,7 +140,7 @@
       "file_type": "code",
       "source_file": "scripts/seed_problems.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "seed_problems.py",
       "id": "scripts_seed_problems_py"
     },
@@ -107,7 +149,7 @@
       "file_type": "code",
       "source_file": "scripts/seed_problems.py",
       "source_location": "L31",
-      "community": 4,
+      "community": 8,
       "norm_label": "main()",
       "id": "scripts_seed_problems_main"
     },
@@ -116,7 +158,7 @@
       "file_type": "code",
       "source_file": "web/middleware.ts",
       "source_location": "L1",
-      "community": 37,
+      "community": 39,
       "norm_label": "middleware.ts",
       "id": "web_middleware_ts"
     },
@@ -125,7 +167,7 @@
       "file_type": "code",
       "source_file": "web/next.config.js",
       "source_location": "L1",
-      "community": 38,
+      "community": 40,
       "norm_label": "next.config.js",
       "id": "web_next_config_js"
     },
@@ -134,7 +176,7 @@
       "file_type": "code",
       "source_file": "web/next-env.d.ts",
       "source_location": "L1",
-      "community": 39,
+      "community": 41,
       "norm_label": "next-env.d.ts",
       "id": "web_next_env_d_ts"
     },
@@ -143,7 +185,7 @@
       "file_type": "code",
       "source_file": "web/app/layout.tsx",
       "source_location": "L1",
-      "community": 19,
+      "community": 24,
       "norm_label": "layout.tsx",
       "id": "web_app_layout_tsx"
     },
@@ -152,7 +194,7 @@
       "file_type": "code",
       "source_file": "web/app/layout.tsx",
       "source_location": "L7",
-      "community": 19,
+      "community": 24,
       "norm_label": "rootlayout()",
       "id": "app_layout_rootlayout"
     },
@@ -161,7 +203,7 @@
       "file_type": "code",
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L1",
-      "community": 16,
+      "community": 18,
       "norm_label": "page.tsx",
       "id": "web_app_auth_callback_page_tsx"
     },
@@ -170,7 +212,7 @@
       "file_type": "code",
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L12",
-      "community": 16,
+      "community": 18,
       "norm_label": "handlecallback()",
       "id": "callback_page_handlecallback"
     },
@@ -179,7 +221,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 19,
       "norm_label": "page.tsx",
       "id": "web_app_profile_page_tsx"
     },
@@ -188,7 +230,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/setup/page.tsx",
       "source_location": "L1",
-      "community": 20,
+      "community": 25,
       "norm_label": "page.tsx",
       "id": "web_app_profile_setup_page_tsx"
     },
@@ -197,7 +239,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/setup/page.tsx",
       "source_location": "L16",
-      "community": 20,
+      "community": 25,
       "norm_label": "handlesubmit()",
       "id": "setup_page_handlesubmit"
     },
@@ -206,7 +248,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-up/[[...sign-up]]/page.tsx",
       "source_location": "L1",
-      "community": 40,
+      "community": 42,
       "norm_label": "page.tsx",
       "id": "web_app_sign_up_sign_up_page_tsx"
     },
@@ -215,7 +257,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-in/[[...sign-in]]/page.tsx",
       "source_location": "L1",
-      "community": 41,
+      "community": 43,
       "norm_label": "page.tsx",
       "id": "web_app_sign_in_sign_in_page_tsx"
     },
@@ -224,7 +266,7 @@
       "file_type": "code",
       "source_file": "api/deps.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 26,
       "norm_label": "deps.py",
       "id": "api_deps_py"
     },
@@ -233,7 +275,7 @@
       "file_type": "code",
       "source_file": "api/deps.py",
       "source_location": "L5",
-      "community": 21,
+      "community": 26,
       "norm_label": "get_db()",
       "id": "api_deps_get_db"
     },
@@ -242,7 +284,7 @@
       "file_type": "code",
       "source_file": "api/__init__.py",
       "source_location": "L1",
-      "community": 42,
+      "community": 44,
       "norm_label": "__init__.py",
       "id": "api_init_py"
     },
@@ -422,7 +464,7 @@
       "file_type": "code",
       "source_file": "api/routers/webhooks.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "webhooks.py",
       "id": "api_routers_webhooks_py"
     },
@@ -431,7 +473,7 @@
       "file_type": "code",
       "source_file": "api/routers/webhooks.py",
       "source_location": "L16",
-      "community": 8,
+      "community": 10,
       "norm_label": "clerk_webhook()",
       "id": "routers_webhooks_clerk_webhook"
     },
@@ -440,7 +482,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "problems.py",
       "id": "api_routers_problems_py"
     },
@@ -449,7 +491,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L13",
-      "community": 4,
+      "community": 8,
       "norm_label": "list_problems()",
       "id": "routers_problems_list_problems"
     },
@@ -458,7 +500,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L19",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_problem()",
       "id": "routers_problems_get_problem"
     },
@@ -467,7 +509,7 @@
       "file_type": "code",
       "source_file": "api/routers/problems.py",
       "source_location": "L25",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_leaderboard()",
       "id": "routers_problems_get_leaderboard"
     },
@@ -476,7 +518,7 @@
       "file_type": "code",
       "source_file": "api/routers/users.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "users.py",
       "id": "api_routers_users_py"
     },
@@ -485,7 +527,7 @@
       "file_type": "code",
       "source_file": "api/routers/users.py",
       "source_location": "L13",
-      "community": 8,
+      "community": 10,
       "norm_label": "get_me()",
       "id": "routers_users_get_me"
     },
@@ -494,7 +536,7 @@
       "file_type": "code",
       "source_file": "api/routers/users.py",
       "source_location": "L25",
-      "community": 8,
+      "community": 10,
       "norm_label": "set_nickname()",
       "id": "routers_users_set_nickname"
     },
@@ -503,7 +545,7 @@
       "file_type": "code",
       "source_file": "api/routers/__init__.py",
       "source_location": "L1",
-      "community": 43,
+      "community": 45,
       "norm_label": "__init__.py",
       "id": "api_routers_init_py"
     },
@@ -512,7 +554,7 @@
       "file_type": "code",
       "source_file": "api/routers/notebook.py",
       "source_location": "L1",
-      "community": 7,
+      "community": 9,
       "norm_label": "notebook.py",
       "id": "api_routers_notebook_py"
     },
@@ -521,7 +563,7 @@
       "file_type": "code",
       "source_file": "api/routers/notebook.py",
       "source_location": "L9",
-      "community": 7,
+      "community": 9,
       "norm_label": "executerequest",
       "id": "routers_notebook_executerequest"
     },
@@ -530,7 +572,7 @@
       "file_type": "code",
       "source_file": "api/routers/notebook.py",
       "source_location": "L14",
-      "community": 7,
+      "community": 9,
       "norm_label": "execute()",
       "id": "routers_notebook_execute"
     },
@@ -539,7 +581,7 @@
       "file_type": "code",
       "source_file": "api/routers/notebook.py",
       "source_location": "L19",
-      "community": 7,
+      "community": 9,
       "norm_label": "reset()",
       "id": "routers_notebook_reset"
     },
@@ -548,7 +590,7 @@
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 7,
       "norm_label": "submissions.py",
       "id": "api_routers_submissions_py"
     },
@@ -557,7 +599,7 @@
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
       "source_location": "L20",
-      "community": 4,
+      "community": 7,
       "norm_label": "submit()",
       "id": "routers_submissions_submit"
     },
@@ -566,7 +608,7 @@
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
       "source_location": "L85",
-      "community": 4,
+      "community": 7,
       "norm_label": "get_my_submissions()",
       "id": "routers_submissions_get_my_submissions"
     },
@@ -683,7 +725,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "problems.py",
       "id": "api_services_problems_py"
     },
@@ -692,7 +734,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L20",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_all()",
       "id": "services_problems_get_all"
     },
@@ -701,7 +743,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L25",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_by_slug()",
       "id": "services_problems_get_by_slug"
     },
@@ -710,7 +752,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L32",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_by_id()",
       "id": "services_problems_get_by_id"
     },
@@ -719,7 +761,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L39",
-      "community": 4,
+      "community": 8,
       "norm_label": "increment_solve_count()",
       "id": "services_problems_increment_solve_count"
     },
@@ -728,7 +770,7 @@
       "file_type": "code",
       "source_file": "api/services/problems.py",
       "source_location": "L43",
-      "community": 4,
+      "community": 8,
       "norm_label": "upsert_from_json()",
       "id": "services_problems_upsert_from_json"
     },
@@ -737,7 +779,7 @@
       "file_type": "code",
       "source_file": "api/services/users.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "users.py",
       "id": "api_services_users_py"
     },
@@ -746,7 +788,7 @@
       "file_type": "code",
       "source_file": "api/services/users.py",
       "source_location": "L7",
-      "community": 8,
+      "community": 10,
       "norm_label": "get_by_clerk_id()",
       "id": "services_users_get_by_clerk_id"
     },
@@ -755,7 +797,7 @@
       "file_type": "code",
       "source_file": "api/services/users.py",
       "source_location": "L11",
-      "community": 8,
+      "community": 10,
       "norm_label": "upsert()",
       "id": "services_users_upsert"
     },
@@ -764,7 +806,7 @@
       "file_type": "code",
       "source_file": "api/services/users.py",
       "source_location": "L38",
-      "community": 8,
+      "community": 10,
       "norm_label": "set_nickname()",
       "id": "services_users_set_nickname"
     },
@@ -773,7 +815,7 @@
       "file_type": "code",
       "source_file": "api/services/__init__.py",
       "source_location": "L1",
-      "community": 44,
+      "community": 46,
       "norm_label": "__init__.py",
       "id": "api_services_init_py"
     },
@@ -782,7 +824,7 @@
       "file_type": "code",
       "source_file": "api/services/notebook.py",
       "source_location": "L1",
-      "community": 7,
+      "community": 9,
       "norm_label": "notebook.py",
       "id": "api_services_notebook_py"
     },
@@ -791,7 +833,7 @@
       "file_type": "code",
       "source_file": "api/services/notebook.py",
       "source_location": "L26",
-      "community": 7,
+      "community": 9,
       "norm_label": "_conn()",
       "id": "services_notebook_conn"
     },
@@ -800,7 +842,7 @@
       "file_type": "code",
       "source_file": "api/services/notebook.py",
       "source_location": "L31",
-      "community": 7,
+      "community": 9,
       "norm_label": "_escape()",
       "id": "services_notebook_escape"
     },
@@ -809,7 +851,7 @@
       "file_type": "code",
       "source_file": "api/services/notebook.py",
       "source_location": "L43",
-      "community": 7,
+      "community": 9,
       "norm_label": "execute_cell()",
       "id": "services_notebook_execute_cell"
     },
@@ -818,7 +860,7 @@
       "file_type": "code",
       "source_file": "api/services/notebook.py",
       "source_location": "L95",
-      "community": 7,
+      "community": 9,
       "norm_label": "reset_notebook()",
       "id": "services_notebook_reset_notebook"
     },
@@ -827,7 +869,7 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L1",
-      "community": 7,
+      "community": 9,
       "norm_label": "notebook execution service.  connects to a dedicated q process on qlab_nb_port (",
       "id": "services_notebook_rationale_1"
     },
@@ -836,7 +878,7 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L32",
-      "community": 7,
+      "community": 9,
       "norm_label": "escape a code string for embedding inside a q double-quoted string.",
       "id": "services_notebook_rationale_32"
     },
@@ -845,7 +887,7 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L44",
-      "community": 7,
+      "community": 9,
       "norm_label": "evaluate cell_code on the notebook q process and return the result     as a form",
       "id": "services_notebook_rationale_44"
     },
@@ -854,7 +896,7 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L93",
-      "community": 7,
+      "community": 9,
       "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses",
       "id": "services_notebook_rationale_93"
     },
@@ -863,7 +905,7 @@
       "file_type": "code",
       "source_file": "api/services/auth.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 12,
       "norm_label": "auth.py",
       "id": "api_services_auth_py"
     },
@@ -872,7 +914,7 @@
       "file_type": "code",
       "source_file": "api/services/auth.py",
       "source_location": "L12",
-      "community": 11,
+      "community": 12,
       "norm_label": "_get_jwks_client()",
       "id": "services_auth_get_jwks_client"
     },
@@ -881,7 +923,7 @@
       "file_type": "code",
       "source_file": "api/services/auth.py",
       "source_location": "L20",
-      "community": 11,
+      "community": 12,
       "norm_label": "verify_clerk_token()",
       "id": "services_auth_verify_clerk_token"
     },
@@ -890,7 +932,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 7,
       "norm_label": "submissions.py",
       "id": "api_services_submissions_py"
     },
@@ -899,7 +941,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L6",
-      "community": 4,
+      "community": 7,
       "norm_label": "insert()",
       "id": "services_submissions_insert"
     },
@@ -908,7 +950,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L33",
-      "community": 4,
+      "community": 7,
       "norm_label": "get_leaderboard()",
       "id": "services_submissions_get_leaderboard"
     },
@@ -917,7 +959,7 @@
       "file_type": "code",
       "source_file": "api/services/submissions.py",
       "source_location": "L62",
-      "community": 4,
+      "community": 7,
       "norm_label": "get_for_user()",
       "id": "services_submissions_get_for_user"
     },
@@ -926,7 +968,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "problempanel.ts",
       "id": "vscode_extension_src_problempanel_ts"
     },
@@ -935,7 +977,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L8",
-      "community": 1,
+      "community": 2,
       "norm_label": "problempanel",
       "id": "src_problempanel_problempanel"
     },
@@ -944,7 +986,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L16",
-      "community": 1,
+      "community": 2,
       "norm_label": ".open()",
       "id": "src_problempanel_problempanel_open"
     },
@@ -953,7 +995,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L54",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()",
       "id": "src_problempanel_problempanel_constructor"
     },
@@ -962,7 +1004,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L80",
-      "community": 1,
+      "community": 2,
       "norm_label": "._handlemessage()",
       "id": "src_problempanel_problempanel_handlemessage"
     },
@@ -971,7 +1013,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L116",
-      "community": 1,
+      "community": 2,
       "norm_label": "._sendeditorcode()",
       "id": "src_problempanel_problempanel_sendeditorcode"
     },
@@ -980,7 +1022,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L133",
-      "community": 1,
+      "community": 2,
       "norm_label": "._handlesubmit()",
       "id": "src_problempanel_problempanel_handlesubmit"
     },
@@ -989,7 +1031,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L163",
-      "community": 1,
+      "community": 2,
       "norm_label": "._handleruntest()",
       "id": "src_problempanel_problempanel_handleruntest"
     },
@@ -998,7 +1040,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L178",
-      "community": 1,
+      "community": 2,
       "norm_label": "._sendleaderboard()",
       "id": "src_problempanel_problempanel_sendleaderboard"
     },
@@ -1007,7 +1049,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L187",
-      "community": 1,
+      "community": 2,
       "norm_label": "._sendmysubmissions()",
       "id": "src_problempanel_problempanel_sendmysubmissions"
     },
@@ -1016,7 +1058,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L222",
-      "community": 1,
+      "community": 2,
       "norm_label": "._post()",
       "id": "src_problempanel_problempanel_post"
     },
@@ -1025,7 +1067,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L226",
-      "community": 1,
+      "community": 2,
       "norm_label": "._dispose()",
       "id": "src_problempanel_problempanel_dispose"
     },
@@ -1034,7 +1076,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L233",
-      "community": 1,
+      "community": 2,
       "norm_label": ".opensolutionfile()",
       "id": "src_problempanel_problempanel_opensolutionfile"
     },
@@ -1042,8 +1084,8 @@
       "label": "nonce()",
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L293",
-      "community": 1,
+      "source_location": "L306",
+      "community": 2,
       "norm_label": "nonce()",
       "id": "src_problempanel_nonce"
     },
@@ -1051,8 +1093,8 @@
       "label": "esc()",
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L297",
-      "community": 1,
+      "source_location": "L310",
+      "community": 2,
       "norm_label": "esc()",
       "id": "src_problempanel_esc"
     },
@@ -1060,8 +1102,8 @@
       "label": "buildHtml()",
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L305",
-      "community": 1,
+      "source_location": "L318",
+      "community": 2,
       "norm_label": "buildhtml()",
       "id": "src_problempanel_buildhtml"
     },
@@ -1070,7 +1112,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L1",
-      "community": 9,
+      "community": 11,
       "norm_label": "problemsprovider.ts",
       "id": "vscode_extension_src_problemsprovider_ts"
     },
@@ -1079,7 +1121,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L5",
-      "community": 9,
+      "community": 11,
       "norm_label": "problemsprovider",
       "id": "src_problemsprovider_problemsprovider"
     },
@@ -1088,7 +1130,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L12",
-      "community": 9,
+      "community": 11,
       "norm_label": ".constructor()",
       "id": "src_problemsprovider_problemsprovider_constructor"
     },
@@ -1097,7 +1139,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L14",
-      "community": 9,
+      "community": 11,
       "norm_label": ".refresh()",
       "id": "src_problemsprovider_problemsprovider_refresh"
     },
@@ -1106,7 +1148,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L18",
-      "community": 9,
+      "community": 11,
       "norm_label": ".gettreeitem()",
       "id": "src_problemsprovider_problemsprovider_gettreeitem"
     },
@@ -1115,7 +1157,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L22",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getchildren()",
       "id": "src_problemsprovider_problemsprovider_getchildren"
     },
@@ -1124,7 +1166,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L57",
-      "community": 9,
+      "community": 11,
       "norm_label": "difficultygroup",
       "id": "src_problemsprovider_difficultygroup"
     },
@@ -1133,7 +1175,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L58",
-      "community": 9,
+      "community": 11,
       "norm_label": ".constructor()",
       "id": "src_problemsprovider_difficultygroup_constructor"
     },
@@ -1142,7 +1184,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L74",
-      "community": 9,
+      "community": 11,
       "norm_label": "problemitem",
       "id": "src_problemsprovider_problemitem"
     },
@@ -1151,7 +1193,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L75",
-      "community": 9,
+      "community": 11,
       "norm_label": ".constructor()",
       "id": "src_problemsprovider_problemitem_constructor"
     },
@@ -1160,7 +1202,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L94",
-      "community": 9,
+      "community": 11,
       "norm_label": "erroritem",
       "id": "src_problemsprovider_erroritem"
     },
@@ -1169,7 +1211,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L95",
-      "community": 9,
+      "community": 11,
       "norm_label": ".constructor()",
       "id": "src_problemsprovider_erroritem_constructor"
     },
@@ -1178,7 +1220,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "api.ts",
       "id": "vscode_extension_src_api_ts"
     },
@@ -1186,8 +1228,8 @@
       "label": "QLabApi",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L108",
-      "community": 1,
+      "source_location": "L109",
+      "community": 2,
       "norm_label": "qlabapi",
       "id": "src_api_qlabapi"
     },
@@ -1195,8 +1237,8 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L109",
-      "community": 1,
+      "source_location": "L110",
+      "community": 2,
       "norm_label": ".constructor()",
       "id": "src_api_qlabapi_constructor"
     },
@@ -1204,8 +1246,8 @@
       "label": ".get()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L114",
-      "community": 1,
+      "source_location": "L115",
+      "community": 2,
       "norm_label": ".get()",
       "id": "src_api_qlabapi_get"
     },
@@ -1213,8 +1255,8 @@
       "label": ".post()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L122",
-      "community": 1,
+      "source_location": "L123",
+      "community": 2,
       "norm_label": ".post()",
       "id": "src_api_qlabapi_post"
     },
@@ -1222,8 +1264,8 @@
       "label": ".authGet()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L154",
-      "community": 1,
+      "source_location": "L155",
+      "community": 2,
       "norm_label": ".authget()",
       "id": "src_api_qlabapi_authget"
     },
@@ -1231,8 +1273,8 @@
       "label": ".getProblems()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L167",
-      "community": 1,
+      "source_location": "L168",
+      "community": 2,
       "norm_label": ".getproblems()",
       "id": "src_api_qlabapi_getproblems"
     },
@@ -1240,8 +1282,8 @@
       "label": ".getProblem()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L171",
-      "community": 1,
+      "source_location": "L172",
+      "community": 2,
       "norm_label": ".getproblem()",
       "id": "src_api_qlabapi_getproblem"
     },
@@ -1249,8 +1291,8 @@
       "label": ".getLeaderboard()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L175",
-      "community": 1,
+      "source_location": "L176",
+      "community": 2,
       "norm_label": ".getleaderboard()",
       "id": "src_api_qlabapi_getleaderboard"
     },
@@ -1258,8 +1300,8 @@
       "label": ".getMySubmissions()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L179",
-      "community": 1,
+      "source_location": "L180",
+      "community": 2,
       "norm_label": ".getmysubmissions()",
       "id": "src_api_qlabapi_getmysubmissions"
     },
@@ -1267,8 +1309,8 @@
       "label": ".submitSolution()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L192",
-      "community": 1,
+      "source_location": "L193",
+      "community": 2,
       "norm_label": ".submitsolution()",
       "id": "src_api_qlabapi_submitsolution"
     },
@@ -1276,8 +1318,8 @@
       "label": ".executeCode()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L212",
-      "community": 1,
+      "source_location": "L213",
+      "community": 2,
       "norm_label": ".executecode()",
       "id": "src_api_qlabapi_executecode"
     },
@@ -1285,8 +1327,8 @@
       "label": ".resetNotebook()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L217",
-      "community": 1,
+      "source_location": "L218",
+      "community": 2,
       "norm_label": ".resetnotebook()",
       "id": "src_api_qlabapi_resetnotebook"
     },
@@ -1295,7 +1337,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L1",
-      "community": 13,
+      "community": 14,
       "norm_label": "extension.ts",
       "id": "vscode_extension_src_extension_ts"
     },
@@ -1304,7 +1346,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L22",
-      "community": 13,
+      "community": 14,
       "norm_label": "activate()",
       "id": "src_extension_activate"
     },
@@ -1313,7 +1355,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L230",
-      "community": 13,
+      "community": 14,
       "norm_label": "deactivate()",
       "id": "src_extension_deactivate"
     },
@@ -1326,7 +1368,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 45,
+      "community": 47,
       "norm_label": "qlab readme",
       "id": "readme_qlab"
     },
@@ -1339,7 +1381,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlab future improvements backlog",
       "id": "future_improvements"
     },
@@ -1352,7 +1394,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlab production build spec",
       "id": "production_spec"
     },
@@ -1365,7 +1407,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlab implementation summary (phases 2-4)",
       "id": "impl_summary"
     },
@@ -1378,7 +1420,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "plan: user registration and submission tagging",
       "id": "plan_user_reg"
     },
@@ -1391,7 +1433,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "authentication implementation plan",
       "id": "plan_auth"
     },
@@ -1404,7 +1446,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "user registration, nickname & my submissions implementation plan",
       "id": "plan_user_reg2"
     },
@@ -1417,7 +1459,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "user registration, nickname and my submissions design spec",
       "id": "spec_user_reg"
     },
@@ -1430,7 +1472,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "authentication design spec",
       "id": "spec_auth"
     },
@@ -1443,7 +1485,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 20,
       "norm_label": "qlab vs code extension icon (svg)",
       "id": "icon_svg"
     },
@@ -1456,7 +1498,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 20,
       "norm_label": "qlab vs code extension icon (png)",
       "id": "icon_png"
     },
@@ -1469,7 +1511,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "clerk authentication provider",
       "id": "clerk_auth"
     },
@@ -1482,7 +1524,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "mongodb with motor async driver",
       "id": "mongodb_motor"
     },
@@ -1495,7 +1537,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "next.js web app (web/)",
       "id": "nextjs_web"
     },
@@ -1508,7 +1550,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "docker container judge sandbox",
       "id": "docker_judge_sandbox"
     },
@@ -1521,7 +1563,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "verify_clerk_token fastapi dependency",
       "id": "verify_clerk_token"
     },
@@ -1534,7 +1576,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "post /webhooks/clerk endpoint",
       "id": "clerk_webhook_endpoint"
     },
@@ -1547,7 +1589,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "svix webhook signature verification",
       "id": "svix_verification"
     },
@@ -1560,7 +1602,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "mongodb users collection",
       "id": "mongodb_users_collection"
     },
@@ -1573,7 +1615,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "mongodb submissions collection",
       "id": "mongodb_submissions_collection"
     },
@@ -1586,7 +1628,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "mongodb problems collection",
       "id": "mongodb_problems_collection"
     },
@@ -1599,7 +1641,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "patch /users/me/nickname endpoint",
       "id": "nickname_endpoint"
     },
@@ -1612,7 +1654,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "get /submissions/me endpoint",
       "id": "my_submissions_endpoint"
     },
@@ -1625,7 +1667,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "my submissions tab (vs code webview)",
       "id": "my_submissions_tab"
     },
@@ -1638,7 +1680,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "/profile/setup next.js page",
       "id": "profile_setup_page"
     },
@@ -1651,7 +1693,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "/auth/callback next.js page",
       "id": "auth_callback_page"
     },
@@ -1664,7 +1706,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "vs code secretstorage (token store)",
       "id": "secret_storage"
     },
@@ -1677,7 +1719,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlab.signin vs code command",
       "id": "qlab_sign_in_cmd"
     },
@@ -1690,7 +1732,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlab.openprofile vs code command",
       "id": "qlab_open_profile_cmd"
     },
@@ -1703,7 +1745,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "api/requirements.txt (python dependencies)",
       "id": "requirements_txt"
     },
@@ -1716,7 +1758,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "phase 1: judge sandboxing",
       "id": "phase1_judge_sandboxing"
     },
@@ -1729,7 +1771,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "phase 2: mongodb migration",
       "id": "phase2_mongodb"
     },
@@ -1742,7 +1784,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "phase 3: clerk authentication",
       "id": "phase3_auth"
     },
@@ -1755,7 +1797,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "phase 4: user registration, nicknames & submission history",
       "id": "phase4_user_reg"
     },
@@ -1768,7 +1810,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 3,
       "norm_label": "qlabapi typescript http client",
       "id": "qlabapi_ts"
     },
@@ -1781,7 +1823,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 20,
       "norm_label": "qlab brand icon concept",
       "id": "icon_concept_qlab_brand"
     },
@@ -1790,7 +1832,7 @@
       "file_type": "code",
       "source_file": "main.py",
       "source_location": "L1",
-      "community": 14,
+      "community": 15,
       "norm_label": "main.py",
       "id": "main_py"
     },
@@ -1799,7 +1841,7 @@
       "file_type": "code",
       "source_file": "api/main.py",
       "source_location": "L23",
-      "community": 14,
+      "community": 15,
       "norm_label": "lifespan()",
       "id": "api_main_lifespan"
     },
@@ -1808,7 +1850,7 @@
       "file_type": "code",
       "source_file": "api/main.py",
       "source_location": "L75",
-      "community": 14,
+      "community": 15,
       "norm_label": "health()",
       "id": "api_main_health"
     },
@@ -2168,7 +2210,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-out/page.tsx",
       "source_location": "L1",
-      "community": 46,
+      "community": 48,
       "norm_label": "page.tsx",
       "id": "web_app_sign_out_page_tsx"
     },
@@ -2177,7 +2219,7 @@
       "file_type": "code",
       "source_file": "api/main.py",
       "source_location": "L1",
-      "community": 14,
+      "community": 15,
       "norm_label": "main.py",
       "id": "api_main_py"
     },
@@ -2186,7 +2228,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L9",
-      "community": 13,
+      "community": 14,
       "norm_label": "setsignedincontext()",
       "id": "src_extension_setsignedincontext"
     },
@@ -2199,7 +2241,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "signout",
       "id": "page_signout"
     },
@@ -2212,7 +2254,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "app (fastapi)",
       "id": "main_app"
     },
@@ -2225,7 +2267,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "lifespan",
       "id": "main_lifespan"
     },
@@ -2238,7 +2280,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 47,
+      "community": 49,
       "norm_label": "health",
       "id": "main_health"
     },
@@ -2251,7 +2293,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "get_me",
       "id": "users_get_me"
     },
@@ -2264,7 +2306,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "set_nickname",
       "id": "users_set_nickname"
     },
@@ -2277,7 +2319,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "activate",
       "id": "extension_activate"
     },
@@ -2290,7 +2332,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "setsignedincontext",
       "id": "extension_setsignedincontext"
     },
@@ -2303,7 +2345,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "urihandler",
       "id": "extension_urihandler"
     },
@@ -2316,7 +2358,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 50,
       "norm_label": "claude.md",
       "id": "claude_md"
     },
@@ -2329,7 +2371,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 27,
       "norm_label": "judge pipeline",
       "id": "concept_judge_pipeline"
     },
@@ -2342,7 +2384,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 27,
       "norm_label": "submission rules",
       "id": "concept_submission_rules"
     },
@@ -2355,7 +2397,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "clerk auth",
       "id": "concept_clerk_auth"
     },
@@ -2368,7 +2410,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "mongodb collections",
       "id": "concept_mongodb_collections"
     },
@@ -2539,7 +2581,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L28",
-      "community": 18,
+      "community": 19,
       "norm_label": "fetchqlabuser()",
       "id": "profile_page_fetchqlabuser"
     },
@@ -2547,7 +2589,7 @@
       "label": "TierConfig",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L150",
+      "source_location": "L151",
       "community": 0,
       "norm_label": "tierconfig",
       "id": "api_models_tierconfig"
@@ -2556,7 +2598,7 @@
       "label": "SolutionsConfig",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L155",
+      "source_location": "L156",
       "community": 0,
       "norm_label": "solutionsconfig",
       "id": "api_models_solutionsconfig"
@@ -2565,7 +2607,7 @@
       "label": "EditorialTier",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L161",
+      "source_location": "L162",
       "community": 0,
       "norm_label": "editorialtier",
       "id": "api_models_editorialtier"
@@ -2574,7 +2616,7 @@
       "label": "ReferenceTier",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L167",
+      "source_location": "L168",
       "community": 0,
       "norm_label": "referencetier",
       "id": "api_models_referencetier"
@@ -2583,7 +2625,7 @@
       "label": "CommunitySolution",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L173",
+      "source_location": "L174",
       "community": 0,
       "norm_label": "communitysolution",
       "id": "api_models_communitysolution"
@@ -2592,7 +2634,7 @@
       "label": "SolutionsResponse",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L182",
+      "source_location": "L183",
       "community": 0,
       "norm_label": "solutionsresponse",
       "id": "api_models_solutionsresponse"
@@ -2601,7 +2643,7 @@
       "label": "HintRevealResponse",
       "file_type": "code",
       "source_file": "api/models.py",
-      "source_location": "L192",
+      "source_location": "L193",
       "community": 0,
       "norm_label": "hintrevealresponse",
       "id": "api_models_hintrevealresponse"
@@ -2611,7 +2653,7 @@
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "solutions.py",
       "id": "api_routers_solutions_py"
     },
@@ -2620,7 +2662,7 @@
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L14",
-      "community": 4,
+      "community": 8,
       "norm_label": "get_solutions()",
       "id": "routers_solutions_get_solutions"
     },
@@ -2629,7 +2671,7 @@
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L31",
-      "community": 4,
+      "community": 8,
       "norm_label": "reveal_hint()",
       "id": "routers_solutions_reveal_hint"
     },
@@ -2683,7 +2725,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L201",
-      "community": 1,
+      "community": 2,
       "norm_label": "._sendsolutions()",
       "id": "src_problempanel_problempanel_sendsolutions"
     },
@@ -2692,7 +2734,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
       "source_location": "L212",
-      "community": 1,
+      "community": 2,
       "norm_label": "._revealnexthint()",
       "id": "src_problempanel_problempanel_revealnexthint"
     },
@@ -2700,8 +2742,8 @@
       "label": ".authPost()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L141",
-      "community": 1,
+      "source_location": "L142",
+      "community": 2,
       "norm_label": ".authpost()",
       "id": "src_api_qlabapi_authpost"
     },
@@ -2709,8 +2751,8 @@
       "label": ".getSolutions()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L183",
-      "community": 1,
+      "source_location": "L184",
+      "community": 2,
       "norm_label": ".getsolutions()",
       "id": "src_api_qlabapi_getsolutions"
     },
@@ -2718,8 +2760,8 @@
       "label": ".revealNextHint()",
       "file_type": "code",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L188",
-      "community": 1,
+      "source_location": "L189",
+      "community": 2,
       "norm_label": ".revealnexthint()",
       "id": "src_api_qlabapi_revealnexthint"
     },
@@ -2728,7 +2770,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L13",
-      "community": 13,
+      "community": 14,
       "norm_label": "jwtisexpired()",
       "id": "src_extension_jwtisexpired"
     },
@@ -2746,7 +2788,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/scripts/seed_problems.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "seed_problems.py",
       "id": "home_aiyer_qlab_scripts_seed_problems_py"
     },
@@ -2755,7 +2797,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/middleware.ts",
       "source_location": "L1",
-      "community": 49,
+      "community": 51,
       "norm_label": "middleware.ts",
       "id": "home_aiyer_qlab_web_middleware_ts"
     },
@@ -2764,7 +2806,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/auth/callback/page.tsx",
       "source_location": "L1",
-      "community": 16,
+      "community": 18,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_auth_callback_page_tsx"
     },
@@ -2773,7 +2815,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/profile/page.tsx",
       "source_location": "L1",
-      "community": 18,
+      "community": 19,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_profile_page_tsx"
     },
@@ -2782,25 +2824,16 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/web/app/sign-out/page.tsx",
       "source_location": "L1",
-      "community": 50,
+      "community": 52,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_sign_out_page_tsx"
-    },
-    {
-      "label": "models.py",
-      "file_type": "code",
-      "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L1",
-      "community": 0,
-      "norm_label": "models.py",
-      "id": "home_aiyer_qlab_api_models_py"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/main.py",
       "source_location": "L1",
-      "community": 14,
+      "community": 15,
       "norm_label": "main.py",
       "id": "home_aiyer_qlab_api_main_py"
     },
@@ -2809,7 +2842,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/webhooks.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "webhooks.py",
       "id": "home_aiyer_qlab_api_routers_webhooks_py"
     },
@@ -2818,7 +2851,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/users.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "users.py",
       "id": "home_aiyer_qlab_api_routers_users_py"
     },
@@ -2827,7 +2860,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/routers/solutions.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "solutions.py",
       "id": "home_aiyer_qlab_api_routers_solutions_py"
     },
@@ -2836,7 +2869,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/services/problems.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 8,
       "norm_label": "problems.py",
       "id": "home_aiyer_qlab_api_services_problems_py"
     },
@@ -2845,7 +2878,7 @@
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/api/services/users.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "users.py",
       "id": "home_aiyer_qlab_api_services_users_py"
     },
@@ -2859,29 +2892,11 @@
       "id": "home_aiyer_qlab_api_services_solutions_py"
     },
     {
-      "label": "ProblemPanel.ts",
-      "file_type": "code",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L1",
-      "community": 1,
-      "norm_label": "problempanel.ts",
-      "id": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
-    },
-    {
-      "label": "api.ts",
-      "file_type": "code",
-      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
-      "source_location": "L1",
-      "community": 1,
-      "norm_label": "api.ts",
-      "id": "home_aiyer_qlab_vscode_extension_src_api_ts"
-    },
-    {
       "label": "extension.ts",
       "file_type": "code",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/extension.ts",
       "source_location": "L1",
-      "community": 13,
+      "community": 14,
       "norm_label": "extension.ts",
       "id": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
@@ -2894,7 +2909,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "vs code extension structural improvements",
       "id": "new_future_vscode_extension_structural_improvements"
     },
@@ -2907,7 +2922,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "problempanel.ts god file (1131 lines)",
       "id": "new_future_problempanel_ts_god_file"
     },
@@ -2920,7 +2935,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "option a: split files (quick win)",
       "id": "new_future_option_a_split_files"
     },
@@ -2933,7 +2948,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "option b: esbuild + typescript webview",
       "id": "new_future_option_b_esbuild_typescript_webview"
     },
@@ -2946,7 +2961,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "option c: react webview (full gitlens-style)",
       "id": "new_future_option_c_react_webview"
     },
@@ -2959,7 +2974,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "src/webview/panel.html",
       "id": "new_future_webview_panel_html"
     },
@@ -2972,7 +2987,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "src/webview/panel.css",
       "id": "new_future_webview_panel_css"
     },
@@ -2985,7 +3000,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "src/webview/panel.ts",
       "id": "new_future_webview_panel_ts"
     },
@@ -2998,7 +3013,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "esbuild.js build script",
       "id": "new_future_esbuild_build_script"
     },
@@ -3011,7 +3026,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "template literal backtick escaping bug",
       "id": "new_future_template_literal_backtick_bug"
     },
@@ -3024,7 +3039,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "solutions / editorial tab implementation plan",
       "id": "solutions_tab_plan_implementation_plan"
     },
@@ -3037,7 +3052,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 1,
       "norm_label": "solutions tab (vs code panel)",
       "id": "solutions_tab_plan_solutions_tab"
     },
@@ -3050,7 +3065,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "solutions_config (problem.json field)",
       "id": "solutions_tab_plan_solutions_config"
     },
@@ -3063,7 +3078,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "hint_reveals mongodb collection",
       "id": "solutions_tab_plan_hint_reveals_collection"
     },
@@ -3076,7 +3091,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "get /problems/:slug/solutions endpoint",
       "id": "solutions_tab_plan_get_solutions_endpoint"
     },
@@ -3089,7 +3104,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "post /problems/:slug/solutions/hints/reveal endpoint",
       "id": "solutions_tab_plan_post_reveal_hint_endpoint"
     },
@@ -3102,7 +3117,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "api/routers/solutions.py",
       "id": "solutions_tab_plan_solutions_router"
     },
@@ -3115,7 +3130,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "api/services/solutions.py",
       "id": "solutions_tab_plan_solutions_service"
     },
@@ -3128,7 +3143,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "compute_solutions function",
       "id": "solutions_tab_plan_compute_solutions"
     },
@@ -3141,7 +3156,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "increment_hint_reveals function",
       "id": "solutions_tab_plan_increment_hint_reveals"
     },
@@ -3154,7 +3169,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 23,
+      "community": 28,
       "norm_label": "solutionsconfig pydantic model",
       "id": "solutions_tab_plan_solutions_config_model"
     },
@@ -3167,7 +3182,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 16,
       "norm_label": "solutionsresponse pydantic model",
       "id": "solutions_tab_plan_solutions_response_model"
     },
@@ -3180,7 +3195,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 51,
+      "community": 53,
       "norm_label": "hintrevealresponse pydantic model",
       "id": "solutions_tab_plan_hint_reveal_response_model"
     },
@@ -3193,7 +3208,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 23,
+      "community": 28,
       "norm_label": "tierconfig pydantic model",
       "id": "solutions_tab_plan_tier_config_model"
     },
@@ -3206,7 +3221,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 16,
       "norm_label": "editorialtier pydantic model",
       "id": "solutions_tab_plan_editorial_tier_model"
     },
@@ -3219,7 +3234,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 16,
       "norm_label": "referencetier pydantic model",
       "id": "solutions_tab_plan_reference_tier_model"
     },
@@ -3232,7 +3247,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 16,
       "norm_label": "communitysolution pydantic model",
       "id": "solutions_tab_plan_community_solution_model"
     },
@@ -3245,7 +3260,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "reference_solution field (problems collection)",
       "id": "solutions_tab_plan_reference_solution_field"
     },
@@ -3258,7 +3273,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "scripts/seed_problems.py",
       "id": "solutions_tab_plan_seed_problems_py"
     },
@@ -3271,7 +3286,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "vscode-extension/src/api.ts",
       "id": "solutions_tab_plan_api_ts"
     },
@@ -3284,7 +3299,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "getsolutions typescript method",
       "id": "solutions_tab_plan_get_solutions_ts"
     },
@@ -3297,7 +3312,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "revealnexthint typescript method",
       "id": "solutions_tab_plan_reveal_next_hint_ts"
     },
@@ -3310,7 +3325,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "authpost private typescript method",
       "id": "solutions_tab_plan_auth_post_ts"
     },
@@ -3323,7 +3338,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 52,
+      "community": 54,
       "norm_label": "tests/test_solutions.py",
       "id": "solutions_tab_plan_test_solutions_py"
     },
@@ -3336,7 +3351,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "_summary_projection (problems service)",
       "id": "solutions_tab_plan_summary_projection"
     },
@@ -3349,7 +3364,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "solutions / editorial tab design spec",
       "id": "solutions_tab_design_solutions_tab_design"
     },
@@ -3362,7 +3377,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "content tiers (hints/editorial/reference/community)",
       "id": "solutions_tab_design_content_tiers"
     },
@@ -3375,7 +3390,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "hints tier",
       "id": "solutions_tab_design_hints_tier"
     },
@@ -3388,7 +3403,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "editorial tier",
       "id": "solutions_tab_design_editorial_tier"
     },
@@ -3401,7 +3416,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "reference tier",
       "id": "solutions_tab_design_reference_tier"
     },
@@ -3414,7 +3429,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "community tier",
       "id": "solutions_tab_design_community_tier"
     },
@@ -3427,7 +3442,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "gate: attempts unlock rule",
       "id": "solutions_tab_design_gate_attempts"
     },
@@ -3440,7 +3455,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "gate: correct unlock rule",
       "id": "solutions_tab_design_gate_correct"
     },
@@ -3453,7 +3468,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "lock overlay (no attempts state)",
       "id": "solutions_tab_design_lock_overlay"
     },
@@ -3466,7 +3481,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "server-side content gating",
       "id": "solutions_tab_design_server_side_gating"
     },
@@ -3479,7 +3494,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "lazy loading (solutions fetch on tab click)",
       "id": "solutions_tab_design_lazy_loading"
     },
@@ -3492,7 +3507,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "mermaid diagram rendering (out of scope)",
       "id": "solutions_tab_design_mermaid_out_of_scope"
     },
@@ -3505,7 +3520,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 1,
       "norm_label": "editorial field (problems collection, markdown string)",
       "id": "solutions_tab_design_editorial_field"
     },
@@ -3514,7 +3529,7 @@
       "file_type": "code",
       "source_file": "web/postcss.config.js",
       "source_location": "L1",
-      "community": 53,
+      "community": 55,
       "norm_label": "postcss.config.js",
       "id": "web_postcss_config_js"
     },
@@ -3523,7 +3538,7 @@
       "file_type": "code",
       "source_file": "web/tailwind.config.js",
       "source_location": "L1",
-      "community": 54,
+      "community": 56,
       "norm_label": "tailwind.config.js",
       "id": "web_tailwind_config_js"
     },
@@ -3532,7 +3547,7 @@
       "file_type": "code",
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L1",
-      "community": 55,
+      "community": 57,
       "norm_label": "page.tsx",
       "id": "web_app_problems_page_tsx"
     },
@@ -3541,7 +3556,7 @@
       "file_type": "code",
       "source_file": "web/app/problems/[slug]/page.tsx",
       "source_location": "L1",
-      "community": 56,
+      "community": 58,
       "norm_label": "page.tsx",
       "id": "web_app_problems_slug_page_tsx"
     },
@@ -3550,7 +3565,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
-      "community": 24,
+      "community": 21,
       "norm_label": "usemysubmissions.ts",
       "id": "web_hooks_usemysubmissions_ts"
     },
@@ -3559,7 +3574,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L6",
-      "community": 24,
+      "community": 21,
       "norm_label": "usemysubmissions()",
       "id": "hooks_usemysubmissions_usemysubmissions"
     },
@@ -3568,7 +3583,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useProblem.ts",
       "source_location": "L1",
-      "community": 25,
+      "community": 29,
       "norm_label": "useproblem.ts",
       "id": "web_hooks_useproblem_ts"
     },
@@ -3577,7 +3592,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useProblem.ts",
       "source_location": "L6",
-      "community": 25,
+      "community": 29,
       "norm_label": "useproblem()",
       "id": "hooks_useproblem_useproblem"
     },
@@ -3586,7 +3601,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L1",
-      "community": 26,
+      "community": 30,
       "norm_label": "useproblems.ts",
       "id": "web_hooks_useproblems_ts"
     },
@@ -3595,7 +3610,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L6",
-      "community": 26,
+      "community": 30,
       "norm_label": "useproblems()",
       "id": "hooks_useproblems_useproblems"
     },
@@ -3604,7 +3619,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useTest.ts",
       "source_location": "L1",
-      "community": 27,
+      "community": 31,
       "norm_label": "usetest.ts",
       "id": "web_hooks_usetest_ts"
     },
@@ -3613,7 +3628,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useTest.ts",
       "source_location": "L6",
-      "community": 27,
+      "community": 31,
       "norm_label": "usetest()",
       "id": "hooks_usetest_usetest"
     },
@@ -3622,7 +3637,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useSolutions.ts",
       "source_location": "L1",
-      "community": 28,
+      "community": 32,
       "norm_label": "usesolutions.ts",
       "id": "web_hooks_usesolutions_ts"
     },
@@ -3631,7 +3646,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useSolutions.ts",
       "source_location": "L6",
-      "community": 28,
+      "community": 32,
       "norm_label": "usesolutions()",
       "id": "hooks_usesolutions_usesolutions"
     },
@@ -3640,7 +3655,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L1",
-      "community": 29,
+      "community": 33,
       "norm_label": "usesubmit.ts",
       "id": "web_hooks_usesubmit_ts"
     },
@@ -3649,7 +3664,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L6",
-      "community": 29,
+      "community": 33,
       "norm_label": "usesubmit()",
       "id": "hooks_usesubmit_usesubmit"
     },
@@ -3658,7 +3673,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L1",
-      "community": 30,
+      "community": 34,
       "norm_label": "userevealhint.ts",
       "id": "web_hooks_userevealhint_ts"
     },
@@ -3667,7 +3682,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L6",
-      "community": 30,
+      "community": 34,
       "norm_label": "userevealhint()",
       "id": "hooks_userevealhint_userevealhint"
     },
@@ -3676,7 +3691,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L1",
-      "community": 31,
+      "community": 35,
       "norm_label": "useleaderboard.ts",
       "id": "web_hooks_useleaderboard_ts"
     },
@@ -3685,7 +3700,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L6",
-      "community": 31,
+      "community": 35,
       "norm_label": "useleaderboard()",
       "id": "hooks_useleaderboard_useleaderboard"
     },
@@ -3694,7 +3709,7 @@
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
-      "community": 32,
+      "community": 17,
       "norm_label": "problemlayout.tsx",
       "id": "web_components_problemlayout_tsx"
     },
@@ -3702,8 +3717,8 @@
       "label": "starterCode()",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
-      "source_location": "L18",
-      "community": 32,
+      "source_location": "L19",
+      "community": 17,
       "norm_label": "startercode()",
       "id": "components_problemlayout_startercode"
     },
@@ -3712,7 +3727,7 @@
       "file_type": "code",
       "source_file": "web/components/ProblemsTable.tsx",
       "source_location": "L1",
-      "community": 57,
+      "community": 59,
       "norm_label": "problemstable.tsx",
       "id": "web_components_problemstable_tsx"
     },
@@ -3721,7 +3736,7 @@
       "file_type": "code",
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L1",
-      "community": 33,
+      "community": 36,
       "norm_label": "codeeditor.tsx",
       "id": "web_components_codeeditor_tsx"
     },
@@ -3730,7 +3745,7 @@
       "file_type": "code",
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L13",
-      "community": 33,
+      "community": 36,
       "norm_label": "codeeditor()",
       "id": "components_codeeditor_codeeditor"
     },
@@ -3739,7 +3754,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/LeaderboardTab.tsx",
       "source_location": "L1",
-      "community": 58,
+      "community": 60,
       "norm_label": "leaderboardtab.tsx",
       "id": "web_components_tabs_leaderboardtab_tsx"
     },
@@ -3748,7 +3763,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/DescriptionTab.tsx",
       "source_location": "L1",
-      "community": 59,
+      "community": 61,
       "norm_label": "descriptiontab.tsx",
       "id": "web_components_tabs_descriptiontab_tsx"
     },
@@ -3757,7 +3772,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L1",
-      "community": 34,
+      "community": 37,
       "norm_label": "testtab.tsx",
       "id": "web_components_tabs_testtab_tsx"
     },
@@ -3766,7 +3781,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L13",
-      "community": 34,
+      "community": 37,
       "norm_label": "handlerun()",
       "id": "tabs_testtab_handlerun"
     },
@@ -3775,7 +3790,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/SubmitTab.tsx",
       "source_location": "L1",
-      "community": 4,
+      "community": 7,
       "norm_label": "submittab.tsx",
       "id": "web_components_tabs_submittab_tsx"
     },
@@ -3784,7 +3799,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/SubmitTab.tsx",
       "source_location": "L33",
-      "community": 4,
+      "community": 7,
       "norm_label": "handlesubmit()",
       "id": "tabs_submittab_handlesubmit"
     },
@@ -3793,7 +3808,7 @@
       "file_type": "code",
       "source_file": "web/components/tabs/SolutionsTab.tsx",
       "source_location": "L1",
-      "community": 60,
+      "community": 62,
       "norm_label": "solutionstab.tsx",
       "id": "web_components_tabs_solutionstab_tsx"
     },
@@ -3802,7 +3817,7 @@
       "file_type": "code",
       "source_file": "web/lib/api.ts",
       "source_location": "L1",
-      "community": 35,
+      "community": 22,
       "norm_label": "api.ts",
       "id": "web_lib_api_ts"
     },
@@ -3810,8 +3825,8 @@
       "label": "apiFetch()",
       "file_type": "code",
       "source_file": "web/lib/api.ts",
-      "source_location": "L121",
-      "community": 35,
+      "source_location": "L122",
+      "community": 22,
       "norm_label": "apifetch()",
       "id": "lib_api_apifetch"
     },
@@ -3820,9 +3835,615 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L96",
-      "community": 7,
+      "community": 9,
       "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses",
       "id": "services_notebook_rationale_96"
+    },
+    {
+      "label": "test_submissions_me.py",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L1",
+      "id": "tests_test_submissions_me_py",
+      "community": 7,
+      "norm_label": "test_submissions_me.py"
+    },
+    {
+      "label": "_AsyncCursor",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L9",
+      "id": "tests_test_submissions_me_asynccursor",
+      "community": 7,
+      "norm_label": "_asynccursor"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L10",
+      "id": "tests_test_submissions_me_asynccursor_init",
+      "community": 7,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".sort()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L14",
+      "id": "tests_test_submissions_me_asynccursor_sort",
+      "community": 7,
+      "norm_label": ".sort()"
+    },
+    {
+      "label": ".limit()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L17",
+      "id": "tests_test_submissions_me_asynccursor_limit",
+      "community": 7,
+      "norm_label": ".limit()"
+    },
+    {
+      "label": ".to_list()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L20",
+      "id": "tests_test_submissions_me_asynccursor_to_list",
+      "community": 7,
+      "norm_label": ".to_list()"
+    },
+    {
+      "label": "_SubmissionsCollection",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L24",
+      "id": "tests_test_submissions_me_submissionscollection",
+      "community": 7,
+      "norm_label": "_submissionscollection"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L25",
+      "id": "tests_test_submissions_me_submissionscollection_init",
+      "community": 7,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".find()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L30",
+      "id": "tests_test_submissions_me_submissionscollection_find",
+      "community": 7,
+      "norm_label": ".find()"
+    },
+    {
+      "label": "_Db",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L37",
+      "id": "tests_test_submissions_me_db",
+      "community": 7,
+      "norm_label": "_db"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L38",
+      "id": "tests_test_submissions_me_db_init",
+      "community": 7,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "test_get_for_user_includes_code_for_response_model()",
+      "file_type": "code",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L43",
+      "id": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "community": 7,
+      "norm_label": "test_get_for_user_includes_code_for_response_model()"
+    },
+    {
+      "label": "handleLoadCode()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L28",
+      "id": "components_problemlayout_handleloadcode",
+      "community": 17,
+      "norm_label": "handleloadcode()"
+    },
+    {
+      "label": "MySubmissionsTab.tsx",
+      "file_type": "code",
+      "source_file": "web/components/tabs/MySubmissionsTab.tsx",
+      "source_location": "L1",
+      "id": "web_components_tabs_mysubmissionstab_tsx",
+      "community": 23,
+      "norm_label": "mysubmissionstab.tsx"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "web/components/tabs/MySubmissionsTab.tsx",
+      "source_location": "L28",
+      "id": "tabs_mysubmissionstab_formatdate",
+      "community": 23,
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "test_submissions_me.py",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "community": 7,
+      "norm_label": "test_submissions_me.py"
+    },
+    {
+      "label": "useMySubmissions.ts",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/web/hooks/useMySubmissions.ts",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_web_hooks_usemysubmissions_ts",
+      "community": 21,
+      "norm_label": "usemysubmissions.ts"
+    },
+    {
+      "label": "ProblemLayout.tsx",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/web/components/ProblemLayout.tsx",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_web_components_problemlayout_tsx",
+      "community": 17,
+      "norm_label": "problemlayout.tsx"
+    },
+    {
+      "label": "MySubmissionsTab.tsx",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/web/components/tabs/MySubmissionsTab.tsx",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_web_components_tabs_mysubmissionstab_tsx",
+      "community": 23,
+      "norm_label": "mysubmissionstab.tsx"
+    },
+    {
+      "label": "api.ts",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/web/lib/api.ts",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_web_lib_api_ts",
+      "community": 22,
+      "norm_label": "api.ts"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_api_models_py",
+      "community": 0,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "submissions.py",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/api/services/submissions.py",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_api_services_submissions_py",
+      "community": 7,
+      "norm_label": "submissions.py"
+    },
+    {
+      "label": "ProblemPanel.ts",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "community": 2,
+      "norm_label": "problempanel.ts"
+    },
+    {
+      "label": "api.ts",
+      "file_type": "code",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L1",
+      "id": "home_aiyer_qlab_vscode_extension_src_api_ts",
+      "community": 2,
+      "norm_label": "api.ts"
+    },
+    {
+      "label": "qLab Future Scope",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_qlab_future_scope",
+      "community": 4,
+      "norm_label": "qlab future scope"
+    },
+    {
+      "label": "Web App Client",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Web App",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_web_app",
+      "community": 4,
+      "norm_label": "web app client"
+    },
+    {
+      "label": "VS Code Extension Client",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## VS Code Extension",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_vscode_extension",
+      "community": 4,
+      "norm_label": "vs code extension client"
+    },
+    {
+      "label": "ProblemPanel.ts Structural Refactor",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "### Structural refactor of ProblemPanel.ts",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_problempanel_refactor",
+      "community": 4,
+      "norm_label": "problempanel.ts structural refactor"
+    },
+    {
+      "label": "Backend / API Roadmap",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Backend / API",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_backend_api",
+      "community": 4,
+      "norm_label": "backend / api roadmap"
+    },
+    {
+      "label": "Auth & Users Roadmap",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Auth & Users",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_auth_users",
+      "community": 4,
+      "norm_label": "auth & users roadmap"
+    },
+    {
+      "label": "Content & Problems Roadmap",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Content & Problems",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_content_problems",
+      "community": 4,
+      "norm_label": "content & problems roadmap"
+    },
+    {
+      "label": "Infrastructure & Quality",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Infrastructure & Quality",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_infra_quality",
+      "community": 4,
+      "norm_label": "infrastructure & quality"
+    },
+    {
+      "label": "Web/Extension Parity Table",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": "## Cross-cutting",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_parity_table",
+      "community": 4,
+      "norm_label": "web/extension parity table"
+    },
+    {
+      "label": "Web My Submissions Tab (FUTURE)",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_my_submissions_web",
+      "community": 4,
+      "norm_label": "web my submissions tab (future)"
+    },
+    {
+      "label": "Wrong-answer Diff Feature",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_wrong_answer_diff",
+      "community": 4,
+      "norm_label": "wrong-answer diff feature"
+    },
+    {
+      "label": "Web My Submissions Tab Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "plan_web_submissions_tab",
+      "community": 4,
+      "norm_label": "web my submissions tab implementation plan"
+    },
+    {
+      "label": "Web My Submissions Tab Design Spec",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_web_submissions_tab_design",
+      "community": 4,
+      "norm_label": "web my submissions tab design spec"
+    },
+    {
+      "label": "MySubmissionsTab Component",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "### Frontend changes",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_my_submissions_tab_component",
+      "community": 4,
+      "norm_label": "mysubmissionstab component"
+    },
+    {
+      "label": "useMySubmissions TanStack Query Hook",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_use_my_submissions_hook",
+      "community": 4,
+      "norm_label": "usemysubmissions tanstack query hook"
+    },
+    {
+      "label": "MySubmissionEntry Pydantic Model",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_my_submission_entry_model",
+      "community": 4,
+      "norm_label": "mysubmissionentry pydantic model"
+    },
+    {
+      "label": "submissions.get_for_user Service",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_get_for_user_service",
+      "community": 4,
+      "norm_label": "submissions.get_for_user service"
+    },
+    {
+      "label": "GET /submissions/me Endpoint",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_submissions_me_endpoint",
+      "community": 4,
+      "norm_label": "get /submissions/me endpoint"
+    },
+    {
+      "label": "Click-to-Load Flow with Dirty-Editor Confirm",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "### Click-to-load flow",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_click_to_load_flow",
+      "community": 4,
+      "norm_label": "click-to-load flow with dirty-editor confirm"
+    },
+    {
+      "label": "ProblemLayout / problems/[slug]/page.tsx",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_problem_layout",
+      "community": 4,
+      "norm_label": "problemlayout / problems/[slug]/page.tsx"
+    },
+    {
+      "label": "useSubmit Cache Invalidation",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_use_submit_invalidation",
+      "community": 4,
+      "norm_label": "usesubmit cache invalidation"
+    },
+    {
+      "label": "Tab Ordering",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "## Tab ordering",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_tab_ordering",
+      "community": 4,
+      "norm_label": "tab ordering"
+    },
+    {
+      "label": "VS Code Phase 4 My Submissions Tab",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "## Background",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "spec_vscode_my_submissions_phase4",
+      "community": 4,
+      "norm_label": "vs code phase 4 my submissions tab"
+    },
+    {
+      "label": "tests/test_submissions_me.py Pytest Case",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "## Task 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "plan_test_submissions_me",
+      "community": 4,
+      "norm_label": "tests/test_submissions_me.py pytest case"
+    },
+    {
+      "label": "window.confirm Dirty-Check Dialog",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "plan_window_confirm",
+      "community": 4,
+      "norm_label": "window.confirm dirty-check dialog"
+    },
+    {
+      "label": "Status Color/Label Map",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "## Task 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "plan_status_color_map",
+      "community": 4,
+      "norm_label": "status color/label map"
+    },
+    {
+      "label": "Query Key ['mySubmissions', problemId]",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "plan_query_key_problem_id",
+      "community": 4,
+      "norm_label": "query key ['mysubmissions', problemid]"
+    },
+    {
+      "label": "Clerk Authentication",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_clerk_auth",
+      "community": 4,
+      "norm_label": "clerk authentication"
+    },
+    {
+      "label": "MongoDB Migration (Phase 2)",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_mongodb_migration",
+      "community": 4,
+      "norm_label": "mongodb migration (phase 2)"
+    },
+    {
+      "label": "Solutions Tab Design Spec (2026-05-04)",
+      "file_type": "document",
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "future_solutions_tab_spec",
+      "community": 4,
+      "norm_label": "solutions tab design spec (2026-05-04)"
     }
   ],
   "links": [
@@ -4358,7 +4979,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L150",
+      "source_location": "L151",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_tierconfig",
@@ -4370,7 +4991,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_solutionsconfig",
@@ -4382,7 +5003,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L161",
+      "source_location": "L162",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_editorialtier",
@@ -4394,7 +5015,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_referencetier",
@@ -4406,7 +5027,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_communitysolution",
@@ -4418,7 +5039,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L182",
+      "source_location": "L183",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_solutionsresponse",
@@ -4430,7 +5051,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/models.py",
-      "source_location": "L192",
+      "source_location": "L193",
       "weight": 1.0,
       "_src": "api_models_py",
       "_tgt": "api_models_hintrevealresponse",
@@ -4441,7 +5062,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L6",
       "weight": 1.0,
       "_src": "api_models_difficulty",
@@ -4453,7 +5074,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L6",
       "weight": 1.0,
       "_src": "api_models_difficulty",
@@ -4470,14 +5091,14 @@
       "weight": 1.0,
       "_src": "api_models_difficulty",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_difficulty",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L12",
       "weight": 1.0,
       "_src": "str",
@@ -4489,7 +5110,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L17",
       "weight": 1.0,
       "_src": "str",
@@ -4573,7 +5194,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L12",
       "weight": 1.0,
       "_src": "enum",
@@ -4585,7 +5206,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L17",
       "weight": 1.0,
       "_src": "enum",
@@ -4602,9 +5223,9 @@
       "weight": 1.0,
       "_src": "enum",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "enum",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4614,9 +5235,9 @@
       "weight": 1.0,
       "_src": "api_models_language",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_language",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "uses",
@@ -4710,14 +5331,14 @@
       "weight": 1.0,
       "_src": "api_models_submissionstatus",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_submissionstatus",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L31",
       "weight": 1.0,
       "_src": "api_models_submitrequest",
@@ -4734,14 +5355,14 @@
       "weight": 1.0,
       "_src": "api_models_submitrequest",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_submitrequest",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L59",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4753,7 +5374,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L75",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4765,7 +5386,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L85",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4777,7 +5398,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L91",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4789,7 +5410,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L107",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4801,7 +5422,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L117",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4813,7 +5434,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L130",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4825,7 +5446,7 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
+      "source_file": "/home/aiyer/qlab/api/models.py",
       "source_location": "L139",
       "weight": 1.0,
       "_src": "basemodel",
@@ -4849,8 +5470,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L150",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L151",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_tierconfig",
@@ -4861,8 +5482,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L155",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L156",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_solutionsconfig",
@@ -4873,8 +5494,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L161",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L162",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_editorialtier",
@@ -4885,8 +5506,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L167",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L168",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_referencetier",
@@ -4897,8 +5518,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L173",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L174",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_communitysolution",
@@ -4909,8 +5530,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L182",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L183",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_solutionsresponse",
@@ -4921,8 +5542,8 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
-      "source_file": "api/models.py",
-      "source_location": "L192",
+      "source_file": "/home/aiyer/qlab/api/models.py",
+      "source_location": "L193",
       "weight": 1.0,
       "_src": "basemodel",
       "_tgt": "api_models_hintrevealresponse",
@@ -4938,9 +5559,9 @@
       "weight": 1.0,
       "_src": "api_models_code_must_define_func",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_code_must_define_func",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4950,9 +5571,9 @@
       "weight": 1.0,
       "_src": "api_models_code_must_be_single_param",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_code_must_be_single_param",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4962,9 +5583,9 @@
       "weight": 1.0,
       "_src": "api_models_nicknamerequest",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_nicknamerequest",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4974,9 +5595,9 @@
       "weight": 1.0,
       "_src": "api_models_validate_nickname",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_validate_nickname",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4998,9 +5619,9 @@
       "weight": 1.0,
       "_src": "api_models_problemsummary",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_problemsummary",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5010,9 +5631,9 @@
       "weight": 1.0,
       "_src": "api_models_example",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_example",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -5034,9 +5655,9 @@
       "weight": 1.0,
       "_src": "api_models_problemdetail",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_problemdetail",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "uses",
@@ -5142,9 +5763,9 @@
       "weight": 1.0,
       "_src": "api_models_judgeresult",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_judgeresult",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -5166,9 +5787,9 @@
       "weight": 1.0,
       "_src": "api_models_submissionresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_submissionresponse",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -5190,9 +5811,57 @@
       "weight": 1.0,
       "_src": "api_models_leaderboardentry",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_leaderboardentry",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "api_models_mysubmissionentry",
+      "_tgt": "tests_test_submissions_me_asynccursor",
+      "source": "api_models_mysubmissionentry",
+      "target": "tests_test_submissions_me_asynccursor",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "api_models_mysubmissionentry",
+      "_tgt": "tests_test_submissions_me_submissionscollection",
+      "source": "api_models_mysubmissionentry",
+      "target": "tests_test_submissions_me_submissionscollection",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "_src": "api_models_mysubmissionentry",
+      "_tgt": "tests_test_submissions_me_db",
+      "source": "api_models_mysubmissionentry",
+      "target": "tests_test_submissions_me_db",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "api_models_mysubmissionentry",
+      "_tgt": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "source": "api_models_mysubmissionentry",
+      "target": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model"
     },
     {
       "relation": "contains",
@@ -5202,9 +5871,9 @@
       "weight": 1.0,
       "_src": "api_models_mysubmissionentry",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_mysubmissionentry",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6227,16 +6896,160 @@
       "target": "services_submissions_get_for_user"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/api/services/submissions.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "services_submissions_insert",
+      "_tgt": "home_aiyer_qlab_api_services_submissions_py",
+      "source": "services_submissions_insert",
+      "target": "home_aiyer_qlab_api_services_submissions_py",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L91",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "services_submissions_get_leaderboard",
+      "_tgt": "tests_test_submissions_me_asynccursor_sort",
+      "source": "services_submissions_get_leaderboard",
+      "target": "tests_test_submissions_me_asynccursor_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "services_submissions_get_leaderboard",
+      "_tgt": "tests_test_submissions_me_asynccursor_limit",
+      "source": "services_submissions_get_leaderboard",
+      "target": "tests_test_submissions_me_asynccursor_limit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "services_submissions_get_leaderboard",
+      "_tgt": "tests_test_submissions_me_asynccursor_to_list",
+      "source": "services_submissions_get_leaderboard",
+      "target": "tests_test_submissions_me_asynccursor_to_list"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "services_submissions_get_leaderboard",
+      "_tgt": "tests_test_submissions_me_submissionscollection_find",
+      "source": "services_submissions_get_leaderboard",
+      "target": "tests_test_submissions_me_submissionscollection_find"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/api/services/submissions.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "services_submissions_get_leaderboard",
+      "_tgt": "home_aiyer_qlab_api_services_submissions_py",
+      "source": "services_submissions_get_leaderboard",
+      "target": "home_aiyer_qlab_api_services_submissions_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L92",
       "weight": 1.0,
       "_src": "services_submissions_get_for_user",
       "_tgt": "src_api_qlabapi_get",
       "source": "services_submissions_get_for_user",
       "target": "src_api_qlabapi_get"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "tests_test_submissions_me_asynccursor_sort",
+      "source": "services_submissions_get_for_user",
+      "target": "tests_test_submissions_me_asynccursor_sort"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "tests_test_submissions_me_asynccursor_limit",
+      "source": "services_submissions_get_for_user",
+      "target": "tests_test_submissions_me_asynccursor_limit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "tests_test_submissions_me_asynccursor_to_list",
+      "source": "services_submissions_get_for_user",
+      "target": "tests_test_submissions_me_asynccursor_to_list"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "tests_test_submissions_me_submissionscollection_find",
+      "source": "services_submissions_get_for_user",
+      "target": "tests_test_submissions_me_submissionscollection_find"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "source": "services_submissions_get_for_user",
+      "target": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/api/services/submissions.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "services_submissions_get_for_user",
+      "_tgt": "home_aiyer_qlab_api_services_submissions_py",
+      "source": "services_submissions_get_for_user",
+      "target": "home_aiyer_qlab_api_services_submissions_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6254,7 +7067,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L293",
+      "source_location": "L306",
       "weight": 1.0,
       "_src": "vscode_extension_src_problempanel_ts",
       "_tgt": "src_problempanel_nonce",
@@ -6266,7 +7079,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L297",
+      "source_location": "L310",
       "weight": 1.0,
       "_src": "vscode_extension_src_problempanel_ts",
       "_tgt": "src_problempanel_esc",
@@ -6278,7 +7091,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L305",
+      "source_location": "L318",
       "weight": 1.0,
       "_src": "vscode_extension_src_problempanel_ts",
       "_tgt": "src_problempanel_buildhtml",
@@ -6289,7 +7102,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L16",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6301,7 +7114,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L54",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6313,7 +7126,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L80",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6325,7 +7138,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L116",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6337,7 +7150,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L133",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6349,7 +7162,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L163",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6361,7 +7174,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L178",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6373,7 +7186,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L187",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6385,7 +7198,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L222",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6397,7 +7210,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L226",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6409,7 +7222,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L233",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6421,7 +7234,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L201",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6433,7 +7246,7 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L212",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
@@ -6450,14 +7263,14 @@
       "weight": 1.0,
       "_src": "src_problempanel_problempanel",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0,
       "source": "src_problempanel_problempanel",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L49",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_open",
@@ -6481,7 +7294,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L63",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_constructor",
@@ -6493,7 +7306,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L75",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_constructor",
@@ -6505,7 +7318,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L83",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6517,7 +7330,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L87",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6529,7 +7342,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L91",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6541,7 +7354,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L95",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6553,7 +7366,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L99",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6565,7 +7378,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L103",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6577,7 +7390,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L107",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6589,7 +7402,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L111",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlemessage",
@@ -6601,7 +7414,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L125",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendeditorcode",
@@ -6612,8 +7425,20 @@
     },
     {
       "relation": "calls",
-      "confidence": "EXTRACTED",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_src": "src_problempanel_problempanel_sendeditorcode",
+      "_tgt": "tests_test_submissions_me_submissionscollection_find",
+      "source": "src_problempanel_problempanel_sendeditorcode",
+      "target": "tests_test_submissions_me_submissionscollection_find"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L134",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
@@ -6625,7 +7450,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L152",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
@@ -6649,7 +7474,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L154",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handlesubmit",
@@ -6661,7 +7486,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L164",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_handleruntest",
@@ -6685,7 +7510,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L181",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendleaderboard",
@@ -6709,7 +7534,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L195",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_sendmysubmissions",
@@ -6733,7 +7558,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L206",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_post",
@@ -6745,7 +7570,7 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
       "source_location": "L219",
       "weight": 1.0,
       "_src": "src_problempanel_problempanel_post",
@@ -6769,8 +7594,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L306",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_location": "L319",
       "weight": 1.0,
       "_src": "src_problempanel_nonce",
       "_tgt": "src_problempanel_buildhtml",
@@ -6782,19 +7607,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L293",
+      "source_location": "L306",
       "weight": 1.0,
       "_src": "src_problempanel_nonce",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0,
       "source": "src_problempanel_nonce",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L351",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
+      "source_location": "L364",
       "weight": 1.0,
       "_src": "src_problempanel_esc",
       "_tgt": "src_problempanel_buildhtml",
@@ -6806,25 +7631,25 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L297",
+      "source_location": "L310",
       "weight": 1.0,
       "_src": "src_problempanel_esc",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0,
       "source": "src_problempanel_esc",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/ProblemPanel.ts",
-      "source_location": "L305",
+      "source_location": "L318",
       "weight": 1.0,
       "_src": "src_problempanel_buildhtml",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
-      "confidence_score": 1.0,
       "source": "src_problempanel_buildhtml",
-      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts"
+      "target": "home_aiyer_qlab_vscode_extension_src_problempanel_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6974,7 +7799,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L108",
+      "source_location": "L109",
       "weight": 1.0,
       "_src": "vscode_extension_src_api_ts",
       "_tgt": "src_api_qlabapi",
@@ -6985,8 +7810,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L109",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L110",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_constructor",
@@ -6997,8 +7822,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L114",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L115",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_get",
@@ -7009,8 +7834,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L122",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L123",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_post",
@@ -7021,8 +7846,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L154",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L155",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_authget",
@@ -7033,8 +7858,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L167",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L168",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getproblems",
@@ -7045,8 +7870,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L171",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L172",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getproblem",
@@ -7057,8 +7882,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L175",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L176",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getleaderboard",
@@ -7069,8 +7894,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L179",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L180",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getmysubmissions",
@@ -7081,8 +7906,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L192",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L193",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_submitsolution",
@@ -7093,8 +7918,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L212",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L213",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_executecode",
@@ -7105,8 +7930,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L217",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L218",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_resetnotebook",
@@ -7117,8 +7942,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L141",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L142",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_authpost",
@@ -7129,8 +7954,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L183",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L184",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_getsolutions",
@@ -7141,8 +7966,8 @@
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L188",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L189",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "src_api_qlabapi_revealnexthint",
@@ -7154,19 +7979,19 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
-      "source_location": "L108",
+      "source_location": "L109",
       "weight": 1.0,
       "_src": "src_api_qlabapi",
       "_tgt": "home_aiyer_qlab_vscode_extension_src_api_ts",
-      "confidence_score": 1.0,
       "source": "src_api_qlabapi",
-      "target": "home_aiyer_qlab_vscode_extension_src_api_ts"
+      "target": "home_aiyer_qlab_vscode_extension_src_api_ts",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L168",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L169",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
       "_tgt": "src_api_qlabapi_getproblems",
@@ -7177,8 +8002,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L172",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L173",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
       "_tgt": "src_api_qlabapi_getproblem",
@@ -7189,8 +8014,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L176",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L177",
       "weight": 1.0,
       "_src": "src_api_qlabapi_get",
       "_tgt": "src_api_qlabapi_getleaderboard",
@@ -7273,8 +8098,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L218",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L219",
       "weight": 1.0,
       "_src": "src_api_qlabapi_post",
       "_tgt": "src_api_qlabapi_resetnotebook",
@@ -7297,8 +8122,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L180",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L181",
       "weight": 1.0,
       "_src": "src_api_qlabapi_authget",
       "_tgt": "src_api_qlabapi_getmysubmissions",
@@ -9494,61 +10319,61 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L150",
+      "source_location": "L151",
       "weight": 1.0,
       "_src": "api_models_tierconfig",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_tierconfig",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L155",
+      "source_location": "L156",
       "weight": 1.0,
       "_src": "api_models_solutionsconfig",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_solutionsconfig",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L161",
+      "source_location": "L162",
       "weight": 1.0,
       "_src": "api_models_editorialtier",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_editorialtier",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0,
       "_src": "api_models_referencetier",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_referencetier",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L173",
+      "source_location": "L174",
       "weight": 1.0,
       "_src": "api_models_communitysolution",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_communitysolution",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -9566,13 +10391,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L182",
+      "source_location": "L183",
       "weight": 1.0,
       "_src": "api_models_solutionsresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_solutionsresponse",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -9590,13 +10415,13 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/home/aiyer/qlab/api/models.py",
-      "source_location": "L192",
+      "source_location": "L193",
       "weight": 1.0,
       "_src": "api_models_hintrevealresponse",
       "_tgt": "home_aiyer_qlab_api_models_py",
-      "confidence_score": 1.0,
       "source": "api_models_hintrevealresponse",
-      "target": "home_aiyer_qlab_api_models_py"
+      "target": "home_aiyer_qlab_api_models_py",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9805,8 +10630,8 @@
     {
       "relation": "calls",
       "confidence": "EXTRACTED",
-      "source_file": "vscode-extension/src/api.ts",
-      "source_location": "L189",
+      "source_file": "/home/aiyer/qlab/vscode-extension/src/api.ts",
+      "source_location": "L190",
       "weight": 1.0,
       "_src": "src_api_qlabapi_authpost",
       "_tgt": "src_api_qlabapi_revealnexthint",
@@ -10585,6 +11410,18 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/web/hooks/useMySubmissions.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "hooks_usemysubmissions_usemysubmissions",
+      "_tgt": "home_aiyer_qlab_web_hooks_usemysubmissions_ts",
+      "source": "hooks_usemysubmissions_usemysubmissions",
+      "target": "home_aiyer_qlab_web_hooks_usemysubmissions_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "web/hooks/useProblem.ts",
       "source_location": "L6",
       "weight": 1.0,
@@ -10670,13 +11507,37 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/components/ProblemLayout.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "_src": "web_components_problemlayout_tsx",
       "_tgt": "components_problemlayout_startercode",
       "confidence_score": 1.0,
       "source": "web_components_problemlayout_tsx",
       "target": "components_problemlayout_startercode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_handleloadcode",
+      "source": "web_components_problemlayout_tsx",
+      "target": "components_problemlayout_handleloadcode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/web/components/ProblemLayout.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "components_problemlayout_startercode",
+      "_tgt": "home_aiyer_qlab_web_components_problemlayout_tsx",
+      "source": "components_problemlayout_startercode",
+      "target": "home_aiyer_qlab_web_components_problemlayout_tsx",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -10718,14 +11579,870 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/lib/api.ts",
-      "source_location": "L121",
+      "source_location": "L122",
       "weight": 1.0,
       "_src": "web_lib_api_ts",
       "_tgt": "lib_api_apifetch",
       "confidence_score": 1.0,
       "source": "web_lib_api_ts",
       "target": "lib_api_apifetch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/web/lib/api.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "lib_api_apifetch",
+      "_tgt": "home_aiyer_qlab_web_lib_api_ts",
+      "source": "lib_api_apifetch",
+      "target": "home_aiyer_qlab_web_lib_api_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_py",
+      "_tgt": "tests_test_submissions_me_asynccursor",
+      "source": "tests_test_submissions_me_py",
+      "target": "tests_test_submissions_me_asynccursor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_py",
+      "_tgt": "tests_test_submissions_me_submissionscollection",
+      "source": "tests_test_submissions_me_py",
+      "target": "tests_test_submissions_me_submissionscollection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_py",
+      "_tgt": "tests_test_submissions_me_db",
+      "source": "tests_test_submissions_me_py",
+      "target": "tests_test_submissions_me_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_submissions_me.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_py",
+      "_tgt": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "source": "tests_test_submissions_me_py",
+      "target": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "tests_test_submissions_me_asynccursor_init",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "tests_test_submissions_me_asynccursor_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "tests_test_submissions_me_asynccursor_sort",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "tests_test_submissions_me_asynccursor_sort",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "tests_test_submissions_me_asynccursor_limit",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "tests_test_submissions_me_asynccursor_limit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "tests_test_submissions_me_asynccursor_to_list",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "tests_test_submissions_me_asynccursor_to_list",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "tests_test_submissions_me_submissionscollection_init",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "tests_test_submissions_me_submissionscollection_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor",
+      "_tgt": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "source": "tests_test_submissions_me_asynccursor",
+      "target": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_submissionscollection",
+      "_tgt": "tests_test_submissions_me_submissionscollection_init",
+      "source": "tests_test_submissions_me_submissionscollection",
+      "target": "tests_test_submissions_me_submissionscollection_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_submissionscollection",
+      "_tgt": "tests_test_submissions_me_submissionscollection_find",
+      "source": "tests_test_submissions_me_submissionscollection",
+      "target": "tests_test_submissions_me_submissionscollection_find",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_submissionscollection",
+      "_tgt": "tests_test_submissions_me_db_init",
+      "source": "tests_test_submissions_me_submissionscollection",
+      "target": "tests_test_submissions_me_db_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_submissionscollection",
+      "_tgt": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "source": "tests_test_submissions_me_submissionscollection",
+      "target": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_db",
+      "_tgt": "tests_test_submissions_me_db_init",
+      "source": "tests_test_submissions_me_db",
+      "target": "tests_test_submissions_me_db_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_db",
+      "_tgt": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "source": "tests_test_submissions_me_db",
+      "target": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_db",
+      "_tgt": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "source": "tests_test_submissions_me_db",
+      "target": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/tests/test_submissions_me.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "_tgt": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "source": "tests_test_submissions_me_test_get_for_user_includes_code_for_response_model",
+      "target": "home_aiyer_qlab_tests_test_submissions_me_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/web/components/ProblemLayout.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "components_problemlayout_handleloadcode",
+      "_tgt": "home_aiyer_qlab_web_components_problemlayout_tsx",
+      "source": "components_problemlayout_handleloadcode",
+      "target": "home_aiyer_qlab_web_components_problemlayout_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/tabs/MySubmissionsTab.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "web_components_tabs_mysubmissionstab_tsx",
+      "_tgt": "tabs_mysubmissionstab_formatdate",
+      "source": "web_components_tabs_mysubmissionstab_tsx",
+      "target": "tabs_mysubmissionstab_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/home/aiyer/qlab/web/components/tabs/MySubmissionsTab.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "tabs_mysubmissionstab_formatdate",
+      "_tgt": "home_aiyer_qlab_web_components_tabs_mysubmissionstab_tsx",
+      "source": "tabs_mysubmissionstab_formatdate",
+      "target": "home_aiyer_qlab_web_components_tabs_mysubmissionstab_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_web_app",
+      "source": "future_qlab_future_scope",
+      "target": "future_web_app"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_vscode_extension",
+      "source": "future_qlab_future_scope",
+      "target": "future_vscode_extension"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_backend_api",
+      "source": "future_qlab_future_scope",
+      "target": "future_backend_api"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_auth_users",
+      "source": "future_qlab_future_scope",
+      "target": "future_auth_users"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_content_problems",
+      "source": "future_qlab_future_scope",
+      "target": "future_content_problems"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_infra_quality",
+      "source": "future_qlab_future_scope",
+      "target": "future_infra_quality"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "future_parity_table",
+      "source": "future_qlab_future_scope",
+      "target": "future_parity_table"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 8",
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "plan_web_submissions_tab",
+      "source": "future_qlab_future_scope",
+      "target": "plan_web_submissions_tab"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "## Scope",
+      "weight": 1.0,
+      "_src": "future_qlab_future_scope",
+      "_tgt": "spec_web_submissions_tab_design",
+      "source": "future_qlab_future_scope",
+      "target": "spec_web_submissions_tab_design"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_web_app",
+      "_tgt": "future_my_submissions_web",
+      "source": "future_web_app",
+      "target": "future_my_submissions_web"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_web_app",
+      "_tgt": "future_wrong_answer_diff",
+      "source": "future_web_app",
+      "target": "future_wrong_answer_diff"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_vscode_extension",
+      "_tgt": "future_problempanel_refactor",
+      "source": "future_vscode_extension",
+      "target": "future_problempanel_refactor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_backend_api",
+      "_tgt": "future_mongodb_migration",
+      "source": "future_backend_api",
+      "target": "future_mongodb_migration"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_auth_users",
+      "_tgt": "future_clerk_auth",
+      "source": "future_auth_users",
+      "target": "future_clerk_auth"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_content_problems",
+      "_tgt": "future_solutions_tab_spec",
+      "source": "future_content_problems",
+      "target": "future_solutions_tab_spec"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_parity_table",
+      "_tgt": "future_my_submissions_web",
+      "source": "future_parity_table",
+      "target": "future_my_submissions_web"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "FUTURE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "future_my_submissions_web",
+      "_tgt": "spec_web_submissions_tab_design",
+      "source": "future_my_submissions_web",
+      "target": "spec_web_submissions_tab_design"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Reference spec",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "spec_web_submissions_tab_design",
+      "source": "plan_web_submissions_tab",
+      "target": "spec_web_submissions_tab_design"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 6",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "spec_my_submissions_tab_component",
+      "source": "plan_web_submissions_tab",
+      "target": "spec_my_submissions_tab_component"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 5",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "spec_use_my_submissions_hook",
+      "source": "plan_web_submissions_tab",
+      "target": "spec_use_my_submissions_hook"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 1",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "spec_my_submission_entry_model",
+      "source": "plan_web_submissions_tab",
+      "target": "spec_my_submission_entry_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 2",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "spec_get_for_user_service",
+      "source": "plan_web_submissions_tab",
+      "target": "spec_get_for_user_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 3",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "plan_test_submissions_me",
+      "source": "plan_web_submissions_tab",
+      "target": "plan_test_submissions_me"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 7",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "plan_window_confirm",
+      "source": "plan_web_submissions_tab",
+      "target": "plan_window_confirm"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 6",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "plan_status_color_map",
+      "source": "plan_web_submissions_tab",
+      "target": "plan_status_color_map"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": "Task 5",
+      "weight": 1.0,
+      "_src": "plan_web_submissions_tab",
+      "_tgt": "plan_query_key_problem_id",
+      "source": "plan_web_submissions_tab",
+      "target": "plan_query_key_problem_id"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "## Background",
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_vscode_my_submissions_phase4",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_vscode_my_submissions_phase4"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_my_submissions_tab_component",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_my_submissions_tab_component"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_use_my_submissions_hook",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_use_my_submissions_hook"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_my_submission_entry_model",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_my_submission_entry_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_get_for_user_service",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_get_for_user_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_submissions_me_endpoint",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_submissions_me_endpoint"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_click_to_load_flow",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_click_to_load_flow"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_problem_layout",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_problem_layout"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_use_submit_invalidation",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_use_submit_invalidation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_web_submissions_tab_design",
+      "_tgt": "spec_tab_ordering",
+      "source": "spec_web_submissions_tab_design",
+      "target": "spec_tab_ordering"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_my_submissions_tab_component",
+      "_tgt": "spec_use_my_submissions_hook",
+      "source": "spec_my_submissions_tab_component",
+      "target": "spec_use_my_submissions_hook"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_my_submissions_tab_component",
+      "_tgt": "spec_problem_layout",
+      "source": "spec_my_submissions_tab_component",
+      "target": "spec_problem_layout"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_my_submissions_tab_component",
+      "_tgt": "spec_vscode_my_submissions_phase4",
+      "source": "spec_my_submissions_tab_component",
+      "target": "spec_vscode_my_submissions_phase4"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": "## Tab ordering",
+      "weight": 1.0,
+      "_src": "spec_my_submissions_tab_component",
+      "_tgt": "spec_tab_ordering",
+      "source": "spec_my_submissions_tab_component",
+      "target": "spec_tab_ordering"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_use_my_submissions_hook",
+      "_tgt": "spec_submissions_me_endpoint",
+      "source": "spec_use_my_submissions_hook",
+      "target": "spec_submissions_me_endpoint"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_use_my_submissions_hook",
+      "_tgt": "spec_use_submit_invalidation",
+      "source": "spec_use_my_submissions_hook",
+      "target": "spec_use_submit_invalidation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_my_submission_entry_model",
+      "_tgt": "spec_get_for_user_service",
+      "source": "spec_my_submission_entry_model",
+      "target": "spec_get_for_user_service"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_get_for_user_service",
+      "_tgt": "spec_submissions_me_endpoint",
+      "source": "spec_get_for_user_service",
+      "target": "spec_submissions_me_endpoint"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_click_to_load_flow",
+      "_tgt": "spec_problem_layout",
+      "source": "spec_click_to_load_flow",
+      "target": "spec_problem_layout"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md",
+      "source_location": null,
+      "weight": 1.0,
+      "_src": "spec_click_to_load_flow",
+      "_tgt": "plan_window_confirm",
+      "source": "spec_click_to_load_flow",
+      "target": "plan_window_confirm"
     }
   ],
-  "hyperedges": []
+  "hyperedges": [
+    {
+      "id": "hyper_my_submissions_tab_stack",
+      "label": "My Submissions Tab end-to-end stack",
+      "members": [
+        "spec_my_submissions_tab_component",
+        "spec_use_my_submissions_hook",
+        "spec_submissions_me_endpoint",
+        "spec_get_for_user_service",
+        "spec_my_submission_entry_model"
+      ],
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md"
+    },
+    {
+      "id": "hyper_click_to_load",
+      "label": "Click-to-load with dirty-check confirm",
+      "members": [
+        "spec_my_submissions_tab_component",
+        "spec_problem_layout",
+        "spec_click_to_load_flow",
+        "plan_window_confirm"
+      ],
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md"
+    },
+    {
+      "id": "hyper_plan_spec_future_alignment",
+      "label": "Plan-Spec-Roadmap alignment for web My Submissions",
+      "members": [
+        "plan_web_submissions_tab",
+        "spec_web_submissions_tab_design",
+        "future_my_submissions_web"
+      ],
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/superpowers/plans/2026-05-06-web-submissions-tab.md"
+    }
+  ]
 }
