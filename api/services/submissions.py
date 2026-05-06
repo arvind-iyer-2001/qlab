@@ -33,15 +33,24 @@ async def insert(
 async def get_leaderboard(
     db: AsyncIOMotorDatabase, problem_id: int, limit: int = 25
 ) -> list[dict]:
-    cursor = (
-        db.submissions.find(
-            {"problem_id": problem_id, "status": "correct"},
-            {"_id": 0, "handle": 1, "timing_ms": 1, "char_count": 1, "language": 1, "submitted_at": 1},
-        )
-        .sort([("timing_ms", 1), ("char_count", 1)])
-        .limit(limit)
-    )
-    rows = await cursor.to_list(length=limit)
+    # One row per user: each user's best correct submission ranked by
+    # (timing_ms, char_count). Anonymous rows (no user_id) keep distinct
+    # group keys so they aren't collapsed into a single "anonymous" entry.
+    pipeline = [
+        {"$match": {"problem_id": problem_id, "status": "correct"}},
+        {"$sort": {"timing_ms": 1, "char_count": 1}},
+        {"$group": {
+            "_id": {"$ifNull": ["$user_id", {"$concat": ["anon:", {"$toString": "$_id"}]}]},
+            "handle": {"$first": "$handle"},
+            "timing_ms": {"$first": "$timing_ms"},
+            "char_count": {"$first": "$char_count"},
+            "language": {"$first": "$language"},
+            "submitted_at": {"$first": "$submitted_at"},
+        }},
+        {"$sort": {"timing_ms": 1, "char_count": 1}},
+        {"$limit": limit},
+    ]
+    rows = await db.submissions.aggregate(pipeline).to_list(length=limit)
     return [
         {
             "rank": i + 1,
