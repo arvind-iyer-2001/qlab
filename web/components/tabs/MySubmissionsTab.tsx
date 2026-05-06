@@ -94,16 +94,13 @@ export function MySubmissionsTab({ problemId, onLoadCode }: Props) {
             <th style={{ padding: '6px 8px', borderBottom: '1px solid #3a3a3a' }}>Chars</th>
             <th style={{ padding: '6px 8px', borderBottom: '1px solid #3a3a3a' }}>Lang</th>
             <th style={{ padding: '6px 8px', borderBottom: '1px solid #3a3a3a' }}>Best</th>
+            <th style={{ padding: '6px 8px', borderBottom: '1px solid #3a3a3a', textAlign: 'right' }}>Action</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((r, i) => (
             <tr
               key={i}
-              onClick={() => {
-                if (r.code) onLoadCode(r.code)
-              }}
-              style={{ cursor: 'pointer' }}
               onMouseEnter={(e) => {
                 ;(e.currentTarget as HTMLTableRowElement).style.background = '#252525'
               }}
@@ -124,6 +121,27 @@ export function MySubmissionsTab({ problemId, onLoadCode }: Props) {
               <td style={{ padding: '6px 8px', borderBottom: '1px solid #2a2a2a' }}>{r.language}</td>
               <td style={{ padding: '6px 8px', borderBottom: '1px solid #2a2a2a', color: '#ffd700' }}>
                 {r.is_best ? '*' : ''}
+              </td>
+              <td style={{ padding: '6px 8px', borderBottom: '1px solid #2a2a2a', textAlign: 'right' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (r.code) onLoadCode(r.code)
+                  }}
+                  disabled={!r.code}
+                  title="Open submission source"
+                  style={{
+                    padding: '3px 10px',
+                    background: '#282828',
+                    color: '#eff1f6',
+                    border: '1px solid #3a3a3a',
+                    borderRadius: '5px',
+                    cursor: r.code ? 'pointer' : 'not-allowed',
+                    fontSize: '12px',
+                  }}
+                >
+                  Open
+                </button>
               </td>
             </tr>
           ))}
