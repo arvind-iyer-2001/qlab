@@ -36,8 +36,9 @@ async def submit(
         seed=doc.get("judge_seed", 42),
     )
 
+    submission_id = None
     try:
-        await submissions_svc.insert(
+        submission_id = await submissions_svc.insert(
             db=db,
             problem_id=req.problem_id,
             user_id=user_id,
@@ -67,6 +68,7 @@ async def submit(
             logger.warning("leaderboard rank failed: %s", e)
 
     return SubmissionResponse(
+        submission_id=submission_id,
         problem_id=req.problem_id,
         status=result.status,
         timing_ms=result.timing_ms,

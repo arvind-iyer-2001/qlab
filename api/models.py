@@ -115,7 +115,7 @@ class JudgeResult(BaseModel):
 
 
 class SubmissionResponse(BaseModel):
-    submission_id: Optional[int] = None
+    submission_id: Optional[str] = None
     problem_id: int
     status: SubmissionStatus
     timing_ms: Optional[int] = None
