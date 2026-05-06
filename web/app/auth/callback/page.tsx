@@ -1,6 +1,7 @@
 'use client'
 import { useAuth } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
+import { Brand } from '@/components/ui/Brand'
 
 export default function AuthCallback() {
   const { getToken, isLoaded } = useAuth()
@@ -16,16 +17,12 @@ export default function AuthCallback() {
         return
       }
 
-      // Check if user has a nickname; redirect to setup if not
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       try {
         const res = await fetch(`${apiUrl}/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (res.status === 404) {
-          // New user — webhook hasn't fired yet or is still propagating.
-          // Send them to nickname setup; the webhook will create the record
-          // (or PATCH /users/me/nickname will 404, handled there).
           window.location.href = '/profile/setup?from=vscode'
           return
         }
@@ -48,9 +45,10 @@ export default function AuthCallback() {
   }, [isLoaded, getToken])
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', flexDirection: 'column', gap: '12px' }}>
-      <p style={{ fontSize: '18px' }}>{message}</p>
-      <p style={{ color: '#888', fontSize: '14px' }}>You can close this tab once VS Code opens.</p>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center gap-3 px-6">
+      <Brand size="lg" />
+      <p className="text-base">{message}</p>
+      <p className="text-zinc-500 text-sm">You can close this tab once VS Code opens.</p>
     </div>
   )
 }
