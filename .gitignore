@@ -16,6 +16,9 @@ venv/
 # Node
 node_modules/
 
+# Git worktrees
+.worktrees/
+
 # Temp/judge artifacts
 /tmp/qlab_*
 
