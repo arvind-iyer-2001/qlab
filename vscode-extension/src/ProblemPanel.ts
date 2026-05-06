@@ -96,7 +96,7 @@ export class ProblemPanel {
         break
 
       case 'openInEditor':
-        await ProblemPanel.openSolutionFile(this.problem)
+        await ProblemPanel.openSolutionFile(this.problem, msg.code)
         break
 
       case 'getMySubmissions':
@@ -230,7 +230,7 @@ export class ProblemPanel {
 
   // ── Solution file helper ──────────────────────────────────────────────────
 
-  static async openSolutionFile(problem: ProblemDetail): Promise<void> {
+  static async openSolutionFile(problem: ProblemDetail, code?: string): Promise<void> {
     const folder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath
     if (!folder) {
       vscode.window.showInformationMessage('Open a workspace folder to use qLab solution files.')
@@ -247,7 +247,20 @@ export class ProblemPanel {
 
     const filePath = path.join(solDir, `${problem.slug}.q`)
 
-    if (!fs.existsSync(filePath)) {
+    if (code != null) {
+      if (fs.existsSync(filePath)) {
+        const existing = fs.readFileSync(filePath, 'utf-8')
+        if (existing !== code) {
+          const action = await vscode.window.showWarningMessage(
+            'Replace the current solution file with this submission?',
+            { modal: true },
+            'Replace'
+          )
+          if (action !== 'Replace') return
+        }
+      }
+      fs.writeFileSync(filePath, code, 'utf-8')
+    } else if (!fs.existsSync(filePath)) {
       const starter = [
         `/ Problem   : ${problem.title}`,
         `/ Difficulty: ${problem.difficulty}`,
@@ -576,6 +589,20 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     .best-star { color: #f5a623; margin-right: 3px; }
     .sub-correct { color: var(--vscode-testing-iconPassed); }
     .sub-wrong, .sub-error, .sub-timeout { color: var(--vscode-testing-iconFailed); }
+    .sub-action-cell { text-align: right; white-space: nowrap; }
+    .sub-open-btn {
+      padding: 2px 8px;
+      border: 1px solid var(--vscode-button-border, transparent);
+      border-radius: 3px;
+      background: var(--vscode-button-secondaryBackground);
+      color: var(--vscode-button-secondaryForeground);
+      cursor: pointer;
+      font-family: var(--vscode-font-family);
+      font-size: calc(var(--vscode-font-size) - 1px);
+    }
+    .sub-open-btn:hover {
+      background: var(--vscode-button-secondaryHoverBackground);
+    }
 
     /* ── Info / notice ── */
     .notice {
@@ -947,8 +974,9 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
         el.innerHTML = '<p style="color:var(--vscode-descriptionForeground)">No submissions yet for this problem.</p>';
         return;
       }
-      let html = '<table><thead><tr><th>Date</th><th>Status</th><th>ms</th><th>chars</th><th>lang</th></tr></thead><tbody>';
-      for (const r of rows) {
+      let html = '<table><thead><tr><th>Date</th><th>Status</th><th>ms</th><th>chars</th><th>lang</th><th class="sub-action-cell">Action</th></tr></thead><tbody>';
+      for (let i = 0; i < rows.length; i++) {
+        const r = rows[i];
         const date = new Date(r.submitted_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         const statusClass = 'sub-' + r.status;
         const star = r.is_best ? '<span class="best-star">★</span>' : '';
@@ -959,10 +987,20 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
                 '<td class="' + statusClass + '">' + star + e(r.status) + '</td>' +
                 '<td>' + ms + '</td>' +
                 '<td>' + chars + '</td>' +
-                '<td>' + e(r.language) + '</td></tr>';
+                '<td>' + e(r.language) + '</td>' +
+                '<td class="sub-action-cell"><button class="sub-open-btn" data-submission-index="' + i + '" title="Open submission source">Open</button></td></tr>';
       }
       html += '</tbody></table>';
       el.innerHTML = html;
+      el.querySelectorAll('.sub-open-btn[data-submission-index]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const idx = Number(btn.getAttribute('data-submission-index'));
+          const sub = rows[idx];
+          if (sub && sub.code) {
+            vscode.postMessage({ type: 'openInEditor', code: sub.code });
+          }
+        });
+      });
     }
 
     function e(s) {

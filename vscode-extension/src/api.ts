@@ -66,6 +66,7 @@ export interface UserSubmission {
   language: string
   submitted_at: string
   is_best: boolean
+  code: string
 }
 
 export interface CommunitySolution {
