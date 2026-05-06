@@ -1,17 +1,18 @@
+'use client'
 import { ClerkProvider } from '@clerk/nextjs'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'qLab',
-  description: 'Competitive coding for kdb+/q developers',
-}
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useState } from 'react'
+import './globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient())
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body style={{ margin: 0, fontFamily: 'sans-serif' }}>{children}</body>
-      </html>
+      <QueryClientProvider client={queryClient}>
+        <html lang="en" className="dark">
+          <body>{children}</body>
+        </html>
+      </QueryClientProvider>
     </ClerkProvider>
   )
 }
