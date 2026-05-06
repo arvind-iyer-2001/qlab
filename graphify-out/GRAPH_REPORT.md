@@ -5,7 +5,7 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 420 nodes · 670 edges · 29 communities detected
+- 420 nodes · 670 edges · 30 communities detected
 - Extraction: 81% EXTRACTED · 19% INFERRED · 0% AMBIGUOUS · INFERRED: 130 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
@@ -33,12 +33,13 @@
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
-- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 23|Community 23]]
 - [[_COMMUNITY_Community 36|Community 36]]
-- [[_COMMUNITY_Community 55|Community 55]]
-- [[_COMMUNITY_Community 56|Community 56]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `QLabApi` - 16 edges
@@ -47,18 +48,18 @@
 4. `SubmissionStatus` - 11 edges
 5. `JudgeResult` - 11 edges
 6. `submit()` - 10 edges
-7. `User Registration, Nickname and My Submissions Design Spec` - 10 edges
-8. `Web My Submissions Tab Implementation Plan` - 10 edges
+7. `Web My Submissions Tab Implementation Plan` - 10 edges
+8. `User Registration, Nickname and My Submissions Design Spec` - 10 edges
 9. `get_for_user()` - 9 edges
 10. `compute_solutions()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `SignOut` --references--> `Clerk Auth`  [EXTRACTED]
-  web/app/sign-out/page.tsx → CLAUDE.md
-- `activate` --conceptually_related_to--> `Clerk Auth`  [INFERRED]
-  vscode-extension/src/extension.ts → CLAUDE.md
-- `uriHandler` --references--> `Clerk Auth`  [EXTRACTED]
-  vscode-extension/src/extension.ts → CLAUDE.md
+- `Clerk Auth` --conceptually_related_to--> `activate`  [INFERRED]
+  CLAUDE.md → vscode-extension/src/extension.ts
+- `Clerk Auth` --references--> `uriHandler`  [EXTRACTED]
+  CLAUDE.md → vscode-extension/src/extension.ts
+- `Clerk Auth` --references--> `SignOut`  [EXTRACTED]
+  CLAUDE.md → web/app/sign-out/page.tsx
 - `Web My Submissions Tab (FUTURE)` --semantically_similar_to--> `Web My Submissions Tab Design Spec`  [INFERRED] [semantically similar]
   FUTURE.md → docs/superpowers/specs/2026-05-06-web-submissions-tab-design.md
 - `MySubmissionEntry` --uses--> `_AsyncCursor`  [INFERRED]
@@ -72,16 +73,16 @@
 ## Communities
 
 ### Community 0 - "Community 0"
+Cohesion: 0.13
+Nodes (37): code_must_be_single_param(), code_must_define_func(), CommunitySolution, Difficulty, EditorialTier, Example, HintRevealResponse, JudgeResult (+29 more)
+
+### Community 1 - "Community 1"
 Cohesion: 0.07
 Nodes (40): esbuild.js build script, Option A: Split Files (Quick Win), Option B: esbuild + TypeScript Webview, Option C: React Webview (Full GitLens-style), ProblemPanel.ts god file (1131 lines), Template Literal Backtick Escaping Bug, VS Code Extension Structural Improvements, src/webview/panel.css (+32 more)
 
-### Community 1 - "Community 1"
+### Community 2 - "Community 2"
 Cohesion: 0.11
 Nodes (6): QLabApi, buildHtml(), esc(), nonce(), ProblemPanel, test_submit_without_token_returns_401()
-
-### Community 2 - "Community 2"
-Cohesion: 0.14
-Nodes (29): code_must_be_single_param(), code_must_define_func(), CommunitySolution, Difficulty, EditorialTier, Example, HintRevealResponse, Language (+21 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.11
@@ -97,140 +98,144 @@ Nodes (30): Auth & Users Roadmap, Backend / API Roadmap, Clerk Authentication, C
 
 ### Community 6 - "Community 6"
 Cohesion: 0.12
-Nodes (26): JudgeResult, SubmissionStatus, execute(), ExecuteRequest, reset(), _build_judge_script(), _escape_q_string(), Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load (+18 more)
-
-### Community 7 - "Community 7"
-Cohesion: 0.12
 Nodes (27): api/services/auth.py, api/services/judge.py, Clerk Auth, deps.get_db, FastAPI Backend, func Submission, graphify Knowledge Graph, judge/harness.q (+19 more)
 
-### Community 8 - "Community 8"
+### Community 7 - "Community 7"
 Cohesion: 0.19
 Nodes (19): compute_solutions(), increment_hint_reveals(), _is_unlocked(), make_mock_db_for_router(), make_problem(), make_rsa_key_pair(), make_signing_key_mock(), make_token() (+11 more)
 
-### Community 9 - "Community 9"
-Cohesion: 0.15
-Nodes (4): DifficultyGroup, ErrorItem, ProblemItem, ProblemsProvider
+### Community 8 - "Community 8"
+Cohesion: 0.18
+Nodes (12): execute(), ExecuteRequest, reset(), _conn(), _escape(), execute_cell(), Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (, Escape a code string for embedding inside a q double-quoted string. (+4 more)
 
-### Community 10 - "Community 10"
+### Community 9 - "Community 9"
 Cohesion: 0.26
 Nodes (6): get_me(), set_nickname(), clerk_webhook(), get_by_clerk_id(), set_nickname(), upsert()
 
-### Community 11 - "Community 11"
+### Community 10 - "Community 10"
 Cohesion: 0.35
 Nodes (9): _get_jwks_client(), verify_clerk_token(), make_rsa_key_pair(), make_signing_key_mock(), make_token(), test_expired_token_raises_401(), test_get_me_without_token_returns_401(), test_invalid_token_raises_401() (+1 more)
+
+### Community 11 - "Community 11"
+Cohesion: 0.18
+Nodes (4): DifficultyGroup, ErrorItem, ProblemItem, ProblemsProvider
 
 ### Community 12 - "Community 12"
 Cohesion: 0.31
 Nodes (10): Clerk Auth, MongoDB Collections, activate, setSignedInContext, uriHandler, app (FastAPI), lifespan, SignOut (+2 more)
 
 ### Community 13 - "Community 13"
+Cohesion: 0.31
+Nodes (6): get_leaderboard(), get_problem(), list_problems(), get_solutions(), reveal_hint(), get_by_slug()
+
+### Community 14 - "Community 14"
 Cohesion: 0.53
 Nodes (4): activate(), deactivate(), jwtIsExpired(), setSignedInContext()
 
-### Community 14 - "Community 14"
+### Community 15 - "Community 15"
 Cohesion: 0.6
 Nodes (2): health(), lifespan()
-
-### Community 15 - "Community 15"
-Cohesion: 0.5
-Nodes (4): CommunitySolution Pydantic model, EditorialTier Pydantic model, ReferenceTier Pydantic model, SolutionsResponse Pydantic model
 
 ### Community 16 - "Community 16"
 Cohesion: 0.67
 Nodes (2): handleLoadCode(), starterCode()
 
 ### Community 17 - "Community 17"
-Cohesion: 0.67
-Nodes (1): handleCallback()
+Cohesion: 0.5
+Nodes (4): CommunitySolution Pydantic model, EditorialTier Pydantic model, ReferenceTier Pydantic model, SolutionsResponse Pydantic model
 
 ### Community 18 - "Community 18"
 Cohesion: 0.67
-Nodes (1): fetchQlabUser()
+Nodes (1): handleCallback()
 
 ### Community 19 - "Community 19"
 Cohesion: 0.67
-Nodes (1): useMySubmissions()
+Nodes (1): fetchQlabUser()
 
 ### Community 20 - "Community 20"
 Cohesion: 0.67
-Nodes (1): formatDate()
+Nodes (1): useMySubmissions()
 
 ### Community 21 - "Community 21"
 Cohesion: 0.67
-Nodes (1): apiFetch()
+Nodes (1): formatDate()
 
 ### Community 22 - "Community 22"
 Cohesion: 0.67
-Nodes (3): qLab Brand Icon Concept, qLab VS Code Extension Icon (PNG), qLab VS Code Extension Icon (SVG)
+Nodes (1): apiFetch()
 
-### Community 35 - "Community 35"
-Cohesion: 1.0
-Nodes (2): Judge Pipeline, Submission Rules
+### Community 23 - "Community 23"
+Cohesion: 0.67
+Nodes (3): qLab Brand Icon Concept, qLab VS Code Extension Icon (PNG), qLab VS Code Extension Icon (SVG)
 
 ### Community 36 - "Community 36"
 Cohesion: 1.0
+Nodes (2): Judge Pipeline, Submission Rules
+
+### Community 37 - "Community 37"
+Cohesion: 1.0
 Nodes (2): SolutionsConfig Pydantic model, TierConfig Pydantic model
 
-### Community 55 - "Community 55"
-Cohesion: 1.0
-Nodes (1): qLab README
-
-### Community 56 - "Community 56"
+### Community 59 - "Community 59"
 Cohesion: 1.0
 Nodes (1): health
 
 ### Community 60 - "Community 60"
 Cohesion: 1.0
-Nodes (1): HintRevealResponse Pydantic model
+Nodes (1): qLab README
 
 ### Community 61 - "Community 61"
+Cohesion: 1.0
+Nodes (1): HintRevealResponse Pydantic model
+
+### Community 62 - "Community 62"
 Cohesion: 1.0
 Nodes (1): tests/test_solutions.py
 
 ## Knowledge Gaps
-- **44 isolated node(s):** `Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (`, `Escape a code string for embedding inside a q double-quoted string.`, `Evaluate cell_code on the notebook q process and return the result     as a form`, `Kill whatever is running on NB_PORT and spawn a fresh q process there.     Uses`, `Kill whatever is running on NB_PORT and spawn a fresh q process there.     Uses` (+39 more)
+- **44 isolated node(s):** `Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (`, `Escape a code string for embedding inside a q double-quoted string.`, `Evaluate cell_code on the notebook q process and return the result     as a form`, `Kill whatever is running on NB_PORT and spawn a fresh q process there.     Uses`, `graphify Knowledge Graph` (+39 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 14`** (5 nodes): `health()`, `lifespan()`, `main.py`, `main.py`, `main.py`
+- **Thin community `Community 15`** (5 nodes): `health()`, `lifespan()`, `main.py`, `main.py`, `main.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 16`** (4 nodes): `handleLoadCode()`, `starterCode()`, `ProblemLayout.tsx`, `ProblemLayout.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (3 nodes): `handleCallback()`, `page.tsx`, `page.tsx`
+- **Thin community `Community 18`** (3 nodes): `handleCallback()`, `page.tsx`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (3 nodes): `page.tsx`, `fetchQlabUser()`, `page.tsx`
+- **Thin community `Community 19`** (3 nodes): `page.tsx`, `fetchQlabUser()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (3 nodes): `useMySubmissions.ts`, `useMySubmissions()`, `useMySubmissions.ts`
+- **Thin community `Community 20`** (3 nodes): `useMySubmissions.ts`, `useMySubmissions()`, `useMySubmissions.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (3 nodes): `MySubmissionsTab.tsx`, `formatDate()`, `MySubmissionsTab.tsx`
+- **Thin community `Community 21`** (3 nodes): `MySubmissionsTab.tsx`, `formatDate()`, `MySubmissionsTab.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (3 nodes): `api.ts`, `apiFetch()`, `api.ts`
+- **Thin community `Community 22`** (3 nodes): `api.ts`, `apiFetch()`, `api.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 35`** (2 nodes): `Judge Pipeline`, `Submission Rules`
+- **Thin community `Community 36`** (2 nodes): `Judge Pipeline`, `Submission Rules`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 36`** (2 nodes): `SolutionsConfig Pydantic model`, `TierConfig Pydantic model`
+- **Thin community `Community 37`** (2 nodes): `SolutionsConfig Pydantic model`, `TierConfig Pydantic model`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 55`** (1 nodes): `qLab README`
+- **Thin community `Community 59`** (1 nodes): `health`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 56`** (1 nodes): `health`
+- **Thin community `Community 60`** (1 nodes): `qLab README`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 60`** (1 nodes): `HintRevealResponse Pydantic model`
+- **Thin community `Community 61`** (1 nodes): `HintRevealResponse Pydantic model`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 61`** (1 nodes): `tests/test_solutions.py`
+- **Thin community `Community 62`** (1 nodes): `tests/test_solutions.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_run_q_process()` connect `Community 6` to `Community 1`?**
+- **Why does `_run_q_process()` connect `Community 0` to `Community 2`?**
   _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **Why does `submit()` connect `Community 3` to `Community 1`, `Community 10`, `Community 2`, `Community 6`?**
+- **Why does `submit()` connect `Community 3` to `Community 0`, `Community 9`, `Community 2`?**
   _High betweenness centrality (0.033) - this node is a cross-community bridge._
-- **Why does `QLabApi` connect `Community 1` to `Community 9`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `SubmissionStatus` (e.g. with `Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load` and `Returns an error string if func uses multiple params, else None.     Catches: fu`) actually correct?**
   _`SubmissionStatus` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (`, `Escape a code string for embedding inside a q double-quoted string.`, `Evaluate cell_code on the notebook q process and return the result     as a form` to the rest of the system?**
   _44 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.13 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
+- **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.11 - nodes in this community are weakly interconnected._
