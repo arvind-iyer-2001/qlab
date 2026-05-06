@@ -2,6 +2,8 @@
 import { useAuth } from '@clerk/nextjs'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, Suspense } from 'react'
+import { Brand } from '@/components/ui/Brand'
+import { Button } from '@/components/ui/Button'
 
 function ProfileSetupInner() {
   const { getToken } = useAuth()
@@ -60,28 +62,29 @@ function ProfileSetupInner() {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', flexDirection: 'column', gap: '16px', padding: '24px' }}>
-      <h1 style={{ fontSize: '22px', fontWeight: 600 }}>Choose your qLab nickname</h1>
-      <p style={{ color: '#666', fontSize: '14px', marginTop: '-8px' }}>This is how you'll appear on the leaderboard.</p>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '320px' }}>
-        <input
-          type="text"
-          value={nickname}
-          onChange={e => setNickname(e.target.value)}
-          placeholder="e.g. qwizard"
-          maxLength={30}
-          style={{ padding: '8px 12px', fontSize: '16px', border: '1px solid #ccc', borderRadius: '4px' }}
-          autoFocus
-        />
-        {error && <p style={{ color: '#c00', fontSize: '13px', margin: 0 }}>{error}</p>}
-        <button
-          type="submit"
-          disabled={saving}
-          style={{ padding: '9px 0', fontSize: '15px', background: '#000', color: '#fff', border: 'none', borderRadius: '4px', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}
-        >
-          {saving ? 'Saving…' : 'Save and continue'}
-        </button>
-      </form>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center px-6 py-8 gap-6">
+      <Brand as="link" size="lg" />
+      <div className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+        <h1 className="text-xl font-semibold mb-1">Choose your qLab nickname</h1>
+        <p className="text-zinc-400 text-sm mb-5">
+          This is how you&apos;ll appear on the leaderboard.
+        </p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <input
+            type="text"
+            value={nickname}
+            onChange={e => setNickname(e.target.value)}
+            placeholder="e.g. qwizard"
+            maxLength={30}
+            autoFocus
+            className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-md text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 transition font-mono"
+          />
+          {error && <p className="text-rose-400 text-xs m-0">{error}</p>}
+          <Button type="submit" disabled={saving}>
+            {saving ? 'Saving…' : 'Save and continue'}
+          </Button>
+        </form>
+      </div>
     </div>
   )
 }

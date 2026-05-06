@@ -1,6 +1,7 @@
 'use client'
 import { useClerk } from '@clerk/nextjs'
 import { useEffect } from 'react'
+import { Brand } from '@/components/ui/Brand'
 
 export default function SignOut() {
   const { signOut } = useClerk()
@@ -10,8 +11,9 @@ export default function SignOut() {
   }, [signOut])
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-      <p style={{ fontSize: '18px' }}>Signing out…</p>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center gap-4">
+      <Brand size="lg" />
+      <p className="text-zinc-400 text-base">Signing out…</p>
     </div>
   )
 }

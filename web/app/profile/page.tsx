@@ -2,6 +2,8 @@
 import { useUser, useAuth } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { Crumbs } from '@/components/ui/Crumbs'
+import { Card } from '@/components/ui/Card'
 
 interface QLabUser {
   nickname: string | null
@@ -45,7 +47,7 @@ export default function ProfilePage() {
 
   if (!isLoaded || !user) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <div className="min-h-screen bg-zinc-950 text-zinc-400 flex items-center justify-center">
         <p>Loading…</p>
       </div>
     )
@@ -56,37 +58,69 @@ export default function ProfilePage() {
   const email = qlabUser?.email || user.primaryEmailAddress?.emailAddress || ''
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', flexDirection: 'column', gap: '16px', padding: '24px' }}>
-      {avatarUrl && (
-        <img src={avatarUrl} alt="avatar" style={{ width: 72, height: 72, borderRadius: '50%', objectFit: 'cover' }} />
-      )}
-      <h1 style={{ fontSize: '20px', fontWeight: 600 }}>{displayName}</h1>
-      {email && <p style={{ color: '#888', fontSize: '14px' }}>{email}</p>}
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 relative overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at top right, rgba(16,185,129,0.08), transparent 60%)',
+        }}
+      />
+      <div className="relative z-10 max-w-2xl mx-auto px-8 py-8">
+        <Crumbs current="Profile" />
 
-      {!loadingQlab && (
-        <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-          {qlabUser?.nickname ? (
-            <>
-              <p style={{ fontSize: '15px' }}>
-                Handle: <strong>{qlabUser.nickname}</strong>
-              </p>
-              <a
-                href="/profile/setup"
-                style={{ fontSize: '13px', color: '#0070f3', textDecoration: 'none' }}
-              >
-                Change nickname
-              </a>
-            </>
+        <div className="flex items-center gap-5 mb-6">
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt="avatar"
+              className="w-16 h-16 rounded-full object-cover border border-zinc-800"
+            />
           ) : (
-            <p style={{ color: '#c00', fontSize: '14px' }}>
-              No nickname set.{' '}
-              <a href="/profile/setup" style={{ color: '#0070f3' }}>Set one now</a>
-            </p>
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-900" />
           )}
+          <div>
+            <h1 className="text-2xl font-bold">{displayName}</h1>
+            <p className="text-zinc-400 text-sm font-mono mt-1">
+              {qlabUser?.nickname ? `@${qlabUser.nickname}` : 'no handle'}
+            </p>
+          </div>
         </div>
-      )}
 
-      <p style={{ color: '#aaa', fontSize: '13px', marginTop: '4px' }}>Signed in to qLab</p>
+        {!loadingQlab && (
+          <div className="space-y-3">
+            <Card label="Handle">
+              {qlabUser?.nickname ? (
+                <>
+                  <p className="text-zinc-50 font-mono">{qlabUser.nickname}</p>
+                  <a
+                    href="/profile/setup"
+                    className="text-emerald-400 text-xs hover:text-emerald-300 transition"
+                  >
+                    → change nickname
+                  </a>
+                </>
+              ) : (
+                <p className="text-rose-400 text-sm">
+                  No nickname set.{' '}
+                  <a href="/profile/setup" className="text-emerald-400 hover:text-emerald-300">
+                    Set one now
+                  </a>
+                </p>
+              )}
+            </Card>
+
+            {email && (
+              <Card label="Email">
+                <p className="text-zinc-50">{email}</p>
+              </Card>
+            )}
+          </div>
+        )}
+
+        <p className="text-zinc-500 text-xs mt-6">Signed in to qLab</p>
+      </div>
     </div>
   )
 }
