@@ -1,8 +1,7 @@
-# Graph Report - .  (2026-05-06)
+# Graph Report - /home/aiyer/qlab  (2026-05-06)
 
 ## Corpus Check
-- 76 files · ~53,038 words
-- Verdict: corpus is large enough that graph structure adds value.
+- cluster-only mode — file stats not available
 
 ## Summary
 - 369 nodes · 575 edges · 25 communities detected
@@ -10,16 +9,16 @@
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Judge Validation & Models|Judge Validation & Models]]
-- [[_COMMUNITY_VS Code Extension API Layer|VS Code Extension API Layer]]
-- [[_COMMUNITY_Clerk Auth & Webhooks|Clerk Auth & Webhooks]]
-- [[_COMMUNITY_Solutions Content & Tiers|Solutions Content & Tiers]]
-- [[_COMMUNITY_API Services (Routing)|API Services (Routing)]]
-- [[_COMMUNITY_Auth & Judge Services|Auth & Judge Services]]
-- [[_COMMUNITY_Solutions Service & Testing|Solutions Service & Testing]]
-- [[_COMMUNITY_Notebook Execution|Notebook Execution]]
-- [[_COMMUNITY_Users & Webhooks|Users & Webhooks]]
-- [[_COMMUNITY_Extension UI Components|Extension UI Components]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
 - [[_COMMUNITY_Community 11|Community 11]]
 - [[_COMMUNITY_Community 12|Community 12]]
@@ -62,43 +61,43 @@
 
 ## Communities
 
-### Community 0 - "Judge Validation & Models"
+### Community 0 - "Community 0"
 Cohesion: 0.13
 Nodes (37): code_must_be_single_param(), code_must_define_func(), CommunitySolution, Difficulty, EditorialTier, Example, HintRevealResponse, JudgeResult (+29 more)
 
-### Community 1 - "VS Code Extension API Layer"
+### Community 1 - "Community 1"
 Cohesion: 0.1
 Nodes (7): QLabApi, buildHtml(), esc(), nonce(), ProblemPanel, test_get_me_without_token_returns_401(), test_submit_without_token_returns_401()
 
-### Community 2 - "Clerk Auth & Webhooks"
+### Community 2 - "Community 2"
 Cohesion: 0.12
 Nodes (32): /auth/callback Next.js Page, Clerk Authentication Provider, POST /webhooks/clerk Endpoint, Docker Container Judge Sandbox, qLab Future Improvements Backlog, qLab Implementation Summary (Phases 2-4), MongoDB with motor async driver, MongoDB problems Collection (+24 more)
 
-### Community 3 - "Solutions Content & Tiers"
+### Community 3 - "Community 3"
 Cohesion: 0.11
 Nodes (29): Community Tier, Content Tiers (Hints/Editorial/Reference/Community), editorial field (problems collection, markdown string), Editorial Tier, gate: attempts unlock rule, gate: correct unlock rule, Hints Tier, Lazy Loading (solutions fetch on tab click) (+21 more)
 
-### Community 4 - "API Services (Routing)"
+### Community 4 - "Community 4"
 Cohesion: 0.11
 Nodes (17): get_leaderboard(), get_problem(), list_problems(), get_solutions(), reveal_hint(), get_my_submissions(), submit(), main() (+9 more)
 
-### Community 5 - "Auth & Judge Services"
+### Community 5 - "Community 5"
 Cohesion: 0.12
 Nodes (27): api/services/auth.py, api/services/judge.py, Clerk Auth, deps.get_db, FastAPI Backend, func Submission, graphify Knowledge Graph, judge/harness.q (+19 more)
 
-### Community 6 - "Solutions Service & Testing"
+### Community 6 - "Community 6"
 Cohesion: 0.19
 Nodes (20): compute_solutions(), _get_top_community(), increment_hint_reveals(), _is_unlocked(), make_mock_db_for_router(), make_problem(), make_rsa_key_pair(), make_signing_key_mock() (+12 more)
 
-### Community 7 - "Notebook Execution"
+### Community 7 - "Community 7"
 Cohesion: 0.18
 Nodes (12): execute(), ExecuteRequest, reset(), _conn(), _escape(), execute_cell(), Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (, Escape a code string for embedding inside a q double-quoted string. (+4 more)
 
-### Community 8 - "Users & Webhooks"
+### Community 8 - "Community 8"
 Cohesion: 0.26
 Nodes (6): get_me(), set_nickname(), clerk_webhook(), get_by_clerk_id(), set_nickname(), upsert()
 
-### Community 9 - "Extension UI Components"
+### Community 9 - "Community 9"
 Cohesion: 0.18
 Nodes (4): DifficultyGroup, ErrorItem, ProblemItem, ProblemsProvider
 
@@ -187,9 +186,9 @@ Nodes (1): tests/test_solutions.py
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_run_q_process()` connect `Judge Validation & Models` to `VS Code Extension API Layer`?**
+- **Why does `_run_q_process()` connect `Community 0` to `Community 1`?**
   _High betweenness centrality (0.049) - this node is a cross-community bridge._
-- **Why does `submit()` connect `API Services (Routing)` to `Judge Validation & Models`, `Users & Webhooks`, `VS Code Extension API Layer`?**
+- **Why does `submit()` connect `Community 4` to `Community 0`, `Community 8`, `Community 1`?**
   _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `SubmissionStatus` (e.g. with `Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load` and `Returns an error string if func uses multiple params, else None.     Catches: fu`) actually correct?**
   _`SubmissionStatus` has 7 INFERRED edges - model-reasoned connections that need verification._
@@ -197,7 +196,7 @@ _Questions this graph is uniquely positioned to answer:_
   _`JudgeResult` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (`, `Escape a code string for embedding inside a q double-quoted string.`, `Evaluate cell_code on the notebook q process and return the result     as a form` to the rest of the system?**
   _35 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Judge Validation & Models` be split into smaller, more focused modules?**
+- **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
-- **Should `VS Code Extension API Layer` be split into smaller, more focused modules?**
+- **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._

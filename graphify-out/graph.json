@@ -3514,315 +3514,315 @@
       "file_type": "code",
       "source_file": "web/postcss.config.js",
       "source_location": "L1",
-      "id": "web_postcss_config_js",
       "community": 53,
-      "norm_label": "postcss.config.js"
+      "norm_label": "postcss.config.js",
+      "id": "web_postcss_config_js"
     },
     {
       "label": "tailwind.config.js",
       "file_type": "code",
       "source_file": "web/tailwind.config.js",
       "source_location": "L1",
-      "id": "web_tailwind_config_js",
       "community": 54,
-      "norm_label": "tailwind.config.js"
+      "norm_label": "tailwind.config.js",
+      "id": "web_tailwind_config_js"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L1",
-      "id": "web_app_problems_page_tsx",
       "community": 55,
-      "norm_label": "page.tsx"
+      "norm_label": "page.tsx",
+      "id": "web_app_problems_page_tsx"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "web/app/problems/[slug]/page.tsx",
       "source_location": "L1",
-      "id": "web_app_problems_slug_page_tsx",
       "community": 56,
-      "norm_label": "page.tsx"
+      "norm_label": "page.tsx",
+      "id": "web_app_problems_slug_page_tsx"
     },
     {
       "label": "useMySubmissions.ts",
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
-      "id": "web_hooks_usemysubmissions_ts",
       "community": 24,
-      "norm_label": "usemysubmissions.ts"
+      "norm_label": "usemysubmissions.ts",
+      "id": "web_hooks_usemysubmissions_ts"
     },
     {
       "label": "useMySubmissions()",
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L6",
-      "id": "hooks_usemysubmissions_usemysubmissions",
       "community": 24,
-      "norm_label": "usemysubmissions()"
+      "norm_label": "usemysubmissions()",
+      "id": "hooks_usemysubmissions_usemysubmissions"
     },
     {
       "label": "useProblem.ts",
       "file_type": "code",
       "source_file": "web/hooks/useProblem.ts",
       "source_location": "L1",
-      "id": "web_hooks_useproblem_ts",
       "community": 25,
-      "norm_label": "useproblem.ts"
+      "norm_label": "useproblem.ts",
+      "id": "web_hooks_useproblem_ts"
     },
     {
       "label": "useProblem()",
       "file_type": "code",
       "source_file": "web/hooks/useProblem.ts",
       "source_location": "L6",
-      "id": "hooks_useproblem_useproblem",
       "community": 25,
-      "norm_label": "useproblem()"
+      "norm_label": "useproblem()",
+      "id": "hooks_useproblem_useproblem"
     },
     {
       "label": "useProblems.ts",
       "file_type": "code",
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L1",
-      "id": "web_hooks_useproblems_ts",
       "community": 26,
-      "norm_label": "useproblems.ts"
+      "norm_label": "useproblems.ts",
+      "id": "web_hooks_useproblems_ts"
     },
     {
       "label": "useProblems()",
       "file_type": "code",
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L6",
-      "id": "hooks_useproblems_useproblems",
       "community": 26,
-      "norm_label": "useproblems()"
+      "norm_label": "useproblems()",
+      "id": "hooks_useproblems_useproblems"
     },
     {
       "label": "useTest.ts",
       "file_type": "code",
       "source_file": "web/hooks/useTest.ts",
       "source_location": "L1",
-      "id": "web_hooks_usetest_ts",
       "community": 27,
-      "norm_label": "usetest.ts"
+      "norm_label": "usetest.ts",
+      "id": "web_hooks_usetest_ts"
     },
     {
       "label": "useTest()",
       "file_type": "code",
       "source_file": "web/hooks/useTest.ts",
       "source_location": "L6",
-      "id": "hooks_usetest_usetest",
       "community": 27,
-      "norm_label": "usetest()"
+      "norm_label": "usetest()",
+      "id": "hooks_usetest_usetest"
     },
     {
       "label": "useSolutions.ts",
       "file_type": "code",
       "source_file": "web/hooks/useSolutions.ts",
       "source_location": "L1",
-      "id": "web_hooks_usesolutions_ts",
       "community": 28,
-      "norm_label": "usesolutions.ts"
+      "norm_label": "usesolutions.ts",
+      "id": "web_hooks_usesolutions_ts"
     },
     {
       "label": "useSolutions()",
       "file_type": "code",
       "source_file": "web/hooks/useSolutions.ts",
       "source_location": "L6",
-      "id": "hooks_usesolutions_usesolutions",
       "community": 28,
-      "norm_label": "usesolutions()"
+      "norm_label": "usesolutions()",
+      "id": "hooks_usesolutions_usesolutions"
     },
     {
       "label": "useSubmit.ts",
       "file_type": "code",
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L1",
-      "id": "web_hooks_usesubmit_ts",
       "community": 29,
-      "norm_label": "usesubmit.ts"
+      "norm_label": "usesubmit.ts",
+      "id": "web_hooks_usesubmit_ts"
     },
     {
       "label": "useSubmit()",
       "file_type": "code",
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L6",
-      "id": "hooks_usesubmit_usesubmit",
       "community": 29,
-      "norm_label": "usesubmit()"
+      "norm_label": "usesubmit()",
+      "id": "hooks_usesubmit_usesubmit"
     },
     {
       "label": "useRevealHint.ts",
       "file_type": "code",
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L1",
-      "id": "web_hooks_userevealhint_ts",
       "community": 30,
-      "norm_label": "userevealhint.ts"
+      "norm_label": "userevealhint.ts",
+      "id": "web_hooks_userevealhint_ts"
     },
     {
       "label": "useRevealHint()",
       "file_type": "code",
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L6",
-      "id": "hooks_userevealhint_userevealhint",
       "community": 30,
-      "norm_label": "userevealhint()"
+      "norm_label": "userevealhint()",
+      "id": "hooks_userevealhint_userevealhint"
     },
     {
       "label": "useLeaderboard.ts",
       "file_type": "code",
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L1",
-      "id": "web_hooks_useleaderboard_ts",
       "community": 31,
-      "norm_label": "useleaderboard.ts"
+      "norm_label": "useleaderboard.ts",
+      "id": "web_hooks_useleaderboard_ts"
     },
     {
       "label": "useLeaderboard()",
       "file_type": "code",
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L6",
-      "id": "hooks_useleaderboard_useleaderboard",
       "community": 31,
-      "norm_label": "useleaderboard()"
+      "norm_label": "useleaderboard()",
+      "id": "hooks_useleaderboard_useleaderboard"
     },
     {
       "label": "ProblemLayout.tsx",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
-      "id": "web_components_problemlayout_tsx",
       "community": 32,
-      "norm_label": "problemlayout.tsx"
+      "norm_label": "problemlayout.tsx",
+      "id": "web_components_problemlayout_tsx"
     },
     {
       "label": "starterCode()",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L18",
-      "id": "components_problemlayout_startercode",
       "community": 32,
-      "norm_label": "startercode()"
+      "norm_label": "startercode()",
+      "id": "components_problemlayout_startercode"
     },
     {
       "label": "ProblemsTable.tsx",
       "file_type": "code",
       "source_file": "web/components/ProblemsTable.tsx",
       "source_location": "L1",
-      "id": "web_components_problemstable_tsx",
       "community": 57,
-      "norm_label": "problemstable.tsx"
+      "norm_label": "problemstable.tsx",
+      "id": "web_components_problemstable_tsx"
     },
     {
       "label": "CodeEditor.tsx",
       "file_type": "code",
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L1",
-      "id": "web_components_codeeditor_tsx",
       "community": 33,
-      "norm_label": "codeeditor.tsx"
+      "norm_label": "codeeditor.tsx",
+      "id": "web_components_codeeditor_tsx"
     },
     {
       "label": "CodeEditor()",
       "file_type": "code",
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L13",
-      "id": "components_codeeditor_codeeditor",
       "community": 33,
-      "norm_label": "codeeditor()"
+      "norm_label": "codeeditor()",
+      "id": "components_codeeditor_codeeditor"
     },
     {
       "label": "LeaderboardTab.tsx",
       "file_type": "code",
       "source_file": "web/components/tabs/LeaderboardTab.tsx",
       "source_location": "L1",
-      "id": "web_components_tabs_leaderboardtab_tsx",
       "community": 58,
-      "norm_label": "leaderboardtab.tsx"
+      "norm_label": "leaderboardtab.tsx",
+      "id": "web_components_tabs_leaderboardtab_tsx"
     },
     {
       "label": "DescriptionTab.tsx",
       "file_type": "code",
       "source_file": "web/components/tabs/DescriptionTab.tsx",
       "source_location": "L1",
-      "id": "web_components_tabs_descriptiontab_tsx",
       "community": 59,
-      "norm_label": "descriptiontab.tsx"
+      "norm_label": "descriptiontab.tsx",
+      "id": "web_components_tabs_descriptiontab_tsx"
     },
     {
       "label": "TestTab.tsx",
       "file_type": "code",
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L1",
-      "id": "web_components_tabs_testtab_tsx",
       "community": 34,
-      "norm_label": "testtab.tsx"
+      "norm_label": "testtab.tsx",
+      "id": "web_components_tabs_testtab_tsx"
     },
     {
       "label": "handleRun()",
       "file_type": "code",
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L13",
-      "id": "tabs_testtab_handlerun",
       "community": 34,
-      "norm_label": "handlerun()"
+      "norm_label": "handlerun()",
+      "id": "tabs_testtab_handlerun"
     },
     {
       "label": "SubmitTab.tsx",
       "file_type": "code",
       "source_file": "web/components/tabs/SubmitTab.tsx",
       "source_location": "L1",
-      "id": "web_components_tabs_submittab_tsx",
       "community": 4,
-      "norm_label": "submittab.tsx"
+      "norm_label": "submittab.tsx",
+      "id": "web_components_tabs_submittab_tsx"
     },
     {
       "label": "handleSubmit()",
       "file_type": "code",
       "source_file": "web/components/tabs/SubmitTab.tsx",
       "source_location": "L33",
-      "id": "tabs_submittab_handlesubmit",
       "community": 4,
-      "norm_label": "handlesubmit()"
+      "norm_label": "handlesubmit()",
+      "id": "tabs_submittab_handlesubmit"
     },
     {
       "label": "SolutionsTab.tsx",
       "file_type": "code",
       "source_file": "web/components/tabs/SolutionsTab.tsx",
       "source_location": "L1",
-      "id": "web_components_tabs_solutionstab_tsx",
       "community": 60,
-      "norm_label": "solutionstab.tsx"
+      "norm_label": "solutionstab.tsx",
+      "id": "web_components_tabs_solutionstab_tsx"
     },
     {
       "label": "api.ts",
       "file_type": "code",
       "source_file": "web/lib/api.ts",
       "source_location": "L1",
-      "id": "web_lib_api_ts",
       "community": 35,
-      "norm_label": "api.ts"
+      "norm_label": "api.ts",
+      "id": "web_lib_api_ts"
     },
     {
       "label": "apiFetch()",
       "file_type": "code",
       "source_file": "web/lib/api.ts",
       "source_location": "L121",
-      "id": "lib_api_apifetch",
       "community": 35,
-      "norm_label": "apifetch()"
+      "norm_label": "apifetch()",
+      "id": "lib_api_apifetch"
     },
     {
       "label": "Kill whatever is running on NB_PORT and spawn a fresh q process there.     Uses",
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L96",
-      "id": "services_notebook_rationale_96",
       "community": 7,
-      "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses"
+      "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses",
+      "id": "services_notebook_rationale_96"
     }
   ],
   "links": [
@@ -6150,9 +6150,9 @@
       "weight": 1.0,
       "_src": "services_notebook_reset_notebook",
       "_tgt": "services_notebook_rationale_96",
+      "confidence_score": 1.0,
       "source": "services_notebook_reset_notebook",
-      "target": "services_notebook_rationale_96",
-      "confidence_score": 1.0
+      "target": "services_notebook_rationale_96"
     },
     {
       "relation": "contains",
@@ -10578,9 +10578,9 @@
       "weight": 1.0,
       "_src": "web_hooks_usemysubmissions_ts",
       "_tgt": "hooks_usemysubmissions_usemysubmissions",
+      "confidence_score": 1.0,
       "source": "web_hooks_usemysubmissions_ts",
-      "target": "hooks_usemysubmissions_usemysubmissions",
-      "confidence_score": 1.0
+      "target": "hooks_usemysubmissions_usemysubmissions"
     },
     {
       "relation": "contains",
@@ -10590,9 +10590,9 @@
       "weight": 1.0,
       "_src": "web_hooks_useproblem_ts",
       "_tgt": "hooks_useproblem_useproblem",
+      "confidence_score": 1.0,
       "source": "web_hooks_useproblem_ts",
-      "target": "hooks_useproblem_useproblem",
-      "confidence_score": 1.0
+      "target": "hooks_useproblem_useproblem"
     },
     {
       "relation": "contains",
@@ -10602,9 +10602,9 @@
       "weight": 1.0,
       "_src": "web_hooks_useproblems_ts",
       "_tgt": "hooks_useproblems_useproblems",
+      "confidence_score": 1.0,
       "source": "web_hooks_useproblems_ts",
-      "target": "hooks_useproblems_useproblems",
-      "confidence_score": 1.0
+      "target": "hooks_useproblems_useproblems"
     },
     {
       "relation": "contains",
@@ -10614,9 +10614,9 @@
       "weight": 1.0,
       "_src": "web_hooks_usetest_ts",
       "_tgt": "hooks_usetest_usetest",
+      "confidence_score": 1.0,
       "source": "web_hooks_usetest_ts",
-      "target": "hooks_usetest_usetest",
-      "confidence_score": 1.0
+      "target": "hooks_usetest_usetest"
     },
     {
       "relation": "contains",
@@ -10626,9 +10626,9 @@
       "weight": 1.0,
       "_src": "web_hooks_usesolutions_ts",
       "_tgt": "hooks_usesolutions_usesolutions",
+      "confidence_score": 1.0,
       "source": "web_hooks_usesolutions_ts",
-      "target": "hooks_usesolutions_usesolutions",
-      "confidence_score": 1.0
+      "target": "hooks_usesolutions_usesolutions"
     },
     {
       "relation": "contains",
@@ -10638,9 +10638,9 @@
       "weight": 1.0,
       "_src": "web_hooks_usesubmit_ts",
       "_tgt": "hooks_usesubmit_usesubmit",
+      "confidence_score": 1.0,
       "source": "web_hooks_usesubmit_ts",
-      "target": "hooks_usesubmit_usesubmit",
-      "confidence_score": 1.0
+      "target": "hooks_usesubmit_usesubmit"
     },
     {
       "relation": "contains",
@@ -10650,9 +10650,9 @@
       "weight": 1.0,
       "_src": "web_hooks_userevealhint_ts",
       "_tgt": "hooks_userevealhint_userevealhint",
+      "confidence_score": 1.0,
       "source": "web_hooks_userevealhint_ts",
-      "target": "hooks_userevealhint_userevealhint",
-      "confidence_score": 1.0
+      "target": "hooks_userevealhint_userevealhint"
     },
     {
       "relation": "contains",
@@ -10662,9 +10662,9 @@
       "weight": 1.0,
       "_src": "web_hooks_useleaderboard_ts",
       "_tgt": "hooks_useleaderboard_useleaderboard",
+      "confidence_score": 1.0,
       "source": "web_hooks_useleaderboard_ts",
-      "target": "hooks_useleaderboard_useleaderboard",
-      "confidence_score": 1.0
+      "target": "hooks_useleaderboard_useleaderboard"
     },
     {
       "relation": "contains",
@@ -10674,9 +10674,9 @@
       "weight": 1.0,
       "_src": "web_components_problemlayout_tsx",
       "_tgt": "components_problemlayout_startercode",
+      "confidence_score": 1.0,
       "source": "web_components_problemlayout_tsx",
-      "target": "components_problemlayout_startercode",
-      "confidence_score": 1.0
+      "target": "components_problemlayout_startercode"
     },
     {
       "relation": "contains",
@@ -10686,9 +10686,9 @@
       "weight": 1.0,
       "_src": "web_components_codeeditor_tsx",
       "_tgt": "components_codeeditor_codeeditor",
+      "confidence_score": 1.0,
       "source": "web_components_codeeditor_tsx",
-      "target": "components_codeeditor_codeeditor",
-      "confidence_score": 1.0
+      "target": "components_codeeditor_codeeditor"
     },
     {
       "relation": "contains",
@@ -10698,9 +10698,9 @@
       "weight": 1.0,
       "_src": "web_components_tabs_testtab_tsx",
       "_tgt": "tabs_testtab_handlerun",
+      "confidence_score": 1.0,
       "source": "web_components_tabs_testtab_tsx",
-      "target": "tabs_testtab_handlerun",
-      "confidence_score": 1.0
+      "target": "tabs_testtab_handlerun"
     },
     {
       "relation": "contains",
@@ -10710,9 +10710,9 @@
       "weight": 1.0,
       "_src": "web_components_tabs_submittab_tsx",
       "_tgt": "tabs_submittab_handlesubmit",
+      "confidence_score": 1.0,
       "source": "web_components_tabs_submittab_tsx",
-      "target": "tabs_submittab_handlesubmit",
-      "confidence_score": 1.0
+      "target": "tabs_submittab_handlesubmit"
     },
     {
       "relation": "contains",
@@ -10722,9 +10722,9 @@
       "weight": 1.0,
       "_src": "web_lib_api_ts",
       "_tgt": "lib_api_apifetch",
+      "confidence_score": 1.0,
       "source": "web_lib_api_ts",
-      "target": "lib_api_apifetch",
-      "confidence_score": 1.0
+      "target": "lib_api_apifetch"
     }
   ],
   "hyperedges": []
