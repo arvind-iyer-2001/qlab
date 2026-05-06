@@ -111,9 +111,9 @@ export interface SubmissionResponse {
 }
 
 export interface ExecuteResponse {
-  result?: string
-  error?: string
-  output?: string
+  output: string
+  error: string | null
+  ok: boolean
 }
 
 // --- Fetch helper ---

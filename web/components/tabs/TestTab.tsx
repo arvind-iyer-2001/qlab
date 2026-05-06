@@ -15,7 +15,9 @@ export function TestTab({ problem, code }: Props) {
     runTest(testCode)
   }
 
-  const output = data?.result ?? data?.output
+  const hasResult = data != null
+  const qError = data?.error
+  const output = data?.output
 
   return (
     <div style={{ padding: '20px', color: '#eff1f6', height: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -45,19 +47,33 @@ export function TestTab({ problem, code }: Props) {
         {isPending ? 'Running…' : 'Run'}
       </button>
 
+      {/* HTTP / network error */}
       {error && (
         <div style={{ background: '#2a1a1a', border: '1px solid #ef4743', borderRadius: '6px', padding: '12px', color: '#ef4743', fontSize: '13px', fontFamily: 'monospace' }}>
           {(error as Error).message}
         </div>
       )}
 
-      {output != null && (
+      {/* q-level error (ok: false) */}
+      {hasResult && qError && (
+        <section>
+          <h4 style={{ color: '#aba9b0', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Error
+          </h4>
+          <div style={{ background: '#2a1a1a', border: '1px solid #ef4743', borderRadius: '6px', padding: '12px', fontFamily: 'monospace', fontSize: '13px', color: '#ef4743', whiteSpace: 'pre-wrap' }}>
+            {qError}
+          </div>
+        </section>
+      )}
+
+      {/* Successful output */}
+      {hasResult && !qError && (
         <section>
           <h4 style={{ color: '#aba9b0', margin: '0 0 8px 0', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Output
           </h4>
           <div style={{ background: '#1e1e1e', borderRadius: '6px', padding: '12px', fontFamily: 'monospace', fontSize: '13px', color: '#eff1f6', whiteSpace: 'pre-wrap' }}>
-            {output}
+            {output || <span style={{ color: '#5a5a5a' }}>(no output)</span>}
           </div>
         </section>
       )}
