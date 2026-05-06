@@ -53,6 +53,9 @@ async def execute_cell(cell_code: str) -> dict:
     if not code:
         return {"output": "", "error": None, "ok": True}
 
+    # Within a q value() string, newlines are NOT statement separators.
+    # Replace them with semicolons so multiple statements execute correctly.
+    code = code.replace("\n", ";")
     escaped = _escape(code)
     q_expr = f'.Q.s1 value "{escaped}"'
 
