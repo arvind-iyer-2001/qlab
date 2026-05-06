@@ -2077,7 +2077,7 @@
       "label": "fetchQlabUser()",
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
-      "source_location": "L30",
+      "source_location": "L31",
       "id": "profile_page_fetchqlabuser",
       "community": 20,
       "norm_label": "fetchqlabuser()"
