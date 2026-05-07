@@ -12,7 +12,7 @@ Each problem asks you to write a single-parameter q function named \`func\`. You
 
 ## Stack
 
-\`\`\`
+```bash
 Web (Next.js :9091)  VS Code extension
         ↓                    ↓
      Clerk auth         FastAPI (8000)
@@ -24,7 +24,7 @@ Web (Next.js :9091)  VS Code extension
                                         ↓
                                q judge subprocess
                                  (per submission)
-\`\`\`
+```
 
 - **MongoDB** — primary data store for problems, submissions, and users.
 - **FastAPI** (Python) — async REST API managing the judge pipeline and kdb+ notebook interaction.
