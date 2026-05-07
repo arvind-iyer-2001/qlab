@@ -39,3 +39,4 @@ graphify-out/.graphify_python
 **/.next/**
 # Visual brainstorming session files
 .superpowers/
+graphify-out/.graphify_detect.json
