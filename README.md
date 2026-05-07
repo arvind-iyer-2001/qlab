@@ -43,11 +43,11 @@ A native VS Code extension lives in \`vscode-extension/\`. It provides:
 - \`Ctrl+Shift+S\` to submit the active \`.q\` file
 - Native VS Code theming via \`--vscode-*\` CSS variables
 
-\`\`\`bash
+```bash
 cd vscode-extension
 npm install
 npm run install-ext    # compile + package + install into VS Code
-\`\`\`
+```
 
 Set the \`qlab.apiUrl\` setting to point at your running FastAPI instance (default: \`http://localhost:8000\`).
 
@@ -60,19 +60,19 @@ Set the \`qlab.apiUrl\` setting to point at your running FastAPI instance (defau
 
 ## Setup
 
-\`\`\`bash
+```bash
 # Python dependencies
 pip install -r api/requirements.txt
 
 # Seed problems into MongoDB
 python3 scripts/seed_problems.py
-\`\`\`
+```
 
 ## Running
 
-\`\`\`bash
+```bash
 ./start.sh
-\`\`\`
+```
 
 This launches the core stack:
 
