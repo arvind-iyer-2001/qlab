@@ -1,0 +1,35 @@
+{
+  "id": 6,
+  "slug": "p006_thanos_sort",
+  "title": "Thanos Sort",
+  "difficulty": "medium",
+  "concepts": ["recursion", "divide-and-conquer", "sorting"],
+  "posted_date": "2026-05-07",
+  "judge_seed": 507,
+  "solve_count": 0,
+  "narrative": "\"Thanos sort\" is a supervillain sorting algorithm, which works as follows: if the array is not sorted, snap your fingers to remove the first or the second half of the items, and repeat the process.\n\nGiven an input array, what is the size of the longest sorted array you can obtain from it using Thanos sort?",
+  "input_spec": "x is a 2-element list:\n  x[0]: n — integer, the size of the array (1 ≤ n ≤ 16, guaranteed power of 2)\n  x[1]: a — list of n integers (1 ≤ a[i] ≤ 100)",
+  "output_spec": "Return the maximum length of a sorted (non-decreasing) array obtainable from a using Thanos sort.",
+  "examples": [
+    {"input": "func (4; 1 2 2 4)", "output": "4", "note": "Already sorted — keep the whole array."},
+    {"input": "func (8; 11 12 1 2 13 14 3 4)", "output": "2", "note": "No aligned 4- or 8-window is sorted; best is a 2-window like (11 12)."},
+    {"input": "func (4; 7 6 5 4)", "output": "1", "note": "Strictly decreasing — must keep halving until a single element remains."},
+    {"input": "func (16; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)", "output": "16"},
+    {"input": "func (8; 73 97 9 72 82 69 8 86)", "output": "2"},
+    {"input": "func (16; 27 45 6 19 19 25 25 34 36 44 52 55 83 90 96 90)", "output": "4", "note": "a[4..7] = (19 25 25 34) is the longest aligned sorted half."}
+  ],
+  "hints": [
+    "Thanos sort produces sub-arrays that are aligned halves of the original — not arbitrary contiguous slices. Of size n, n/2, n/4, ..., 1.",
+    "Think recursively: f(a) = count a if a is sorted, else max(f(first half), f(second half)). Base case is n=1.",
+    "In q, `a~asc a` is a clean way to check if a list is non-decreasing. Recursion can use `.z.s` for self-reference.",
+    "Alternatively, precompute the 'sorted-adjacent' bit-vector `(-1_a)<=1_a` once, then for each power-of-2 window size check the aligned chunks."
+  ],
+  "winning_criteria": "FASTEST correct single-parameter func wins. If within 10% of the fastest timing, shortest code wins. Measured with: `\\t:1000 func each x` and `-2+count string func`.",
+  "test_call": "func each ((4; 1 2 2 4); (8;11 12 1 2 13 14 3 4); (4;7 6 5 4); (16; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16); (8;73 97 9 72 82 69 8 86); (16; 27 45 6 19 19 25 25 34 36 44 52 55 83 90 96 90))",
+  "solutions_config": {
+    "editorial": { "gate": "attempts", "attempts_required": 3 },
+    "reference": { "gate": "correct" },
+    "community": { "gate": "attempts", "attempts_required": 1 }
+  },
+  "editorial": "## Approach\n\nThanos sort only ever produces **aligned power-of-2 halves** of the original array. So the answer is the largest `s ∈ {n, n/2, n/4, ..., 1}` for which some aligned window of length `s` is non-decreasing.\n\n### Recursive form\n\n```q\nf:{n:count x;$[1=n;1;x~asc x;n;max(.z.s(n div 2)#x;.z.s(n div 2)_ x)]}\nfunc:{f x 1}\n```\n\nIf the array is sorted, return its size. Otherwise split into two halves and recurse, returning the max.\n\n### Iterative form (avoids recursion overhead)\n\nPrecompute the adjacent-pair non-decreasing bit-vector `d:(-1_a)<=1_a`. For each candidate size `s` (descending from `n` down to 2), check whether any aligned window of size `s` is sorted — that window needs the corresponding `s-1` bits in `d` to all be 1. Return the first `s` that succeeds; if none, return 1.\n\nThe winning submissions used a one-liner version of this idea with `s cut d` to slice the bit-vector by candidate size.\n\n### Why aligned halves?\n\nEach snap removes the first or second half. After `k` snaps starting from size `n`, the remaining array has size `n/2^k` and occupies positions `[i·n/2^k, (i+1)·n/2^k)` for some `i`. Arbitrary slices are not reachable."
+}
