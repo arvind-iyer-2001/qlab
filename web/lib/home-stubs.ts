@@ -1,27 +1,6 @@
 // Static seed data for the home screen. Replace each section with a real API
 // call before any external launch — every TODO comment names the endpoint.
 
-export interface TickerEntry {
-  handle: string
-  problem_title: string
-  problem_slug: string
-  difficulty: 'easy' | 'medium' | 'hard'
-  timing_ms: number
-  char_count: number
-}
-
-// TODO(home-stubs): replace with GET /submissions/recent?limit=20
-export const RECENT_SUBMISSIONS: TickerEntry[] = [
-  { handle: 'kx_arvind', problem_title: 'Same Same', problem_slug: 'same-same', difficulty: 'easy', timing_ms: 2, char_count: 14 },
-  { handle: 'qmaster',   problem_title: 'Trade Bucket', problem_slug: 'trade-bucket', difficulty: 'medium', timing_ms: 47, char_count: 38 },
-  { handle: 'tickwiz',   problem_title: 'Window Sum', problem_slug: 'window-sum', difficulty: 'easy', timing_ms: 5, char_count: 22 },
-  { handle: 'vectorize', problem_title: 'Asof Join Lite', problem_slug: 'asof-join-lite', difficulty: 'hard', timing_ms: 112, char_count: 61 },
-  { handle: 'kdb_owl',   problem_title: 'Same Same', problem_slug: 'same-same', difficulty: 'easy', timing_ms: 3, char_count: 16 },
-  { handle: 'qmaster',   problem_title: 'Window Sum', problem_slug: 'window-sum', difficulty: 'easy', timing_ms: 4, char_count: 19 },
-  { handle: 'tickwiz',   problem_title: 'Asof Join Lite', problem_slug: 'asof-join-lite', difficulty: 'hard', timing_ms: 138, char_count: 72 },
-  { handle: 'kx_arvind', problem_title: 'Trade Bucket', problem_slug: 'trade-bucket', difficulty: 'medium', timing_ms: 51, char_count: 41 },
-]
-
 export interface PillarStat {
   label: string
   value: string

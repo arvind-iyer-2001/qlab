@@ -2,14 +2,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/api'
 
-export function useRecentSubmissions(limit = 20) {
-  return useQuery({
-    queryKey: ['recentSubmissions', limit],
-    queryFn: () => api.getRecentSubmissions(limit),
-    staleTime: 30_000,
-  })
-}
-
 export function useGlobalLeaderboard(limit = 5) {
   return useQuery({
     queryKey: ['globalLeaderboard', limit],
