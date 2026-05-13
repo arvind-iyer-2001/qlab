@@ -91,7 +91,7 @@ async def get_my_ranks(
 
 @router.get("/me", response_model=list[MySubmissionEntry])
 async def get_my_submissions(
-    problem_id: int = Query(...),
+    problem_id: int | None = Query(None),
     claims: dict = Depends(verify_clerk_token),
     db: AsyncIOMotorDatabase = Depends(get_db),
 ):

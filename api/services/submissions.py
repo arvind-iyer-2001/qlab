@@ -132,11 +132,14 @@ async def get_user_ranks(
 async def get_for_user(
     db: AsyncIOMotorDatabase,
     user_id: str,
-    problem_id: int,
+    problem_id: int | None = None,
 ) -> list[dict]:
+    query: dict = {"user_id": user_id}
+    if problem_id is not None:
+        query["problem_id"] = problem_id
     cursor = (
         db.submissions.find(
-            {"user_id": user_id, "problem_id": problem_id},
+            query,
             {
                 "_id": 0,
                 "problem_id": 1,
@@ -154,23 +157,24 @@ async def get_for_user(
     )
     rows = await cursor.to_list(length=100)
 
-    # Find best correct submission index (lowest timing_ms, then char_count)
-    best_idx: int | None = None
-    best_time: int | None = None
-    best_chars: int | None = None
+    # Best correct submission per problem (lowest timing_ms, then char_count)
+    best_idx_by_problem: dict[int, int] = {}
+    best_by_problem: dict[int, tuple[int, int]] = {}
     for i, r in enumerate(rows):
-        if r.get("status") == "correct":
-            t = r.get("timing_ms")
-            c = r.get("char_count")
-            if t is None or c is None:
-                continue
-            if best_idx is None or t < best_time or (t == best_time and c < best_chars):
-                best_idx = i
-                best_time = t
-                best_chars = c
+        if r.get("status") != "correct":
+            continue
+        t = r.get("timing_ms")
+        c = r.get("char_count")
+        if t is None or c is None:
+            continue
+        pid = r["problem_id"]
+        cur = best_by_problem.get(pid)
+        if cur is None or (t, c) < cur:
+            best_by_problem[pid] = (t, c)
+            best_idx_by_problem[pid] = i
 
     for i, r in enumerate(rows):
-        r["is_best"] = (i == best_idx)
+        r["is_best"] = (i == best_idx_by_problem.get(r["problem_id"]))
         if isinstance(r.get("submitted_at"), datetime):
             r["submitted_at"] = r["submitted_at"].isoformat()
     return rows
