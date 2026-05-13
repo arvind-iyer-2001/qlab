@@ -3,6 +3,22 @@ import * as crypto from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
 import type { QLabApi, ProblemDetail, LeaderboardEntry, SubmitResult, ExecuteResult, UserSubmission, SolutionsResponse, HintRevealResult } from './api'
+import type { SolvedCache } from './solvedCache'
+
+const TAB_IDS = ['description', 'test', 'submit', 'mysubmissions', 'solutions', 'community'] as const
+type TabId = typeof TAB_IDS[number]
+
+const TAB_MEMORY_KEY = 'qlab.tabBySlug'
+
+export interface OpenOptions {
+  workspaceState?: vscode.Memento
+  solvedCache?: SolvedCache
+  initialTab?: string
+}
+
+function isTabId(s: string | undefined | null): s is TabId {
+  return !!s && (TAB_IDS as readonly string[]).includes(s)
+}
 
 /** One panel per problem slug; re-reveals if already open. */
 export class ProblemPanel {
@@ -10,18 +26,26 @@ export class ProblemPanel {
 
   private readonly _panel: vscode.WebviewPanel
   private readonly _disposables: vscode.Disposable[] = []
+  private readonly _workspaceState?: vscode.Memento
+  private readonly _solvedCache?: SolvedCache
 
   // ── Factory ──────────────────────────────────────────────────────────────
 
   static async open(
     slug: string,
     api: QLabApi,
-    extensionUri: vscode.Uri
+    extensionUri: vscode.Uri,
+    opts: OpenOptions = {}
   ): Promise<void> {
-    // Re-reveal existing panel
+    const requestedTab = isTabId(opts.initialTab) ? opts.initialTab : undefined
+
+    // Re-reveal existing panel; if a tab was requested via URI, switch to it.
     const existing = ProblemPanel.panels.get(slug)
     if (existing) {
       existing._panel.reveal(vscode.ViewColumn.Two)
+      if (requestedTab) {
+        existing._post({ type: 'setTab', tab: requestedTab })
+      }
       return
     }
 
@@ -43,7 +67,17 @@ export class ProblemPanel {
       }
     )
 
-    new ProblemPanel(panel, problem!, api, extensionUri)
+    // Resolve initial tab: URI > workspaceState > 'description'
+    let initialTab: TabId = 'description'
+    if (requestedTab) {
+      initialTab = requestedTab
+    } else if (opts.workspaceState) {
+      const map = opts.workspaceState.get<Record<string, TabId>>(TAB_MEMORY_KEY, {})
+      const stored = map[slug]
+      if (isTabId(stored)) initialTab = stored
+    }
+
+    new ProblemPanel(panel, problem!, api, extensionUri, initialTab, opts)
 
     // Open / create a solution .q file in column 1
     await ProblemPanel.openSolutionFile(problem!)
@@ -55,12 +89,16 @@ export class ProblemPanel {
     panel: vscode.WebviewPanel,
     private readonly problem: ProblemDetail,
     private readonly api: QLabApi,
-    _extensionUri: vscode.Uri
+    _extensionUri: vscode.Uri,
+    initialTab: TabId = 'description',
+    opts: OpenOptions = {}
   ) {
     this._panel = panel
+    this._workspaceState = opts.workspaceState
+    this._solvedCache = opts.solvedCache
     ProblemPanel.panels.set(problem.slug, this)
 
-    this._panel.webview.html = buildHtml(panel.webview, problem)
+    this._panel.webview.html = buildHtml(panel.webview, problem, initialTab)
 
     // Messages from webview → extension
     this._panel.webview.onDidReceiveMessage(
@@ -110,6 +148,37 @@ export class ProblemPanel {
       case 'revealNextHint':
         await this._revealNextHint()
         break
+
+      case 'tabChanged':
+        this._persistTab(msg.tab)
+        break
+
+      case 'copyDeepLink':
+        await this._copyDeepLink(msg.tab)
+        break
+    }
+  }
+
+  private _persistTab(tab: string | undefined): void {
+    if (!this._workspaceState || !isTabId(tab)) return
+    try {
+      const map = this._workspaceState.get<Record<string, TabId>>(TAB_MEMORY_KEY, {})
+      const next = { ...map, [this.problem.slug]: tab }
+      this._workspaceState.update(TAB_MEMORY_KEY, next)
+    } catch (e) {
+      console.warn('qLab: tab memory write failed', e)
+    }
+  }
+
+  private async _copyDeepLink(tab: string | undefined): Promise<void> {
+    const params = new URLSearchParams({ slug: this.problem.slug })
+    if (isTabId(tab)) params.set('tab', tab)
+    const uri = `vscode://qlab.qlab/open?${params.toString()}`
+    try {
+      await vscode.env.clipboard.writeText(uri)
+      vscode.window.setStatusBarMessage('qLab: link copied', 2000)
+    } catch (e) {
+      vscode.window.showErrorMessage(`Failed to copy link: ${e}`)
     }
   }
 
@@ -150,6 +219,13 @@ export class ProblemPanel {
       this._post({ type: 'submitResult', data: result })
       if (result.status === 'correct') {
         await this._sendLeaderboard()
+        if (this._solvedCache) {
+          await this._solvedCache.markSolved(this.problem.slug, result.timing_ms)
+        }
+      } else if (result.status !== 'unauthorized') {
+        if (this._solvedCache) {
+          await this._solvedCache.markAttempted(this.problem.slug)
+        }
       }
       await this._sendSolutions()
     } catch (e) {
@@ -219,11 +295,19 @@ export class ProblemPanel {
     this._post({ type: 'hintRevealed', data: result })
   }
 
+  private _disposed = false
+
   private _post(msg: ExtensionMessage): void {
-    this._panel.webview.postMessage(msg)
+    if (this._disposed) return
+    try {
+      this._panel.webview.postMessage(msg)
+    } catch (e) {
+      // Panel disposed mid-async — silent
+    }
   }
 
   private _dispose(): void {
+    this._disposed = true
     ProblemPanel.panels.delete(this.problem.slug)
     this._disposables.forEach(d => d.dispose())
   }
@@ -291,9 +375,10 @@ export class ProblemPanel {
 // ── Message types ─────────────────────────────────────────────────────────
 
 interface WebviewMessage {
-  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor' | 'getMySubmissions' | 'getSolutions' | 'revealNextHint'
+  type: 'getEditorCode' | 'submit' | 'runTest' | 'refreshLeaderboard' | 'openInEditor' | 'getMySubmissions' | 'getSolutions' | 'revealNextHint' | 'tabChanged' | 'copyDeepLink'
   target?: string
   code?: string
+  tab?: string
 }
 
 interface ExtensionMessage {
@@ -315,7 +400,7 @@ function esc(s: unknown): string {
     .replace(/"/g, '&quot;')
 }
 
-function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
+function buildHtml(webview: vscode.Webview, p: ProblemDetail, initialTab: string = 'description'): string {
   const n = nonce()
 
   const diffColor =
@@ -427,6 +512,41 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     }
     .tab:hover   { color: var(--vscode-tab-activeForeground); background: var(--vscode-tab-hoverBackground); }
     .tab.active  { color: var(--vscode-tab-activeForeground); border-bottom-color: var(--vscode-focusBorder); }
+    .copy-link {
+      margin-left: auto;
+      margin-right: 6px;
+      align-self: center;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--vscode-descriptionForeground);
+      font-family: inherit;
+      font-size: calc(var(--vscode-font-size) - 1px);
+      padding: 3px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .copy-link:hover { color: var(--vscode-foreground); border-color: var(--vscode-panel-border); }
+    .copy-link.copied { color: var(--vscode-testing-iconPassed); border-color: var(--vscode-testing-iconPassed); }
+
+    /* ── Wrong-answer diff ── */
+    .diff-header { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 6px; }
+    .diff-toggle {
+      background: transparent;
+      border: 1px solid var(--vscode-panel-border);
+      color: var(--vscode-descriptionForeground);
+      font-family: inherit;
+      font-size: 0.78em;
+      padding: 2px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .diff-toggle:hover { color: var(--vscode-foreground); }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .diff-block { padding: 8px; border-radius: 3px; }
+    .diff-block pre { margin: 4px 0 0; white-space: pre-wrap; }
+    .diff-expected { background: rgba(46, 160, 67, 0.08); border: 1px solid rgba(46, 160, 67, 0.25); color: var(--vscode-testing-iconPassed); }
+    .diff-got      { background: rgba(248, 81, 73, 0.08); border: 1px solid rgba(248, 81, 73, 0.25); color: var(--vscode-testing-iconFailed); }
 
     /* ── Tab content ── */
     .tab-body  { flex: 1; overflow: hidden; position: relative; }
@@ -654,19 +774,20 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
 
   <!-- Tab bar -->
   <div class="tab-bar">
-    <button class="tab active" data-tab="description">Description</button>
-    <button class="tab" data-tab="test">Test</button>
-    <button class="tab" data-tab="submit">Submit</button>
-    <button class="tab" data-tab="mysubmissions">My Submissions</button>
-    <button class="tab" data-tab="solutions">Solutions</button>
-    <button class="tab" data-tab="community">Community</button>
+    <button class="tab${initialTab === 'description' ? ' active' : ''}" data-tab="description">Description</button>
+    <button class="tab${initialTab === 'test' ? ' active' : ''}" data-tab="test">Test</button>
+    <button class="tab${initialTab === 'submit' ? ' active' : ''}" data-tab="submit">Submit</button>
+    <button class="tab${initialTab === 'mysubmissions' ? ' active' : ''}" data-tab="mysubmissions">My Submissions</button>
+    <button class="tab${initialTab === 'solutions' ? ' active' : ''}" data-tab="solutions">Solutions</button>
+    <button class="tab${initialTab === 'community' ? ' active' : ''}" data-tab="community">Community</button>
+    <button id="copyLinkBtn" class="copy-link" title="Copy link to this tab">🔗 Copy</button>
   </div>
 
   <!-- Tab panes -->
   <div class="tab-body">
 
     <!-- ── DESCRIPTION ─────────────────────────────────────────── -->
-    <div class="tab-pane active" id="description">
+    <div class="tab-pane${initialTab === 'description' ? ' active' : ''}" id="description">
       <h3>Problem</h3>
       <p>${esc(p.narrative).replace(/\n/g, '<br>')}</p>
 
@@ -691,7 +812,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     </div>
 
     <!-- ── TEST ────────────────────────────────────────────────── -->
-    <div class="tab-pane" id="test">
+    <div class="tab-pane${initialTab === 'test' ? ' active' : ''}" id="test">
       <div class="notice">
         Write your <code>func</code> in the <code>.q</code> solution file (or use a KX Notebook),
         then click <strong>Load from Editor</strong> to pull it in here and run against the test input.
@@ -717,7 +838,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     </div>
 
     <!-- ── SUBMIT ───────────────────────────────────────────────── -->
-    <div class="tab-pane" id="submit">
+    <div class="tab-pane${initialTab === 'submit' ? ' active' : ''}" id="submit">
       <div class="notice">
         Solution must define <code>func:{[x]…}</code> — single-param function.
         Scored by timing (<code>\\t:1000</code>) then character count.
@@ -739,7 +860,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     </div>
 
     <!-- ── MY SUBMISSIONS ─────────────────────────────────────── -->
-    <div class="tab-pane" id="mysubmissions">
+    <div class="tab-pane${initialTab === 'mysubmissions' ? ' active' : ''}" id="mysubmissions">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <h3 style="margin:0;border:none">Leaderboard</h3>
         <button class="btn-secondary" id="refreshLbBtn" style="font-size:0.78em;padding:3px 10px">↻ Refresh</button>
@@ -752,7 +873,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     </div>
 
     <!-- ── COMMUNITY ───────────────────────────────────────────── -->
-    <div class="tab-pane" id="community">
+    <div class="tab-pane${initialTab === 'community' ? ' active' : ''}" id="community">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:var(--vscode-descriptionForeground);padding:32px 16px;text-align:center">
         <span style="font-size:2em">💬</span>
         <p style="font-size:0.95em;font-weight:600;color:var(--vscode-foreground)">Community Forum</p>
@@ -761,7 +882,7 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     </div>
 
     <!-- ── SOLUTIONS ──────────────────────────────────────────── -->
-    <div class="tab-pane" id="solutions">
+    <div class="tab-pane${initialTab === 'solutions' ? ' active' : ''}" id="solutions">
       <div id="solContent"><p style="color:var(--vscode-descriptionForeground)">Click to load…</p></div>
     </div>
 
@@ -772,12 +893,22 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     const PROBLEM = ${problemJson};
 
     // ── Tab switching ─────────────────────────────────────────
+    function activateTab(tabId, opts) {
+      const tabBtn = document.querySelector('.tab[data-tab="' + tabId + '"]');
+      if (!tabBtn) return;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      tabBtn.classList.add('active');
+      const pane = document.getElementById(tabId);
+      if (pane) pane.classList.add('active');
+      if (opts && opts.userInitiated) {
+        vscode.postMessage({ type: 'tabChanged', tab: tabId });
+      }
+    }
+
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
+        activateTab(tab.dataset.tab, { userInitiated: true });
       });
     });
 
@@ -785,6 +916,26 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
     document.querySelector('.tab[data-tab="mysubmissions"]').addEventListener('click', () => {
       vscode.postMessage({ type: 'getMySubmissions' });
       vscode.postMessage({ type: 'refreshLeaderboard' });
+    });
+
+    // If initialTab is mysubmissions, auto-load it
+    if (${JSON.stringify(initialTab === 'mysubmissions')}) {
+      vscode.postMessage({ type: 'getMySubmissions' });
+      vscode.postMessage({ type: 'refreshLeaderboard' });
+    }
+
+    // ── Copy deep-link ────────────────────────────────────────
+    const copyBtn = document.getElementById('copyLinkBtn');
+    copyBtn.addEventListener('click', () => {
+      const active = document.querySelector('.tab.active');
+      const tab = active ? active.dataset.tab : 'description';
+      vscode.postMessage({ type: 'copyDeepLink', tab });
+      copyBtn.textContent = '✓ Copied';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.textContent = '🔗 Copy';
+        copyBtn.classList.remove('copied');
+      }, 1500);
     });
 
     // ── Open solution file ────────────────────────────────────
@@ -894,6 +1045,11 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
           vscode.postMessage({ type: 'getSolutions' });
           break;
         }
+
+        case 'setTab': {
+          if (msg.tab) activateTab(msg.tab, { userInitiated: false });
+          break;
+        }
       }
     });
 
@@ -911,10 +1067,14 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
       }
     }
 
+    let diffSideBySide = false;
+    let lastWrongData = null;
+
     function renderSubmitResult(data) {
       const wrap = document.getElementById('submitResultWrap');
       wrap.style.display = 'block';
       if (data.status === 'correct') {
+        lastWrongData = null;
         wrap.innerHTML =
           '<div class="result correct">' +
           '<div class="result-title" style="color:var(--vscode-testing-iconPassed)">✓ CORRECT</div>' +
@@ -924,24 +1084,60 @@ function buildHtml(webview: vscode.Webview, p: ProblemDetail): string {
           '  <div><div class="stat-label">Rank</div><div class="stat-val">#' + data.leaderboard_rank + '</div></div>' +
           '</div></div>';
       } else if (data.status === 'wrong') {
-        wrap.innerHTML =
-          '<div class="result wrong">' +
-          '<div class="result-title" style="color:var(--vscode-testing-iconFailed)">✗ WRONG ANSWER</div>' +
-          '<div class="result-section"><div class="label">Failing input</div><pre>' + e(data.failing_input) + '</pre></div>' +
-          '<div class="result-section"><div class="label">Expected</div><pre>' + e(data.expected_output) + '</pre></div>' +
-          '<div class="result-section"><div class="label">Got</div><pre>' + e(data.actual_output) + '</pre></div>' +
-          '</div>';
+        lastWrongData = data;
+        diffSideBySide = false;  // reset to stacked default per new wrong submission
+        renderWrongDiff();
       } else {
         const labels = {
           error_parse: 'PARSE ERROR', error_runtime: 'RUNTIME ERROR',
           timeout: 'TIME LIMIT EXCEEDED', invalid: 'INVALID SUBMISSION', error: 'ERROR'
         };
         const label = labels[data.status] || String(data.status).toUpperCase();
+        lastWrongData = null;
         wrap.innerHTML =
           '<div class="result error">' +
           '<div class="result-title" style="color:var(--vscode-editorWarning-foreground)">' + e(label) + '</div>' +
           (data.error ? '<pre>' + e(data.error) + '</pre>' : '') +
           '</div>';
+      }
+    }
+
+    function renderWrongDiff() {
+      const wrap = document.getElementById('submitResultWrap');
+      if (!lastWrongData) return;
+      const data = lastWrongData;
+      const toggleLabel = diffSideBySide ? 'Show stacked' : 'Show side-by-side';
+      const expectedHtml =
+        '<div class="diff-block diff-expected">' +
+          '<div class="label">Expected</div>' +
+          '<pre>' + e(data.expected_output) + '</pre>' +
+        '</div>';
+      const gotHtml =
+        '<div class="diff-block diff-got">' +
+          '<div class="label">Got</div>' +
+          '<pre>' + e(data.actual_output) + '</pre>' +
+        '</div>';
+      const diffBody = diffSideBySide
+        ? '<div class="diff-grid">' + expectedHtml + gotHtml + '</div>'
+        : expectedHtml + gotHtml;
+      wrap.innerHTML =
+        '<div class="result wrong">' +
+          '<div class="result-title" style="color:var(--vscode-testing-iconFailed)">✗ WRONG ANSWER</div>' +
+          '<div class="result-section">' +
+            '<div class="diff-header">' +
+              '<div class="label">Failing input</div>' +
+              '<button class="diff-toggle" id="diffToggleBtn">' + toggleLabel + '</button>' +
+            '</div>' +
+            '<pre>' + e(data.failing_input) + '</pre>' +
+          '</div>' +
+          diffBody +
+        '</div>';
+      const tBtn = document.getElementById('diffToggleBtn');
+      if (tBtn) {
+        tBtn.addEventListener('click', () => {
+          diffSideBySide = !diffSideBySide;
+          renderWrongDiff();
+        });
       }
     }
 

@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
 import type { QLabApi, ProblemSummary } from './api'
+import type { SolvedCache } from './solvedCache'
 
 /** Groups problems by difficulty in the sidebar tree. */
 export class ProblemsProvider implements vscode.TreeDataProvider<TreeNode> {
@@ -9,10 +10,19 @@ export class ProblemsProvider implements vscode.TreeDataProvider<TreeNode> {
   private problems: ProblemSummary[] = []
   private error: string | null = null
 
-  constructor(private api: QLabApi) {}
+  constructor(
+    private api: QLabApi,
+    private readonly solved: SolvedCache,
+  ) {
+    solved.onDidChange(() => this._onDidChangeTreeData.fire())
+  }
 
   refresh(): void {
     this._onDidChangeTreeData.fire()
+  }
+
+  getProblems(): ProblemSummary[] {
+    return this.problems
   }
 
   getTreeItem(node: TreeNode): vscode.TreeItem {
@@ -23,7 +33,7 @@ export class ProblemsProvider implements vscode.TreeDataProvider<TreeNode> {
     if (element instanceof DifficultyGroup) {
       return this.problems
         .filter(p => p.difficulty === element.difficulty)
-        .map(p => new ProblemItem(p))
+        .map(p => new ProblemItem(p, this.solved.status(p.slug), this.solved.bestMs(p.slug)))
     }
 
     // Root — load problems and return difficulty groups
@@ -72,17 +82,44 @@ class DifficultyGroup extends vscode.TreeItem {
 }
 
 class ProblemItem extends vscode.TreeItem {
-  constructor(public readonly problem: ProblemSummary) {
+  constructor(
+    public readonly problem: ProblemSummary,
+    solvedStatus?: 'solved' | 'attempted',
+    bestMs?: number,
+  ) {
     super(problem.title, vscode.TreeItemCollapsibleState.None)
-    this.description = `${problem.solve_count} solves`
-    this.tooltip = new vscode.MarkdownString(
-      `**${problem.title}**  \n${problem.concepts.join(' · ')}  \n_${problem.posted_date}_`
-    )
+
+    const descParts: string[] = [`${problem.solve_count} solves`]
+    if (solvedStatus === 'solved' && bestMs != null) {
+      descParts.unshift(`★ ${bestMs}ms`)
+    }
+    this.description = descParts.join(' · ')
+
+    const tipLines = [
+      `**${problem.title}**`,
+      problem.concepts.join(' · '),
+      `_${problem.posted_date}_`,
+    ]
+    if (solvedStatus === 'solved') {
+      tipLines.push(bestMs != null ? `Solved · best **${bestMs}ms**` : 'Solved')
+    } else if (solvedStatus === 'attempted') {
+      tipLines.push('Attempted')
+    }
+    this.tooltip = new vscode.MarkdownString(tipLines.join('  \n'))
+
     this.contextValue = 'problem'
-    this.iconPath = new vscode.ThemeIcon(
-      'circle-small-filled',
-      new vscode.ThemeColor(DIFF_COLORS[problem.difficulty])
-    )
+
+    if (solvedStatus === 'solved') {
+      this.iconPath = new vscode.ThemeIcon('check', new vscode.ThemeColor('testing.iconPassed'))
+    } else if (solvedStatus === 'attempted') {
+      this.iconPath = new vscode.ThemeIcon('circle-outline')
+    } else {
+      this.iconPath = new vscode.ThemeIcon(
+        'circle-small-filled',
+        new vscode.ThemeColor(DIFF_COLORS[problem.difficulty])
+      )
+    }
+
     this.command = {
       command: 'qlab.openProblem',
       title: 'Open Problem',

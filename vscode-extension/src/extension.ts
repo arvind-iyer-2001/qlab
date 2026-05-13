@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import { QLabApi } from './api'
 import { ProblemsProvider } from './ProblemsProvider'
 import { ProblemPanel } from './ProblemPanel'
+import { SolvedCache } from './solvedCache'
 import type { ProblemSummary } from './api'
 
 const TOKEN_KEY = 'qlab.token'
@@ -64,18 +65,32 @@ export function activate(context: vscode.ExtensionContext): void {
     getToken
   )
 
-  // ── Sidebar tree ─────────────────────────────────────────────────────────
-  const provider = new ProblemsProvider(api())
+  // ── Solved cache + sidebar tree ──────────────────────────────────────────
+  const solvedCache = new SolvedCache(context.globalState)
+  const provider = new ProblemsProvider(api(), solvedCache)
   const tree = vscode.window.createTreeView('qlab.problems', {
     treeDataProvider: provider,
     showCollapseAll: false,
   })
+
+  const refreshSolved = async () => {
+    try {
+      const problems = provider.getProblems()
+      if (!problems.length) return
+      await solvedCache.refresh(api(), problems)
+    } catch (e) {
+      console.warn('qLab: solvedCache refresh failed', e)
+    }
+  }
+  // After the initial tree render, kick off a background reconcile.
+  setTimeout(refreshSolved, 500)
 
   // ── Commands ──────────────────────────────────────────────────────────────
 
   const refresh = vscode.commands.registerCommand('qlab.refresh', () => {
     provider['api'] = api()
     provider.refresh()
+    refreshSolved()
   })
 
   const openProblem = vscode.commands.registerCommand(
@@ -106,7 +121,7 @@ export function activate(context: vscode.ExtensionContext): void {
         problem = picked.problem
       }
 
-      await ProblemPanel.open(problem.slug, api(), context.extensionUri).catch(err => {
+      await ProblemPanel.open(problem.slug, api(), context.extensionUri, { workspaceState: context.workspaceState, solvedCache }).catch(err => {
         vscode.window.showErrorMessage(`Failed to open problem: ${err}`)
       })
     }
@@ -127,7 +142,7 @@ export function activate(context: vscode.ExtensionContext): void {
     }
     const slug = slugMatch[1]
 
-    await ProblemPanel.open(slug, api(), context.extensionUri).catch(err => {
+    await ProblemPanel.open(slug, api(), context.extensionUri, { workspaceState: context.workspaceState, solvedCache }).catch(err => {
       vscode.window.showErrorMessage(`Failed to open problem panel: ${err}`)
     })
   })
@@ -194,7 +209,12 @@ export function activate(context: vscode.ExtensionContext): void {
           vscode.window.showErrorMessage('qLab URI missing ?slug= parameter.')
           return
         }
-        await ProblemPanel.open(slug, api(), context.extensionUri).catch(err => {
+        const tab = params.get('tab') ?? undefined
+        await ProblemPanel.open(slug, api(), context.extensionUri, {
+          workspaceState: context.workspaceState,
+          solvedCache,
+          initialTab: tab,
+        }).catch(err => {
           vscode.window.showErrorMessage(`Failed to open problem: ${err}`)
         })
         return

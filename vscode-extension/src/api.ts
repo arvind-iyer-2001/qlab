@@ -177,8 +177,9 @@ export class QLabApi {
     return this.get<LeaderboardEntry[]>(`/problems/${slug}/leaderboard?limit=${limit}`)
   }
 
-  async getMySubmissions(problemId: number): Promise<UserSubmission[] | null | 'expired'> {
-    return this.authGet<UserSubmission[]>(`/submissions/me?problem_id=${problemId}`)
+  async getMySubmissions(problemId?: number): Promise<UserSubmission[] | null | 'expired'> {
+    const qs = problemId != null ? `?problem_id=${problemId}` : ''
+    return this.authGet<UserSubmission[]>(`/submissions/me${qs}`)
   }
 
   async getSolutions(slug: string): Promise<SolutionsResponse | 'expired'> {
