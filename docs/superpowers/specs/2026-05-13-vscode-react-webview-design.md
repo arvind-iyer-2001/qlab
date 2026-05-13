@@ -25,7 +25,12 @@ sides. The user-visible behavior is unchanged.
 - No full extension test harness (tracked separately in `FUTURE.md`). A starter
   vitest suite for the new React components is in scope; integration / E2E
   tests are not.
-- No theming overhaul. Keep `var(--vscode-*)` tokens.
+- ~~No theming overhaul. Keep `var(--vscode-*)` tokens.~~
+  **Updated:** the panel adopts the web app's visual identity (qLab dark
+  theme, orange/emerald accents, JetBrains Mono). VS Code theme tokens
+  are dropped from the panel — they made the panel "look like a tool
+  inside the editor" rather than "look like qLab inside VS Code." See
+  §10 below.
 
 ## High-level architecture
 
@@ -394,10 +399,108 @@ stays open and inherits the vitest scaffold this work establishes.
 - `FUTURE.md`: tick the Option C refactor item; remove Option A/B from
   the active list (kept in the spec history as superseded).
 
+## 10. Visual style — match the web app
+
+The webview adopts the web app's design tokens so the two clients look like
+the same product. The reference for every token is the existing styling in
+`web/components/ProblemLayout.tsx`, `web/app/problems/[slug]/page.tsx`,
+`web/components/tabs/*`, and the difficulty colors used in
+`web/components/ProblemsTable.tsx`.
+
+### Palette
+
+Defined once in `webview/src/styles/tokens.css`:
+
+```css
+:root {
+  /* surfaces */
+  --qlab-bg:        #1a1a1a;   /* page background */
+  --qlab-surface:   #1e1e1e;   /* tab body, code blocks */
+  --qlab-elev:      #282828;   /* tab bar, headers, cards */
+  --qlab-border:    #3a3a3a;
+  --qlab-border-2:  #4a4a4a;
+
+  /* text */
+  --qlab-fg:        #eff1f6;
+  --qlab-fg-muted:  #aba9b0;
+  --qlab-fg-dim:    #5a5a5a;
+
+  /* accents (match web exactly) */
+  --qlab-accent:    #ffa116;   /* orange — primary action, active tab */
+  --qlab-emerald:   #00b8a3;   /* correct, easy */
+  --qlab-amber:     #ffc01e;   /* medium, warning */
+  --qlab-rose:      #ef4743;   /* wrong, hard */
+  --qlab-violet:    #8b5cf6;   /* leaderboard accent */
+
+  /* tinted backgrounds for diff blocks */
+  --qlab-diff-expected-bg: #0f1e18;
+  --qlab-diff-expected-bd: #1a3a2a;
+  --qlab-diff-got-bg:      #2a1a1a;
+  --qlab-diff-got-bd:      #4a2020;
+
+  /* type */
+  --qlab-font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --qlab-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --qlab-fs-base:   13px;
+  --qlab-fs-sm:     12px;
+  --qlab-fs-xs:     11px;
+
+  /* radius / spacing */
+  --qlab-r-sm: 4px;
+  --qlab-r-md: 6px;
+  --qlab-r-lg: 8px;
+}
+
+body {
+  background: var(--qlab-bg);
+  color: var(--qlab-fg);
+  font-family: var(--qlab-font-sans);
+  font-size: var(--qlab-fs-base);
+}
+
+code, pre, .mono { font-family: var(--qlab-font-mono); }
+```
+
+This file is imported once at the top of `main.tsx`. Every component CSS file
+references these custom properties.
+
+### What changes vs the current panel
+
+- The orange used for the active tab and primary "Submit" button is
+  `#ffa116` (web brand), not the VS Code focusBorder color.
+- Code blocks use JetBrains Mono with a slightly elevated background
+  (`--qlab-surface`), matching the web problem detail.
+- Difficulty badges/text use emerald / amber / rose to match the web
+  `ProblemsTable`.
+- Wrong-answer diff uses the same tinted blocks as `SubmitTab.tsx` on the
+  web (`--qlab-diff-*`).
+- The tab bar mirrors `ProblemLayout`'s tab bar: 13px text, 11px vertical
+  padding, 2px bottom-border in `--qlab-accent` on active.
+
+### Theme considerations
+
+- The web app is dark-only; the webview matches. No `prefers-color-scheme`
+  light variant.
+- If a user has a light VS Code theme, the panel is still dark on purpose —
+  consistent with the web client. This is a deliberate brand decision, not
+  a bug. Documented in `CLAUDE.md` after merge.
+- A `qlab.theme` setting can be added later if it becomes a complaint
+  (out of scope for this PR).
+
+### Sharing tokens with the web app
+
+Not in scope for this PR — the palette is duplicated in
+`webview/src/styles/tokens.css`. A follow-up can extract a small
+`tokens.json` or `tokens.css` published from the repo root and consumed by
+both `web/` and `vscode-extension/webview/`, but that adds build complexity
+and we don't want to gate the rewrite on it.
+
 ## Out of scope (deferred)
 
 - Full extension test harness (FUTURE.md).
-- Theming refresh.
+- Shared design-token package between web and webview (duplicated for now;
+  see §10).
+- Light-mode variant of the panel (web is dark-only too).
 - Storybook for components.
 - Hot-reload inside the webview during dev (Vite watch produces the rebuilt
   bundle but VS Code still reloads on extension restart — acceptable for now).
