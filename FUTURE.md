@@ -19,16 +19,16 @@ applies once the basic flows are wired up.
 - [x] Description / Test / Submit / Solutions / Leaderboard tabs (component scaffolds)
 - [x] CodeMirror 6 integration with Tailwind globals and TanStack Query hooks
 - [x] Test tab handles q-level errors separately from HTTP errors
-- [ ] Wrong-answer diff in Submit tab — side-by-side view of `expected_output` vs `actual_output` when a submission fails
+- [x] Wrong-answer diff in Submit tab — side-by-side view of `expected_output` vs `actual_output` when a submission fails
 - [x] My Submissions tab on the web — same data the VS Code extension shows (`GET /submissions/me`)
-- [ ] Sidebar / list-page solved markers — checkmark on problems the signed-in user has solved
+- [x] Sidebar / list-page solved markers — checkmark on problems the signed-in user has solved, plus current leaderboard rank
 - [x] Profile page beyond Clerk data — display MongoDB nickname, total solves, per-difficulty stats
 - [ ] Global stats / leaderboard page — aggregate ranking across all problems
 - [x] Keyboard shortcuts — Cmd/Ctrl+Enter to submit, Cmd/Ctrl+R for Run Test, Cmd/Ctrl+\ to toggle panel
-- [ ] Tab-state memory per slug — return to the same tab the user left on a problem
+- [x] Tab-state memory per slug — return to the same tab the user left on a problem
 - [ ] Mobile / narrow-viewport layout — at minimum a read-only fallback (problem text + leaderboard)
-- [ ] Deep-link copy button — share a URL that opens the problem at a specific tab
-- [ ] Subtle "Leaderboard updated" notice after a correct submission
+- [x] Deep-link copy button — share a URL that opens the problem at a specific tab
+- [x] Subtle "Leaderboard updated" notice after a correct submission
 
 ---
 
@@ -111,12 +111,12 @@ Recommended path: Option A immediately, Option B as the follow-up.
 - [x] Server-side handle resolution on `POST /submissions`
 - [x] `submission_id` returned in `SubmissionResponse` (May 2026)
 - [x] Notebook execute supports multi-statement code (newlines → semicolons; May 2026)
-- [ ] `error_runtime` / `error_parse` admitted into `SubmissionStatus` enum — judge already emits them, Python currently raises `ValueError` on parse
-- [ ] Return `expected_output` and `actual_output` on **correct** submissions too — currently only populated on mismatch; useful for the web Test tab to show what ran
-- [ ] `user.deleted` webhook handling — currently ignored; user documents never removed
-- [ ] Update-nickname flow (`PATCH` again) — UI and endpoint to change a nickname after first set
-- [ ] Nickname uniqueness enforcement — two users can currently pick the same handle
-- [ ] MongoDB indexes on `users.clerk_user_id` and `submissions.{user_id, problem_id}` — collection scans today; fine at current scale
+- [x] `error_runtime` / `error_parse` admitted into `SubmissionStatus` enum — judge emits them; Python maps via the enum
+- [x] Return `expected_output` and `actual_output` on **correct** submissions too — judge now emits sampled values on correct
+- [x] `user.deleted` webhook handling — Svix-verified delete event removes the user document
+- [x] Update-nickname flow (`PATCH` again) — inline edit on `/profile`, reuses existing endpoint
+- [x] Nickname uniqueness enforcement — unique sparse index on `users.nickname`
+- [x] MongoDB indexes on `users.clerk_user_id` and `submissions.{user_id, problem_id}` — created at startup in `main.py` lifespan
 - [ ] Rate limiting on `POST /submissions` and `POST /notebook/execute` — abuse / runaway-loop protection
 - [ ] Structured logging + request IDs — currently `print` / default uvicorn logs
 - [ ] Long-lived Clerk JWT via Clerk dashboard template — current ~60s expiry forces re-auth more often than ideal
@@ -129,7 +129,7 @@ Recommended path: Option A immediately, Option B as the follow-up.
 - [x] VS Code URI handler captures token into `SecretStorage`
 - [x] Nickname registration flow (`/profile/setup`)
 - [x] First-sign-in race handling (stub user upsert before nickname set)
-- [x] Web `/profile` shows MongoDB nickname (not just Clerk data) — needs a `GET /users/me` call from web
+- [x] Web `/profile` shows MongoDB nickname (not just Clerk data) — needs a `GET /users/me` call from web; supports inline edit
 - [ ] `/auth/callback` checks `isSignedIn` explicitly — currently relies on middleware redirect
 - [ ] `qlab.signOut` command in extension (covered above)
 - [ ] `CLERK_SECRET_KEY` actually used — present in `.env` for future Clerk REST calls (avatar refresh, metadata)
@@ -172,8 +172,8 @@ bug source.
 
 | Feature | Web | VS Code | Notes |
 |---|---|---|---|
-| Wrong-answer diff | [ ] | [ ] | Same data shape from `SubmissionResponse`; render differently |
-| Solved markers in problem list | [ ] | [ ] | Web reads from `GET /submissions/me`; VS Code from `globalState` cache |
+| Wrong-answer diff | [x] | [ ] | Web has side-by-side toggle; VS Code still TODO |
+| Solved markers in problem list | [x] | [ ] | Web reads from `GET /submissions/me` and `/submissions/me/ranks`; VS Code from `globalState` cache |
 | My Submissions view | [x] | [x] | Both clients have it |
-| Tab-state memory | [ ] | [ ] | Per-slug in localStorage / `globalState` |
-| Deep-link to problem | [ ] | [ ] | Web URL is already deep-linkable; extension needs the copy button |
+| Tab-state memory | [x] | [ ] | Web stores per-slug in `localStorage` + URL `?tab=`; VS Code still TODO |
+| Deep-link to problem | [x] | [ ] | Web has copy button on the panel header; extension TODO |
