@@ -162,6 +162,15 @@ export const api = {
   getMyStats: (token: string | null) =>
     apiFetch<UserStats>('/users/me/stats', token),
 
+  getMyRanks: (token: string | null) =>
+    apiFetch<Record<number, number>>('/submissions/me/ranks', token),
+
+  setNickname: (nickname: string, token: string | null) =>
+    apiFetch<{ nickname: string }>('/users/me/nickname', token, {
+      method: 'PATCH',
+      body: JSON.stringify({ nickname }),
+    }),
+
   getMySubmissions: (token: string | null, problemId?: number) =>
     apiFetch<MySubmissionEntry[]>(
       problemId ? `/submissions/me?problem_id=${problemId}` : '/submissions/me',

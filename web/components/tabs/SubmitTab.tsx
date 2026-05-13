@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSubmit } from '@/hooks/useSubmit'
 import { ProblemDetail, SubmissionStatus } from '@/lib/api'
 
@@ -7,6 +7,7 @@ interface Props {
   problem: ProblemDetail
   code: string
   registerRun?: (fn: () => void) => void
+  onCorrect?: () => void
 }
 
 const STATUS_COLORS: Partial<Record<SubmissionStatus, string>> = {
@@ -29,8 +30,10 @@ const STATUS_LABELS: Partial<Record<SubmissionStatus, string>> = {
   invalid: 'Invalid Submission',
 }
 
-export function SubmitTab({ problem, code, registerRun }: Props) {
+export function SubmitTab({ problem, code, registerRun, onCorrect }: Props) {
   const { mutate: submit, data, isPending, error } = useSubmit(problem.slug)
+  const [diffSideBySide, setDiffSideBySide] = useState(true)
+  const lastSubmissionIdRef = useRef<number | string | null>(null)
 
   const handleSubmit = () => {
     submit({ problem_id: problem.id, code, language: 'q' })
@@ -39,6 +42,16 @@ export function SubmitTab({ problem, code, registerRun }: Props) {
   useEffect(() => {
     registerRun?.(handleSubmit)
   })
+
+  // Fire onCorrect exactly once per new correct submission
+  useEffect(() => {
+    if (!data) return
+    const id = data.submission_id ?? null
+    if (data.status === 'correct' && id !== lastSubmissionIdRef.current) {
+      lastSubmissionIdRef.current = id
+      onCorrect?.()
+    }
+  }, [data, onCorrect])
 
   return (
     <div style={{ padding: '20px', color: '#eff1f6', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%' }}>
@@ -110,12 +123,46 @@ export function SubmitTab({ problem, code, registerRun }: Props) {
 
           {data.status === 'wrong' && data.failing_input && (
             <div style={{ fontSize: '13px' }}>
-              <div style={{ color: '#5a5a5a', marginBottom: '4px' }}>Failing input:</div>
-              <code style={{ color: '#eff1f6' }}>{data.failing_input}</code>
-              <div style={{ color: '#5a5a5a', marginTop: '8px', marginBottom: '4px' }}>Expected:</div>
-              <code style={{ color: '#00b8a3' }}>{data.expected_output}</code>
-              <div style={{ color: '#5a5a5a', marginTop: '8px', marginBottom: '4px' }}>Got:</div>
-              <code style={{ color: '#ef4743' }}>{data.actual_output}</code>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                <span style={{ color: '#5a5a5a' }}>Failing input:</span>
+                <button
+                  onClick={() => setDiffSideBySide((v) => !v)}
+                  style={{ background: 'none', border: '1px solid #3a3a3a', color: '#aba9b0', borderRadius: '4px', padding: '2px 8px', cursor: 'pointer', fontSize: '11px' }}
+                >
+                  {diffSideBySide ? 'Show stacked' : 'Show side-by-side'}
+                </button>
+              </div>
+              <pre style={{ margin: 0, background: '#1e1e1e', padding: '8px', borderRadius: '4px', color: '#eff1f6', whiteSpace: 'pre-wrap', fontSize: '12px' }}>
+                {data.failing_input}
+              </pre>
+
+              {diffSideBySide ? (
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '10px' }}>
+                  <div>
+                    <div style={{ color: '#5a5a5a', marginBottom: '4px' }}>Expected</div>
+                    <pre style={{ margin: 0, background: '#0f1e18', border: '1px solid #1a3a2a', padding: '8px', borderRadius: '4px', color: '#00b8a3', whiteSpace: 'pre-wrap', fontSize: '12px' }}>
+                      {data.expected_output}
+                    </pre>
+                  </div>
+                  <div>
+                    <div style={{ color: '#5a5a5a', marginBottom: '4px' }}>Got</div>
+                    <pre style={{ margin: 0, background: '#2a1a1a', border: '1px solid #4a2020', padding: '8px', borderRadius: '4px', color: '#ef4743', whiteSpace: 'pre-wrap', fontSize: '12px' }}>
+                      {data.actual_output}
+                    </pre>
+                  </div>
+                </div>
+              ) : (
+                <div style={{ marginTop: '10px' }}>
+                  <div style={{ color: '#5a5a5a', marginBottom: '4px' }}>Expected</div>
+                  <pre style={{ margin: '0 0 8px 0', background: '#0f1e18', border: '1px solid #1a3a2a', padding: '8px', borderRadius: '4px', color: '#00b8a3', whiteSpace: 'pre-wrap', fontSize: '12px' }}>
+                    {data.expected_output}
+                  </pre>
+                  <div style={{ color: '#5a5a5a', marginBottom: '4px' }}>Got</div>
+                  <pre style={{ margin: 0, background: '#2a1a1a', border: '1px solid #4a2020', padding: '8px', borderRadius: '4px', color: '#ef4743', whiteSpace: 'pre-wrap', fontSize: '12px' }}>
+                    {data.actual_output}
+                  </pre>
+                </div>
+              )}
             </div>
           )}
         </div>

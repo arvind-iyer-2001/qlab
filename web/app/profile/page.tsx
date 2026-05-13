@@ -29,6 +29,42 @@ export default function ProfilePage() {
   const [qlabUser, setQlabUser] = useState<QLabUser | null>(null)
   const [loadingQlab, setLoadingQlab] = useState(true)
   const [stats, setStats] = useState<UserStats | null>(null)
+  const [editingNick, setEditingNick] = useState(false)
+  const [nickDraft, setNickDraft] = useState('')
+  const [nickError, setNickError] = useState('')
+  const [savingNick, setSavingNick] = useState(false)
+
+  async function saveNickname() {
+    const trimmed = nickDraft.trim()
+    if (!trimmed) { setNickError('Nickname cannot be empty'); return }
+    if (trimmed.length > 30) { setNickError('Max 30 characters'); return }
+    setNickError('')
+    setSavingNick(true)
+    try {
+      const token = await getToken()
+      if (!token) { setNickError('Session expired'); setSavingNick(false); return }
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const res = await fetch(`${apiUrl}/users/me/nickname`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ nickname: trimmed }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        const detail = body?.detail
+        const msg = Array.isArray(detail) ? detail[0]?.msg : (detail ?? 'Failed to save')
+        setNickError(typeof msg === 'string' ? msg : JSON.stringify(msg))
+      } else {
+        const updated = await res.json()
+        setQlabUser(updated)
+        setEditingNick(false)
+      }
+    } catch {
+      setNickError('Network error')
+    } finally {
+      setSavingNick(false)
+    }
+  }
 
   useEffect(() => {
     if (isLoaded && !user) {
@@ -104,23 +140,59 @@ export default function ProfilePage() {
         {!loadingQlab && (
           <div className="space-y-3">
             <Card label="Handle">
-              {qlabUser?.nickname ? (
-                <>
+              {editingNick ? (
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2 items-center">
+                    <input
+                      type="text"
+                      autoFocus
+                      value={nickDraft}
+                      onChange={(e) => setNickDraft(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') saveNickname()
+                        if (e.key === 'Escape') { setEditingNick(false); setNickError('') }
+                      }}
+                      maxLength={30}
+                      placeholder="e.g. qwizard"
+                      className="flex-1 px-2 py-1 bg-zinc-950 border border-zinc-800 rounded text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-sm"
+                    />
+                    <button
+                      onClick={saveNickname}
+                      disabled={savingNick}
+                      className="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 rounded text-xs font-semibold disabled:opacity-50"
+                    >
+                      {savingNick ? 'Saving…' : 'Save'}
+                    </button>
+                    <button
+                      onClick={() => { setEditingNick(false); setNickError('') }}
+                      className="px-3 py-1 border border-zinc-700 text-zinc-400 hover:text-zinc-200 rounded text-xs"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  {nickError && <p className="text-rose-400 text-xs m-0">{nickError}</p>}
+                </div>
+              ) : qlabUser?.nickname ? (
+                <div className="flex items-center justify-between gap-2">
                   <p className="text-zinc-50 font-mono">{qlabUser.nickname}</p>
-                  <a
-                    href="/profile/setup"
+                  <button
+                    onClick={() => { setNickDraft(qlabUser.nickname ?? ''); setEditingNick(true) }}
+                    title="Edit nickname"
                     className="text-emerald-400 text-xs hover:text-emerald-300 transition"
                   >
-                    → change nickname
-                  </a>
-                </>
+                    ✎ edit
+                  </button>
+                </div>
               ) : (
-                <p className="text-rose-400 text-sm">
-                  No nickname set.{' '}
-                  <a href="/profile/setup" className="text-emerald-400 hover:text-emerald-300">
-                    Set one now
-                  </a>
-                </p>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-rose-400 text-sm m-0">No nickname set.</p>
+                  <button
+                    onClick={() => { setNickDraft(''); setEditingNick(true) }}
+                    className="text-emerald-400 text-xs hover:text-emerald-300 transition"
+                  >
+                    Set one
+                  </button>
+                </div>
               )}
             </Card>
 
