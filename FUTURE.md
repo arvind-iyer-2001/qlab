@@ -39,7 +39,7 @@ dropping users straight into the problems list. Full brief at
 `docs/spec/home-screen-brief.md`.
 
 - [x] Hero with animated headline + dual CTA (Start solving · Capstones teaser)
-- [x] Live submissions ticker — scrolling marquee of recent correct solves with timing/char count
+- [~] Live submissions ticker — scrolling marquee of recent correct solves with timing/char count (cut from home; cards felt out of place. Backend `GET /submissions/recent` still available for a future terminal-style log)
 - [x] Three-pillar bento: Problems · Capstones · Leaderboard
 - [x] Capstone preview cards — partitioned DBs, joins under load, tickerplant, optimization, schema design (all "coming soon")
 - [x] Top-5 global leaderboard strip + weekly solve count
