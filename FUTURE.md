@@ -38,12 +38,12 @@ A real landing page at `/` that captures the spirit of qLab — competitive q pr
 dropping users straight into the problems list. Full brief at
 `docs/spec/home-screen-brief.md`.
 
-- [ ] Hero with animated headline + dual CTA (Start solving · Capstones teaser)
-- [ ] Live submissions ticker — scrolling marquee of recent correct solves with timing/char count
-- [ ] Three-pillar bento: Problems · Capstones · Leaderboard
-- [ ] Capstone preview cards — partitioned DBs, joins under load, tickerplant, optimization, schema design (all "coming soon")
-- [ ] Top-5 global leaderboard strip + weekly solve count
-- [ ] "Hiring q devs?" interviewer CTA (future monetization hook, low priority)
+- [x] Hero with animated headline + dual CTA (Start solving · Capstones teaser)
+- [x] Live submissions ticker — scrolling marquee of recent correct solves with timing/char count
+- [x] Three-pillar bento: Problems · Capstones · Leaderboard
+- [x] Capstone preview cards — partitioned DBs, joins under load, tickerplant, optimization, schema design (all "coming soon")
+- [x] Top-5 global leaderboard strip + weekly solve count
+- [x] "Hiring q devs?" interviewer CTA (future monetization hook, low priority) — env-gated via `NEXT_PUBLIC_QLAB_HIRING_CTA=1`
 
 ### Capstones (future scope, separate from home screen)
 
