@@ -69,11 +69,11 @@ The extension was the original client and is still primary for many users. Items
 - [x] Welcome prompt on first activation — gated on `globalState` so it fires once
 - [x] `qlab.openProfile` command + sidebar icon
 - [x] Server-side handle resolution — handle no longer asked for in the Submit tab
-- [ ] Solved/attempted markers in sidebar — checkmark icon on `ProblemItem` keyed by `slug → status` in `globalState`
-- [ ] Wrong-answer diff in Submit tab — same idea as web, render `expected_output` vs `actual_output` inline
+- [x] Solved/attempted markers in sidebar — `SolvedCache` reads/writes `globalState['qlab.solvedBySlug']`; tree shows ✓ + best ms
+- [x] Wrong-answer diff in Submit tab — stacked by default with red/green tints + "Show side-by-side" toggle
 - [ ] Keybinding for Run Test — `Ctrl+Shift+T` to complement `Ctrl+Shift+S` for Submit
-- [ ] Tab-state memory per panel — remember last active tab per slug in `globalState`
-- [ ] Copy deep-link button in panel header — writes `vscode://qlab.qlab/open?slug=…` to clipboard
+- [x] Tab-state memory per panel — remembered per slug in `workspaceState['qlab.tabBySlug']`; URI `?tab=` overrides for one open
+- [x] Copy deep-link button in panel header — writes `vscode://qlab.qlab/open?slug=…&tab=…` to clipboard
 - [ ] Auto-refresh leaderboard feedback — subtle notice on the Community tab after a correct submission
 - [ ] Problem filter in sidebar — filter input as the problem count grows
 - [ ] API health indicator in status bar — green/red from periodic `GET /health`
@@ -172,8 +172,8 @@ bug source.
 
 | Feature | Web | VS Code | Notes |
 |---|---|---|---|
-| Wrong-answer diff | [x] | [ ] | Web has side-by-side toggle; VS Code still TODO |
-| Solved markers in problem list | [x] | [ ] | Web reads from `GET /submissions/me` and `/submissions/me/ranks`; VS Code from `globalState` cache |
+| Wrong-answer diff | [x] | [x] | Both clients: stacked default in extension, side-by-side default in web; toggle on both |
+| Solved markers in problem list | [x] | [x] | Web reads from `/submissions/me` + `/submissions/me/ranks`; VS Code uses `SolvedCache` over `globalState` |
 | My Submissions view | [x] | [x] | Both clients have it |
-| Tab-state memory | [x] | [ ] | Web stores per-slug in `localStorage` + URL `?tab=`; VS Code still TODO |
-| Deep-link to problem | [x] | [ ] | Web has copy button on the panel header; extension TODO |
+| Tab-state memory | [x] | [x] | Web: per-slug `localStorage` + URL `?tab=`. VS Code: per-slug `workspaceState`; URI `?tab=` overrides |
+| Deep-link to problem | [x] | [x] | Web has copy button; VS Code 🔗 Copy writes `vscode://qlab.qlab/open?slug=…&tab=…` |
