@@ -1,5 +1,7 @@
 # Implementation Summary
 
+> **Historical (April 2026).** Covers the MongoDB migration (Phase 2) and Clerk authentication (Phase 3). Kept as a record of decisions and gotchas from that work; not maintained against later changes. For current architecture, see `CLAUDE.md` and `graphify-out/GRAPH_REPORT.md`.
+
 Covers the MongoDB migration (Phase 2) and Clerk authentication (Phase 3) implemented in this session. Each section documents what was built and the challenges encountered.
 
 ---

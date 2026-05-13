@@ -1,6 +1,7 @@
 # qLab — Production Build Spec
 
 > Last updated: 2026-04-22
+> **Stale notice (2026-05-13):** Predates the May 2026 web-UI burst (landing page, profile stats, global leaderboard, deep-link tabs, keyboard shortcuts) and the VS Code parity catch-up. Deployment shape still mostly applies but client surface area, env vars, and FUTURE.md cross-refs need a rewrite before any prod cut. Refresh tracked in FUTURE.md → Infra & Quality.
 > Use this document as a prompt when starting the production build. It defines what to build, what decisions are already made, and what to avoid.
 
 ---

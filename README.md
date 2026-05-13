@@ -29,16 +29,38 @@ Web (Next.js :9091)  VS Code extension
 - **MongoDB** — primary data store for problems, submissions, and users.
 - **FastAPI** (Python) — async REST API managing the judge pipeline and kdb+ notebook interaction.
 - **kdb+ notebook** — persistent q process (port 5001) for interactive code execution.
-- **Web Frontend** (Next.js) — web-facing companion for auth flows and profile management.
-- **VS Code Extension** — the primary client for solving problems with native LeetCode-style experience.
+- **Web Frontend** (Next.js) — first-class client: landing page, split-view problem page (CodeMirror + tabbed panel), profile with per-difficulty stats, global leaderboard, deep-linkable tabs, keyboard shortcuts.
+- **VS Code Extension** — first-class client: sidebar with solved markers, per-problem webview panel, sidebar-cached `globalState`, deep-link URIs (`vscode://qlab.qlab/open?slug=&tab=`).
 - **Graphify** — AST-based knowledge graph for codebase navigation and architectural insights.
+
+## Web app
+
+Next.js 14 app in `web/`, runs on port 9091. Landing page (Hero · Three pillars · Capstones preview · Global leaderboard · Footer) plus a CodeMirror split-view problem page.
+
+- Sign-in via Clerk; nickname registration enforced before first submission
+- Filterable `/problems` list with Status (✓) and Rank (#N) columns
+- Split-view problem page with Description / Test / Submit / My Submissions / Solutions / Leaderboard tabs
+- Wrong-answer diff with side-by-side / stacked toggle
+- Profile page with total solves, per-difficulty progress bars, inline nickname edit
+- Deep-link tabs via `?tab=`, per-slug `localStorage` memory, "Leaderboard updated" toast on correct submit
+- Keyboard shortcuts: `Cmd/Ctrl+Enter` submit · `Cmd/Ctrl+R` run test · `Cmd/Ctrl+\` toggle panel
+
+```bash
+cd web
+npm install
+npm run dev    # http://localhost:9091
+```
+
+Requires `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in `web/.env.local`.
 
 ## VS Code extension
 
 A native VS Code extension lives in `vscode-extension/`. It provides:
 
-- Sidebar tree view grouping problems by difficulty
-- Per-problem webview panel (Description, Examples, Test, Submit, Community tabs)
+- Sidebar tree view grouping problems by difficulty, with ✓ markers + best-ms description for solved problems (`SolvedCache` over `globalState`)
+- Per-problem webview panel — Description / Test / Submit / My Submissions / Solutions / Community tabs
+- Wrong-answer diff in the Submit tab (stacked default + side-by-side toggle)
+- Per-slug tab memory in `workspaceState`; deep-link URI `vscode://qlab.qlab/open?slug=&tab=` with a 🔗 Copy button
 - Auto-creates `qlab-solutions/{slug}.q` files with starter template
 - `Ctrl+Shift+S` to submit the active `.q` file
 - Native VS Code theming via `--vscode-*` CSS variables

@@ -1,5 +1,7 @@
 # Plan: User Registration and Submission Tagging
 
+> **Historical (April 2026).** Implementation plan for the user-registration + handle-resolution work. All items here shipped; the system is now described in `CLAUDE.md` and `FUTURE.md`. Kept for the design rationale and migration notes.
+
 **Goal:** Create a MongoDB user record the moment someone signs up or signs in via Clerk, and tag all submissions to that user's stored profile rather than a client-supplied handle.
 
 ---
