@@ -35,6 +35,42 @@ async def upsert(
     )
 
 
+async def get_stats(db: AsyncIOMotorDatabase, clerk_user_id: str) -> dict:
+    """Return solve totals + per-difficulty breakdown for a user."""
+    pipeline = [
+        {"$match": {"user_id": clerk_user_id, "status": "correct"}},
+        {"$group": {"_id": "$problem_id"}},
+        {"$lookup": {
+            "from": "problems",
+            "localField": "_id",
+            "foreignField": "id",
+            "as": "problem",
+        }},
+        {"$unwind": "$problem"},
+        {"$group": {"_id": "$problem.difficulty", "count": {"$sum": 1}}},
+    ]
+    solved_rows = await db.submissions.aggregate(pipeline).to_list(length=None)
+    solved = {"easy": 0, "medium": 0, "hard": 0}
+    for r in solved_rows:
+        if r["_id"] in solved:
+            solved[r["_id"]] = r["count"]
+
+    total_rows = await db.problems.aggregate(
+        [{"$group": {"_id": "$difficulty", "count": {"$sum": 1}}}]
+    ).to_list(length=None)
+    totals = {"easy": 0, "medium": 0, "hard": 0}
+    for r in total_rows:
+        if r["_id"] in totals:
+            totals[r["_id"]] = r["count"]
+
+    return {
+        "total_solves": sum(solved.values()),
+        "total_problems": sum(totals.values()),
+        "by_difficulty": solved,
+        "totals_by_difficulty": totals,
+    }
+
+
 async def set_nickname(
     db: AsyncIOMotorDatabase,
     clerk_user_id: str,

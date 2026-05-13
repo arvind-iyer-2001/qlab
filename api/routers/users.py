@@ -21,6 +21,14 @@ async def get_me(
     return user
 
 
+@router.get("/me/stats")
+async def get_my_stats(
+    claims: dict = Depends(verify_clerk_token),
+    db: AsyncIOMotorDatabase = Depends(get_db),
+):
+    return await users_svc.get_stats(db, claims["sub"])
+
+
 @router.patch("/me/nickname")
 async def set_nickname(
     body: NicknameRequest,
