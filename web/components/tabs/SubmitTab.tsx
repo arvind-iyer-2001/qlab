@@ -1,10 +1,12 @@
 'use client'
+import { useEffect } from 'react'
 import { useSubmit } from '@/hooks/useSubmit'
 import { ProblemDetail, SubmissionStatus } from '@/lib/api'
 
 interface Props {
   problem: ProblemDetail
   code: string
+  registerRun?: (fn: () => void) => void
 }
 
 const STATUS_COLORS: Partial<Record<SubmissionStatus, string>> = {
@@ -27,12 +29,16 @@ const STATUS_LABELS: Partial<Record<SubmissionStatus, string>> = {
   invalid: 'Invalid Submission',
 }
 
-export function SubmitTab({ problem, code }: Props) {
+export function SubmitTab({ problem, code, registerRun }: Props) {
   const { mutate: submit, data, isPending, error } = useSubmit(problem.slug)
 
   const handleSubmit = () => {
     submit({ problem_id: problem.id, code, language: 'q' })
   }
+
+  useEffect(() => {
+    registerRun?.(handleSubmit)
+  })
 
   return (
     <div style={{ padding: '20px', color: '#eff1f6', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%' }}>

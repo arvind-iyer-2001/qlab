@@ -61,6 +61,13 @@ export interface MySubmissionEntry {
   code: string
 }
 
+export interface UserStats {
+  total_solves: number
+  total_problems: number
+  by_difficulty: { easy: number; medium: number; hard: number }
+  totals_by_difficulty: { easy: number; medium: number; hard: number }
+}
+
 export interface EditorialTier {
   locked: boolean
   reason?: string
@@ -151,6 +158,9 @@ export const api = {
 
   getSolutions: (slug: string, token: string | null) =>
     apiFetch<SolutionsResponse>(`/problems/${slug}/solutions`, token),
+
+  getMyStats: (token: string | null) =>
+    apiFetch<UserStats>('/users/me/stats', token),
 
   getMySubmissions: (token: string | null, problemId?: number) =>
     apiFetch<MySubmissionEntry[]>(

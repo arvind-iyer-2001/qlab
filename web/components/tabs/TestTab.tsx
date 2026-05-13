@@ -1,19 +1,25 @@
 'use client'
+import { useEffect } from 'react'
 import { useTest } from '@/hooks/useTest'
 import { ProblemDetail } from '@/lib/api'
 
 interface Props {
   problem: ProblemDetail
   code: string
+  registerRun?: (fn: () => void) => void
 }
 
-export function TestTab({ problem, code }: Props) {
+export function TestTab({ problem, code, registerRun }: Props) {
   const { mutate: runTest, data, isPending, error } = useTest()
 
   const handleRun = () => {
     const testCode = `${code}\n${problem.test_call}`
     runTest(testCode)
   }
+
+  useEffect(() => {
+    registerRun?.(handleRun)
+  })
 
   const hasResult = data != null
   const qError = data?.error
