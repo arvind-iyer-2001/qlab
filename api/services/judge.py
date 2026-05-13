@@ -103,7 +103,7 @@ def _build_judge_script(
         "/ Code length per spec: -2+count string func",
         "charcount:-2+count string func;",
         "",
-        "-1 .j.j `status`timing_ms`char_count!(\"correct\";timing;charcount);",
+        "-1 .j.j `status`timing_ms`char_count`expected_output`actual_output!(\"correct\";timing;charcount;.Q.s1 first expected;.Q.s1 first actual);",
         "exit 0",
     ]
     return "\n".join(lines) + "\n"

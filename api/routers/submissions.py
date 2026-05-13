@@ -81,6 +81,14 @@ async def submit(
     )
 
 
+@router.get("/me/ranks", response_model=dict[int, int])
+async def get_my_ranks(
+    claims: dict = Depends(verify_clerk_token),
+    db: AsyncIOMotorDatabase = Depends(get_db),
+):
+    return await submissions_svc.get_user_ranks(db, claims["sub"])
+
+
 @router.get("/me", response_model=list[MySubmissionEntry])
 async def get_my_submissions(
     problem_id: int = Query(...),

@@ -68,6 +68,67 @@ async def get_leaderboard(
     ]
 
 
+async def get_user_ranks(
+    db: AsyncIOMotorDatabase, user_id: str
+) -> dict[int, int]:
+    """For each problem the user has solved, return their current rank.
+
+    Rank = 1 + (count of distinct other users whose best (timing_ms, char_count)
+    on that problem beats this user's best).
+    """
+    # User's best per problem
+    user_best_pipeline = [
+        {"$match": {"user_id": user_id, "status": "correct"}},
+        {"$sort": {"timing_ms": 1, "char_count": 1}},
+        {"$group": {
+            "_id": "$problem_id",
+            "timing_ms": {"$first": "$timing_ms"},
+            "char_count": {"$first": "$char_count"},
+        }},
+    ]
+    user_rows = await db.submissions.aggregate(user_best_pipeline).to_list(length=None)
+    if not user_rows:
+        return {}
+
+    ranks: dict[int, int] = {}
+    for row in user_rows:
+        problem_id = row["_id"]
+        u_t = row["timing_ms"]
+        u_c = row["char_count"]
+        if u_t is None or u_c is None:
+            continue
+        # Count other users with strictly better best
+        better_pipeline = [
+            {"$match": {
+                "problem_id": problem_id,
+                "status": "correct",
+                "user_id": {"$ne": user_id, "$ne": None},
+            }},
+            {"$sort": {"timing_ms": 1, "char_count": 1}},
+            {"$group": {
+                "_id": "$user_id",
+                "timing_ms": {"$first": "$timing_ms"},
+                "char_count": {"$first": "$char_count"},
+            }},
+            {"$match": {
+                "$expr": {
+                    "$or": [
+                        {"$lt": ["$timing_ms", u_t]},
+                        {"$and": [
+                            {"$eq": ["$timing_ms", u_t]},
+                            {"$lt": ["$char_count", u_c]},
+                        ]},
+                    ]
+                }
+            }},
+            {"$count": "n"},
+        ]
+        agg = await db.submissions.aggregate(better_pipeline).to_list(length=1)
+        better = agg[0]["n"] if agg else 0
+        ranks[problem_id] = better + 1
+    return ranks
+
+
 async def get_for_user(
     db: AsyncIOMotorDatabase,
     user_id: str,
