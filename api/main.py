@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from routers import notebook, problems, submissions, users, webhooks, solutions
+from routers import notebook, problems, stats, submissions, users, webhooks, solutions
 
 logger = logging.getLogger("qlab.startup")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
@@ -69,6 +69,7 @@ app.include_router(notebook.router)
 app.include_router(users.router)
 app.include_router(webhooks.router)
 app.include_router(solutions.router)
+app.include_router(stats.router)
 
 
 @app.get("/health")
