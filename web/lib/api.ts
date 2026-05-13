@@ -61,6 +61,27 @@ export interface MySubmissionEntry {
   code: string
 }
 
+export interface RecentSubmission {
+  handle: string
+  problem_title: string
+  problem_slug: string
+  difficulty: Difficulty
+  timing_ms: number
+  char_count: number
+  submitted_at: string
+}
+
+export interface GlobalLeaderRow {
+  rank: number
+  handle: string
+  best_time_ms: number
+  solved: number
+}
+
+export interface WeeklyStats {
+  count: number
+}
+
 export interface UserStats {
   total_solves: number
   total_problems: number
@@ -158,6 +179,15 @@ export const api = {
 
   getSolutions: (slug: string, token: string | null) =>
     apiFetch<SolutionsResponse>(`/problems/${slug}/solutions`, token),
+
+  getRecentSubmissions: (limit: number = 20) =>
+    apiFetch<RecentSubmission[]>(`/submissions/recent?limit=${limit}`, null),
+
+  getGlobalLeaderboard: (limit: number = 5) =>
+    apiFetch<GlobalLeaderRow[]>(`/leaderboard/global?limit=${limit}`, null),
+
+  getWeeklyStats: () =>
+    apiFetch<WeeklyStats>('/stats/weekly', null),
 
   getMyStats: (token: string | null) =>
     apiFetch<UserStats>('/users/me/stats', token),

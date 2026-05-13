@@ -1,16 +1,21 @@
 'use client'
 
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
+import { useRecentSubmissions } from '@/hooks/useHomeData'
 import { RECENT_SUBMISSIONS } from '@/lib/home-stubs'
+import type { Difficulty } from '@/lib/api'
 
-const DIFFICULTY_COLOR: Record<'easy' | 'medium' | 'hard', string> = {
+const DIFFICULTY_COLOR: Record<Difficulty, string> = {
   easy:   'text-emerald-400',
   medium: 'text-amber-400',
   hard:   'text-rose-400',
 }
 
 export function LiveTicker() {
-  const items = RECENT_SUBMISSIONS.map((entry, idx) => ({
+  const { data } = useRecentSubmissions(20)
+  const source = (data && data.length > 0) ? data : RECENT_SUBMISSIONS
+
+  const items = source.map((entry, idx) => ({
     quote: (
       <span className="font-mono text-sm">
         <span className="text-white">@{entry.handle}</span>

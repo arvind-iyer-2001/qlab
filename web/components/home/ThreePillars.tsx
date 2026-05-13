@@ -2,9 +2,22 @@
 
 import Link from 'next/link'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
+import { useProblems } from '@/hooks/useProblems'
+import { useGlobalLeaderboard } from '@/hooks/useHomeData'
 import { PILLAR_STATS } from '@/lib/home-stubs'
 
 export function ThreePillars() {
+  const { data: problems } = useProblems()
+  const { data: leaders } = useGlobalLeaderboard(1)
+
+  const problemsValue = problems?.length != null
+    ? `${problems.length}`
+    : PILLAR_STATS.problems.value
+  const top = leaders?.[0]
+  const leaderboardValue = top
+    ? `@${top.handle} · ${top.best_time_ms}ms`
+    : PILLAR_STATS.leaderboard.value
+
   return (
     <section className="bg-zinc-950 py-20">
       <div className="max-w-6xl mx-auto px-6">
@@ -19,7 +32,7 @@ export function ThreePillars() {
             title="Problems"
             description={
               <span className="font-mono text-sm text-zinc-300">
-                {PILLAR_STATS.problems.value} {PILLAR_STATS.problems.label} · single-function · judged on speed and length
+                {problemsValue} problems · single-function · judged on speed and length
               </span>
             }
             header={<div className="h-32 rounded-md bg-gradient-to-br from-emerald-900/40 to-zinc-900" />}
@@ -37,7 +50,7 @@ export function ThreePillars() {
             title="Leaderboard"
             description={
               <span className="font-mono text-sm text-zinc-300">
-                {PILLAR_STATS.leaderboard.value} · public, per-problem, milliseconds matter
+                {leaderboardValue} · public, per-problem, milliseconds matter
               </span>
             }
             header={<div className="h-32 rounded-md bg-gradient-to-br from-violet-900/40 to-zinc-900" />}

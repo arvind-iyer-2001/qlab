@@ -1,8 +1,15 @@
 'use client'
 
+import { useGlobalLeaderboard, useWeeklyStats } from '@/hooks/useHomeData'
 import { TOP_FIVE, WEEKLY_SOLVES } from '@/lib/home-stubs'
 
 export function LeaderboardStrip() {
+  const { data: leaders } = useGlobalLeaderboard(5)
+  const { data: weekly } = useWeeklyStats()
+
+  const rows = (leaders && leaders.length > 0) ? leaders : TOP_FIVE
+  const solves = weekly?.count ?? WEEKLY_SOLVES
+
   return (
     <section className="bg-zinc-950 py-20 border-t border-zinc-900">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
@@ -11,7 +18,7 @@ export function LeaderboardStrip() {
             global · top 5
           </p>
           <ul className="font-mono text-sm divide-y divide-zinc-900">
-            {TOP_FIVE.map((row) => (
+            {rows.map((row) => (
               <li key={row.rank} className="flex items-center justify-between py-3">
                 <span className="text-zinc-500 w-8">#{row.rank}</span>
                 <span className="text-white flex-1">@{row.handle}</span>
@@ -26,7 +33,7 @@ export function LeaderboardStrip() {
             this week
           </p>
           <p className="text-6xl md:text-7xl font-bold text-white tabular-nums">
-            {WEEKLY_SOLVES}
+            {solves}
           </p>
           <p className="text-zinc-400 text-sm mt-2">correct submissions</p>
         </div>
