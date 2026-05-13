@@ -51,7 +51,7 @@
       "source_file": "api/deps.py",
       "source_location": "L5",
       "id": "api_deps_get_db",
-      "community": 51,
+      "community": 52,
       "norm_label": "get_db()"
     },
     {
@@ -60,7 +60,7 @@
       "source_file": "api/deps.py",
       "source_location": "L1",
       "id": "api_deps_py",
-      "community": 51,
+      "community": 52,
       "norm_label": "deps.py"
     },
     {
@@ -69,7 +69,7 @@
       "source_file": "api/__init__.py",
       "source_location": "L1",
       "id": "api_init_py",
-      "community": 72,
+      "community": 73,
       "norm_label": "__init__.py"
     },
     {
@@ -78,7 +78,7 @@
       "source_file": "api/main.py",
       "source_location": "L75",
       "id": "api_main_health",
-      "community": 16,
+      "community": 17,
       "norm_label": "health()"
     },
     {
@@ -87,7 +87,7 @@
       "source_file": "api/main.py",
       "source_location": "L23",
       "id": "api_main_lifespan",
-      "community": 16,
+      "community": 17,
       "norm_label": "lifespan()"
     },
     {
@@ -96,7 +96,7 @@
       "source_file": "api/main.py",
       "source_location": "L1",
       "id": "api_main_py",
-      "community": 16,
+      "community": 17,
       "norm_label": "main.py"
     },
     {
@@ -105,7 +105,7 @@
       "source_file": "api/models.py",
       "source_location": "L48",
       "id": "api_models_code_must_be_single_param",
-      "community": 2,
+      "community": 1,
       "norm_label": "code_must_be_single_param()"
     },
     {
@@ -114,7 +114,7 @@
       "source_file": "api/models.py",
       "source_location": "L38",
       "id": "api_models_code_must_define_func",
-      "community": 2,
+      "community": 1,
       "norm_label": "code_must_define_func()"
     },
     {
@@ -123,7 +123,7 @@
       "source_file": "api/models.py",
       "source_location": "L174",
       "id": "api_models_communitysolution",
-      "community": 2,
+      "community": 1,
       "norm_label": "communitysolution"
     },
     {
@@ -132,7 +132,7 @@
       "source_file": "api/models.py",
       "source_location": "L6",
       "id": "api_models_difficulty",
-      "community": 2,
+      "community": 1,
       "norm_label": "difficulty"
     },
     {
@@ -141,7 +141,7 @@
       "source_file": "api/models.py",
       "source_location": "L162",
       "id": "api_models_editorialtier",
-      "community": 2,
+      "community": 1,
       "norm_label": "editorialtier"
     },
     {
@@ -150,7 +150,7 @@
       "source_file": "api/models.py",
       "source_location": "L85",
       "id": "api_models_example",
-      "community": 2,
+      "community": 1,
       "norm_label": "example"
     },
     {
@@ -159,7 +159,7 @@
       "source_file": "api/models.py",
       "source_location": "L193",
       "id": "api_models_hintrevealresponse",
-      "community": 2,
+      "community": 1,
       "norm_label": "hintrevealresponse"
     },
     {
@@ -168,7 +168,7 @@
       "source_file": "api/models.py",
       "source_location": "L107",
       "id": "api_models_judgeresult",
-      "community": 2,
+      "community": 1,
       "norm_label": "judgeresult"
     },
     {
@@ -177,7 +177,7 @@
       "source_file": "api/models.py",
       "source_location": "L12",
       "id": "api_models_language",
-      "community": 2,
+      "community": 1,
       "norm_label": "language"
     },
     {
@@ -186,7 +186,7 @@
       "source_file": "api/models.py",
       "source_location": "L130",
       "id": "api_models_leaderboardentry",
-      "community": 2,
+      "community": 1,
       "norm_label": "leaderboardentry"
     },
     {
@@ -195,7 +195,7 @@
       "source_file": "api/models.py",
       "source_location": "L139",
       "id": "api_models_mysubmissionentry",
-      "community": 3,
+      "community": 1,
       "norm_label": "mysubmissionentry"
     },
     {
@@ -204,7 +204,7 @@
       "source_file": "api/models.py",
       "source_location": "L59",
       "id": "api_models_nicknamerequest",
-      "community": 2,
+      "community": 1,
       "norm_label": "nicknamerequest"
     },
     {
@@ -213,7 +213,7 @@
       "source_file": "api/models.py",
       "source_location": "L91",
       "id": "api_models_problemdetail",
-      "community": 2,
+      "community": 1,
       "norm_label": "problemdetail"
     },
     {
@@ -222,7 +222,7 @@
       "source_file": "api/models.py",
       "source_location": "L75",
       "id": "api_models_problemsummary",
-      "community": 2,
+      "community": 1,
       "norm_label": "problemsummary"
     },
     {
@@ -231,7 +231,7 @@
       "source_file": "api/models.py",
       "source_location": "L1",
       "id": "api_models_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "models.py"
     },
     {
@@ -240,7 +240,7 @@
       "source_file": "api/models.py",
       "source_location": "L168",
       "id": "api_models_referencetier",
-      "community": 2,
+      "community": 1,
       "norm_label": "referencetier"
     },
     {
@@ -249,7 +249,7 @@
       "source_file": "api/models.py",
       "source_location": "L156",
       "id": "api_models_solutionsconfig",
-      "community": 2,
+      "community": 1,
       "norm_label": "solutionsconfig"
     },
     {
@@ -258,7 +258,7 @@
       "source_file": "api/models.py",
       "source_location": "L183",
       "id": "api_models_solutionsresponse",
-      "community": 2,
+      "community": 1,
       "norm_label": "solutionsresponse"
     },
     {
@@ -267,7 +267,7 @@
       "source_file": "api/models.py",
       "source_location": "L117",
       "id": "api_models_submissionresponse",
-      "community": 2,
+      "community": 1,
       "norm_label": "submissionresponse"
     },
     {
@@ -276,7 +276,7 @@
       "source_file": "api/models.py",
       "source_location": "L17",
       "id": "api_models_submissionstatus",
-      "community": 2,
+      "community": 1,
       "norm_label": "submissionstatus"
     },
     {
@@ -285,7 +285,7 @@
       "source_file": "api/models.py",
       "source_location": "L31",
       "id": "api_models_submitrequest",
-      "community": 2,
+      "community": 1,
       "norm_label": "submitrequest"
     },
     {
@@ -294,7 +294,7 @@
       "source_file": "api/models.py",
       "source_location": "L151",
       "id": "api_models_tierconfig",
-      "community": 2,
+      "community": 1,
       "norm_label": "tierconfig"
     },
     {
@@ -303,7 +303,7 @@
       "source_file": "api/models.py",
       "source_location": "L64",
       "id": "api_models_validate_nickname",
-      "community": 2,
+      "community": 1,
       "norm_label": "validate_nickname()"
     },
     {
@@ -312,7 +312,7 @@
       "source_file": "api/routers/__init__.py",
       "source_location": "L1",
       "id": "api_routers_init_py",
-      "community": 73,
+      "community": 74,
       "norm_label": "__init__.py"
     },
     {
@@ -330,7 +330,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L1",
       "id": "api_routers_problems_py",
-      "community": 13,
+      "community": 14,
       "norm_label": "problems.py"
     },
     {
@@ -339,7 +339,7 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
       "id": "api_routers_solutions_py",
-      "community": 13,
+      "community": 14,
       "norm_label": "solutions.py"
     },
     {
@@ -375,7 +375,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L1",
       "id": "api_services_auth_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "auth.py"
     },
     {
@@ -384,7 +384,7 @@
       "source_file": "api/services/__init__.py",
       "source_location": "L1",
       "id": "api_services_init_py",
-      "community": 74,
+      "community": 75,
       "norm_label": "__init__.py"
     },
     {
@@ -393,7 +393,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L1",
       "id": "api_services_judge_py",
-      "community": 2,
+      "community": 1,
       "norm_label": "judge.py"
     },
     {
@@ -478,7 +478,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 2,
+      "community": 1,
       "norm_label": "basemodel"
     },
     {
@@ -487,7 +487,7 @@
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L6",
       "id": "callback_page_authcallback",
-      "community": 19,
+      "community": 20,
       "norm_label": "authcallback()"
     },
     {
@@ -495,7 +495,7 @@
       "file_type": "code",
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L12",
-      "community": 19,
+      "community": 20,
       "norm_label": "handlecallback()",
       "id": "callback_page_handlecallback"
     },
@@ -625,7 +625,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 75,
+      "community": 76,
       "norm_label": "claude.md",
       "id": "claude_md"
     },
@@ -895,35 +895,80 @@
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L13",
       "id": "components_codeeditor_codeeditor",
-      "community": 38,
+      "community": 39,
       "norm_label": "codeeditor()"
+    },
+    {
+      "label": "changeTab()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L57",
+      "id": "components_problemlayout_changetab",
+      "community": 12,
+      "norm_label": "changetab()"
+    },
+    {
+      "label": "copyDeepLink()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L81",
+      "id": "components_problemlayout_copydeeplink",
+      "community": 12,
+      "norm_label": "copydeeplink()"
     },
     {
       "label": "handleLoadCode()",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
-      "source_location": "L32",
+      "source_location": "L67",
       "id": "components_problemlayout_handleloadcode",
-      "community": 17,
+      "community": 12,
       "norm_label": "handleloadcode()"
+    },
+    {
+      "label": "isTab()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L24",
+      "id": "components_problemlayout_istab",
+      "community": 12,
+      "norm_label": "istab()"
     },
     {
       "label": "onKey()",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
-      "source_location": "L42",
+      "source_location": "L91",
       "id": "components_problemlayout_onkey",
-      "community": 17,
+      "community": 12,
       "norm_label": "onkey()"
+    },
+    {
+      "label": "showLeaderboardToast()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L76",
+      "id": "components_problemlayout_showleaderboardtoast",
+      "community": 12,
+      "norm_label": "showleaderboardtoast()"
     },
     {
       "label": "starterCode()",
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
-      "source_location": "L19",
+      "source_location": "L20",
       "id": "components_problemlayout_startercode",
-      "community": 17,
+      "community": 12,
       "norm_label": "startercode()"
+    },
+    {
+      "label": "tabStorageKey()",
+      "file_type": "code",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L28",
+      "id": "components_problemlayout_tabstoragekey",
+      "community": 12,
+      "norm_label": "tabstoragekey()"
     },
     {
       "label": "Clerk Auth",
@@ -934,7 +979,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "clerk auth",
       "id": "concept_clerk_auth"
     },
@@ -947,7 +992,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 52,
+      "community": 53,
       "norm_label": "judge pipeline",
       "id": "concept_judge_pipeline"
     },
@@ -960,7 +1005,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "mongodb collections",
       "id": "concept_mongodb_collections"
     },
@@ -973,7 +1018,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 52,
+      "community": 53,
       "norm_label": "submission rules",
       "id": "concept_submission_rules"
     },
@@ -996,7 +1041,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 2,
+      "community": 1,
       "norm_label": "enum"
     },
     {
@@ -1008,7 +1053,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "activate",
       "id": "extension_activate"
     },
@@ -1021,7 +1066,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "setsignedincontext",
       "id": "extension_setsignedincontext"
     },
@@ -1034,7 +1079,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "urihandler",
       "id": "extension_urihandler"
     },
@@ -1238,7 +1283,7 @@
       "file_type": "code",
       "source_file": "api/main.py",
       "source_location": "L1",
-      "community": 16,
+      "community": 17,
       "norm_label": "main.py",
       "id": "home_aiyer_qlab_api_main_py"
     },
@@ -1247,7 +1292,7 @@
       "file_type": "code",
       "source_file": "api/models.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 1,
       "norm_label": "models.py",
       "id": "home_aiyer_qlab_api_models_py"
     },
@@ -1256,7 +1301,7 @@
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
-      "community": 13,
+      "community": 14,
       "norm_label": "solutions.py",
       "id": "home_aiyer_qlab_api_routers_solutions_py"
     },
@@ -1355,7 +1400,7 @@
       "file_type": "code",
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L1",
-      "community": 15,
+      "community": 16,
       "norm_label": "extension.ts",
       "id": "home_aiyer_qlab_vscode_extension_src_extension_ts"
     },
@@ -1373,7 +1418,7 @@
       "file_type": "code",
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L1",
-      "community": 19,
+      "community": 20,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_auth_callback_page_tsx"
     },
@@ -1382,7 +1427,7 @@
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L1",
-      "community": 21,
+      "community": 18,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_profile_page_tsx"
     },
@@ -1391,7 +1436,7 @@
       "file_type": "code",
       "source_file": "web/app/sign-out/page.tsx",
       "source_location": "L1",
-      "community": 76,
+      "community": 77,
       "norm_label": "page.tsx",
       "id": "home_aiyer_qlab_web_app_sign_out_page_tsx"
     },
@@ -1400,7 +1445,7 @@
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
-      "community": 17,
+      "community": 12,
       "norm_label": "problemlayout.tsx",
       "id": "home_aiyer_qlab_web_components_problemlayout_tsx"
     },
@@ -1418,7 +1463,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
-      "community": 14,
+      "community": 15,
       "norm_label": "usemysubmissions.ts",
       "id": "home_aiyer_qlab_web_hooks_usemysubmissions_ts"
     },
@@ -1436,7 +1481,7 @@
       "file_type": "code",
       "source_file": "web/middleware.ts",
       "source_location": "L1",
-      "community": 77,
+      "community": 78,
       "norm_label": "middleware.ts",
       "id": "home_aiyer_qlab_web_middleware_ts"
     },
@@ -1446,7 +1491,7 @@
       "source_file": "web/components/home/CapstonePreview.tsx",
       "source_location": "L6",
       "id": "home_capstonepreview_capstonepreview",
-      "community": 47,
+      "community": 48,
       "norm_label": "capstonepreview()"
     },
     {
@@ -1455,7 +1500,7 @@
       "source_file": "web/components/home/InterviewerCTA.tsx",
       "source_location": "L1",
       "id": "home_interviewercta_interviewercta",
-      "community": 45,
+      "community": 46,
       "norm_label": "interviewercta()"
     },
     {
@@ -1464,7 +1509,7 @@
       "source_file": "web/components/home/LiveTicker.tsx",
       "source_location": "L12",
       "id": "home_liveticker_liveticker",
-      "community": 46,
+      "community": 47,
       "norm_label": "liveticker()"
     },
     {
@@ -1473,7 +1518,7 @@
       "source_file": "web/components/home/ThreePillars.tsx",
       "source_location": "L7",
       "id": "home_threepillars_threepillars",
-      "community": 48,
+      "community": 49,
       "norm_label": "threepillars()"
     },
     {
@@ -1482,8 +1527,17 @@
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L6",
       "id": "hooks_useleaderboard_useleaderboard",
-      "community": 37,
+      "community": 38,
       "norm_label": "useleaderboard()"
+    },
+    {
+      "label": "useMyRanks()",
+      "file_type": "code",
+      "source_file": "web/hooks/useMyRanks.ts",
+      "source_location": "L6",
+      "id": "hooks_usemyranks_usemyranks",
+      "community": 35,
+      "norm_label": "usemyranks()"
     },
     {
       "label": "useMySubmissions()",
@@ -1491,7 +1545,7 @@
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L6",
       "id": "hooks_usemysubmissions_usemysubmissions",
-      "community": 14,
+      "community": 15,
       "norm_label": "usemysubmissions()"
     },
     {
@@ -1509,7 +1563,7 @@
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L6",
       "id": "hooks_useproblems_useproblems",
-      "community": 14,
+      "community": 15,
       "norm_label": "useproblems()"
     },
     {
@@ -1518,7 +1572,7 @@
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L6",
       "id": "hooks_userevealhint_userevealhint",
-      "community": 36,
+      "community": 37,
       "norm_label": "userevealhint()"
     },
     {
@@ -1536,7 +1590,7 @@
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L6",
       "id": "hooks_usesubmit_usesubmit",
-      "community": 35,
+      "community": 36,
       "norm_label": "usesubmit()"
     },
     {
@@ -1615,7 +1669,7 @@
       "source_file": "web/lib/utils.ts",
       "source_location": "L4",
       "id": "lib_utils_cn",
-      "community": 50,
+      "community": 51,
       "norm_label": "cn()"
     },
     {
@@ -1627,7 +1681,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "app (fastapi)",
       "id": "main_app"
     },
@@ -1640,7 +1694,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 78,
+      "community": 79,
       "norm_label": "health",
       "id": "main_health"
     },
@@ -1653,7 +1707,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "lifespan",
       "id": "main_lifespan"
     },
@@ -1662,7 +1716,7 @@
       "file_type": "code",
       "source_file": "main.py",
       "source_location": "L1",
-      "community": 16,
+      "community": 17,
       "norm_label": "main.py",
       "id": "main_py"
     },
@@ -1753,7 +1807,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "esbuild.js build script",
       "id": "new_future_esbuild_build_script"
     },
@@ -1766,7 +1820,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "option a: split files (quick win)",
       "id": "new_future_option_a_split_files"
     },
@@ -1779,7 +1833,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "option b: esbuild + typescript webview",
       "id": "new_future_option_b_esbuild_typescript_webview"
     },
@@ -1792,7 +1846,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "option c: react webview (full gitlens-style)",
       "id": "new_future_option_c_react_webview"
     },
@@ -1805,7 +1859,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "problempanel.ts god file (1131 lines)",
       "id": "new_future_problempanel_ts_god_file"
     },
@@ -1818,7 +1872,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "template literal backtick escaping bug",
       "id": "new_future_template_literal_backtick_bug"
     },
@@ -1831,7 +1885,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "vs code extension structural improvements",
       "id": "new_future_vscode_extension_structural_improvements"
     },
@@ -1844,7 +1898,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "src/webview/panel.css",
       "id": "new_future_webview_panel_css"
     },
@@ -1857,7 +1911,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "src/webview/panel.html",
       "id": "new_future_webview_panel_html"
     },
@@ -1870,7 +1924,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "src/webview/panel.ts",
       "id": "new_future_webview_panel_ts"
     },
@@ -1909,7 +1963,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "signout",
       "id": "page_signout"
     },
@@ -2075,7 +2129,7 @@
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L9",
       "id": "problems_page_problemspage",
-      "community": 14,
+      "community": 15,
       "norm_label": "problemspage()"
     },
     {
@@ -2095,10 +2149,19 @@
       "label": "fetchQlabUser()",
       "file_type": "code",
       "source_file": "web/app/profile/page.tsx",
-      "source_location": "L41",
+      "source_location": "L77",
       "id": "profile_page_fetchqlabuser",
-      "community": 21,
+      "community": 18,
       "norm_label": "fetchqlabuser()"
+    },
+    {
+      "label": "saveNickname()",
+      "file_type": "code",
+      "source_file": "web/app/profile/page.tsx",
+      "source_location": "L37",
+      "id": "profile_page_savenickname",
+      "community": 18,
+      "norm_label": "savenickname()"
     },
     {
       "label": "/profile/setup Next.js Page",
@@ -2161,7 +2224,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 79,
+      "community": 80,
       "norm_label": "qlab readme",
       "id": "readme_qlab"
     },
@@ -2211,7 +2274,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L25",
       "id": "routers_problems_get_leaderboard",
-      "community": 13,
+      "community": 14,
       "norm_label": "get_leaderboard()"
     },
     {
@@ -2220,7 +2283,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L19",
       "id": "routers_problems_get_problem",
-      "community": 13,
+      "community": 14,
       "norm_label": "get_problem()"
     },
     {
@@ -2229,7 +2292,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L13",
       "id": "routers_problems_list_problems",
-      "community": 13,
+      "community": 14,
       "norm_label": "list_problems()"
     },
     {
@@ -2238,7 +2301,7 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L14",
       "id": "routers_solutions_get_solutions",
-      "community": 13,
+      "community": 14,
       "norm_label": "get_solutions()"
     },
     {
@@ -2247,14 +2310,23 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L31",
       "id": "routers_solutions_reveal_hint",
-      "community": 13,
+      "community": 14,
       "norm_label": "reveal_hint()"
+    },
+    {
+      "label": "get_my_ranks()",
+      "file_type": "code",
+      "source_file": "api/routers/submissions.py",
+      "source_location": "L85",
+      "id": "routers_submissions_get_my_ranks",
+      "community": 3,
+      "norm_label": "get_my_ranks()"
     },
     {
       "label": "get_my_submissions()",
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L85",
+      "source_location": "L93",
       "id": "routers_submissions_get_my_submissions",
       "community": 3,
       "norm_label": "get_my_submissions()"
@@ -2341,7 +2413,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L12",
       "id": "services_auth_get_jwks_client",
-      "community": 11,
+      "community": 10,
       "norm_label": "_get_jwks_client()"
     },
     {
@@ -2350,7 +2422,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L20",
       "id": "services_auth_verify_clerk_token",
-      "community": 11,
+      "community": 10,
       "norm_label": "verify_clerk_token()"
     },
     {
@@ -2359,7 +2431,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L44",
       "id": "services_judge_build_judge_script",
-      "community": 2,
+      "community": 1,
       "norm_label": "_build_judge_script()"
     },
     {
@@ -2368,7 +2440,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L112",
       "id": "services_judge_escape_q_string",
-      "community": 2,
+      "community": 1,
       "norm_label": "_escape_q_string()"
     },
     {
@@ -2377,7 +2449,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L1",
       "id": "services_judge_rationale_1",
-      "community": 2,
+      "community": 1,
       "norm_label": "judge service \u2014 spawns a sandboxed q subprocess per submission.  flow:   1. load"
     },
     {
@@ -2386,7 +2458,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L113",
       "id": "services_judge_rationale_113",
-      "community": 2,
+      "community": 1,
       "norm_label": "escape a string for embedding inside q double quotes."
     },
     {
@@ -2395,7 +2467,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L122",
       "id": "services_judge_rationale_122",
-      "community": 2,
+      "community": 1,
       "norm_label": "main entry point. runs the judge and returns a judgeresult."
     },
     {
@@ -2404,7 +2476,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L153",
       "id": "services_judge_rationale_153",
-      "community": 2,
+      "community": 1,
       "norm_label": "spawn q, wait for result, parse json from stdout."
     },
     {
@@ -2413,7 +2485,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L29",
       "id": "services_judge_rationale_29",
-      "community": 2,
+      "community": 1,
       "norm_label": "returns an error string if func uses multiple params, else none.     catches: fu"
     },
     {
@@ -2422,7 +2494,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L49",
       "id": "services_judge_rationale_49",
-      "community": 2,
+      "community": 1,
       "norm_label": "generates a self-contained q script that:       1. sets fixed random seed"
     },
     {
@@ -2431,7 +2503,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L117",
       "id": "services_judge_run_judge",
-      "community": 2,
+      "community": 1,
       "norm_label": "run_judge()"
     },
     {
@@ -2440,7 +2512,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L152",
       "id": "services_judge_run_q_process",
-      "community": 2,
+      "community": 1,
       "norm_label": "_run_q_process()"
     },
     {
@@ -2449,7 +2521,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L28",
       "id": "services_judge_validate_single_param",
-      "community": 2,
+      "community": 1,
       "norm_label": "_validate_single_param()"
     },
     {
@@ -2557,7 +2629,7 @@
       "source_file": "api/services/problems.py",
       "source_location": "L25",
       "id": "services_problems_get_by_slug",
-      "community": 13,
+      "community": 14,
       "norm_label": "get_by_slug()"
     },
     {
@@ -2618,7 +2690,7 @@
       "label": "get_for_user()",
       "file_type": "code",
       "source_file": "api/services/submissions.py",
-      "source_location": "L71",
+      "source_location": "L132",
       "id": "services_submissions_get_for_user",
       "community": 3,
       "norm_label": "get_for_user()"
@@ -2633,6 +2705,15 @@
       "norm_label": "get_leaderboard()"
     },
     {
+      "label": "get_user_ranks()",
+      "file_type": "code",
+      "source_file": "api/services/submissions.py",
+      "source_location": "L71",
+      "id": "services_submissions_get_user_ranks",
+      "community": 3,
+      "norm_label": "get_user_ranks()"
+    },
+    {
       "label": "insert()",
       "file_type": "code",
       "source_file": "api/services/submissions.py",
@@ -2640,6 +2721,15 @@
       "id": "services_submissions_insert",
       "community": 3,
       "norm_label": "insert()"
+    },
+    {
+      "label": "For each problem the user has solved, return their current rank.      Rank = 1 +",
+      "file_type": "rationale",
+      "source_file": "api/services/submissions.py",
+      "source_location": "L74",
+      "id": "services_submissions_rationale_74",
+      "community": 3,
+      "norm_label": "for each problem the user has solved, return their current rank.      rank = 1 +"
     },
     {
       "label": "get_by_clerk_id()",
@@ -2749,7 +2839,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "community tier",
       "id": "solutions_tab_design_community_tier"
     },
@@ -2762,7 +2852,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "content tiers (hints/editorial/reference/community)",
       "id": "solutions_tab_design_content_tiers"
     },
@@ -2775,7 +2865,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "editorial field (problems collection, markdown string)",
       "id": "solutions_tab_design_editorial_field"
     },
@@ -2788,7 +2878,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "editorial tier",
       "id": "solutions_tab_design_editorial_tier"
     },
@@ -2801,7 +2891,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "gate: attempts unlock rule",
       "id": "solutions_tab_design_gate_attempts"
     },
@@ -2814,7 +2904,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "gate: correct unlock rule",
       "id": "solutions_tab_design_gate_correct"
     },
@@ -2827,7 +2917,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "hints tier",
       "id": "solutions_tab_design_hints_tier"
     },
@@ -2840,7 +2930,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "lazy loading (solutions fetch on tab click)",
       "id": "solutions_tab_design_lazy_loading"
     },
@@ -2853,7 +2943,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "lock overlay (no attempts state)",
       "id": "solutions_tab_design_lock_overlay"
     },
@@ -2866,7 +2956,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "mermaid diagram rendering (out of scope)",
       "id": "solutions_tab_design_mermaid_out_of_scope"
     },
@@ -2879,7 +2969,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "reference tier",
       "id": "solutions_tab_design_reference_tier"
     },
@@ -2892,7 +2982,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "server-side content gating",
       "id": "solutions_tab_design_server_side_gating"
     },
@@ -2905,7 +2995,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "solutions / editorial tab design spec",
       "id": "solutions_tab_design_solutions_tab_design"
     },
@@ -2918,7 +3008,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "vscode-extension/src/api.ts",
       "id": "solutions_tab_plan_api_ts"
     },
@@ -2931,7 +3021,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "authpost private typescript method",
       "id": "solutions_tab_plan_auth_post_ts"
     },
@@ -2944,7 +3034,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 21,
       "norm_label": "communitysolution pydantic model",
       "id": "solutions_tab_plan_community_solution_model"
     },
@@ -2957,7 +3047,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "compute_solutions function",
       "id": "solutions_tab_plan_compute_solutions"
     },
@@ -2970,7 +3060,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 21,
       "norm_label": "editorialtier pydantic model",
       "id": "solutions_tab_plan_editorial_tier_model"
     },
@@ -2983,7 +3073,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "get /problems/:slug/solutions endpoint",
       "id": "solutions_tab_plan_get_solutions_endpoint"
     },
@@ -2996,7 +3086,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "getsolutions typescript method",
       "id": "solutions_tab_plan_get_solutions_ts"
     },
@@ -3009,7 +3099,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 80,
+      "community": 81,
       "norm_label": "hintrevealresponse pydantic model",
       "id": "solutions_tab_plan_hint_reveal_response_model"
     },
@@ -3022,7 +3112,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "hint_reveals mongodb collection",
       "id": "solutions_tab_plan_hint_reveals_collection"
     },
@@ -3035,7 +3125,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "solutions / editorial tab implementation plan",
       "id": "solutions_tab_plan_implementation_plan"
     },
@@ -3048,7 +3138,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "increment_hint_reveals function",
       "id": "solutions_tab_plan_increment_hint_reveals"
     },
@@ -3061,7 +3151,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "post /problems/:slug/solutions/hints/reveal endpoint",
       "id": "solutions_tab_plan_post_reveal_hint_endpoint"
     },
@@ -3074,7 +3164,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "reference_solution field (problems collection)",
       "id": "solutions_tab_plan_reference_solution_field"
     },
@@ -3087,7 +3177,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 21,
       "norm_label": "referencetier pydantic model",
       "id": "solutions_tab_plan_reference_tier_model"
     },
@@ -3100,7 +3190,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "revealnexthint typescript method",
       "id": "solutions_tab_plan_reveal_next_hint_ts"
     },
@@ -3113,7 +3203,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "scripts/seed_problems.py",
       "id": "solutions_tab_plan_seed_problems_py"
     },
@@ -3126,7 +3216,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "solutions_config (problem.json field)",
       "id": "solutions_tab_plan_solutions_config"
     },
@@ -3139,7 +3229,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 53,
+      "community": 54,
       "norm_label": "solutionsconfig pydantic model",
       "id": "solutions_tab_plan_solutions_config_model"
     },
@@ -3152,7 +3242,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 21,
       "norm_label": "solutionsresponse pydantic model",
       "id": "solutions_tab_plan_solutions_response_model"
     },
@@ -3165,7 +3255,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "api/routers/solutions.py",
       "id": "solutions_tab_plan_solutions_router"
     },
@@ -3178,7 +3268,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "api/services/solutions.py",
       "id": "solutions_tab_plan_solutions_service"
     },
@@ -3191,7 +3281,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "solutions tab (vs code panel)",
       "id": "solutions_tab_plan_solutions_tab"
     },
@@ -3204,7 +3294,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "_summary_projection (problems service)",
       "id": "solutions_tab_plan_summary_projection"
     },
@@ -3217,7 +3307,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 81,
+      "community": 82,
       "norm_label": "tests/test_solutions.py",
       "id": "solutions_tab_plan_test_solutions_py"
     },
@@ -3230,7 +3320,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 53,
+      "community": 54,
       "norm_label": "tierconfig pydantic model",
       "id": "solutions_tab_plan_tier_config_model"
     },
@@ -3544,7 +3634,7 @@
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L22",
       "id": "src_extension_activate",
-      "community": 15,
+      "community": 16,
       "norm_label": "activate()"
     },
     {
@@ -3553,7 +3643,7 @@
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L230",
       "id": "src_extension_deactivate",
-      "community": 15,
+      "community": 16,
       "norm_label": "deactivate()"
     },
     {
@@ -3562,7 +3652,7 @@
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L13",
       "id": "src_extension_jwtisexpired",
-      "community": 15,
+      "community": 16,
       "norm_label": "jwtisexpired()"
     },
     {
@@ -3571,7 +3661,7 @@
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L9",
       "id": "src_extension_setsignedincontext",
-      "community": 15,
+      "community": 16,
       "norm_label": "setsignedincontext()"
     },
     {
@@ -3733,7 +3823,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L57",
       "id": "src_problemsprovider_difficultygroup",
-      "community": 10,
+      "community": 11,
       "norm_label": "difficultygroup"
     },
     {
@@ -3742,7 +3832,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L58",
       "id": "src_problemsprovider_difficultygroup_constructor",
-      "community": 10,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -3751,7 +3841,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L94",
       "id": "src_problemsprovider_erroritem",
-      "community": 10,
+      "community": 11,
       "norm_label": "erroritem"
     },
     {
@@ -3760,7 +3850,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L95",
       "id": "src_problemsprovider_erroritem_constructor",
-      "community": 10,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -3769,7 +3859,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L74",
       "id": "src_problemsprovider_problemitem",
-      "community": 10,
+      "community": 11,
       "norm_label": "problemitem"
     },
     {
@@ -3778,7 +3868,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L75",
       "id": "src_problemsprovider_problemitem_constructor",
-      "community": 10,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -3787,7 +3877,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L5",
       "id": "src_problemsprovider_problemsprovider",
-      "community": 10,
+      "community": 11,
       "norm_label": "problemsprovider"
     },
     {
@@ -3796,7 +3886,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L12",
       "id": "src_problemsprovider_problemsprovider_constructor",
-      "community": 10,
+      "community": 11,
       "norm_label": ".constructor()"
     },
     {
@@ -3814,7 +3904,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L18",
       "id": "src_problemsprovider_problemsprovider_gettreeitem",
-      "community": 10,
+      "community": 11,
       "norm_label": ".gettreeitem()"
     },
     {
@@ -3823,7 +3913,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L14",
       "id": "src_problemsprovider_problemsprovider_refresh",
-      "community": 10,
+      "community": 11,
       "norm_label": ".refresh()"
     },
     {
@@ -3832,7 +3922,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 2,
+      "community": 1,
       "norm_label": "str"
     },
     {
@@ -3861,7 +3951,7 @@
       "label": "handleSubmit()",
       "file_type": "code",
       "source_file": "web/components/tabs/SubmitTab.tsx",
-      "source_location": "L35",
+      "source_location": "L38",
       "id": "tabs_submittab_handlesubmit",
       "community": 3,
       "norm_label": "handlesubmit()"
@@ -3872,7 +3962,7 @@
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L15",
       "id": "tabs_testtab_handlerun",
-      "community": 49,
+      "community": 50,
       "norm_label": "handlerun()"
     },
     {
@@ -3881,7 +3971,7 @@
       "source_file": "tests/__init__.py",
       "source_location": "L1",
       "id": "tests_init_py",
-      "community": 54,
+      "community": 55,
       "norm_label": "__init__.py"
     },
     {
@@ -3890,7 +3980,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L13",
       "id": "tests_test_auth_make_rsa_key_pair",
-      "community": 11,
+      "community": 10,
       "norm_label": "make_rsa_key_pair()"
     },
     {
@@ -3899,7 +3989,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L24",
       "id": "tests_test_auth_make_signing_key_mock",
-      "community": 11,
+      "community": 10,
       "norm_label": "make_signing_key_mock()"
     },
     {
@@ -3908,7 +3998,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L20",
       "id": "tests_test_auth_make_token",
-      "community": 11,
+      "community": 10,
       "norm_label": "make_token()"
     },
     {
@@ -3917,7 +4007,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L1",
       "id": "tests_test_auth_py",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_auth.py"
     },
     {
@@ -3926,7 +4016,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L48",
       "id": "tests_test_auth_test_expired_token_raises_401",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_expired_token_raises_401()"
     },
     {
@@ -3935,7 +4025,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L98",
       "id": "tests_test_auth_test_get_me_without_token_returns_401",
-      "community": 0,
+      "community": 10,
       "norm_label": "test_get_me_without_token_returns_401()"
     },
     {
@@ -3944,7 +4034,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L67",
       "id": "tests_test_auth_test_invalid_token_raises_401",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_invalid_token_raises_401()"
     },
     {
@@ -3962,7 +4052,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L31",
       "id": "tests_test_auth_test_valid_token_returns_claims",
-      "community": 11,
+      "community": 10,
       "norm_label": "test_valid_token_returns_claims()"
     },
     {
@@ -4115,7 +4205,7 @@
       "source_file": "tests/test_solutions.py",
       "source_location": "L14",
       "id": "tests_test_solutions_test_solutions_response_locked",
-      "community": 2,
+      "community": 1,
       "norm_label": "test_solutions_response_locked()"
     },
     {
@@ -4259,7 +4349,7 @@
       "source_file": "web/components/ui/Brand.tsx",
       "source_location": "L14",
       "id": "ui_brand_brand",
-      "community": 42,
+      "community": 43,
       "norm_label": "brand()"
     },
     {
@@ -4268,7 +4358,7 @@
       "source_file": "web/components/ui/Button.tsx",
       "source_location": "L32",
       "id": "ui_button_button",
-      "community": 40,
+      "community": 41,
       "norm_label": "button()"
     },
     {
@@ -4277,7 +4367,7 @@
       "source_file": "web/components/ui/Card.tsx",
       "source_location": "L7",
       "id": "ui_card_card",
-      "community": 39,
+      "community": 40,
       "norm_label": "card()"
     },
     {
@@ -4286,7 +4376,7 @@
       "source_file": "web/components/ui/Crumbs.tsx",
       "source_location": "L8",
       "id": "ui_crumbs_crumbs",
-      "community": 43,
+      "community": 44,
       "norm_label": "crumbs()"
     },
     {
@@ -4295,7 +4385,7 @@
       "source_file": "web/components/ui/infinite-moving-cards.tsx",
       "source_location": "L30",
       "id": "ui_infinite_moving_cards_addanimation",
-      "community": 18,
+      "community": 19,
       "norm_label": "addanimation()"
     },
     {
@@ -4304,7 +4394,7 @@
       "source_file": "web/components/ui/infinite-moving-cards.tsx",
       "source_location": "L46",
       "id": "ui_infinite_moving_cards_getdirection",
-      "community": 18,
+      "community": 19,
       "norm_label": "getdirection()"
     },
     {
@@ -4313,7 +4403,7 @@
       "source_file": "web/components/ui/infinite-moving-cards.tsx",
       "source_location": "L61",
       "id": "ui_infinite_moving_cards_getspeed",
-      "community": 18,
+      "community": 19,
       "norm_label": "getspeed()"
     },
     {
@@ -4340,7 +4430,7 @@
       "source_file": "web/components/ui/Pill.tsx",
       "source_location": "L9",
       "id": "ui_pill_pill",
-      "community": 44,
+      "community": 45,
       "norm_label": "pill()"
     },
     {
@@ -4349,7 +4439,7 @@
       "source_file": "web/components/ui/typewriter-effect.tsx",
       "source_location": "L120",
       "id": "ui_typewriter_effect_renderwords",
-      "community": 41,
+      "community": 42,
       "norm_label": "renderwords()"
     },
     {
@@ -4361,7 +4451,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "get_me",
       "id": "users_get_me"
     },
@@ -4374,7 +4464,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 13,
       "norm_label": "set_nickname",
       "id": "users_set_nickname"
     },
@@ -4406,7 +4496,7 @@
       "source_file": "vscode-extension/src/extension.ts",
       "source_location": "L1",
       "id": "vscode_extension_src_extension_ts",
-      "community": 15,
+      "community": 16,
       "norm_label": "extension.ts"
     },
     {
@@ -4424,7 +4514,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L1",
       "id": "vscode_extension_src_problemsprovider_ts",
-      "community": 10,
+      "community": 11,
       "norm_label": "problemsprovider.ts"
     },
     {
@@ -4433,7 +4523,7 @@
       "source_file": "web/app/auth/callback/page.tsx",
       "source_location": "L1",
       "id": "web_app_auth_callback_page_tsx",
-      "community": 19,
+      "community": 20,
       "norm_label": "page.tsx"
     },
     {
@@ -4460,7 +4550,7 @@
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L1",
       "id": "web_app_problems_page_tsx",
-      "community": 14,
+      "community": 15,
       "norm_label": "page.tsx"
     },
     {
@@ -4469,7 +4559,7 @@
       "source_file": "web/app/problems/[slug]/page.tsx",
       "source_location": "L1",
       "id": "web_app_problems_slug_page_tsx",
-      "community": 60,
+      "community": 61,
       "norm_label": "page.tsx"
     },
     {
@@ -4478,7 +4568,7 @@
       "source_file": "web/app/profile/page.tsx",
       "source_location": "L1",
       "id": "web_app_profile_page_tsx",
-      "community": 21,
+      "community": 18,
       "norm_label": "page.tsx"
     },
     {
@@ -4523,7 +4613,7 @@
       "source_file": "web/components/CodeEditor.tsx",
       "source_location": "L1",
       "id": "web_components_codeeditor_tsx",
-      "community": 38,
+      "community": 39,
       "norm_label": "codeeditor.tsx"
     },
     {
@@ -4532,7 +4622,7 @@
       "source_file": "web/components/home/CapstonePreview.tsx",
       "source_location": "L1",
       "id": "web_components_home_capstonepreview_tsx",
-      "community": 47,
+      "community": 48,
       "norm_label": "capstonepreview.tsx"
     },
     {
@@ -4541,7 +4631,7 @@
       "source_file": "web/components/home/Hero.tsx",
       "source_location": "L1",
       "id": "web_components_home_hero_tsx",
-      "community": 65,
+      "community": 66,
       "norm_label": "hero.tsx"
     },
     {
@@ -4550,7 +4640,7 @@
       "source_file": "web/components/home/InterviewerCTA.tsx",
       "source_location": "L1",
       "id": "web_components_home_interviewercta_tsx",
-      "community": 45,
+      "community": 46,
       "norm_label": "interviewercta.tsx"
     },
     {
@@ -4559,7 +4649,7 @@
       "source_file": "web/components/home/LeaderboardStrip.tsx",
       "source_location": "L1",
       "id": "web_components_home_leaderboardstrip_tsx",
-      "community": 66,
+      "community": 67,
       "norm_label": "leaderboardstrip.tsx"
     },
     {
@@ -4568,7 +4658,7 @@
       "source_file": "web/components/home/LiveTicker.tsx",
       "source_location": "L1",
       "id": "web_components_home_liveticker_tsx",
-      "community": 46,
+      "community": 47,
       "norm_label": "liveticker.tsx"
     },
     {
@@ -4577,7 +4667,7 @@
       "source_file": "web/components/home/ThreePillars.tsx",
       "source_location": "L1",
       "id": "web_components_home_threepillars_tsx",
-      "community": 48,
+      "community": 49,
       "norm_label": "threepillars.tsx"
     },
     {
@@ -4586,7 +4676,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
       "id": "web_components_problemlayout_tsx",
-      "community": 17,
+      "community": 12,
       "norm_label": "problemlayout.tsx"
     },
     {
@@ -4595,7 +4685,7 @@
       "source_file": "web/components/ProblemsTable.tsx",
       "source_location": "L1",
       "id": "web_components_problemstable_tsx",
-      "community": 61,
+      "community": 62,
       "norm_label": "problemstable.tsx"
     },
     {
@@ -4604,7 +4694,7 @@
       "source_file": "web/components/tabs/DescriptionTab.tsx",
       "source_location": "L1",
       "id": "web_components_tabs_descriptiontab_tsx",
-      "community": 68,
+      "community": 69,
       "norm_label": "descriptiontab.tsx"
     },
     {
@@ -4613,7 +4703,7 @@
       "source_file": "web/components/tabs/LeaderboardTab.tsx",
       "source_location": "L1",
       "id": "web_components_tabs_leaderboardtab_tsx",
-      "community": 67,
+      "community": 68,
       "norm_label": "leaderboardtab.tsx"
     },
     {
@@ -4631,7 +4721,7 @@
       "source_file": "web/components/tabs/SolutionsTab.tsx",
       "source_location": "L1",
       "id": "web_components_tabs_solutionstab_tsx",
-      "community": 69,
+      "community": 70,
       "norm_label": "solutionstab.tsx"
     },
     {
@@ -4649,7 +4739,7 @@
       "source_file": "web/components/tabs/TestTab.tsx",
       "source_location": "L1",
       "id": "web_components_tabs_testtab_tsx",
-      "community": 49,
+      "community": 50,
       "norm_label": "testtab.tsx"
     },
     {
@@ -4658,7 +4748,7 @@
       "source_file": "web/components/ui/background-beams.tsx",
       "source_location": "L1",
       "id": "web_components_ui_background_beams_tsx",
-      "community": 64,
+      "community": 65,
       "norm_label": "background-beams.tsx"
     },
     {
@@ -4676,7 +4766,7 @@
       "source_file": "web/components/ui/Brand.tsx",
       "source_location": "L1",
       "id": "web_components_ui_brand_tsx",
-      "community": 42,
+      "community": 43,
       "norm_label": "brand.tsx"
     },
     {
@@ -4685,7 +4775,7 @@
       "source_file": "web/components/ui/Button.tsx",
       "source_location": "L1",
       "id": "web_components_ui_button_tsx",
-      "community": 40,
+      "community": 41,
       "norm_label": "button.tsx"
     },
     {
@@ -4694,7 +4784,7 @@
       "source_file": "web/components/ui/card-hover-effect.tsx",
       "source_location": "L1",
       "id": "web_components_ui_card_hover_effect_tsx",
-      "community": 63,
+      "community": 64,
       "norm_label": "card-hover-effect.tsx"
     },
     {
@@ -4703,7 +4793,7 @@
       "source_file": "web/components/ui/Card.tsx",
       "source_location": "L1",
       "id": "web_components_ui_card_tsx",
-      "community": 39,
+      "community": 40,
       "norm_label": "card.tsx"
     },
     {
@@ -4712,7 +4802,7 @@
       "source_file": "web/components/ui/Crumbs.tsx",
       "source_location": "L1",
       "id": "web_components_ui_crumbs_tsx",
-      "community": 43,
+      "community": 44,
       "norm_label": "crumbs.tsx"
     },
     {
@@ -4721,7 +4811,7 @@
       "source_file": "web/components/ui/infinite-moving-cards.tsx",
       "source_location": "L1",
       "id": "web_components_ui_infinite_moving_cards_tsx",
-      "community": 18,
+      "community": 19,
       "norm_label": "infinite-moving-cards.tsx"
     },
     {
@@ -4739,7 +4829,7 @@
       "source_file": "web/components/ui/Pill.tsx",
       "source_location": "L1",
       "id": "web_components_ui_pill_tsx",
-      "community": 44,
+      "community": 45,
       "norm_label": "pill.tsx"
     },
     {
@@ -4748,7 +4838,7 @@
       "source_file": "web/components/ui/ProfileAvatarLink.tsx",
       "source_location": "L1",
       "id": "web_components_ui_profileavatarlink_tsx",
-      "community": 62,
+      "community": 63,
       "norm_label": "profileavatarlink.tsx"
     },
     {
@@ -4757,7 +4847,7 @@
       "source_file": "web/components/ui/typewriter-effect.tsx",
       "source_location": "L1",
       "id": "web_components_ui_typewriter_effect_tsx",
-      "community": 41,
+      "community": 42,
       "norm_label": "typewriter-effect.tsx"
     },
     {
@@ -4766,8 +4856,17 @@
       "source_file": "web/hooks/useLeaderboard.ts",
       "source_location": "L1",
       "id": "web_hooks_useleaderboard_ts",
-      "community": 37,
+      "community": 38,
       "norm_label": "useleaderboard.ts"
+    },
+    {
+      "label": "useMyRanks.ts",
+      "file_type": "code",
+      "source_file": "web/hooks/useMyRanks.ts",
+      "source_location": "L1",
+      "id": "web_hooks_usemyranks_ts",
+      "community": 35,
+      "norm_label": "usemyranks.ts"
     },
     {
       "label": "useMySubmissions.ts",
@@ -4775,7 +4874,7 @@
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
       "id": "web_hooks_usemysubmissions_ts",
-      "community": 14,
+      "community": 15,
       "norm_label": "usemysubmissions.ts"
     },
     {
@@ -4793,7 +4892,7 @@
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L1",
       "id": "web_hooks_useproblems_ts",
-      "community": 14,
+      "community": 15,
       "norm_label": "useproblems.ts"
     },
     {
@@ -4802,7 +4901,7 @@
       "source_file": "web/hooks/useRevealHint.ts",
       "source_location": "L1",
       "id": "web_hooks_userevealhint_ts",
-      "community": 36,
+      "community": 37,
       "norm_label": "userevealhint.ts"
     },
     {
@@ -4820,7 +4919,7 @@
       "source_file": "web/hooks/useSubmit.ts",
       "source_location": "L1",
       "id": "web_hooks_usesubmit_ts",
-      "community": 35,
+      "community": 36,
       "norm_label": "usesubmit.ts"
     },
     {
@@ -4847,7 +4946,7 @@
       "source_file": "web/lib/clerkAppearance.ts",
       "source_location": "L1",
       "id": "web_lib_clerkappearance_ts",
-      "community": 71,
+      "community": 72,
       "norm_label": "clerkappearance.ts"
     },
     {
@@ -4856,7 +4955,7 @@
       "source_file": "web/lib/home-stubs.ts",
       "source_location": "L1",
       "id": "web_lib_home_stubs_ts",
-      "community": 70,
+      "community": 71,
       "norm_label": "home-stubs.ts"
     },
     {
@@ -4865,7 +4964,7 @@
       "source_file": "web/lib/utils.ts",
       "source_location": "L1",
       "id": "web_lib_utils_ts",
-      "community": 50,
+      "community": 51,
       "norm_label": "utils.ts"
     },
     {
@@ -4874,7 +4973,7 @@
       "source_file": "web/middleware.ts",
       "source_location": "L1",
       "id": "web_middleware_ts",
-      "community": 55,
+      "community": 56,
       "norm_label": "middleware.ts"
     },
     {
@@ -4883,7 +4982,7 @@
       "source_file": "web/next.config.js",
       "source_location": "L1",
       "id": "web_next_config_js",
-      "community": 56,
+      "community": 57,
       "norm_label": "next.config.js"
     },
     {
@@ -4892,7 +4991,7 @@
       "source_file": "web/next-env.d.ts",
       "source_location": "L1",
       "id": "web_next_env_d_ts",
-      "community": 59,
+      "community": 60,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -4901,7 +5000,7 @@
       "source_file": "web/postcss.config.js",
       "source_location": "L1",
       "id": "web_postcss_config_js",
-      "community": 57,
+      "community": 58,
       "norm_label": "postcss.config.js"
     },
     {
@@ -4910,7 +5009,7 @@
       "source_file": "web/tailwind.config.js",
       "source_location": "L1",
       "id": "web_tailwind_config_js",
-      "community": 58,
+      "community": 59,
       "norm_label": "tailwind.config.js"
     }
   ],
@@ -6266,6 +6365,18 @@
       "source_location": "L85",
       "weight": 1.0,
       "_src": "api_routers_submissions_py",
+      "_tgt": "routers_submissions_get_my_ranks",
+      "source": "api_routers_submissions_py",
+      "target": "routers_submissions_get_my_ranks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "api/routers/submissions.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "api_routers_submissions_py",
       "_tgt": "routers_submissions_get_my_submissions",
       "source": "api_routers_submissions_py",
       "target": "routers_submissions_get_my_submissions",
@@ -6599,7 +6710,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/services/submissions.py",
-      "source_location": "L71",
+      "source_location": "L132",
       "weight": 1.0,
       "_src": "api_services_submissions_py",
       "_tgt": "services_submissions_get_for_user",
@@ -6617,6 +6728,18 @@
       "_tgt": "services_submissions_get_leaderboard",
       "source": "api_services_submissions_py",
       "target": "services_submissions_get_leaderboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/submissions.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "api_services_submissions_py",
+      "_tgt": "services_submissions_get_user_ranks",
+      "source": "api_services_submissions_py",
+      "target": "services_submissions_get_user_ranks",
       "confidence_score": 1.0
     },
     {
@@ -7424,6 +7547,54 @@
       "target": "web_components_codeeditor_tsx"
     },
     {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "components_problemlayout_changetab",
+      "_tgt": "components_problemlayout_onkey",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_changetab",
+      "target": "components_problemlayout_onkey"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "components_problemlayout_tabstoragekey",
+      "_tgt": "components_problemlayout_changetab",
+      "source": "components_problemlayout_changetab",
+      "target": "components_problemlayout_tabstoragekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_changetab",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_changetab",
+      "target": "web_components_problemlayout_tsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_copydeeplink",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_copydeeplink",
+      "target": "web_components_problemlayout_tsx"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/components/ProblemLayout.tsx",
@@ -7451,12 +7622,36 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_istab",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_istab",
+      "target": "web_components_problemlayout_tsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L42",
       "weight": 1.0,
       "_src": "web_components_problemlayout_tsx",
       "_tgt": "components_problemlayout_onkey",
       "confidence_score": 1.0,
       "source": "components_problemlayout_onkey",
+      "target": "web_components_problemlayout_tsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_showleaderboardtoast",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_showleaderboardtoast",
       "target": "web_components_problemlayout_tsx"
     },
     {
@@ -7481,6 +7676,18 @@
       "_tgt": "components_problemlayout_startercode",
       "confidence_score": 1.0,
       "source": "components_problemlayout_startercode",
+      "target": "web_components_problemlayout_tsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/components/ProblemLayout.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "web_components_problemlayout_tsx",
+      "_tgt": "components_problemlayout_tabstoragekey",
+      "confidence_score": 1.0,
+      "source": "components_problemlayout_tabstoragekey",
       "target": "web_components_problemlayout_tsx"
     },
     {
@@ -8612,6 +8819,18 @@
       "target": "web_hooks_useleaderboard_ts"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/hooks/useMyRanks.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "web_hooks_usemyranks_ts",
+      "_tgt": "hooks_usemyranks_usemyranks",
+      "confidence_score": 1.0,
+      "source": "hooks_usemyranks_usemyranks",
+      "target": "web_hooks_usemyranks_ts"
+    },
+    {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
@@ -9476,6 +9695,18 @@
       "target": "web_app_profile_page_tsx"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "web/app/profile/page.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "web_app_profile_page_tsx",
+      "_tgt": "profile_page_savenickname",
+      "confidence_score": 1.0,
+      "source": "profile_page_savenickname",
+      "target": "web_app_profile_page_tsx"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -9684,7 +9915,19 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L91",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "routers_submissions_get_my_ranks",
+      "_tgt": "services_submissions_get_user_ranks",
+      "source": "routers_submissions_get_my_ranks",
+      "target": "services_submissions_get_user_ranks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/routers/submissions.py",
+      "source_location": "L99",
       "weight": 1.0,
       "_src": "routers_submissions_get_my_submissions",
       "_tgt": "services_submissions_get_for_user",
@@ -10392,7 +10635,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L101",
+      "source_location": "L162",
       "weight": 1.0,
       "_src": "services_submissions_get_for_user",
       "_tgt": "src_api_qlabapi_get",
@@ -10404,7 +10647,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L77",
+      "source_location": "L138",
       "weight": 1.0,
       "_src": "tests_test_submissions_me_asynccursor_limit",
       "_tgt": "services_submissions_get_for_user",
@@ -10416,7 +10659,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L77",
+      "source_location": "L138",
       "weight": 1.0,
       "_src": "tests_test_submissions_me_asynccursor_sort",
       "_tgt": "services_submissions_get_for_user",
@@ -10428,7 +10671,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L94",
+      "source_location": "L155",
       "weight": 1.0,
       "_src": "tests_test_submissions_me_asynccursor_to_list",
       "_tgt": "services_submissions_get_for_user",
@@ -10440,7 +10683,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/submissions.py",
-      "source_location": "L77",
+      "source_location": "L138",
       "weight": 1.0,
       "_src": "tests_test_submissions_me_submissionscollection_find",
       "_tgt": "services_submissions_get_for_user",
@@ -10518,6 +10761,30 @@
       "_tgt": "services_submissions_get_leaderboard",
       "source": "services_submissions_get_leaderboard",
       "target": "tests_test_submissions_me_submissionscollection_find"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/submissions.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_src": "services_submissions_get_user_ranks",
+      "_tgt": "services_submissions_rationale_74",
+      "confidence_score": 1.0,
+      "source": "services_submissions_get_user_ranks",
+      "target": "services_submissions_rationale_74"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "api/services/submissions.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "tests_test_submissions_me_asynccursor_to_list",
+      "_tgt": "services_submissions_get_user_ranks",
+      "source": "services_submissions_get_user_ranks",
+      "target": "tests_test_submissions_me_asynccursor_to_list"
     },
     {
       "relation": "calls",
