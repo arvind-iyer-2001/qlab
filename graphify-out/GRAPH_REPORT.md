@@ -1,11 +1,11 @@
-# Graph Report - qlab  (2026-05-13)
+# Graph Report - qlab  (2026-05-14)
 
 ## Corpus Check
-- 86 files · ~77,278 words
+- 86 files · ~79,506 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 510 nodes · 772 edges · 29 communities detected
+- 510 nodes · 772 edges · 31 communities detected
 - Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 151 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
@@ -30,15 +30,17 @@
 - [[_COMMUNITY_Community 17|Community 17]]
 - [[_COMMUNITY_Community 18|Community 18]]
 - [[_COMMUNITY_Community 19|Community 19]]
-- [[_COMMUNITY_Community 22|Community 22]]
-- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 24|Community 24]]
-- [[_COMMUNITY_Community 50|Community 50]]
-- [[_COMMUNITY_Community 51|Community 51]]
-- [[_COMMUNITY_Community 76|Community 76]]
-- [[_COMMUNITY_Community 77|Community 77]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
+- [[_COMMUNITY_Community 80|Community 80]]
+- [[_COMMUNITY_Community 81|Community 81]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `ProblemPanel` - 17 edges
@@ -72,12 +74,12 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (13): ProfileSetupInner(), QLabApi, activate(), deactivate(), jwtIsExpired(), setSignedInContext(), buildHtml(), esc() (+5 more)
+Cohesion: 0.08
+Nodes (9): ProfileSetupInner(), QLabApi, buildHtml(), esc(), isTabId(), nonce(), ProblemPanel, SolvedCache (+1 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.07
-Nodes (31): MySubmissionEntry, get_leaderboard(), get_problem(), list_problems(), get_solutions(), reveal_hint(), get_global_leaderboard(), get_recent_submissions() (+23 more)
+Cohesion: 0.08
+Nodes (26): MySubmissionEntry, list_problems(), get_global_leaderboard(), get_recent_submissions(), get_weekly_stats(), Most recent correct submissions joined with problem title + difficulty., Top users ranked by (distinct problems solved DESC, best timing ASC)., Correct submissions in the last 7 days. (+18 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.07
@@ -132,16 +134,16 @@ Cohesion: 0.31
 Nodes (10): Clerk Auth, MongoDB Collections, activate, setSignedInContext, uriHandler, app (FastAPI), lifespan, SignOut (+2 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.6
-Nodes (2): health(), lifespan()
+Cohesion: 0.36
+Nodes (5): get_leaderboard(), get_problem(), get_solutions(), reveal_hint(), get_by_slug()
 
 ### Community 16 - "Community 16"
-Cohesion: 0.5
-Nodes (1): fetchQlabUser()
+Cohesion: 0.53
+Nodes (4): activate(), deactivate(), jwtIsExpired(), setSignedInContext()
 
 ### Community 17 - "Community 17"
-Cohesion: 0.83
-Nodes (3): addAnimation(), getDirection(), getSpeed()
+Cohesion: 0.6
+Nodes (2): health(), lifespan()
 
 ### Community 18 - "Community 18"
 Cohesion: 0.5
@@ -149,68 +151,76 @@ Nodes (1): handleCallback()
 
 ### Community 19 - "Community 19"
 Cohesion: 0.5
+Nodes (1): fetchQlabUser()
+
+### Community 20 - "Community 20"
+Cohesion: 0.83
+Nodes (3): addAnimation(), getDirection(), getSpeed()
+
+### Community 21 - "Community 21"
+Cohesion: 0.5
 Nodes (4): CommunitySolution Pydantic model, EditorialTier Pydantic model, ReferenceTier Pydantic model, SolutionsResponse Pydantic model
-
-### Community 22 - "Community 22"
-Cohesion: 0.67
-Nodes (1): formatDate()
-
-### Community 23 - "Community 23"
-Cohesion: 0.67
-Nodes (1): apiFetch()
 
 ### Community 24 - "Community 24"
 Cohesion: 0.67
+Nodes (1): formatDate()
+
+### Community 25 - "Community 25"
+Cohesion: 0.67
+Nodes (1): apiFetch()
+
+### Community 26 - "Community 26"
+Cohesion: 0.67
 Nodes (3): qLab Brand Icon Concept, qLab VS Code Extension Icon (PNG), qLab VS Code Extension Icon (SVG)
 
-### Community 50 - "Community 50"
+### Community 52 - "Community 52"
 Cohesion: 1.0
 Nodes (2): Judge Pipeline, Submission Rules
 
-### Community 51 - "Community 51"
+### Community 53 - "Community 53"
 Cohesion: 1.0
 Nodes (2): SolutionsConfig Pydantic model, TierConfig Pydantic model
 
-### Community 76 - "Community 76"
+### Community 78 - "Community 78"
 Cohesion: 1.0
 Nodes (1): health
 
-### Community 77 - "Community 77"
+### Community 79 - "Community 79"
 Cohesion: 1.0
 Nodes (1): qLab README
 
-### Community 78 - "Community 78"
+### Community 80 - "Community 80"
 Cohesion: 1.0
 Nodes (1): HintRevealResponse Pydantic model
 
-### Community 79 - "Community 79"
+### Community 81 - "Community 81"
 Cohesion: 1.0
 Nodes (1): tests/test_solutions.py
 
 ## Knowledge Gaps
 - **49 isolated node(s):** `Most recent correct submissions joined with problem title + difficulty.`, `Top users ranked by (distinct problems solved DESC, best timing ASC).`, `Correct submissions in the last 7 days.`, `Return solve totals + per-difficulty breakdown for a user.`, `Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (` (+44 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 15`** (5 nodes): `health()`, `lifespan()`, `main.py`, `main.py`, `main.py`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (4 nodes): `page.tsx`, `fetchQlabUser()`, `saveNickname()`, `page.tsx`
+- **Thin community `Community 17`** (5 nodes): `health()`, `lifespan()`, `main.py`, `main.py`, `main.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 18`** (4 nodes): `AuthCallback()`, `handleCallback()`, `page.tsx`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (3 nodes): `MySubmissionsTab.tsx`, `formatDate()`, `MySubmissionsTab.tsx`
+- **Thin community `Community 19`** (4 nodes): `page.tsx`, `fetchQlabUser()`, `saveNickname()`, `page.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (3 nodes): `api.ts`, `apiFetch()`, `api.ts`
+- **Thin community `Community 24`** (3 nodes): `MySubmissionsTab.tsx`, `formatDate()`, `MySubmissionsTab.tsx`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 50`** (2 nodes): `Judge Pipeline`, `Submission Rules`
+- **Thin community `Community 25`** (3 nodes): `api.ts`, `apiFetch()`, `api.ts`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 51`** (2 nodes): `SolutionsConfig Pydantic model`, `TierConfig Pydantic model`
+- **Thin community `Community 52`** (2 nodes): `Judge Pipeline`, `Submission Rules`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 76`** (1 nodes): `health`
+- **Thin community `Community 53`** (2 nodes): `SolutionsConfig Pydantic model`, `TierConfig Pydantic model`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 77`** (1 nodes): `qLab README`
+- **Thin community `Community 78`** (1 nodes): `health`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 78`** (1 nodes): `HintRevealResponse Pydantic model`
+- **Thin community `Community 79`** (1 nodes): `qLab README`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 79`** (1 nodes): `tests/test_solutions.py`
+- **Thin community `Community 80`** (1 nodes): `HintRevealResponse Pydantic model`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Community 81`** (1 nodes): `tests/test_solutions.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
@@ -225,8 +235,8 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `Most recent correct submissions joined with problem title + difficulty.`, `Top users ranked by (distinct problems solved DESC, best timing ASC).`, `Correct submissions in the last 7 days.` to the rest of the system?**
   _49 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._
