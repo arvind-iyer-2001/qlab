@@ -48,7 +48,6 @@ export function ProblemLayout({ problem }: Props) {
   const [code, setCode] = useState(() => starterCode(problem.slug))
   const [panelCollapsed, setPanelCollapsed] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
-  const [copied, setCopied] = useState(false)
   const initialCode = starterCode(problem.slug)
 
   const submitRunRef = useRef<(() => void) | null>(null)
@@ -76,15 +75,6 @@ export function ProblemLayout({ problem }: Props) {
   function showLeaderboardToast() {
     setToast('Leaderboard updated ✓')
     setTimeout(() => setToast(null), 2500)
-  }
-
-  function copyDeepLink() {
-    const url = new URL(window.location.href)
-    url.searchParams.set('tab', activeTab)
-    navigator.clipboard.writeText(url.toString()).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
-    }).catch(() => {})
   }
 
   useEffect(() => {
@@ -168,17 +158,6 @@ export function ProblemLayout({ problem }: Props) {
                 </button>
               ))}
             </div>
-            <button
-              onClick={copyDeepLink}
-              title="Copy link to this tab"
-              style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                color: copied ? '#00b8a3' : '#aba9b0',
-                padding: '8px 12px', fontSize: '12px',
-              }}
-            >
-              {copied ? '✓ Copied' : '🔗 Copy'}
-            </button>
           </div>
 
           {/* Tab content */}
