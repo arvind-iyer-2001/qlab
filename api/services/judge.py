@@ -45,6 +45,7 @@ def _build_judge_script(
     user_code: str,
     problem_id: str,
     seed: int = 42,
+    compare_unordered: bool = False,
 ) -> str:
     """
     Generates a self-contained q script that:
@@ -85,6 +86,7 @@ def _build_judge_script(
         'actual:@[value;"func each x";{-1 .j.j `status`error!("error_runtime";"Runtime error: ",x);exit 0}];',
         "",
         "/ Compare outputs element-wise",
+        *(["expected:asc each expected;", "actual:asc each actual;"] if compare_unordered else []),
         "mismatches:where not expected~'actual;",
         "if[count mismatches;",
         "  idx:first mismatches;",
@@ -118,6 +120,7 @@ async def run_judge(
     user_code: str,
     problem_id: str,
     seed: int = 42,
+    compare_unordered: bool = False,
 ) -> JudgeResult:
     """
     Main entry point. Runs the judge and returns a JudgeResult.
@@ -134,7 +137,7 @@ async def run_judge(
             error=f"Problem '{problem_id}' not found",
         )
 
-    script = _build_judge_script(user_code, problem_id, seed)
+    script = _build_judge_script(user_code, problem_id, seed, compare_unordered)
 
     # Write script to temp file and run
     with tempfile.NamedTemporaryFile(suffix=".q", mode="w", delete=False) as f:

@@ -34,6 +34,7 @@ async def submit(
         user_code=req.code,
         problem_id=doc["slug"],
         seed=doc.get("judge_seed", 42),
+        compare_unordered=doc.get("compare_unordered", False),
     )
 
     submission_id = None
