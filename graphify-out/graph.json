@@ -168,7 +168,7 @@
       "source_file": "api/models.py",
       "source_location": "L107",
       "id": "api_models_judgeresult",
-      "community": 3,
+      "community": 8,
       "norm_label": "judgeresult"
     },
     {
@@ -276,7 +276,7 @@
       "source_file": "api/models.py",
       "source_location": "L17",
       "id": "api_models_submissionstatus",
-      "community": 3,
+      "community": 8,
       "norm_label": "submissionstatus"
     },
     {
@@ -321,7 +321,7 @@
       "source_file": "api/routers/notebook.py",
       "source_location": "L1",
       "id": "api_routers_notebook_py",
-      "community": 10,
+      "community": 11,
       "norm_label": "notebook.py"
     },
     {
@@ -330,7 +330,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L1",
       "id": "api_routers_problems_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "problems.py"
     },
     {
@@ -339,7 +339,7 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
       "id": "api_routers_solutions_py",
-      "community": 15,
+      "community": 3,
       "norm_label": "solutions.py"
     },
     {
@@ -366,7 +366,7 @@
       "source_file": "api/routers/users.py",
       "source_location": "L1",
       "id": "api_routers_users_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "users.py"
     },
     {
@@ -375,7 +375,7 @@
       "source_file": "api/routers/webhooks.py",
       "source_location": "L1",
       "id": "api_routers_webhooks_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "webhooks.py"
     },
     {
@@ -384,7 +384,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L1",
       "id": "api_services_auth_py",
-      "community": 12,
+      "community": 13,
       "norm_label": "auth.py"
     },
     {
@@ -402,7 +402,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L1",
       "id": "api_services_judge_py",
-      "community": 3,
+      "community": 8,
       "norm_label": "judge.py"
     },
     {
@@ -411,7 +411,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L1",
       "id": "api_services_notebook_py",
-      "community": 10,
+      "community": 11,
       "norm_label": "notebook.py"
     },
     {
@@ -447,7 +447,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L1",
       "id": "api_services_users_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "users.py"
     },
     {
@@ -913,7 +913,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L56",
       "id": "components_problemlayout_changetab",
-      "community": 13,
+      "community": 14,
       "norm_label": "changetab()"
     },
     {
@@ -921,7 +921,7 @@
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L81",
-      "community": 13,
+      "community": 14,
       "norm_label": "copydeeplink()",
       "id": "components_problemlayout_copydeeplink"
     },
@@ -931,7 +931,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L66",
       "id": "components_problemlayout_handleloadcode",
-      "community": 13,
+      "community": 14,
       "norm_label": "handleloadcode()"
     },
     {
@@ -940,7 +940,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L24",
       "id": "components_problemlayout_istab",
-      "community": 13,
+      "community": 14,
       "norm_label": "istab()"
     },
     {
@@ -949,7 +949,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L81",
       "id": "components_problemlayout_onkey",
-      "community": 13,
+      "community": 14,
       "norm_label": "onkey()"
     },
     {
@@ -958,7 +958,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L75",
       "id": "components_problemlayout_showleaderboardtoast",
-      "community": 13,
+      "community": 14,
       "norm_label": "showleaderboardtoast()"
     },
     {
@@ -967,7 +967,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L20",
       "id": "components_problemlayout_startercode",
-      "community": 13,
+      "community": 14,
       "norm_label": "startercode()"
     },
     {
@@ -976,7 +976,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L28",
       "id": "components_problemlayout_tabstoragekey",
-      "community": 13,
+      "community": 14,
       "norm_label": "tabstoragekey()"
     },
     {
@@ -988,7 +988,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "clerk auth",
       "id": "concept_clerk_auth"
     },
@@ -1014,7 +1014,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "mongodb collections",
       "id": "concept_mongodb_collections"
     },
@@ -1062,7 +1062,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "activate",
       "id": "extension_activate"
     },
@@ -1075,7 +1075,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "setsignedincontext",
       "id": "extension_setsignedincontext"
     },
@@ -1088,7 +1088,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "urihandler",
       "id": "extension_urihandler"
     },
@@ -1310,7 +1310,7 @@
       "file_type": "code",
       "source_file": "api/routers/solutions.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 3,
       "norm_label": "solutions.py",
       "id": "home_aiyer_qlab_api_routers_solutions_py"
     },
@@ -1319,7 +1319,7 @@
       "file_type": "code",
       "source_file": "api/routers/users.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 10,
       "norm_label": "users.py",
       "id": "home_aiyer_qlab_api_routers_users_py"
     },
@@ -1328,7 +1328,7 @@
       "file_type": "code",
       "source_file": "api/routers/webhooks.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 10,
       "norm_label": "webhooks.py",
       "id": "home_aiyer_qlab_api_routers_webhooks_py"
     },
@@ -1364,7 +1364,7 @@
       "file_type": "code",
       "source_file": "api/services/users.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 10,
       "norm_label": "users.py",
       "id": "home_aiyer_qlab_api_services_users_py"
     },
@@ -1454,7 +1454,7 @@
       "file_type": "code",
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
-      "community": 13,
+      "community": 14,
       "norm_label": "problemlayout.tsx",
       "id": "home_aiyer_qlab_web_components_problemlayout_tsx"
     },
@@ -1472,7 +1472,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
-      "community": 8,
+      "community": 9,
       "norm_label": "usemysubmissions.ts",
       "id": "home_aiyer_qlab_web_hooks_usemysubmissions_ts"
     },
@@ -1526,7 +1526,7 @@
       "file_type": "code",
       "source_file": "web/components/home/LiveTicker.tsx",
       "source_location": "L14",
-      "community": 8,
+      "community": 9,
       "norm_label": "liveticker()",
       "id": "home_liveticker_liveticker"
     },
@@ -1536,7 +1536,7 @@
       "source_file": "web/components/home/ThreePillars.tsx",
       "source_location": "L9",
       "id": "home_threepillars_threepillars",
-      "community": 8,
+      "community": 9,
       "norm_label": "threepillars()"
     },
     {
@@ -1545,7 +1545,7 @@
       "source_file": "web/hooks/useHomeData.ts",
       "source_location": "L5",
       "id": "hooks_usehomedata_usegloballeaderboard",
-      "community": 8,
+      "community": 9,
       "norm_label": "usegloballeaderboard()"
     },
     {
@@ -1553,7 +1553,7 @@
       "file_type": "code",
       "source_file": "web/hooks/useHomeData.ts",
       "source_location": "L5",
-      "community": 8,
+      "community": 9,
       "norm_label": "userecentsubmissions()",
       "id": "hooks_usehomedata_userecentsubmissions"
     },
@@ -1563,7 +1563,7 @@
       "source_file": "web/hooks/useHomeData.ts",
       "source_location": "L13",
       "id": "hooks_usehomedata_useweeklystats",
-      "community": 8,
+      "community": 9,
       "norm_label": "useweeklystats()"
     },
     {
@@ -1590,7 +1590,7 @@
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L6",
       "id": "hooks_usemysubmissions_usemysubmissions",
-      "community": 8,
+      "community": 9,
       "norm_label": "usemysubmissions()"
     },
     {
@@ -1608,7 +1608,7 @@
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L6",
       "id": "hooks_useproblems_useproblems",
-      "community": 8,
+      "community": 9,
       "norm_label": "useproblems()"
     },
     {
@@ -1726,7 +1726,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "app (fastapi)",
       "id": "main_app"
     },
@@ -1752,7 +1752,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "lifespan",
       "id": "main_lifespan"
     },
@@ -2008,7 +2008,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "signout",
       "id": "page_signout"
     },
@@ -2174,7 +2174,7 @@
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L9",
       "id": "problems_page_problemspage",
-      "community": 8,
+      "community": 9,
       "norm_label": "problemspage()"
     },
     {
@@ -2292,7 +2292,7 @@
       "source_file": "api/routers/notebook.py",
       "source_location": "L14",
       "id": "routers_notebook_execute",
-      "community": 10,
+      "community": 11,
       "norm_label": "execute()"
     },
     {
@@ -2301,7 +2301,7 @@
       "source_file": "api/routers/notebook.py",
       "source_location": "L9",
       "id": "routers_notebook_executerequest",
-      "community": 10,
+      "community": 11,
       "norm_label": "executerequest"
     },
     {
@@ -2310,7 +2310,7 @@
       "source_file": "api/routers/notebook.py",
       "source_location": "L19",
       "id": "routers_notebook_reset",
-      "community": 10,
+      "community": 11,
       "norm_label": "reset()"
     },
     {
@@ -2319,7 +2319,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L25",
       "id": "routers_problems_get_leaderboard",
-      "community": 15,
+      "community": 3,
       "norm_label": "get_leaderboard()"
     },
     {
@@ -2328,7 +2328,7 @@
       "source_file": "api/routers/problems.py",
       "source_location": "L19",
       "id": "routers_problems_get_problem",
-      "community": 15,
+      "community": 3,
       "norm_label": "get_problem()"
     },
     {
@@ -2346,7 +2346,7 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L14",
       "id": "routers_solutions_get_solutions",
-      "community": 15,
+      "community": 3,
       "norm_label": "get_solutions()"
     },
     {
@@ -2355,7 +2355,7 @@
       "source_file": "api/routers/solutions.py",
       "source_location": "L31",
       "id": "routers_solutions_reveal_hint",
-      "community": 15,
+      "community": 3,
       "norm_label": "reveal_hint()"
     },
     {
@@ -2416,7 +2416,7 @@
       "label": "get_my_ranks()",
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L85",
+      "source_location": "L86",
       "id": "routers_submissions_get_my_ranks",
       "community": 1,
       "norm_label": "get_my_ranks()"
@@ -2425,7 +2425,7 @@
       "label": "get_my_submissions()",
       "file_type": "code",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L93",
+      "source_location": "L94",
       "id": "routers_submissions_get_my_submissions",
       "community": 1,
       "norm_label": "get_my_submissions()"
@@ -2445,7 +2445,7 @@
       "source_file": "api/routers/users.py",
       "source_location": "L13",
       "id": "routers_users_get_me",
-      "community": 9,
+      "community": 10,
       "norm_label": "get_me()"
     },
     {
@@ -2454,7 +2454,7 @@
       "source_file": "api/routers/users.py",
       "source_location": "L25",
       "id": "routers_users_get_my_stats",
-      "community": 9,
+      "community": 10,
       "norm_label": "get_my_stats()"
     },
     {
@@ -2463,7 +2463,7 @@
       "source_file": "api/routers/users.py",
       "source_location": "L33",
       "id": "routers_users_set_nickname",
-      "community": 9,
+      "community": 10,
       "norm_label": "set_nickname()"
     },
     {
@@ -2472,7 +2472,7 @@
       "source_file": "api/routers/webhooks.py",
       "source_location": "L16",
       "id": "routers_webhooks_clerk_webhook",
-      "community": 9,
+      "community": 10,
       "norm_label": "clerk_webhook()"
     },
     {
@@ -2512,7 +2512,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L12",
       "id": "services_auth_get_jwks_client",
-      "community": 12,
+      "community": 13,
       "norm_label": "_get_jwks_client()"
     },
     {
@@ -2521,7 +2521,7 @@
       "source_file": "api/services/auth.py",
       "source_location": "L20",
       "id": "services_auth_verify_clerk_token",
-      "community": 12,
+      "community": 13,
       "norm_label": "verify_clerk_token()"
     },
     {
@@ -2530,16 +2530,16 @@
       "source_file": "api/services/judge.py",
       "source_location": "L44",
       "id": "services_judge_build_judge_script",
-      "community": 3,
+      "community": 8,
       "norm_label": "_build_judge_script()"
     },
     {
       "label": "_escape_q_string()",
       "file_type": "code",
       "source_file": "api/services/judge.py",
-      "source_location": "L112",
+      "source_location": "L114",
       "id": "services_judge_escape_q_string",
-      "community": 3,
+      "community": 8,
       "norm_label": "_escape_q_string()"
     },
     {
@@ -2548,7 +2548,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L1",
       "id": "services_judge_rationale_1",
-      "community": 3,
+      "community": 8,
       "norm_label": "judge service \u2014 spawns a sandboxed q subprocess per submission.  flow:   1. load"
     },
     {
@@ -2556,8 +2556,17 @@
       "file_type": "rationale",
       "source_file": "api/services/judge.py",
       "source_location": "L113",
-      "id": "services_judge_rationale_113",
-      "community": 3,
+      "community": 8,
+      "norm_label": "escape a string for embedding inside q double quotes.",
+      "id": "services_judge_rationale_113"
+    },
+    {
+      "label": "Escape a string for embedding inside q double quotes.",
+      "file_type": "rationale",
+      "source_file": "api/services/judge.py",
+      "source_location": "L115",
+      "id": "services_judge_rationale_115",
+      "community": 8,
       "norm_label": "escape a string for embedding inside q double quotes."
     },
     {
@@ -2565,8 +2574,17 @@
       "file_type": "rationale",
       "source_file": "api/services/judge.py",
       "source_location": "L122",
-      "id": "services_judge_rationale_122",
-      "community": 3,
+      "community": 8,
+      "norm_label": "main entry point. runs the judge and returns a judgeresult.",
+      "id": "services_judge_rationale_122"
+    },
+    {
+      "label": "Main entry point. Runs the judge and returns a JudgeResult.",
+      "file_type": "rationale",
+      "source_file": "api/services/judge.py",
+      "source_location": "L125",
+      "id": "services_judge_rationale_125",
+      "community": 8,
       "norm_label": "main entry point. runs the judge and returns a judgeresult."
     },
     {
@@ -2574,8 +2592,17 @@
       "file_type": "rationale",
       "source_file": "api/services/judge.py",
       "source_location": "L153",
-      "id": "services_judge_rationale_153",
-      "community": 3,
+      "community": 8,
+      "norm_label": "spawn q, wait for result, parse json from stdout.",
+      "id": "services_judge_rationale_153"
+    },
+    {
+      "label": "Spawn q, wait for result, parse JSON from stdout.",
+      "file_type": "rationale",
+      "source_file": "api/services/judge.py",
+      "source_location": "L156",
+      "id": "services_judge_rationale_156",
+      "community": 8,
       "norm_label": "spawn q, wait for result, parse json from stdout."
     },
     {
@@ -2584,7 +2611,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L29",
       "id": "services_judge_rationale_29",
-      "community": 3,
+      "community": 8,
       "norm_label": "returns an error string if func uses multiple params, else none.     catches: fu"
     },
     {
@@ -2592,26 +2619,35 @@
       "file_type": "rationale",
       "source_file": "api/services/judge.py",
       "source_location": "L49",
-      "id": "services_judge_rationale_49",
-      "community": 3,
+      "community": 8,
+      "norm_label": "generates a self-contained q script that:       1. sets fixed random seed",
+      "id": "services_judge_rationale_49"
+    },
+    {
+      "label": "Generates a self-contained q script that:       1. Sets fixed random seed",
+      "file_type": "rationale",
+      "source_file": "api/services/judge.py",
+      "source_location": "L50",
+      "id": "services_judge_rationale_50",
+      "community": 8,
       "norm_label": "generates a self-contained q script that:       1. sets fixed random seed"
     },
     {
       "label": "run_judge()",
       "file_type": "code",
       "source_file": "api/services/judge.py",
-      "source_location": "L117",
+      "source_location": "L119",
       "id": "services_judge_run_judge",
-      "community": 3,
+      "community": 8,
       "norm_label": "run_judge()"
     },
     {
       "label": "_run_q_process()",
       "file_type": "code",
       "source_file": "api/services/judge.py",
-      "source_location": "L152",
+      "source_location": "L155",
       "id": "services_judge_run_q_process",
-      "community": 3,
+      "community": 8,
       "norm_label": "_run_q_process()"
     },
     {
@@ -2620,7 +2656,7 @@
       "source_file": "api/services/judge.py",
       "source_location": "L28",
       "id": "services_judge_validate_single_param",
-      "community": 3,
+      "community": 8,
       "norm_label": "_validate_single_param()"
     },
     {
@@ -2629,7 +2665,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L26",
       "id": "services_notebook_conn",
-      "community": 10,
+      "community": 11,
       "norm_label": "_conn()"
     },
     {
@@ -2638,7 +2674,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L31",
       "id": "services_notebook_escape",
-      "community": 10,
+      "community": 11,
       "norm_label": "_escape()"
     },
     {
@@ -2647,7 +2683,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L43",
       "id": "services_notebook_execute_cell",
-      "community": 10,
+      "community": 11,
       "norm_label": "execute_cell()"
     },
     {
@@ -2656,7 +2692,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L1",
       "id": "services_notebook_rationale_1",
-      "community": 10,
+      "community": 11,
       "norm_label": "notebook execution service.  connects to a dedicated q process on qlab_nb_port ("
     },
     {
@@ -2665,7 +2701,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L32",
       "id": "services_notebook_rationale_32",
-      "community": 10,
+      "community": 11,
       "norm_label": "escape a code string for embedding inside a q double-quoted string."
     },
     {
@@ -2674,7 +2710,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L44",
       "id": "services_notebook_rationale_44",
-      "community": 10,
+      "community": 11,
       "norm_label": "evaluate cell_code on the notebook q process and return the result     as a form"
     },
     {
@@ -2682,7 +2718,7 @@
       "file_type": "rationale",
       "source_file": "api/services/notebook.py",
       "source_location": "L93",
-      "community": 10,
+      "community": 11,
       "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses",
       "id": "services_notebook_rationale_93"
     },
@@ -2692,7 +2728,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L96",
       "id": "services_notebook_rationale_96",
-      "community": 10,
+      "community": 11,
       "norm_label": "kill whatever is running on nb_port and spawn a fresh q process there.     uses"
     },
     {
@@ -2701,7 +2737,7 @@
       "source_file": "api/services/notebook.py",
       "source_location": "L95",
       "id": "services_notebook_reset_notebook",
-      "community": 10,
+      "community": 11,
       "norm_label": "reset_notebook()"
     },
     {
@@ -2728,7 +2764,7 @@
       "source_file": "api/services/problems.py",
       "source_location": "L25",
       "id": "services_problems_get_by_slug",
-      "community": 15,
+      "community": 3,
       "norm_label": "get_by_slug()"
     },
     {
@@ -2836,7 +2872,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L7",
       "id": "services_users_get_by_clerk_id",
-      "community": 9,
+      "community": 10,
       "norm_label": "get_by_clerk_id()"
     },
     {
@@ -2845,7 +2881,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L38",
       "id": "services_users_get_stats",
-      "community": 9,
+      "community": 10,
       "norm_label": "get_stats()"
     },
     {
@@ -2854,7 +2890,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L39",
       "id": "services_users_rationale_39",
-      "community": 9,
+      "community": 10,
       "norm_label": "return solve totals + per-difficulty breakdown for a user."
     },
     {
@@ -2863,7 +2899,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L74",
       "id": "services_users_set_nickname",
-      "community": 9,
+      "community": 10,
       "norm_label": "set_nickname()"
     },
     {
@@ -2872,7 +2908,7 @@
       "source_file": "api/services/users.py",
       "source_location": "L11",
       "id": "services_users_upsert",
-      "community": 9,
+      "community": 10,
       "norm_label": "upsert()"
     },
     {
@@ -3679,7 +3715,7 @@
       "source_file": "vscode-extension/src/api.ts",
       "source_location": "L168",
       "id": "src_api_qlabapi_getproblems",
-      "community": 0,
+      "community": 12,
       "norm_label": ".getproblems()"
     },
     {
@@ -3949,7 +3985,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L67",
       "id": "src_problemsprovider_difficultygroup",
-      "community": 11,
+      "community": 12,
       "norm_label": "difficultygroup"
     },
     {
@@ -3958,7 +3994,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L68",
       "id": "src_problemsprovider_difficultygroup_constructor",
-      "community": 11,
+      "community": 12,
       "norm_label": ".constructor()"
     },
     {
@@ -3967,7 +4003,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L131",
       "id": "src_problemsprovider_erroritem",
-      "community": 11,
+      "community": 12,
       "norm_label": "erroritem"
     },
     {
@@ -3976,7 +4012,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L132",
       "id": "src_problemsprovider_erroritem_constructor",
-      "community": 11,
+      "community": 12,
       "norm_label": ".constructor()"
     },
     {
@@ -3985,7 +4021,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L84",
       "id": "src_problemsprovider_problemitem",
-      "community": 11,
+      "community": 12,
       "norm_label": "problemitem"
     },
     {
@@ -3994,7 +4030,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L85",
       "id": "src_problemsprovider_problemitem_constructor",
-      "community": 11,
+      "community": 12,
       "norm_label": ".constructor()"
     },
     {
@@ -4003,7 +4039,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L6",
       "id": "src_problemsprovider_problemsprovider",
-      "community": 11,
+      "community": 12,
       "norm_label": "problemsprovider"
     },
     {
@@ -4012,7 +4048,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L13",
       "id": "src_problemsprovider_problemsprovider_constructor",
-      "community": 11,
+      "community": 12,
       "norm_label": ".constructor()"
     },
     {
@@ -4021,7 +4057,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L32",
       "id": "src_problemsprovider_problemsprovider_getchildren",
-      "community": 11,
+      "community": 12,
       "norm_label": ".getchildren()"
     },
     {
@@ -4030,7 +4066,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L24",
       "id": "src_problemsprovider_problemsprovider_getproblems",
-      "community": 11,
+      "community": 12,
       "norm_label": ".getproblems()"
     },
     {
@@ -4039,7 +4075,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L28",
       "id": "src_problemsprovider_problemsprovider_gettreeitem",
-      "community": 11,
+      "community": 12,
       "norm_label": ".gettreeitem()"
     },
     {
@@ -4048,7 +4084,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L20",
       "id": "src_problemsprovider_problemsprovider_refresh",
-      "community": 11,
+      "community": 12,
       "norm_label": ".refresh()"
     },
     {
@@ -4138,7 +4174,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 3,
+      "community": 8,
       "norm_label": "str"
     },
     {
@@ -4196,7 +4232,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L13",
       "id": "tests_test_auth_make_rsa_key_pair",
-      "community": 12,
+      "community": 13,
       "norm_label": "make_rsa_key_pair()"
     },
     {
@@ -4205,7 +4241,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L24",
       "id": "tests_test_auth_make_signing_key_mock",
-      "community": 12,
+      "community": 13,
       "norm_label": "make_signing_key_mock()"
     },
     {
@@ -4214,7 +4250,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L20",
       "id": "tests_test_auth_make_token",
-      "community": 12,
+      "community": 13,
       "norm_label": "make_token()"
     },
     {
@@ -4223,7 +4259,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L1",
       "id": "tests_test_auth_py",
-      "community": 12,
+      "community": 13,
       "norm_label": "test_auth.py"
     },
     {
@@ -4232,7 +4268,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L48",
       "id": "tests_test_auth_test_expired_token_raises_401",
-      "community": 12,
+      "community": 13,
       "norm_label": "test_expired_token_raises_401()"
     },
     {
@@ -4241,7 +4277,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L98",
       "id": "tests_test_auth_test_get_me_without_token_returns_401",
-      "community": 12,
+      "community": 13,
       "norm_label": "test_get_me_without_token_returns_401()"
     },
     {
@@ -4250,7 +4286,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L67",
       "id": "tests_test_auth_test_invalid_token_raises_401",
-      "community": 12,
+      "community": 13,
       "norm_label": "test_invalid_token_raises_401()"
     },
     {
@@ -4268,7 +4304,7 @@
       "source_file": "tests/test_auth.py",
       "source_location": "L31",
       "id": "tests_test_auth_test_valid_token_returns_claims",
-      "community": 12,
+      "community": 13,
       "norm_label": "test_valid_token_returns_claims()"
     },
     {
@@ -4667,7 +4703,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "get_me",
       "id": "users_get_me"
     },
@@ -4680,7 +4716,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 15,
       "norm_label": "set_nickname",
       "id": "users_set_nickname"
     },
@@ -4730,7 +4766,7 @@
       "source_file": "vscode-extension/src/ProblemsProvider.ts",
       "source_location": "L1",
       "id": "vscode_extension_src_problemsprovider_ts",
-      "community": 11,
+      "community": 12,
       "norm_label": "problemsprovider.ts"
     },
     {
@@ -4775,7 +4811,7 @@
       "source_file": "web/app/problems/page.tsx",
       "source_location": "L1",
       "id": "web_app_problems_page_tsx",
-      "community": 8,
+      "community": 9,
       "norm_label": "page.tsx"
     },
     {
@@ -4891,7 +4927,7 @@
       "file_type": "code",
       "source_file": "web/components/home/LiveTicker.tsx",
       "source_location": "L1",
-      "community": 8,
+      "community": 9,
       "norm_label": "liveticker.tsx",
       "id": "web_components_home_liveticker_tsx"
     },
@@ -4901,7 +4937,7 @@
       "source_file": "web/components/home/ThreePillars.tsx",
       "source_location": "L1",
       "id": "web_components_home_threepillars_tsx",
-      "community": 8,
+      "community": 9,
       "norm_label": "threepillars.tsx"
     },
     {
@@ -4910,7 +4946,7 @@
       "source_file": "web/components/ProblemLayout.tsx",
       "source_location": "L1",
       "id": "web_components_problemlayout_tsx",
-      "community": 13,
+      "community": 14,
       "norm_label": "problemlayout.tsx"
     },
     {
@@ -5090,7 +5126,7 @@
       "source_file": "web/hooks/useHomeData.ts",
       "source_location": "L1",
       "id": "web_hooks_usehomedata_ts",
-      "community": 8,
+      "community": 9,
       "norm_label": "usehomedata.ts"
     },
     {
@@ -5117,7 +5153,7 @@
       "source_file": "web/hooks/useMySubmissions.ts",
       "source_location": "L1",
       "id": "web_hooks_usemysubmissions_ts",
-      "community": 8,
+      "community": 9,
       "norm_label": "usemysubmissions.ts"
     },
     {
@@ -5135,7 +5171,7 @@
       "source_file": "web/hooks/useProblems.ts",
       "source_location": "L1",
       "id": "web_hooks_useproblems_ts",
-      "community": 8,
+      "community": 9,
       "norm_label": "useproblems.ts"
     },
     {
@@ -5684,6 +5720,18 @@
       "source_location": "L19",
       "weight": 0.8,
       "_src": "api_models_judgeresult",
+      "_tgt": "services_judge_rationale_115",
+      "confidence_score": 0.5,
+      "source": "api_models_judgeresult",
+      "target": "services_judge_rationale_115"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_judgeresult",
       "_tgt": "services_judge_rationale_122",
       "confidence_score": 0.5,
       "source": "api_models_judgeresult",
@@ -5696,10 +5744,34 @@
       "source_location": "L19",
       "weight": 0.8,
       "_src": "api_models_judgeresult",
+      "_tgt": "services_judge_rationale_125",
+      "confidence_score": 0.5,
+      "source": "api_models_judgeresult",
+      "target": "services_judge_rationale_125"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_judgeresult",
       "_tgt": "services_judge_rationale_153",
       "confidence_score": 0.5,
       "source": "api_models_judgeresult",
       "target": "services_judge_rationale_153"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_judgeresult",
+      "_tgt": "services_judge_rationale_156",
+      "confidence_score": 0.5,
+      "source": "api_models_judgeresult",
+      "target": "services_judge_rationale_156"
     },
     {
       "relation": "uses",
@@ -5724,6 +5796,18 @@
       "confidence_score": 0.5,
       "source": "api_models_judgeresult",
       "target": "services_judge_rationale_49"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_judgeresult",
+      "_tgt": "services_judge_rationale_50",
+      "confidence_score": 0.5,
+      "source": "api_models_judgeresult",
+      "target": "services_judge_rationale_50"
     },
     {
       "relation": "calls",
@@ -6380,6 +6464,18 @@
       "source_location": "L19",
       "weight": 0.8,
       "_src": "api_models_submissionstatus",
+      "_tgt": "services_judge_rationale_115",
+      "confidence_score": 0.5,
+      "source": "api_models_submissionstatus",
+      "target": "services_judge_rationale_115"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_submissionstatus",
       "_tgt": "services_judge_rationale_122",
       "confidence_score": 0.5,
       "source": "api_models_submissionstatus",
@@ -6392,10 +6488,34 @@
       "source_location": "L19",
       "weight": 0.8,
       "_src": "api_models_submissionstatus",
+      "_tgt": "services_judge_rationale_125",
+      "confidence_score": 0.5,
+      "source": "api_models_submissionstatus",
+      "target": "services_judge_rationale_125"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_submissionstatus",
       "_tgt": "services_judge_rationale_153",
       "confidence_score": 0.5,
       "source": "api_models_submissionstatus",
       "target": "services_judge_rationale_153"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_submissionstatus",
+      "_tgt": "services_judge_rationale_156",
+      "confidence_score": 0.5,
+      "source": "api_models_submissionstatus",
+      "target": "services_judge_rationale_156"
     },
     {
       "relation": "uses",
@@ -6420,6 +6540,18 @@
       "confidence_score": 0.5,
       "source": "api_models_submissionstatus",
       "target": "services_judge_rationale_49"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L19",
+      "weight": 0.8,
+      "_src": "api_models_submissionstatus",
+      "_tgt": "services_judge_rationale_50",
+      "confidence_score": 0.5,
+      "source": "api_models_submissionstatus",
+      "target": "services_judge_rationale_50"
     },
     {
       "relation": "calls",
@@ -6641,7 +6773,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L85",
+      "source_location": "L86",
       "weight": 1.0,
       "_src": "api_routers_submissions_py",
       "_tgt": "routers_submissions_get_my_ranks",
@@ -6653,7 +6785,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/routers/submissions.py",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "api_routers_submissions_py",
       "_tgt": "routers_submissions_get_my_submissions",
@@ -6761,7 +6893,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L112",
+      "source_location": "L114",
       "weight": 1.0,
       "_src": "api_services_judge_py",
       "_tgt": "services_judge_escape_q_string",
@@ -6785,7 +6917,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L117",
+      "source_location": "L119",
       "weight": 1.0,
       "_src": "api_services_judge_py",
       "_tgt": "services_judge_run_judge",
@@ -6797,7 +6929,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L152",
+      "source_location": "L155",
       "weight": 1.0,
       "_src": "api_services_judge_py",
       "_tgt": "services_judge_run_q_process",
@@ -10362,7 +10494,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "routers_submissions_get_my_ranks",
       "_tgt": "services_submissions_get_user_ranks",
@@ -10374,7 +10506,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L99",
+      "source_location": "L100",
       "weight": 1.0,
       "_src": "routers_submissions_get_my_submissions",
       "_tgt": "services_submissions_get_for_user",
@@ -10410,7 +10542,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_problems_increment_solve_count",
@@ -10422,7 +10554,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L61",
+      "source_location": "L62",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_submissions_get_leaderboard",
@@ -10434,7 +10566,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/routers/submissions.py",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0,
       "_src": "routers_submissions_submit",
       "_tgt": "services_submissions_insert",
@@ -10661,7 +10793,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L59",
+      "source_location": "L60",
       "weight": 1.0,
       "_src": "services_judge_build_judge_script",
       "_tgt": "services_judge_escape_q_string",
@@ -10680,6 +10812,18 @@
       "confidence_score": 1.0,
       "source": "services_judge_build_judge_script",
       "target": "services_judge_rationale_49"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "services_judge_build_judge_script",
+      "_tgt": "services_judge_rationale_50",
+      "confidence_score": 1.0,
+      "source": "services_judge_build_judge_script",
+      "target": "services_judge_rationale_50"
     },
     {
       "relation": "calls",
@@ -10709,11 +10853,35 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "services_judge_escape_q_string",
+      "_tgt": "services_judge_rationale_115",
+      "confidence_score": 1.0,
+      "source": "services_judge_escape_q_string",
+      "target": "services_judge_rationale_115"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/judge.py",
       "source_location": "L122",
       "weight": 1.0,
       "_src": "services_judge_run_judge",
       "_tgt": "services_judge_rationale_122",
+      "confidence_score": 1.0,
       "source": "services_judge_rationale_122",
+      "target": "services_judge_run_judge"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "services_judge_run_judge",
+      "_tgt": "services_judge_rationale_125",
+      "source": "services_judge_rationale_125",
       "target": "services_judge_run_judge",
       "confidence_score": 1.0
     },
@@ -10725,7 +10893,19 @@
       "weight": 1.0,
       "_src": "services_judge_run_q_process",
       "_tgt": "services_judge_rationale_153",
+      "confidence_score": 1.0,
       "source": "services_judge_rationale_153",
+      "target": "services_judge_run_q_process"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "api/services/judge.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_src": "services_judge_run_q_process",
+      "_tgt": "services_judge_rationale_156",
+      "source": "services_judge_rationale_156",
       "target": "services_judge_run_q_process",
       "confidence_score": 1.0
     },
@@ -10745,7 +10925,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L145",
+      "source_location": "L148",
       "weight": 1.0,
       "_src": "services_judge_run_judge",
       "_tgt": "services_judge_run_q_process",
@@ -10757,7 +10937,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "api/services/judge.py",
-      "source_location": "L126",
+      "source_location": "L129",
       "weight": 1.0,
       "_src": "services_judge_validate_single_param",
       "_tgt": "services_judge_run_judge",
@@ -10770,7 +10950,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/judge.py",
-      "source_location": "L141",
+      "source_location": "L144",
       "weight": 1.0,
       "_src": "services_judge_run_judge",
       "_tgt": "src_solvedcache_solvedcache_write",
@@ -10782,7 +10962,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/judge.py",
-      "source_location": "L187",
+      "source_location": "L190",
       "weight": 1.0,
       "_src": "services_judge_run_q_process",
       "_tgt": "src_api_qlabapi_get",
@@ -10794,7 +10974,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "api/services/judge.py",
-      "source_location": "L201",
+      "source_location": "L204",
       "weight": 1.0,
       "_src": "str",
       "_tgt": "services_judge_run_q_process",

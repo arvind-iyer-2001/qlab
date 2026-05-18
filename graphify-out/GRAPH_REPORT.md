@@ -1,12 +1,12 @@
-# Graph Report - qlab  (2026-05-14)
+# Graph Report - qlab  (2026-05-18)
 
 ## Corpus Check
-- 86 files · ~79,506 words
+- 86 files · ~79,780 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 510 nodes · 772 edges · 31 communities detected
-- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 151 edges (avg confidence: 0.77)
+- 514 nodes · 784 edges · 31 communities detected
+- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 159 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -45,14 +45,14 @@
 ## God Nodes (most connected - your core abstractions)
 1. `ProblemPanel` - 17 edges
 2. `QLabApi` - 16 edges
-3. `Web My Submissions Tab Design Spec` - 13 edges
-4. `SubmissionStatus` - 11 edges
-5. `JudgeResult` - 11 edges
+3. `SubmissionStatus` - 15 edges
+4. `JudgeResult` - 15 edges
+5. `Web My Submissions Tab Design Spec` - 13 edges
 6. `submit()` - 10 edges
 7. `Web My Submissions Tab Implementation Plan` - 10 edges
 8. `User Registration, Nickname and My Submissions Design Spec` - 10 edges
-9. `get_for_user()` - 9 edges
-10. `compute_solutions()` - 9 edges
+9. `run_judge()` - 9 edges
+10. `get_for_user()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Clerk Auth` --conceptually_related_to--> `activate`  [INFERRED]
@@ -86,8 +86,8 @@ Cohesion: 0.07
 Nodes (40): esbuild.js build script, Option A: Split Files (Quick Win), Option B: esbuild + TypeScript Webview, Option C: React Webview (Full GitLens-style), ProblemPanel.ts god file (1131 lines), Template Literal Backtick Escaping Bug, VS Code Extension Structural Improvements, src/webview/panel.css (+32 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.13
-Nodes (36): code_must_be_single_param(), code_must_define_func(), CommunitySolution, Difficulty, EditorialTier, Example, HintRevealResponse, JudgeResult (+28 more)
+Cohesion: 0.15
+Nodes (27): code_must_be_single_param(), code_must_define_func(), CommunitySolution, Difficulty, EditorialTier, Example, HintRevealResponse, Language (+19 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.12
@@ -106,36 +106,36 @@ Cohesion: 0.19
 Nodes (20): compute_solutions(), _get_top_community(), increment_hint_reveals(), _is_unlocked(), make_mock_db_for_router(), make_problem(), make_rsa_key_pair(), make_signing_key_mock() (+12 more)
 
 ### Community 8 - "Community 8"
+Cohesion: 0.26
+Nodes (18): JudgeResult, SubmissionStatus, _build_judge_script(), _escape_q_string(), Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load, Escape a string for embedding inside q double quotes., Escape a string for embedding inside q double quotes., Main entry point. Runs the judge and returns a JudgeResult. (+10 more)
+
+### Community 9 - "Community 9"
 Cohesion: 0.13
 Nodes (7): LiveTicker(), ThreePillars(), useGlobalLeaderboard(), useRecentSubmissions(), useMySubmissions(), useProblems(), ProblemsPage()
 
-### Community 9 - "Community 9"
+### Community 10 - "Community 10"
 Cohesion: 0.2
 Nodes (9): get_me(), get_my_stats(), set_nickname(), clerk_webhook(), get_by_clerk_id(), get_stats(), Return solve totals + per-difficulty breakdown for a user., set_nickname() (+1 more)
 
-### Community 10 - "Community 10"
+### Community 11 - "Community 11"
 Cohesion: 0.18
 Nodes (12): execute(), ExecuteRequest, reset(), _conn(), _escape(), execute_cell(), Notebook execution service.  Connects to a dedicated q process on QLAB_NB_PORT (, Escape a code string for embedding inside a q double-quoted string. (+4 more)
 
-### Community 11 - "Community 11"
-Cohesion: 0.17
+### Community 12 - "Community 12"
+Cohesion: 0.15
 Nodes (4): DifficultyGroup, ErrorItem, ProblemItem, ProblemsProvider
 
-### Community 12 - "Community 12"
+### Community 13 - "Community 13"
 Cohesion: 0.35
 Nodes (9): _get_jwks_client(), verify_clerk_token(), make_rsa_key_pair(), make_signing_key_mock(), make_token(), test_expired_token_raises_401(), test_get_me_without_token_returns_401(), test_invalid_token_raises_401() (+1 more)
 
-### Community 13 - "Community 13"
+### Community 14 - "Community 14"
 Cohesion: 0.27
 Nodes (5): changeTab(), handleLoadCode(), onKey(), starterCode(), tabStorageKey()
 
-### Community 14 - "Community 14"
+### Community 15 - "Community 15"
 Cohesion: 0.31
 Nodes (10): Clerk Auth, MongoDB Collections, activate, setSignedInContext, uriHandler, app (FastAPI), lifespan, SignOut (+2 more)
-
-### Community 15 - "Community 15"
-Cohesion: 0.36
-Nodes (5): get_leaderboard(), get_problem(), get_solutions(), reveal_hint(), get_by_slug()
 
 ### Community 16 - "Community 16"
 Cohesion: 0.53
@@ -226,17 +226,17 @@ Nodes (1): tests/test_solutions.py
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `_run_q_process()` connect `Community 3` to `Community 0`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **Why does `submit()` connect `Community 1` to `Community 0`, `Community 9`, `Community 3`?**
+- **Why does `_run_q_process()` connect `Community 8` to `Community 0`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+- **Why does `submit()` connect `Community 1` to `Community 0`, `Community 8`, `Community 10`, `Community 3`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Are the 7 inferred relationships involving `SubmissionStatus` (e.g. with `Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load` and `Returns an error string if func uses multiple params, else None.     Catches: fu`) actually correct?**
-  _`SubmissionStatus` has 7 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `QLabApi` connect `Community 0` to `Community 12`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Are the 11 inferred relationships involving `SubmissionStatus` (e.g. with `Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load` and `Returns an error string if func uses multiple params, else None.     Catches: fu`) actually correct?**
+  _`SubmissionStatus` has 11 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 12 inferred relationships involving `JudgeResult` (e.g. with `Judge service — spawns a sandboxed q subprocess per submission.  Flow:   1. Load` and `Returns an error string if func uses multiple params, else None.     Catches: fu`) actually correct?**
+  _`JudgeResult` has 12 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Most recent correct submissions joined with problem title + difficulty.`, `Top users ranked by (distinct problems solved DESC, best timing ASC).`, `Correct submissions in the last 7 days.` to the rest of the system?**
   _49 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
