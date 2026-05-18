@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { useSolutions } from '@/hooks/useSolutions'
 import { useRevealHint } from '@/hooks/useRevealHint'
 import { CodeEditor } from '@/components/CodeEditor'
@@ -84,9 +86,33 @@ export function SolutionsTab({ slug }: Props) {
                 {solutions.editorial.reason ?? 'Solve the problem to unlock the editorial.'}
               </div>
             ) : (
-              <p style={{ color: '#eff1f6', fontSize: '14px', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>
-                {solutions.editorial.content}
-              </p>
+              <div className="editorial-md" style={{ color: '#eff1f6', fontSize: '14px', lineHeight: 1.7 }}>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    h1: ({ node, ...p }) => <h1 style={{ fontSize: '1.4em', marginTop: '1em', marginBottom: '0.5em', color: '#eff1f6' }} {...p} />,
+                    h2: ({ node, ...p }) => <h2 style={{ fontSize: '1.2em', marginTop: '1em', marginBottom: '0.5em', color: '#eff1f6' }} {...p} />,
+                    h3: ({ node, ...p }) => <h3 style={{ fontSize: '1.05em', marginTop: '0.8em', marginBottom: '0.4em', color: '#eff1f6' }} {...p} />,
+                    p: ({ node, ...p }) => <p style={{ margin: '0.6em 0' }} {...p} />,
+                    ul: ({ node, ...p }) => <ul style={{ margin: '0.6em 0', paddingLeft: '1.4em' }} {...p} />,
+                    ol: ({ node, ...p }) => <ol style={{ margin: '0.6em 0', paddingLeft: '1.4em' }} {...p} />,
+                    li: ({ node, ...p }) => <li style={{ margin: '0.2em 0' }} {...p} />,
+                    a: ({ node, ...p }) => <a style={{ color: '#ffa116' }} target="_blank" rel="noreferrer" {...p} />,
+                    code: ({ node, className, children, ...p }) => {
+                      const isBlock = /language-/.test(className ?? '')
+                      return isBlock ? (
+                        <code className={className} style={{ display: 'block', background: '#1e1e1e', border: '1px solid #3a3a3a', borderRadius: '6px', padding: '10px 12px', fontFamily: 'var(--font-mono, monospace)', fontSize: '0.9em', overflowX: 'auto', whiteSpace: 'pre' }} {...p}>{children}</code>
+                      ) : (
+                        <code style={{ background: '#282828', borderRadius: '3px', padding: '1px 5px', fontFamily: 'var(--font-mono, monospace)', fontSize: '0.9em' }} {...p}>{children}</code>
+                      )
+                    },
+                    pre: ({ node, children, ...p }) => <pre style={{ margin: '0.8em 0', background: 'transparent' }} {...p}>{children}</pre>,
+                    blockquote: ({ node, ...p }) => <blockquote style={{ borderLeft: '3px solid #3a3a3a', margin: '0.6em 0', padding: '0.2em 0.8em', color: '#aba9b0' }} {...p} />,
+                  }}
+                >
+                  {solutions.editorial.content ?? ''}
+                </ReactMarkdown>
+              </div>
             )}
           </div>
         )}
