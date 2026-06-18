@@ -58,16 +58,11 @@ class SubmitRequest(BaseModel):
 
 class NicknameRequest(BaseModel):
     nickname: str
+    license_b64: Optional[str] = None  # optional base64-encoded kc.lic, stored alongside nickname
 
-    @field_validator("nickname")
-    @classmethod
-    def validate_nickname(cls, v: str) -> str:
-        v = v.strip()
-        if not v:
-            raise ValueError("Nickname cannot be empty")
-        if len(v) > 30:
-            raise ValueError("Nickname must be 30 characters or fewer")
-        return v
+
+class ExecuteRequest(BaseModel):
+    code: str
 
 
 # --- Response models ---
@@ -102,6 +97,12 @@ class ProblemDetail(BaseModel):
     posted_date: str
     winning_criteria: str
     test_call: str       # how to call func for testing, shown to users
+
+
+class ExecuteResponse(BaseModel):
+    output: str = ""
+    error: Optional[str] = None
+    ok: bool = False
 
 
 class JudgeResult(BaseModel):
