@@ -73,3 +73,15 @@ async def get_license_status(
 ):
     user = await users_svc.get_by_clerk_id(db, claims["sub"])
     return {"has_license": bool(user and user.get("license_b64"))}
+
+
+@router.delete("/me/license")
+async def delete_license(
+    claims: dict = Depends(verify_clerk_token),
+    db: AsyncIOMotorDatabase = Depends(get_db),
+):
+    await db.users.update_one(
+        {"clerk_user_id": claims["sub"]},
+        {"$unset": {"license_b64": ""}},
+    )
+    return {"has_license": False}

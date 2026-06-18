@@ -15,6 +15,7 @@ from services.judge import (
     _escape_q_string,
     _docker_q_cmd,
     _subprocess_env,
+    friendly_license_error,
 )
 
 DOCKER_IMAGE = os.getenv("QLAB_DOCKER_IMAGE", "")
@@ -91,6 +92,9 @@ async def run_code(code: str, license_b64: str | None = None) -> dict:
         out = stdout.decode().strip()
         if not out:
             err = stderr.decode().strip()
+            lic_msg = friendly_license_error(err)
+            if lic_msg:
+                return {"ok": False, "output": "", "error": lic_msg}
             # body (e.g. a bad func definition) failed before producing JSON
             return {"ok": False, "output": "", "error": err[:1000] or "No output"}
 
