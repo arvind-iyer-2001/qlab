@@ -54,6 +54,9 @@ async def main() -> None:
         ref_path = p / "reference.q"
         if ref_path.exists():
             data["reference_solution"] = ref_path.read_text().strip()
+        test_gen_path = p / "test_gen.q"
+        if test_gen_path.exists():
+            data["test_gen_code"] = test_gen_path.read_text().strip()
         await problems_svc.upsert_from_json(db, data)
         print(f"  {p.name}")
         count += 1
