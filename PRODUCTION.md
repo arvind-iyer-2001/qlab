@@ -1,7 +1,8 @@
 # qLab — Production Build Spec
 
 > Last updated: 2026-04-22
-> **Stale notice (2026-05-13):** Predates the May 2026 web-UI burst (landing page, profile stats, global leaderboard, deep-link tabs, keyboard shortcuts) and the VS Code parity catch-up. Deployment shape still mostly applies but client surface area, env vars, and FUTURE.md cross-refs need a rewrite before any prod cut. Refresh tracked in FUTURE.md → Infra & Quality.
+> **Superseded (2026-06):** This is a historical build-prompt. Several things below are no longer true — the web frontend now exists; the kdb+ db process (`db/schema.q`) and the persistent notebook process have been removed; the judge runs in a per-submission `qlab-judge` Docker container that inlines `test_gen`/`reference` from MongoDB (not `\l` from disk); `POST /notebook/*` is gone, replaced by stateless `POST /execute`; and the kdb+ license is a base64 key (`QLAB_LICENSE_B64` / per-user `users.license_b64`), not a mounted file. For current architecture see `README.md`, `CLAUDE.md`, and `graphify-out/GRAPH_REPORT.md`. Kept as a record of the original plan and its still-valid constraints (q gotchas, auth, rate limiting, observability).
+> **Stale notice (2026-05-13):** Predates the May 2026 web-UI burst (landing page, profile stats, global leaderboard, deep-link tabs, keyboard shortcuts) and the VS Code parity catch-up.
 > Use this document as a prompt when starting the production build. It defines what to build, what decisions are already made, and what to avoid.
 
 ---

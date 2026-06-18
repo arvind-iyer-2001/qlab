@@ -117,7 +117,7 @@ Recommended path: Option A immediately, Option B as the follow-up.
 - [x] Update-nickname flow (`PATCH` again) — inline edit on `/profile`, reuses existing endpoint
 - [x] Nickname uniqueness enforcement — unique sparse index on `users.nickname`
 - [x] MongoDB indexes on `users.clerk_user_id` and `submissions.{user_id, problem_id}` — created at startup in `main.py` lifespan
-- [ ] Rate limiting on `POST /submissions` and `POST /notebook/execute` — abuse / runaway-loop protection
+- [ ] Rate limiting on `POST /submissions` and `POST /execute` — abuse / runaway-loop protection
 - [ ] Structured logging + request IDs — currently `print` / default uvicorn logs
 - [ ] Long-lived Clerk JWT via Clerk dashboard template — current ~60s expiry forces re-auth more often than ideal
 
