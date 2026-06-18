@@ -89,7 +89,16 @@ function ProfileSetupInner() {
               kdb+ license key <span className="text-zinc-500 font-normal">(optional)</span>
             </label>
             <p className="text-zinc-500 text-xs m-0">
-              Paste your base64 <code className="text-zinc-400">kc.lic</code> key to run submissions under your own license. You can add this later.
+              Paste your base64 license key to run submissions under your own license. You can add this later.
+              {' '}You can fetch this license key from{' '}
+              <a
+                href="https://developer.kx.com/products/kdb-x/install"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 underline"
+              >
+                here
+              </a>.
             </p>
             <textarea
               value={licenseKey}
