@@ -22,6 +22,63 @@ Q_BINARY = os.getenv("QLAB_Q_BINARY", "q")
 RUN_TIMEOUT = int(os.getenv("QLAB_JUDGE_TIMEOUT", "10"))
 
 
+def _line_net_depth(line: str) -> int:
+    """Net change in (){}[ ] nesting for one physical line.
+
+    Skips characters inside double-quoted strings (with `\\` escapes) and a
+    trailing `/` comment (q treats `/` as a comment only at line start or when
+    preceded by whitespace), so braces/quotes in those positions don't count.
+    """
+    depth = 0
+    in_str = False
+    i = 0
+    n = len(line)
+    while i < n:
+        c = line[i]
+        if in_str:
+            if c == "\\":
+                i += 2
+                continue
+            if c == '"':
+                in_str = False
+            i += 1
+            continue
+        if c == '"':
+            in_str = True
+        elif c == "/" and (i == 0 or line[i - 1] in " \t"):
+            break  # inline comment runs to end of line
+        elif c in "{[(":
+            depth += 1
+        elif c in "}])":
+            depth -= 1
+        i += 1
+    return depth
+
+
+def _split_top_level_statements(lines: list[str]) -> list[str]:
+    """Group physical lines into top-level q statements.
+
+    A statement ends at a newline only when nesting depth has returned to 0, so
+    a multi-line `{}` block (even with its closing brace at column 0) stays one
+    statement. Each returned statement can then be evaluated on its own via
+    `value` — which handles internal newlines fine but does not run several
+    top-level statements from a single joined string.
+    """
+    statements: list[str] = []
+    current: list[str] = []
+    depth = 0
+    for line in lines:
+        current.append(line)
+        depth += _line_net_depth(line)
+        if depth <= 0:
+            depth = 0
+            statements.append("\n".join(current))
+            current = []
+    if current:
+        statements.append("\n".join(current))
+    return statements
+
+
 def _build_run_script(code: str) -> str | None:
     """Split code into body + final expression; emit a JSON-printing script.
 
@@ -35,18 +92,19 @@ def _build_run_script(code: str) -> str | None:
     if not lines:
         return None
 
-    body = lines[:-1]
-    last = lines[-1]
+    statements = _split_top_level_statements(lines)
+    body = statements[:-1]
+    last = statements[-1]
 
     out = []
-    # Evaluate the body (the user's definitions) via `value` rather than as a
-    # script file: inside `{}` newlines are fine, so a multiline func with its
-    # closing brace at column 0 still parses (script-file column rules would
-    # treat that `}` as a new statement and fail).
-    if body:
-        escaped_body = _escape_q_string("\n".join(body))
+    # Evaluate each body statement (the user's definitions) via its own `value`
+    # call. `value` handles newlines inside a single statement (so a multiline
+    # func with its closing brace at column 0 still parses), but it will not run
+    # several top-level statements from one joined string — hence one call each.
+    for stmt in body:
+        escaped = _escape_q_string(stmt)
         out.append(
-            f'@[value;"{escaped_body}";{{-1 .j.j `ok`output`error!(0b;"";x);exit 0}}];'
+            f'@[value;"{escaped}";{{-1 .j.j `ok`output`error!(0b;"";x);exit 0}}];'
         )
     escaped_last = _escape_q_string(last)
     out += [
