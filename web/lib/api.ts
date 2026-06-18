@@ -217,7 +217,7 @@ export const api = {
     }),
 
   execute: (code: string, token: string | null) =>
-    apiFetch<ExecuteResponse>('/notebook/execute', token, {
+    apiFetch<ExecuteResponse>('/execute', token, {
       method: 'POST',
       body: JSON.stringify({ code }),
     }),
