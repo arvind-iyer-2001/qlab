@@ -42,11 +42,13 @@ async def set_nickname(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    # Optional license — validate before touching the nickname so a bad
-    # upload doesn't half-apply the update.
+    # Optional license — strip whitespace (pasted keys often wrap) and validate
+    # before touching the nickname so a bad upload doesn't half-apply the update.
+    license_b64 = None
     if body.license_b64 is not None:
+        license_b64 = "".join(body.license_b64.split())
         try:
-            base64.b64decode(body.license_b64, validate=True)
+            base64.b64decode(license_b64, validate=True)
         except Exception:
             raise HTTPException(status_code=400, detail="Invalid base64 license")
 
@@ -55,10 +57,10 @@ async def set_nickname(
     except ValueError as exc:
         raise HTTPException(status_code=409, detail=str(exc))
 
-    if body.license_b64 is not None:
+    if license_b64 is not None:
         await db.users.update_one(
             {"clerk_user_id": user_id},
-            {"$set": {"license_b64": body.license_b64}},
+            {"$set": {"license_b64": license_b64}},
         )
 
     updated = await users_svc.get_by_clerk_id(db, user_id)

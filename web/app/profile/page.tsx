@@ -34,28 +34,19 @@ export default function ProfilePage() {
   const [nickError, setNickError] = useState('')
   const [savingNick, setSavingNick] = useState(false)
   const [hasLicense, setHasLicense] = useState(false)
-  const [licenseFile, setLicenseFile] = useState<File | null>(null)
+  const [licenseKey, setLicenseKey] = useState('')
   const [savingLicense, setSavingLicense] = useState(false)
   const [licenseMsg, setLicenseMsg] = useState('')
 
-  function fileToBase64(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = () => resolve((reader.result as string).split(',')[1] ?? '')
-      reader.onerror = () => reject(reader.error)
-      reader.readAsDataURL(file)
-    })
-  }
-
   async function saveLicense() {
-    if (!licenseFile) return
+    const license_b64 = licenseKey.trim()
+    if (!license_b64) return
     if (!qlabUser?.nickname) { setLicenseMsg('Set a nickname first.'); return }
     setLicenseMsg('')
     setSavingLicense(true)
     try {
       const token = await getToken()
       if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
-      const license_b64 = await fileToBase64(licenseFile)
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/nickname`, {
         method: 'PATCH',
@@ -64,14 +55,14 @@ export default function ProfilePage() {
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
-        setLicenseMsg(typeof body?.detail === 'string' ? body.detail : 'Upload failed')
+        setLicenseMsg(typeof body?.detail === 'string' ? body.detail : 'Save failed')
       } else {
         setHasLicense(true)
-        setLicenseFile(null)
+        setLicenseKey('')
         setLicenseMsg('License saved ✓')
       }
     } catch {
-      setLicenseMsg('Could not read or upload the file')
+      setLicenseMsg('Network error')
     } finally {
       setSavingLicense(false)
     }
@@ -255,21 +246,23 @@ export default function ProfilePage() {
                     : <span className="text-zinc-400">No license uploaded — submissions use the shared host license.</span>}
                 </p>
                 <p className="text-zinc-500 text-xs m-0">
-                  Upload your <code className="text-zinc-400">kc.lic</code> to run submissions under your own license.
+                  Paste your base64 <code className="text-zinc-400">kc.lic</code> key to run submissions under your own license.
                 </p>
-                <div className="flex gap-2 items-center flex-wrap">
-                  <input
-                    type="file"
-                    accept=".lic,application/octet-stream"
-                    onChange={(e) => { setLicenseFile(e.target.files?.[0] ?? null); setLicenseMsg('') }}
-                    className="text-zinc-400 text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-zinc-800 file:text-zinc-200 file:text-xs file:font-semibold hover:file:bg-zinc-700 file:cursor-pointer"
-                  />
+                <textarea
+                  value={licenseKey}
+                  onChange={(e) => { setLicenseKey(e.target.value); setLicenseMsg('') }}
+                  placeholder="base64 license key…"
+                  rows={3}
+                  spellCheck={false}
+                  className="w-full px-2 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-xs resize-y break-all"
+                />
+                <div>
                   <button
                     onClick={saveLicense}
-                    disabled={!licenseFile || savingLicense || !qlabUser?.nickname}
+                    disabled={!licenseKey.trim() || savingLicense || !qlabUser?.nickname}
                     className="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 rounded text-xs font-semibold disabled:opacity-40"
                   >
-                    {savingLicense ? 'Uploading…' : hasLicense ? 'Replace' : 'Upload'}
+                    {savingLicense ? 'Saving…' : hasLicense ? 'Replace' : 'Save'}
                   </button>
                 </div>
                 {!qlabUser?.nickname && (
