@@ -16,8 +16,7 @@ async def get_me(
     claims: dict = Depends(verify_clerk_token),
     db: AsyncIOMotorDatabase = Depends(get_db),
 ):
-    user_id = claims["sub"]
-    user = await users_svc.get_by_clerk_id(db, user_id)
+    user = await users_svc.get_or_create(db, claims)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
@@ -38,9 +37,7 @@ async def set_nickname(
     db: AsyncIOMotorDatabase = Depends(get_db),
 ):
     user_id = claims["sub"]
-    user = await users_svc.get_by_clerk_id(db, user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+    await users_svc.get_or_create(db, claims)
 
     # Optional license — strip whitespace (pasted keys often wrap) and validate
     # before touching the nickname so a bad upload doesn't half-apply the update.
