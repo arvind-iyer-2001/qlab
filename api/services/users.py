@@ -8,6 +8,33 @@ async def get_by_clerk_id(db: AsyncIOMotorDatabase, clerk_user_id: str) -> dict 
     return await db.users.find_one({"clerk_user_id": clerk_user_id}, {"_id": 0})
 
 
+async def get_or_create(db: AsyncIOMotorDatabase, claims: dict) -> dict:
+    """Return the user doc, creating a minimal one from JWT claims if missing.
+
+    The Clerk webhook only fires on signup, so a doc that was never synced (or
+    was deleted) would otherwise 404 forever. Self-heal from the token instead.
+    """
+    clerk_user_id = claims["sub"]
+    existing = await get_by_clerk_id(db, clerk_user_id)
+    if existing:
+        return existing
+    await db.users.update_one(
+        {"clerk_user_id": clerk_user_id},
+        {
+            "$setOnInsert": {
+                "clerk_user_id": clerk_user_id,
+                "nickname": None,
+                "display_name": claims.get("name") or claims.get("full_name") or "",
+                "email": claims.get("email") or "",
+                "avatar_url": claims.get("picture") or claims.get("image_url"),
+                "created_at": datetime.now(timezone.utc),
+            }
+        },
+        upsert=True,
+    )
+    return await get_by_clerk_id(db, clerk_user_id)
+
+
 async def upsert(
     db: AsyncIOMotorDatabase,
     clerk_user_id: str,

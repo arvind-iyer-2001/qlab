@@ -33,6 +33,40 @@ export default function ProfilePage() {
   const [nickDraft, setNickDraft] = useState('')
   const [nickError, setNickError] = useState('')
   const [savingNick, setSavingNick] = useState(false)
+  const [hasLicense, setHasLicense] = useState(false)
+  const [licenseKey, setLicenseKey] = useState('')
+  const [savingLicense, setSavingLicense] = useState(false)
+  const [licenseMsg, setLicenseMsg] = useState('')
+
+  async function saveLicense() {
+    const license_b64 = licenseKey.trim()
+    if (!license_b64) return
+    if (!qlabUser?.nickname) { setLicenseMsg('Set a nickname first.'); return }
+    setLicenseMsg('')
+    setSavingLicense(true)
+    try {
+      const token = await getToken()
+      if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const res = await fetch(`${apiUrl}/users/me/nickname`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ nickname: qlabUser.nickname, license_b64 }),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        setLicenseMsg(typeof body?.detail === 'string' ? body.detail : 'Save failed')
+      } else {
+        setHasLicense(true)
+        setLicenseKey('')
+        setLicenseMsg('License saved ✓')
+      }
+    } catch {
+      setLicenseMsg('Network error')
+    } finally {
+      setSavingLicense(false)
+    }
+  }
 
   async function saveNickname() {
     const trimmed = nickDraft.trim()
@@ -79,12 +113,14 @@ export default function ProfilePage() {
         const token = await getToken()
         if (!token) return
         const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
-        const [userRes, statsRes] = await Promise.all([
+        const [userRes, statsRes, licRes] = await Promise.all([
           fetch(`${apiUrl}/users/me`, { headers: { Authorization: `Bearer ${token}` } }),
           fetch(`${apiUrl}/users/me/stats`, { headers: { Authorization: `Bearer ${token}` } }),
+          fetch(`${apiUrl}/users/me/license`, { headers: { Authorization: `Bearer ${token}` } }),
         ])
         if (userRes.ok) setQlabUser(await userRes.json())
         if (statsRes.ok) setStats(await statsRes.json())
+        if (licRes.ok) setHasLicense((await licRes.json())?.has_license ?? false)
       } catch {
         // API unreachable
       } finally {
@@ -201,6 +237,51 @@ export default function ProfilePage() {
                 <p className="text-zinc-50">{email}</p>
               </Card>
             )}
+
+            <Card label="kdb+ License">
+              <div className="flex flex-col gap-2">
+                <p className="text-sm m-0">
+                  {hasLicense
+                    ? <span className="text-emerald-400">License on file ✓</span>
+                    : <span className="text-zinc-400">No license uploaded — submissions use the shared host license.</span>}
+                </p>
+                <p className="text-zinc-500 text-xs m-0">
+                  Paste your base64 license key to run submissions under your own license.
+                  {' '}You can fetch this license key from{' '}
+                  <a
+                    href="https://developer.kx.com/products/kdb-x/install"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-400 hover:text-emerald-300 underline"
+                  >
+                    here
+                  </a>.
+                </p>
+                <textarea
+                  value={licenseKey}
+                  onChange={(e) => { setLicenseKey(e.target.value); setLicenseMsg('') }}
+                  placeholder="base64 license key…"
+                  rows={3}
+                  spellCheck={false}
+                  className="w-full px-2 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-xs resize-y break-all"
+                />
+                <div>
+                  <button
+                    onClick={saveLicense}
+                    disabled={!licenseKey.trim() || savingLicense || !qlabUser?.nickname}
+                    className="px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 rounded text-xs font-semibold disabled:opacity-40"
+                  >
+                    {savingLicense ? 'Saving…' : hasLicense ? 'Replace' : 'Save'}
+                  </button>
+                </div>
+                {!qlabUser?.nickname && (
+                  <p className="text-zinc-500 text-xs m-0">Set a nickname above before uploading a license.</p>
+                )}
+                {licenseMsg && (
+                  <p className={`text-xs m-0 ${licenseMsg.includes('✓') ? 'text-emerald-400' : 'text-rose-400'}`}>{licenseMsg}</p>
+                )}
+              </div>
+            </Card>
 
             {stats && (
               <Card label="Stats">

@@ -12,6 +12,7 @@ function ProfileSetupInner() {
   const fromVscode = searchParams.get('from') === 'vscode'
 
   const [nickname, setNickname] = useState('')
+  const [licenseKey, setLicenseKey] = useState('')
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
 
@@ -30,6 +31,9 @@ function ProfileSetupInner() {
         setSaving(false)
         return
       }
+      // Optional base64 license key, sent alongside the nickname in one request.
+      const license_b64 = licenseKey.trim() || undefined
+
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/nickname`, {
         method: 'PATCH',
@@ -37,7 +41,7 @@ function ProfileSetupInner() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ nickname: trimmed }),
+        body: JSON.stringify({ nickname: trimmed, ...(license_b64 ? { license_b64 } : {}) }),
       })
 
       if (!res.ok) {
@@ -79,6 +83,33 @@ function ProfileSetupInner() {
             autoFocus
             className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-md text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 transition font-mono"
           />
+
+          <div className="flex flex-col gap-1.5 pt-1">
+            <label className="text-zinc-300 text-sm font-medium">
+              kdb+ license key <span className="text-zinc-500 font-normal">(optional)</span>
+            </label>
+            <p className="text-zinc-500 text-xs m-0">
+              Paste your base64 license key to run submissions under your own license. You can add this later.
+              {' '}You can fetch this license key from{' '}
+              <a
+                href="https://developer.kx.com/products/kdb-x/install"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 underline"
+              >
+                here
+              </a>.
+            </p>
+            <textarea
+              value={licenseKey}
+              onChange={e => setLicenseKey(e.target.value)}
+              placeholder="base64 license key…"
+              rows={3}
+              spellCheck={false}
+              className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-md text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 transition font-mono text-xs resize-y break-all"
+            />
+          </div>
+
           {error && <p className="text-rose-400 text-xs m-0">{error}</p>}
           <Button type="submit" disabled={saving}>
             {saving ? 'Saving…' : 'Save and continue'}
