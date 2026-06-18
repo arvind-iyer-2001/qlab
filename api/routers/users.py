@@ -1,11 +1,10 @@
-import base64
-
 from fastapi import APIRouter, Depends, HTTPException
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from deps import get_db
 from models import NicknameRequest
 from services.auth import verify_clerk_token
+from services.license import normalize_b64
 import services.users as users_svc
 
 router = APIRouter(prefix="/users", tags=["users"])
@@ -43,10 +42,9 @@ async def set_nickname(
     # before touching the nickname so a bad upload doesn't half-apply the update.
     license_b64 = None
     if body.license_b64 is not None:
-        license_b64 = "".join(body.license_b64.split())
         try:
-            base64.b64decode(license_b64, validate=True)
-        except Exception:
+            license_b64 = normalize_b64(body.license_b64)
+        except ValueError:
             raise HTTPException(status_code=400, detail="Invalid base64 license")
 
     try:

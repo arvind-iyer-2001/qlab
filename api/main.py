@@ -11,12 +11,31 @@ from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from routers import problems, stats, submissions, users, webhooks, solutions, execute
+from services.license import is_valid_b64
 
 logger = logging.getLogger("qlab.startup")
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 MONGODB_DB = os.getenv("MONGODB_DB", "qlab")
+
+
+def check_host_license() -> None:
+    """Warn (not fatal) about the host fallback license at startup.
+
+    Per-user licenses still work without it, so a missing/invalid
+    QLAB_LICENSE_B64 only degrades the host fallback — log, don't exit.
+    """
+    raw = os.getenv("QLAB_LICENSE_B64", "")
+    if not raw or not raw.strip():
+        logger.warning(
+            "QLAB_LICENSE_B64 not set — host fallback license empty; "
+            "only per-user licenses will work"
+        )
+    elif not is_valid_b64(raw):
+        logger.warning(
+            "QLAB_LICENSE_B64 is set but not valid base64 — host fallback will fail"
+        )
 
 
 @asynccontextmanager
@@ -45,6 +64,7 @@ async def lifespan(app: FastAPI):
         [("clerk_user_id", 1), ("problem_id", 1)], unique=True
     )
     logger.info("MongoDB indexes ensured")
+    check_host_license()
     yield
     client.close()
 
