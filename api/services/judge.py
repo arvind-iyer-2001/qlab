@@ -11,7 +11,6 @@ Flow:
 """
 
 import asyncio
-import base64
 import json
 import os
 import re
@@ -19,10 +18,8 @@ import re
 from models import JudgeResult, SubmissionStatus
 
 DOCKER_IMAGE = os.getenv("QLAB_DOCKER_IMAGE", "")
-# Host fallback license as base64. Prefer QLAB_LICENSE_B64 (a base64 key, like
-# q-solver); otherwise read the kc.lic file at QLAB_KC_LIC and encode it.
+# Default/host license as a base64 key (q-solver style) — no file on disk.
 HOST_LICENSE_B64 = os.getenv("QLAB_LICENSE_B64", "")
-HOST_LICENSE_FILE = os.getenv("QLAB_KC_LIC", os.path.expanduser("~/.kx/kc.lic"))
 Q_BINARY = os.getenv("QLAB_Q_BINARY", "q")
 JUDGE_TIMEOUT = int(os.getenv("QLAB_JUDGE_TIMEOUT", "10"))
 
@@ -33,15 +30,8 @@ _DECODE_LIC = 'mkdir -p /root/.kx && printf %s "$KDBLIC" | base64 -d > /root/.kx
 
 
 def _resolve_license_b64(license_b64: str | None) -> str | None:
-    """Per-user license wins; else host base64 env; else encode the host file."""
-    if license_b64:
-        return license_b64
-    if HOST_LICENSE_B64:
-        return HOST_LICENSE_B64
-    if HOST_LICENSE_FILE and os.path.exists(HOST_LICENSE_FILE):
-        with open(HOST_LICENSE_FILE, "rb") as f:
-            return base64.b64encode(f.read()).decode()
-    return None
+    """Per-user license wins; else the default host base64 env (QLAB_LICENSE_B64)."""
+    return license_b64 or HOST_LICENSE_B64 or None
 
 
 def _docker_q_cmd(qfile: str) -> list[str]:

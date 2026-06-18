@@ -8,17 +8,17 @@ services:
       MONGODB_URI: ${MONGODB_URI}
       MONGODB_DB: ${MONGODB_DB}
       PROBLEMS_DIR: /problems
-      QLAB_NB_PORT: ${QLAB_NB_PORT:-5001}
       QLAB_JUDGE_TIMEOUT: ${QLAB_JUDGE_TIMEOUT:-10}
       QLAB_DOCKER_IMAGE: ${QLAB_DOCKER_IMAGE:-qlab-judge}
-      QLAB_KC_LIC: /root/.kx/kc.lic
+      # Default/host license as a base64 key, passed to judge containers via
+      # the KDBLIC env var. Per-user licenses come from MongoDB at runtime.
+      QLAB_LICENSE_B64: ${QLAB_LICENSE_B64}
       CLERK_JWKS_URL: ${CLERK_JWKS_URL}
       CLERK_SECRET_KEY: ${CLERK_SECRET_KEY}
       CLERK_WEBHOOK_SECRET: ${CLERK_WEBHOOK_SECRET}
     volumes:
       - ./problems:/problems:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.kx/kc.lic:/root/.kx/kc.lic:ro
 
   web:
     build:
