@@ -15,14 +15,52 @@ import base64
 import json
 import os
 import re
-import tempfile
 
 from models import JudgeResult, SubmissionStatus
 
 DOCKER_IMAGE = os.getenv("QLAB_DOCKER_IMAGE", "")
-DOCKER_LICENSE = os.getenv("QLAB_KC_LIC", os.path.expanduser("~/.kx/kc.lic"))
+# Host fallback license as base64. Prefer QLAB_LICENSE_B64 (a base64 key, like
+# q-solver); otherwise read the kc.lic file at QLAB_KC_LIC and encode it.
+HOST_LICENSE_B64 = os.getenv("QLAB_LICENSE_B64", "")
+HOST_LICENSE_FILE = os.getenv("QLAB_KC_LIC", os.path.expanduser("~/.kx/kc.lic"))
 Q_BINARY = os.getenv("QLAB_Q_BINARY", "q")
 JUDGE_TIMEOUT = int(os.getenv("QLAB_JUDGE_TIMEOUT", "10"))
+
+# Shell run inside the container: decode the base64 license (passed as the
+# KDBLIC env var) to kc.lic, then read the piped q script and run it. Using an
+# env var instead of a mounted file keeps the license a base64 key end to end.
+_DECODE_LIC = 'mkdir -p /root/.kx && printf %s "$KDBLIC" | base64 -d > /root/.kx/kc.lic && '
+
+
+def _resolve_license_b64(license_b64: str | None) -> str | None:
+    """Per-user license wins; else host base64 env; else encode the host file."""
+    if license_b64:
+        return license_b64
+    if HOST_LICENSE_B64:
+        return HOST_LICENSE_B64
+    if HOST_LICENSE_FILE and os.path.exists(HOST_LICENSE_FILE):
+        with open(HOST_LICENSE_FILE, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    return None
+
+
+def _docker_q_cmd(qfile: str) -> list[str]:
+    """docker run that decodes the env license then runs q on the piped script."""
+    return [
+        "docker", "run", "--rm", "-i",
+        "-e", "KDBLIC",  # value inherited from the subprocess env (kept out of argv)
+        "--entrypoint", "/bin/sh",
+        DOCKER_IMAGE,
+        "-c", _DECODE_LIC + f"cat > {qfile} && exec /root/.kx/bin/q {qfile}",
+    ]
+
+
+def _subprocess_env(license_b64: str | None) -> dict | None:
+    """Process env carrying the resolved base64 license as KDBLIC."""
+    b64 = _resolve_license_b64(license_b64)
+    env = os.environ.copy()
+    env["KDBLIC"] = b64 or ""
+    return env
 
 
 def _validate_single_param(code: str) -> str | None:
@@ -122,40 +160,20 @@ async def run_judge(
 
 
 async def _run_q_process(script: str, license_b64: str | None = None) -> JudgeResult:
-    # Write the user's license to a tmpfile to mount; fall back to host license.
-    lic_path = DOCKER_LICENSE
-    tmp_lic = None
-    if license_b64:
-        try:
-            tmp_lic = tempfile.NamedTemporaryFile(suffix=".lic", delete=False)
-            tmp_lic.write(base64.b64decode(license_b64))
-            tmp_lic.flush()
-            tmp_lic.close()
-            lic_path = tmp_lic.name
-        except Exception as e:
-            if tmp_lic:
-                os.unlink(tmp_lic.name)
-            return JudgeResult(
-                status=SubmissionStatus.error,
-                error=f"Failed to materialize license: {e}",
-            )
-
     if DOCKER_IMAGE:
-        # Pipe script via stdin into a shell that writes it to a temp file
-        # and runs q on it — q -  is REPL mode and breaks multi-line expressions
-        cmd = [
-            "docker", "run", "--rm", "-i",
-            "--entrypoint", "/bin/sh",
-            "-v", f"{lic_path}:/root/.kx/kc.lic:ro",
-            DOCKER_IMAGE,
-            "-c", "cat > /tmp/j.q && exec /root/.kx/bin/q /tmp/j.q",
-        ]
+        # Pipe script via stdin into a shell that writes it to a temp file and
+        # runs q on it — q - is REPL mode and breaks multi-line expressions.
+        # The base64 license rides in via the KDBLIC env var, decoded in-container.
+        cmd = _docker_q_cmd("/tmp/j.q")
+        env = _subprocess_env(license_b64)
     else:
         cmd = [Q_BINARY, "-"]
+        env = None
 
     try:
         proc = await asyncio.create_subprocess_exec(
             *cmd,
+            env=env,
             stdin=asyncio.subprocess.PIPE,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -200,9 +218,3 @@ async def _run_q_process(script: str, license_b64: str | None = None) -> JudgeRe
         )
     except Exception as e:
         return JudgeResult(status=SubmissionStatus.error, error=str(e))
-    finally:
-        if tmp_lic:
-            try:
-                os.unlink(tmp_lic.name)
-            except OSError:
-                pass
