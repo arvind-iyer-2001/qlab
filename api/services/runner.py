@@ -37,10 +37,19 @@ def _build_run_script(code: str) -> str | None:
 
     body = lines[:-1]
     last = lines[-1]
-    escaped_last = _escape_q_string(last)
 
-    out = [
-        *body,
+    out = []
+    # Evaluate the body (the user's definitions) via `value` rather than as a
+    # script file: inside `{}` newlines are fine, so a multiline func with its
+    # closing brace at column 0 still parses (script-file column rules would
+    # treat that `}` as a new statement and fail).
+    if body:
+        escaped_body = _escape_q_string("\n".join(body))
+        out.append(
+            f'@[value;"{escaped_body}";{{-1 .j.j `ok`output`error!(0b;"";x);exit 0}}];'
+        )
+    escaped_last = _escape_q_string(last)
+    out += [
         # Evaluate + format the final expression, catching q errors.
         f'r:@[{{.Q.s1 value x}};"{escaped_last}";{{-1 .j.j `ok`output`error!(0b;"";x);exit 0}}];',
         '-1 .j.j `ok`output`error!(1b;r;"");',
