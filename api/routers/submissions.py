@@ -30,11 +30,15 @@ async def submit(
 
     doc = await problems_svc.get_by_id(db, req.problem_id)
 
+    license_b64 = user.get("license_b64") if user else None
+
     result = await run_judge(
         user_code=req.code,
-        problem_id=doc["slug"],
+        test_gen_code=doc.get("test_gen_code", ""),
+        reference_solution=doc.get("reference_solution", ""),
         seed=doc.get("judge_seed", 42),
         compare_unordered=doc.get("compare_unordered", False),
+        license_b64=license_b64,
     )
 
     submission_id = None

@@ -1,35 +1,31 @@
 """
-Judge service — spawns a sandboxed q subprocess per submission.
+Judge service — runs a sandboxed q subprocess per submission.
 
 Flow:
-  1. Load problem metadata (test_gen code + reference solution) from /problems/
-  2. Write a self-contained q judge script to a temp file
-  3. Run: q <tempfile> with timeout + memory limits
+  1. Validate user code
+  2. Build a self-contained q script (inlining test_gen + reference from MongoDB)
+  3. Pipe script to: docker run --rm -i <QLAB_DOCKER_IMAGE> -
+     (or fall back to local q binary if QLAB_DOCKER_IMAGE is unset)
   4. Parse JSON result from stdout
   5. Return JudgeResult
 """
 
 import asyncio
+import base64
 import json
 import os
 import re
 import tempfile
-from pathlib import Path
 
 from models import JudgeResult, SubmissionStatus
 
-PROBLEMS_DIR = Path(os.getenv("PROBLEMS_DIR", "/problems"))
-JUDGE_SANDBOX = Path(os.getenv("JUDGE_SANDBOX", "/judge/sandbox.q"))
-JUDGE_HARNESS = Path(os.getenv("JUDGE_HARNESS", "/judge/harness.q"))
+DOCKER_IMAGE = os.getenv("QLAB_DOCKER_IMAGE", "")
+DOCKER_LICENSE = os.getenv("QLAB_KC_LIC", os.path.expanduser("~/.kx/kc.lic"))
 Q_BINARY = os.getenv("QLAB_Q_BINARY", "q")
 JUDGE_TIMEOUT = int(os.getenv("QLAB_JUDGE_TIMEOUT", "10"))
 
 
 def _validate_single_param(code: str) -> str | None:
-    """
-    Returns an error string if func uses multiple params, else None.
-    Catches: func:{[t;h]...} but allows func:{[x]...} and func:{...}
-    """
     m = re.search(r"func:\{(\[([^\]]*)\])?", code)
     if m and m.group(2):
         params = [p.strip() for p in m.group(2).split(";") if p.strip()]
@@ -41,51 +37,46 @@ def _validate_single_param(code: str) -> str | None:
     return None
 
 
+def _strip_bare_slash(code: str) -> str:
+    """Remove bare '/' lines — they start block comments and break inlining."""
+    return "\n".join(
+        line for line in code.splitlines() if line.strip() != "/"
+    )
+
+
+def _escape_q_string(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n")
+
+
 def _build_judge_script(
     user_code: str,
-    problem_id: str,
+    test_gen_code: str,
+    reference_solution: str,
     seed: int = 42,
     compare_unordered: bool = False,
 ) -> str:
-    """
-    Generates a self-contained q script that:
-      1. Sets fixed random seed
-      2. Loads test_gen.q via \\l (avoids bare-/ block-comment trap from embedding)
-      3. Loads reference.q via \\l, computes expected outputs
-      4. Evaluates user code via value (traps parse errors)
-      5. Runs user func, compares to expected (traps runtime errors)
-      6. If correct, times with .z.p (avoids \\t system command escaping issues)
-      7. Prints one JSON line to stdout and exits
-    """
     escaped_user_code = _escape_q_string(user_code)
-
-    # Absolute paths for \\l — script is run from a temp dir so relative paths break
-    test_gen_path = (PROBLEMS_DIR / problem_id / "test_gen.q").resolve()
-    ref_path = (PROBLEMS_DIR / problem_id / "reference.q").resolve()
+    safe_test_gen = _strip_bare_slash(test_gen_code)
+    safe_reference = _strip_bare_slash(reference_solution)
 
     lines = [
         "/ qlab judge runner",
         "",
-        "/ Fixed seed for reproducibility",
         f"\\S {seed}",
         "",
-        "/ Load test cases via \\l — avoids bare-/ block-comment trap when embedding",
-        f"\\l {test_gen_path}",
+        "/ test cases",
+        safe_test_gen,
         "",
-        "/ Load reference solution",
-        f"\\l {ref_path}",
+        "/ reference solution",
+        safe_reference,
         'expected:@[value;"func each x";{-1 .j.j `status`error!("error";"ref solution failed: ",x);exit 1}];',
         "",
-        "/ Clear reference func before evaluating user code",
         "delete func from `.;",
         "",
-        "/ Evaluate user code string — traps parse errors",
         f'@[value;"{escaped_user_code}";{{-1 .j.j `status`error!("error_parse";"Submission failed to parse: ",x);exit 0}}];',
         "",
-        "/ Run user func — value evaluates in global scope, x is the test cases",
         'actual:@[value;"func each x";{-1 .j.j `status`error!("error_runtime";"Runtime error: ",x);exit 0}];',
         "",
-        "/ Compare outputs element-wise",
         *(["expected:asc each expected;", "actual:asc each actual;"] if compare_unordered else []),
         "mismatches:where not expected~'actual;",
         "if[count mismatches;",
@@ -97,12 +88,9 @@ def _build_judge_script(
         "    .Q.s1 actual idx);",
         "  exit 0];",
         "",
-        "/ Correct! Time with .z.p — equivalent to \\t:1000, no system cmd needed",
         "t0:.z.p;",
         "do[1000;func each x];",
         "timing:`long$1e-6*`long$.z.p-t0;",
-        "",
-        "/ Code length per spec: -2+count string func",
         "charcount:-2+count string func;",
         "",
         "-1 .j.j `status`timing_ms`char_count`expected_output`actual_output!(\"correct\";timing;charcount;.Q.s1 first expected;.Q.s1 first actual);",
@@ -111,59 +99,70 @@ def _build_judge_script(
     return "\n".join(lines) + "\n"
 
 
-def _escape_q_string(s: str) -> str:
-    """Escape a string for embedding inside q double quotes."""
-    return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n")
-
-
 async def run_judge(
     user_code: str,
-    problem_id: str,
+    test_gen_code: str,
+    reference_solution: str,
     seed: int = 42,
     compare_unordered: bool = False,
+    license_b64: str | None = None,
 ) -> JudgeResult:
-    """
-    Main entry point. Runs the judge and returns a JudgeResult.
-    """
-    # Validate param count before hitting q
     param_error = _validate_single_param(user_code)
     if param_error:
         return JudgeResult(status=SubmissionStatus.invalid, error=param_error)
 
-    problem_dir = PROBLEMS_DIR / problem_id
-    if not problem_dir.exists():
+    if not test_gen_code or not reference_solution:
         return JudgeResult(
             status=SubmissionStatus.error,
-            error=f"Problem '{problem_id}' not found",
+            error="Problem is missing test_gen_code or reference_solution in database. Re-seed.",
         )
 
-    script = _build_judge_script(user_code, problem_id, seed, compare_unordered)
-
-    # Write script to temp file and run
-    with tempfile.NamedTemporaryFile(suffix=".q", mode="w", delete=False) as f:
-        f.write(script)
-        script_path = f.name
-
-    try:
-        result = await _run_q_process(script_path)
-    finally:
-        os.unlink(script_path)
-
-    return result
+    script = _build_judge_script(user_code, test_gen_code, reference_solution, seed, compare_unordered)
+    return await _run_q_process(script, license_b64)
 
 
-async def _run_q_process(script_path: str) -> JudgeResult:
-    """Spawn q, wait for result, parse JSON from stdout."""
+async def _run_q_process(script: str, license_b64: str | None = None) -> JudgeResult:
+    # Write the user's license to a tmpfile to mount; fall back to host license.
+    lic_path = DOCKER_LICENSE
+    tmp_lic = None
+    if license_b64:
+        try:
+            tmp_lic = tempfile.NamedTemporaryFile(suffix=".lic", delete=False)
+            tmp_lic.write(base64.b64decode(license_b64))
+            tmp_lic.flush()
+            tmp_lic.close()
+            lic_path = tmp_lic.name
+        except Exception as e:
+            if tmp_lic:
+                os.unlink(tmp_lic.name)
+            return JudgeResult(
+                status=SubmissionStatus.error,
+                error=f"Failed to materialize license: {e}",
+            )
+
+    if DOCKER_IMAGE:
+        # Pipe script via stdin into a shell that writes it to a temp file
+        # and runs q on it — q -  is REPL mode and breaks multi-line expressions
+        cmd = [
+            "docker", "run", "--rm", "-i",
+            "--entrypoint", "/bin/sh",
+            "-v", f"{lic_path}:/root/.kx/kc.lic:ro",
+            DOCKER_IMAGE,
+            "-c", "cat > /tmp/j.q && exec /root/.kx/bin/q /tmp/j.q",
+        ]
+    else:
+        cmd = [Q_BINARY, "-"]
+
     try:
         proc = await asyncio.create_subprocess_exec(
-            Q_BINARY,
-            script_path,
+            *cmd,
+            stdin=asyncio.subprocess.PIPE,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
         )
         try:
             stdout, stderr = await asyncio.wait_for(
-                proc.communicate(), timeout=JUDGE_TIMEOUT
+                proc.communicate(input=script.encode()), timeout=JUDGE_TIMEOUT
             )
         except asyncio.TimeoutError:
             proc.kill()
@@ -181,7 +180,6 @@ async def _run_q_process(script_path: str) -> JudgeResult:
                 error=f"No output from judge. stderr: {err[:500]}",
             )
 
-        # q outputs one JSON line (the last -1 .j.j call)
         last_line = output.splitlines()[-1]
         data = json.loads(last_line)
 
@@ -202,3 +200,9 @@ async def _run_q_process(script_path: str) -> JudgeResult:
         )
     except Exception as e:
         return JudgeResult(status=SubmissionStatus.error, error=str(e))
+    finally:
+        if tmp_lic:
+            try:
+                os.unlink(tmp_lic.name)
+            except OSError:
+                pass
