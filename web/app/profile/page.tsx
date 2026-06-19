@@ -68,6 +68,31 @@ export default function ProfilePage() {
     }
   }
 
+  async function removeLicense() {
+    setLicenseMsg('')
+    setSavingLicense(true)
+    try {
+      const token = await getToken()
+      if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const res = await fetch(`${apiUrl}/users/me/license`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      if (!res.ok) {
+        setLicenseMsg('Remove failed')
+      } else {
+        setHasLicense(false)
+        setLicenseKey('')
+        setLicenseMsg('License removed ✓')
+      }
+    } catch {
+      setLicenseMsg('Network error')
+    } finally {
+      setSavingLicense(false)
+    }
+  }
+
   async function saveNickname() {
     const trimmed = nickDraft.trim()
     if (!trimmed) { setNickError('Nickname cannot be empty'); return }
@@ -265,7 +290,7 @@ export default function ProfilePage() {
                   spellCheck={false}
                   className="w-full px-2 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-xs resize-y break-all"
                 />
-                <div>
+                <div className="flex gap-2">
                   <button
                     onClick={saveLicense}
                     disabled={!licenseKey.trim() || savingLicense || !qlabUser?.nickname}
@@ -273,6 +298,15 @@ export default function ProfilePage() {
                   >
                     {savingLicense ? 'Saving…' : hasLicense ? 'Replace' : 'Save'}
                   </button>
+                  {hasLicense && (
+                    <button
+                      onClick={removeLicense}
+                      disabled={savingLicense}
+                      className="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-rose-300 rounded text-xs font-semibold disabled:opacity-40"
+                    >
+                      Remove
+                    </button>
+                  )}
                 </div>
                 {!qlabUser?.nickname && (
                   <p className="text-zinc-500 text-xs m-0">Set a nickname above before uploading a license.</p>

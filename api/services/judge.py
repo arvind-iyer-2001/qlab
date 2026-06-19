@@ -23,6 +23,39 @@ HOST_LICENSE_B64 = os.getenv("QLAB_LICENSE_B64", "")
 Q_BINARY = os.getenv("QLAB_Q_BINARY", "q")
 JUDGE_TIMEOUT = int(os.getenv("QLAB_JUDGE_TIMEOUT", "10"))
 
+# Friendly message shown when q fails because the kdb+ license is missing,
+# expired, or rejected — instead of leaking the raw banner/error.
+LICENSE_ERROR_MESSAGE = (
+    "kdb+ license expired or invalid — re-upload your license under "
+    "Profile → License."
+)
+
+# Signals in q's stderr that indicate a license problem rather than a bug in
+# the user's code: kdb+ references the license file (kc.lic / k4.lic), prints
+# 'lic for an unlicensed feature, or reports the host unlicensed/expired. Kept
+# conservative so ordinary 'type / 'length user errors are not remapped.
+_LICENSE_SIGNALS = [
+    re.compile(r"k[c4]\.lic", re.IGNORECASE),
+    re.compile(r"unlicensed", re.IGNORECASE),
+    re.compile(r"'lic\b", re.IGNORECASE),
+    re.compile(r"licen[cs]e .*expir", re.IGNORECASE),
+    re.compile(r"expir.* licen[cs]e", re.IGNORECASE),
+]
+
+
+def friendly_license_error(stderr: str) -> str | None:
+    """Map a license-related q stderr to a user-facing message, else None.
+
+    Returns LICENSE_ERROR_MESSAGE when `stderr` looks like a kdb+ license
+    failure; returns None for any other (e.g. genuine code) error so callers
+    fall through to the raw message.
+    """
+    if not stderr:
+        return None
+    if any(p.search(stderr) for p in _LICENSE_SIGNALS):
+        return LICENSE_ERROR_MESSAGE
+    return None
+
 # Shell run inside the container: decode the base64 license (passed as the
 # KDBLIC env var) to kc.lic, then read the piped q script and run it. Using an
 # env var instead of a mounted file keeps the license a base64 key end to end.
@@ -183,6 +216,9 @@ async def _run_q_process(script: str, license_b64: str | None = None) -> JudgeRe
         output = stdout.decode().strip()
         if not output:
             err = stderr.decode().strip()
+            lic_msg = friendly_license_error(err)
+            if lic_msg:
+                return JudgeResult(status=SubmissionStatus.error, error=lic_msg)
             return JudgeResult(
                 status=SubmissionStatus.error,
                 error=f"No output from judge. stderr: {err[:500]}",
