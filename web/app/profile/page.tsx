@@ -28,6 +28,7 @@ export default function ProfilePage() {
   const router = useRouter()
   const [qlabUser, setQlabUser] = useState<QLabUser | null>(null)
   const [loadingQlab, setLoadingQlab] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [stats, setStats] = useState<UserStats | null>(null)
   const [editingNick, setEditingNick] = useState(false)
   const [nickDraft, setNickDraft] = useState('')
@@ -60,6 +61,31 @@ export default function ProfilePage() {
         setHasLicense(true)
         setLicenseKey('')
         setLicenseMsg('License saved ✓')
+      }
+    } catch {
+      setLicenseMsg('Network error')
+    } finally {
+      setSavingLicense(false)
+    }
+  }
+
+  async function removeLicense() {
+    setLicenseMsg('')
+    setSavingLicense(true)
+    try {
+      const token = await getToken()
+      if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const res = await fetch(`${apiUrl}/users/me/license`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      if (!res.ok) {
+        setLicenseMsg('Remove failed')
+      } else {
+        setHasLicense(false)
+        setLicenseKey('')
+        setLicenseMsg('License removed ✓')
       }
     } catch {
       setLicenseMsg('Network error')
@@ -113,16 +139,23 @@ export default function ProfilePage() {
         const token = await getToken()
         if (!token) return
         const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
-        const [userRes, statsRes, licRes] = await Promise.all([
+        // allSettled: a failed stats/license fetch must not blank the profile
+        // card (Promise.all would reject the whole batch on any one throw).
+        const [userRes, statsRes, licRes] = await Promise.allSettled([
           fetch(`${apiUrl}/users/me`, { headers: { Authorization: `Bearer ${token}` } }),
           fetch(`${apiUrl}/users/me/stats`, { headers: { Authorization: `Bearer ${token}` } }),
           fetch(`${apiUrl}/users/me/license`, { headers: { Authorization: `Bearer ${token}` } }),
         ])
-        if (userRes.ok) setQlabUser(await userRes.json())
-        if (statsRes.ok) setStats(await statsRes.json())
-        if (licRes.ok) setHasLicense((await licRes.json())?.has_license ?? false)
+        if (userRes.status === 'fulfilled' && userRes.value.ok) {
+          setQlabUser(await userRes.value.json())
+        } else {
+          // Couldn't confirm the user record — don't render a false "No nickname".
+          setLoadError(true)
+        }
+        if (statsRes.status === 'fulfilled' && statsRes.value.ok) setStats(await statsRes.value.json())
+        if (licRes.status === 'fulfilled' && licRes.value.ok) setHasLicense((await licRes.value.json())?.has_license ?? false)
       } catch {
-        // API unreachable
+        setLoadError(true)
       } finally {
         setLoadingQlab(false)
       }
@@ -219,6 +252,8 @@ export default function ProfilePage() {
                     ✎ edit
                   </button>
                 </div>
+              ) : loadError ? (
+                <p className="text-zinc-400 text-sm m-0">Couldn’t load your profile — refresh to try again.</p>
               ) : (
                 <div className="flex items-center justify-between gap-2">
                   <p className="text-rose-400 text-sm m-0">No nickname set.</p>
@@ -265,7 +300,7 @@ export default function ProfilePage() {
                   spellCheck={false}
                   className="w-full px-2 py-1.5 bg-zinc-950 border border-zinc-800 rounded text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 font-mono text-xs resize-y break-all"
                 />
-                <div>
+                <div className="flex gap-2">
                   <button
                     onClick={saveLicense}
                     disabled={!licenseKey.trim() || savingLicense || !qlabUser?.nickname}
@@ -273,6 +308,15 @@ export default function ProfilePage() {
                   >
                     {savingLicense ? 'Saving…' : hasLicense ? 'Replace' : 'Save'}
                   </button>
+                  {hasLicense && (
+                    <button
+                      onClick={removeLicense}
+                      disabled={savingLicense}
+                      className="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-rose-300 rounded text-xs font-semibold disabled:opacity-40"
+                    >
+                      Remove
+                    </button>
+                  )}
                 </div>
                 {!qlabUser?.nickname && (
                   <p className="text-zinc-500 text-xs m-0">Set a nickname above before uploading a license.</p>

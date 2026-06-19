@@ -68,8 +68,13 @@ async def clerk_webhook(
     elif event_type == "user.deleted":
         clerk_user_id = data.get("id", "")
         if clerk_user_id:
-            result = await db.users.delete_one({"clerk_user_id": clerk_user_id})
-            logger.info("Deleted user %s (matched %d doc)", clerk_user_id, result.deleted_count)
+            result = await users_svc.delete_user(db, clerk_user_id)
+            logger.info(
+                "Deleted user %s — anonymized %d submission(s), removed %d user doc",
+                clerk_user_id,
+                result["submissions_anonymized"],
+                result["users_deleted"],
+            )
     else:
         logger.debug("Ignoring unhandled Clerk event type: %s", event_type)
 
