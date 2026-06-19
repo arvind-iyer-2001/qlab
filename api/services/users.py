@@ -98,6 +98,29 @@ async def get_stats(db: AsyncIOMotorDatabase, clerk_user_id: str) -> dict:
     }
 
 
+async def delete_user(db: AsyncIOMotorDatabase, clerk_user_id: str) -> dict:
+    """Cascade a user deletion: anonymize, don't destroy competition history.
+
+    The leaderboard reads the `handle` denormalized onto each submission (it
+    does not join back to `users`), so deleting the user doc alone would leave
+    orphaned handles owned by nobody. Instead we rewrite those handles to
+    "[deleted]" and keep the submissions — preserving timing/char rankings and
+    solve counts. `hint_reveals` are keyed by clerk_user_id and hold no PII, so
+    they're left as-is. Finally the `users` doc is removed.
+
+    Returns a small summary for logging.
+    """
+    sub_result = await db.submissions.update_many(
+        {"user_id": clerk_user_id},
+        {"$set": {"handle": "[deleted]"}},
+    )
+    user_result = await db.users.delete_one({"clerk_user_id": clerk_user_id})
+    return {
+        "submissions_anonymized": sub_result.modified_count,
+        "users_deleted": user_result.deleted_count,
+    }
+
+
 async def set_nickname(
     db: AsyncIOMotorDatabase,
     clerk_user_id: str,
