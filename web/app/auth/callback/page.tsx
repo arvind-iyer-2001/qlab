@@ -1,11 +1,12 @@
 'use client'
 import { useAuth } from '@clerk/nextjs'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
 import { Brand } from '@/components/ui/Brand'
 
 function AuthCallbackInner() {
   const { getToken, isLoaded } = useAuth()
+  const router = useRouter()
   const searchParams = useSearchParams()
   const fromVscode = searchParams.get('from') === 'vscode'
   const [message, setMessage] = useState('Signing you in to qLab…')
@@ -34,7 +35,8 @@ function AuthCallbackInner() {
           const user = await res.json()
           if (!user.nickname) {
             // New user — onboard. Preserve the VS Code origin only if real.
-            window.location.href = fromVscode ? '/profile/setup?from=vscode' : '/profile/setup'
+            // Internal route → client nav, no full page reload.
+            router.replace(fromVscode ? '/profile/setup?from=vscode' : '/profile/setup')
             return
           }
         }
@@ -45,14 +47,14 @@ function AuthCallbackInner() {
 
       // Returning user (has a nickname), or an error we let the gate handle.
       if (fromVscode) {
-        toVscode(token)
+        toVscode(token) // external vscode:// deep link — must be a hard nav
       } else {
-        window.location.href = '/problems'
+        router.replace('/problems')
       }
     }
 
     handleCallback()
-  }, [isLoaded, getToken, fromVscode])
+  }, [isLoaded, getToken, fromVscode, router])
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center gap-3 px-6">

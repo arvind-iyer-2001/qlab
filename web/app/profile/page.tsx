@@ -28,6 +28,7 @@ export default function ProfilePage() {
   const router = useRouter()
   const [qlabUser, setQlabUser] = useState<QLabUser | null>(null)
   const [loadingQlab, setLoadingQlab] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [stats, setStats] = useState<UserStats | null>(null)
   const [editingNick, setEditingNick] = useState(false)
   const [nickDraft, setNickDraft] = useState('')
@@ -138,16 +139,23 @@ export default function ProfilePage() {
         const token = await getToken()
         if (!token) return
         const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
-        const [userRes, statsRes, licRes] = await Promise.all([
+        // allSettled: a failed stats/license fetch must not blank the profile
+        // card (Promise.all would reject the whole batch on any one throw).
+        const [userRes, statsRes, licRes] = await Promise.allSettled([
           fetch(`${apiUrl}/users/me`, { headers: { Authorization: `Bearer ${token}` } }),
           fetch(`${apiUrl}/users/me/stats`, { headers: { Authorization: `Bearer ${token}` } }),
           fetch(`${apiUrl}/users/me/license`, { headers: { Authorization: `Bearer ${token}` } }),
         ])
-        if (userRes.ok) setQlabUser(await userRes.json())
-        if (statsRes.ok) setStats(await statsRes.json())
-        if (licRes.ok) setHasLicense((await licRes.json())?.has_license ?? false)
+        if (userRes.status === 'fulfilled' && userRes.value.ok) {
+          setQlabUser(await userRes.value.json())
+        } else {
+          // Couldn't confirm the user record — don't render a false "No nickname".
+          setLoadError(true)
+        }
+        if (statsRes.status === 'fulfilled' && statsRes.value.ok) setStats(await statsRes.value.json())
+        if (licRes.status === 'fulfilled' && licRes.value.ok) setHasLicense((await licRes.value.json())?.has_license ?? false)
       } catch {
-        // API unreachable
+        setLoadError(true)
       } finally {
         setLoadingQlab(false)
       }
@@ -244,6 +252,8 @@ export default function ProfilePage() {
                     ✎ edit
                   </button>
                 </div>
+              ) : loadError ? (
+                <p className="text-zinc-400 text-sm m-0">Couldn’t load your profile — refresh to try again.</p>
               ) : (
                 <div className="flex items-center justify-between gap-2">
                   <p className="text-rose-400 text-sm m-0">No nickname set.</p>
