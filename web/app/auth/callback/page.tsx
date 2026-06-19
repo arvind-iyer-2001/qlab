@@ -1,14 +1,22 @@
 'use client'
 import { useAuth } from '@clerk/nextjs'
-import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
 import { Brand } from '@/components/ui/Brand'
 
-export default function AuthCallback() {
+function AuthCallbackInner() {
   const { getToken, isLoaded } = useAuth()
+  const searchParams = useSearchParams()
+  const fromVscode = searchParams.get('from') === 'vscode'
   const [message, setMessage] = useState('Signing you in to qLab…')
 
   useEffect(() => {
     if (!isLoaded) return
+
+    function toVscode(token: string) {
+      setMessage('Returning to VS Code…')
+      window.location.href = `vscode://qlab.qlab/auth?token=${encodeURIComponent(token)}`
+    }
 
     async function handleCallback() {
       const token = await getToken()
@@ -22,27 +30,29 @@ export default function AuthCallback() {
         const res = await fetch(`${apiUrl}/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        if (res.status === 404) {
-          window.location.href = '/profile/setup?from=vscode'
-          return
-        }
         if (res.ok) {
           const user = await res.json()
           if (!user.nickname) {
-            window.location.href = '/profile/setup?from=vscode'
+            // New user — onboard. Preserve the VS Code origin only if real.
+            window.location.href = fromVscode ? '/profile/setup?from=vscode' : '/profile/setup'
             return
           }
         }
       } catch {
-        // API unreachable — proceed to VS Code anyway
+        // API unreachable — fall through. Web users land in the app, where the
+        // OnboardingGate re-checks; VS Code users still get their token.
       }
 
-      setMessage('Returning to VS Code…')
-      window.location.href = `vscode://qlab.qlab/auth?token=${encodeURIComponent(token)}`
+      // Returning user (has a nickname), or an error we let the gate handle.
+      if (fromVscode) {
+        toVscode(token)
+      } else {
+        window.location.href = '/problems'
+      }
     }
 
     handleCallback()
-  }, [isLoaded, getToken])
+  }, [isLoaded, getToken, fromVscode])
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center gap-3 px-6">
@@ -50,5 +60,13 @@ export default function AuthCallback() {
       <p className="text-base">{message}</p>
       <p className="text-zinc-500 text-sm">You can close this tab once VS Code opens.</p>
     </div>
+  )
+}
+
+export default function AuthCallback() {
+  return (
+    <Suspense>
+      <AuthCallbackInner />
+    </Suspense>
   )
 }
