@@ -21,4 +21,4 @@ jobs:
         run: uv pip install -r api/requirements.txt
 
       - name: Run tests
-        run: uv run pytest -q
+        run: uv run pytest -v -ra --cov=api --cov-report=term-missing
