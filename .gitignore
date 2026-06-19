@@ -40,3 +40,9 @@ graphify-out/.graphify_python
 # Visual brainstorming session files
 .superpowers/
 graphify-out/.graphify_detect.json
+
+# qlab-smoke / qlab-judge-check local bearer token (never commit)
+.qlab-jwt
+
+# pytest coverage artifact
+.coverage
