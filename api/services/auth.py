@@ -6,7 +6,9 @@ from jwt import PyJWKClient
 
 _jwks_client: PyJWKClient | None = None
 
-bearer = HTTPBearer()
+# auto_error=False so a missing Authorization header reaches verify_clerk_token
+# as None and we can return 401 (HTTPBearer's default would raise 403).
+bearer = HTTPBearer(auto_error=False)
 
 
 def _get_jwks_client() -> PyJWKClient:
@@ -18,8 +20,10 @@ def _get_jwks_client() -> PyJWKClient:
 
 
 async def verify_clerk_token(
-    credentials: HTTPAuthorizationCredentials = Depends(bearer),
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer),
 ) -> dict:
+    if credentials is None:
+        raise HTTPException(status_code=401, detail="Invalid or missing token")
     token = credentials.credentials
     try:
         client = _get_jwks_client()
