@@ -9,13 +9,18 @@ value (or the q error). No persistent state, mirrors the judge's docker flow.
 import asyncio
 import json
 import os
+import tempfile
 
 from services.judge import (
     _strip_bare_slash,
     _escape_q_string,
     _docker_q_cmd,
+    _new_container_name,
+    _docker_kill,
     _subprocess_env,
     friendly_license_error,
+    ALLOW_LOCAL_Q,
+    NO_SANDBOX_MESSAGE,
 )
 
 DOCKER_IMAGE = os.getenv("QLAB_DOCKER_IMAGE", "")
@@ -122,13 +127,27 @@ async def run_code(code: str, license_b64: str | None = None) -> dict:
     if script is None:
         return {"ok": False, "output": "", "error": "No code to run"}
 
+    container_name = None
+    tmp_path = None
     if DOCKER_IMAGE:
         # License rides in as a base64 KDBLIC env var, decoded in-container.
-        cmd = _docker_q_cmd("/tmp/e.q")
+        # Same hardening as the judge: isolated namespace-free run, capped
+        # network/memory/cpu, unique name so a timeout can kill the container.
+        container_name = _new_container_name("qlab-exec")
+        cmd = _docker_q_cmd("/tmp/e.q", container_name)
         env = _subprocess_env(license_b64)
-    else:
-        cmd = [Q_BINARY, "-"]
+        stdin_bytes = script.encode()
+    elif ALLOW_LOCAL_Q:
+        # Dev-only fallback: run from a temp file (q - stdin can't parse the
+        # multi-line script reliably). Prod must use the sandbox container.
+        fd, tmp_path = tempfile.mkstemp(suffix=".q", prefix="qlab-exec-")
+        os.write(fd, script.encode())
+        os.close(fd)
+        cmd = [Q_BINARY, tmp_path]
         env = None
+        stdin_bytes = b""
+    else:
+        return {"ok": False, "output": "", "error": NO_SANDBOX_MESSAGE}
 
     try:
         proc = await asyncio.create_subprocess_exec(
@@ -140,11 +159,13 @@ async def run_code(code: str, license_b64: str | None = None) -> dict:
         )
         try:
             stdout, stderr = await asyncio.wait_for(
-                proc.communicate(input=script.encode()), timeout=RUN_TIMEOUT
+                proc.communicate(input=stdin_bytes), timeout=RUN_TIMEOUT
             )
         except asyncio.TimeoutError:
             proc.kill()
             await proc.communicate()
+            if container_name:
+                await _docker_kill(container_name)
             return {"ok": False, "output": "", "error": f"Exceeded {RUN_TIMEOUT}s time limit"}
 
         out = stdout.decode().strip()
@@ -167,3 +188,9 @@ async def run_code(code: str, license_b64: str | None = None) -> dict:
         }
     except Exception as e:
         return {"ok": False, "output": "", "error": str(e)}
+    finally:
+        if tmp_path:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
