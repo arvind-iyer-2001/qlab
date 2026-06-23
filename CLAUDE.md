@@ -170,6 +170,24 @@ The API reads problems from MongoDB, not from disk at request time. \`solve_coun
 
 All route handlers must be \`async def\`. MongoDB (motor) and the notebook service both require it. There is no pykx in the API — the kdb+ db process has been retired.
 
+## Project skills (\`.claude/skills/\`)
+
+This repo ships project-specific skills for the workflows that recur most. **When a request matches the table below, invoke that skill via the Skill tool before doing the work by hand.** When several apply or it's ambiguous, start with the \`qlab\` router skill.
+
+| Skill | Use when | Backed by |
+|---|---|---|
+| \`qlab\` | Entry router — ambiguous or multi-step qlab work | (maps to the others) |
+| \`qlab-smoke\` | Test an HTTP endpoint; user pasted a curl + JWT; token expired | \`scripts/smoke.sh\` |
+| \`qlab-judge-check\` | Verify judge with a good + bad solution; after judge edits | \`scripts/judge_check.py\` |
+| \`qlab-stack\` | "How do I start the app", watch mode, run backend/frontend | \`start.sh\` + uvicorn |
+| \`qlab-fresh\` | "Start fresh", wipe submissions/users, reset solve counts (destructive) | \`scripts/fresh_start.py\` |
+| \`qlab-handoff\` | "Make a handoff file" for another agent/session | template → \`docs/superpowers/specs/\` |
+| \`qlab-ship\` | Commit one-by-one; staging→main PR flow; merge on green CI | git + \`gh\` |
+| \`qlab-gaps\` | "What's left", gaps vs plans, next steps across docs | \`scripts/gaps.py\` |
+| \`qlab-blurb\` | Short stakeholder summary for manager / KX seniors | template |
+
+Common chains: demo prep = \`qlab-fresh\` → \`qlab-stack\` → \`qlab-judge-check\`; end of session = \`qlab-gaps\` → \`qlab-handoff\` → \`qlab-ship\`. Standing prefs baked into these skills: run Python with **\`uv\`**, use the **Clerk CLI** for user ops, prefer **separate backend/frontend** over docker-compose, and **confirm target before any destructive reset**.
+
 ## graphify
 
 This project has a graphify knowledge graph at \`graphify-out/\`.

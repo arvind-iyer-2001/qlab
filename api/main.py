@@ -9,6 +9,7 @@ load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo.errors import OperationFailure
 
 from routers import problems, stats, submissions, users, webhooks, solutions, execute
 from services.license import is_valid_b64
@@ -57,7 +58,20 @@ async def lifespan(app: FastAPI):
     db = client[MONGODB_DB]
     app.state.db = db
     await db.users.create_index("clerk_user_id", unique=True)
-    await db.users.create_index("nickname", unique=True, sparse=True)
+    # nickname must be unique only among users who have actually set one. A
+    # plain unique+sparse index still indexes explicit null values, so the 2nd
+    # user inserted with nickname=None collides. A partial index over string
+    # nicknames indexes only real handles, leaving unset users unconstrained.
+    try:
+        await db.users.drop_index("nickname_1")
+    except OperationFailure:
+        pass  # no pre-existing index to replace
+    await db.users.create_index(
+        "nickname",
+        name="nickname_1",
+        unique=True,
+        partialFilterExpression={"nickname": {"$type": "string"}},
+    )
     await db.submissions.create_index([("user_id", 1), ("problem_id", 1)])
     await db.submissions.create_index([("problem_id", 1), ("status", 1), ("timing_ms", 1), ("char_count", 1)])
     await db.hint_reveals.create_index(

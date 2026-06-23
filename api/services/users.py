@@ -133,3 +133,10 @@ async def set_nickname(
         )
     except DuplicateKeyError:
         raise ValueError("That nickname is already taken. Please choose another.")
+    # The leaderboard reads the `handle` denormalized onto each submission and
+    # never joins back to `users`, so a nickname change would otherwise leave
+    # stale handles ranked. Rewrite this user's submission handles to match.
+    await db.submissions.update_many(
+        {"user_id": clerk_user_id},
+        {"$set": {"handle": nickname}},
+    )
