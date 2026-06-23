@@ -49,7 +49,7 @@ class SubmitRequest(BaseModel):
         # Reject obvious multi-param definitions like func:{[t;h]
         # A more robust check happens in the judge itself
         import re
-        if re.search(r"func:\{s*\[[a-zA-Z_]+\s*;", v):
+        if re.search(r"func:\{\s*\[[a-zA-Z_]+\s*;", v):
             raise ValueError(
                 "func must take a single parameter — use func:{[x]...} not func:{[t;h]...}"
             )
