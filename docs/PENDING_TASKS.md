@@ -34,10 +34,10 @@ All five verified present and unfixed on `staging`.
 
 | # | Task | Detail | Status |
 |---|------|--------|--------|
-| 3.1 | **License expiration remapping** | Confirm an expired/invalid license from the runner or judge triggers the friendly `friendly_license_error` (needs an actually-expired license in q/docker). | 🔬 |
-| 3.2 | **`/execute` multi-statement eval** | Via the frontend Test tab: multiple top-level q statements run sequentially and the final expression evaluates. Verified earlier against a bare q binary, not the running stack. | 🔬 |
-| 3.3 | **Onboarding flow** | Fresh local signup routes to `/profile/setup` before `/problems`; direct nav to `/problems` with no nickname bounces to setup. | 🔬 |
-| 3.4 | **`DELETE /users/me/license` cycle** | Full add → use → delete license round-trip through the running stack. | 🔬 |
+| 3.1 | **License expiration remapping** | Confirm an expired/invalid license from the runner or judge triggers the friendly `friendly_license_error` (needs an actually-expired license in q/docker). | ✅ verified live 2026-06-25 — junk-license docker run emits `license error: kc.lic`; `run_code` (/execute path) and `run_judge` both surface `LICENSE_ERROR_MESSAGE`; genuine `'type`/`'length` errors are NOT remapped |
+| 3.2 | **`/execute` multi-statement eval** | Via the frontend Test tab: multiple top-level q statements run sequentially and the final expression evaluates. Verified earlier against a bare q binary, not the running stack. | ✅ verified live 2026-06-25 through `run_code` against the docker sandbox — 4 sequential statements → final expr 60; def+call across statements → 49; multi-line `{}` block (brace at col 0) stays one statement → 42; q error in final expr surfaces with ok=False |
+| 3.3 | **Onboarding flow** | Fresh local signup routes to `/profile/setup` before `/problems`; direct nav to `/problems` with no nickname bounces to setup. | ✅ verified 2026-06-25 — backend contract live (fresh `GET /users/me` → `nickname:null`; after PATCH → set); both gates branch on `!user.nickname`: `/auth/callback` one-shot redirect + app-wide `OnboardingGate` (mounted in `Providers`, covers `/problems`). Not exercised: live browser signup through Clerk |
+| 3.4 | **`DELETE /users/me/license` cycle** | Full add → use → delete license round-trip through the running stack. | ✅ verified live 2026-06-25 — full HTTP cycle (real Mongo Atlas + docker /execute, only JWT signature stubbed): PATCH adds → GET has_license=true → /execute runs in docker w/ per-user license (→42) → bad per-user license yields friendly error → DELETE unsets → /execute falls back to host license. Test user cleaned up |
 
 ---
 
@@ -45,7 +45,7 @@ All five verified present and unfixed on `staging`.
 
 | # | Task | Detail | Status |
 |---|------|--------|--------|
-| 4.1 | **Raise staging→main promotion PR** | PR #8 already merged; #9 (onboarding) and #10 (skills) have since landed on `staging`. `main` is 16 commits behind with no open PR — everything since #8 is unreleased. The PR body must list onboarding + skills, not only the 5 resilience fixes. | 📦 |
+| 4.1 | **Raise staging→main promotion PR** | PR #8 already merged; #9 (onboarding) and #10 (skills) have since landed on `staging`. `main` is 16 commits behind with no open PR — everything since #8 is unreleased. The PR body must list onboarding + skills, not only the 5 resilience fixes. | ✅ PR #12 merged 2026-06-23 (promoted #10 skills + #11 backend blockers) |
 | 4.2 | **Update `PRODUCTION.md`** | Predates the kdb-x docker judge and the license-in-env model; deployment story no longer matches the architecture. | 📦 |
 | 4.3 | **Production Clerk instance + deploy** | Only `sk_test_`/`pk_test_` keys exist; no prod instance, no deployment configured. | 📦 |
 
@@ -66,7 +66,6 @@ All five verified present and unfixed on `staging`.
 | # | Task | Detail | Status |
 |---|------|--------|--------|
 | 6.1 | **Home-screen stub data** | The target endpoints now exist (`api/routers/stats.py`: `/submissions/recent`, `/leaderboard/global`, `/stats/weekly`). Verify `web/app/page.tsx` consumes them instead of the `home-stubs` fake data. | 🔬 |
-| 6.2 | **K-language judge mode** | Submission rule says "K submissions must include a Q equivalent," but nothing validates it. | ❌ |
 
 ---
 
