@@ -1,8 +1,28 @@
 # qLab — Production Build Spec
 
-> Last updated: 2026-04-22
-> **Stale notice (2026-05-13):** Predates the May 2026 web-UI burst (landing page, profile stats, global leaderboard, deep-link tabs, keyboard shortcuts) and the VS Code parity catch-up. Deployment shape still mostly applies but client surface area, env vars, and FUTURE.md cross-refs need a rewrite before any prod cut. Refresh tracked in FUTURE.md → Infra & Quality.
-> Use this document as a prompt when starting the production build. It defines what to build, what decisions are already made, and what to avoid.
+> Originally written: 2026-04-22 (as a forward-looking build prompt).
+>
+> ## Status update — 2026-06-26
+>
+> Most of this spec has shipped. The phased plan below is now largely a historical
+> record. Current reality, against which the rest of this doc should be read:
+>
+> | Phase / decision | Original spec said | Actual state (2026-06-26) |
+> |---|---|---|
+> | **Judge isolation** (Phase 1) | Docker container per submission, `--network none`, CPU/mem caps | ✅ **Done.** `api/services/judge.py` pipes the script to `docker run --rm -i <QLAB_DOCKER_IMAGE>`. Image built from `judge/Dockerfile`. `--network none` + `QLAB_DOCKER_MEMORY`/`QLAB_DOCKER_CPUS` caps. **Fail-closed:** no `QLAB_DOCKER_IMAGE` ⇒ judge refuses; local q only behind `QLAB_ALLOW_LOCAL_Q=1` (dev). Container leak on timeout fixed (unique `--name` + `docker kill`). |
+> | **kdb+ licensing** | not covered | Per-user `license_b64` (on the `users` doc) wins; else `QLAB_LICENSE_B64` host env, passed to the container as `KDBLIC` and decoded in-container to `/root/.kx/kc.lic`. `DELETE /users/me/license` + friendly expiry remap added. |
+> | **MongoDB + motor** (Phase 2) | replace pykx/kdb+ persistence | ✅ **Done.** All persistence is `motor`. `db/schema.q` retired (not launched by `start.sh`); kdb+ is notebook + judge only. Note: the §"Current codebase" tree below still shows the old `db.py`/`schema.q` — outdated. |
+> | **Auth with Clerk** (Phase 3) | JWKS verify, protect `/submissions`, `GET /me` | ✅ **Done.** Plus Svix webhooks (`user.created/updated/deleted` → cascade), nickname/onboarding flow. |
+> | **No web frontend** | "Frontend has been removed; do not build" | ❌ **Reversed.** A Next.js web frontend now exists under `web/` (landing page, profile stats, global leaderboard, onboarding, auth flows). Treat the "do not build the web frontend" sections below as obsolete. |
+> | **Rate limiting & job queue** (Phase 4) | per-user limits, Redis queue | ❌ **Not done.** No rate limiting on `/submissions` or `/execute` yet (tracked: `docs/PENDING_TASKS.md` §5.2). Submissions still synchronous. |
+> | **Observability & CI/CD** (Phase 5) | Sentry, JSON logs, GH Actions | ⚙️ **Partial.** `.github/workflows/ci.yml` runs pytest. Structured logging + Sentry still pending (`PENDING_TASKS.md` §7.2). |
+>
+> **Outstanding before a real prod cut:** rate limiting (§5.2), structured logging (§7.2),
+> production Clerk instance + deploy target (§4.3), lock CORS to the deployed origin.
+> See `docs/PENDING_TASKS.md` for the live list.
+>
+> Everything below is the original spec, preserved for the design rationale and the
+> still-valid hard constraints (q gotchas, submission rules, env vars).
 
 ---
 
