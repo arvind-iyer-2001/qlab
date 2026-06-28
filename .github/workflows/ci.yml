@@ -22,3 +22,37 @@ jobs:
 
       - name: Run tests
         run: uv run pytest -v -ra --cov=api --cov-report=term-missing
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Type-check
+        run: npx tsc --noEmit
+      - name: Run tests
+        run: npm test
+
+  extension:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: vscode-extension
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm install
+      - name: Compile
+        run: npm run compile
+      - name: Run tests
+        run: npm test
