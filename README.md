@@ -53,6 +53,13 @@ npm run dev    # http://localhost:9091
 
 Requires `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in `web/.env.local`.
 
+Optional: `NEXT_PUBLIC_CLERK_JWT_TEMPLATE` — name of a Clerk JWT template used to
+mint longer-lived tokens (Clerk's default session token expires in ~60s, which
+forces constant re-auth, most painfully in the VS Code extension). Create the
+template in the Clerk dashboard (Configure → JWT Templates), set a longer token
+lifetime, and put its name here. Unset → the app falls back to the default
+session token.
+
 ## VS Code extension
 
 A native VS Code extension lives in `vscode-extension/`. It provides:
