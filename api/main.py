@@ -13,9 +13,10 @@ from pymongo.errors import OperationFailure
 
 from routers import problems, stats, submissions, users, webhooks, solutions, execute
 from services.license import is_valid_b64
+from services.logging_config import RequestContextMiddleware, configure_logging
 
+configure_logging()
 logger = logging.getLogger("qlab.startup")
-logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 MONGODB_DB = os.getenv("MONGODB_DB", "qlab")
@@ -96,6 +97,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Added last so it runs outermost — request IDs cover CORS + every handler.
+app.add_middleware(RequestContextMiddleware)
 
 app.include_router(problems.router)
 app.include_router(submissions.router)
