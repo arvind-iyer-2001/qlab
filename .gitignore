@@ -46,3 +46,9 @@ graphify-out/.graphify_detect.json
 
 # pytest coverage artifact
 .coverage
+
+# graphify agent tooling (auto-generated)
+.agents/
+
+# transient chat/session dumps
+docs/qlab-chat-history.md

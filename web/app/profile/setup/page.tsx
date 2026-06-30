@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, Suspense } from 'react'
 import { Brand } from '@/components/ui/Brand'
 import { Button } from '@/components/ui/Button'
+import { getQlabToken } from '@/lib/authToken'
 
 function ProfileSetupInner() {
   const { getToken } = useAuth()
@@ -25,7 +26,7 @@ function ProfileSetupInner() {
     setSaving(true)
 
     try {
-      const token = await getToken()
+      const token = await getQlabToken(getToken)
       if (!token) {
         setError('Session expired. Please refresh the page.')
         setSaving(false)
@@ -54,7 +55,7 @@ function ProfileSetupInner() {
       }
 
       if (fromVscode) {
-        const freshToken = await getToken()
+        const freshToken = await getQlabToken(getToken)
         window.location.href = `vscode://qlab.qlab/auth?token=${encodeURIComponent(freshToken ?? '')}`
       } else {
         router.push('/profile')

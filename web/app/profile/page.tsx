@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Crumbs } from '@/components/ui/Crumbs'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
+import { getQlabToken } from '@/lib/authToken'
 
 interface QLabUser {
   nickname: string | null
@@ -46,7 +47,7 @@ export default function ProfilePage() {
     setLicenseMsg('')
     setSavingLicense(true)
     try {
-      const token = await getToken()
+      const token = await getQlabToken(getToken)
       if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/nickname`, {
@@ -73,7 +74,7 @@ export default function ProfilePage() {
     setLicenseMsg('')
     setSavingLicense(true)
     try {
-      const token = await getToken()
+      const token = await getQlabToken(getToken)
       if (!token) { setLicenseMsg('Session expired'); setSavingLicense(false); return }
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/license`, {
@@ -101,7 +102,7 @@ export default function ProfilePage() {
     setNickError('')
     setSavingNick(true)
     try {
-      const token = await getToken()
+      const token = await getQlabToken(getToken)
       if (!token) { setNickError('Session expired'); setSavingNick(false); return }
       const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
       const res = await fetch(`${apiUrl}/users/me/nickname`, {
@@ -136,7 +137,7 @@ export default function ProfilePage() {
     if (!isLoaded || !user) return
     async function fetchQlabUser() {
       try {
-        const token = await getToken()
+        const token = await getQlabToken(getToken)
         if (!token) return
         const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
         // allSettled: a failed stats/license fetch must not blank the profile
