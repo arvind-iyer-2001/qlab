@@ -48,7 +48,7 @@ qlab/
 │       ├── test_gen.q      # Generates judge input x (seeded)
 │       └── reference.q     # Canonical correct solution
 ├── vscode-extension/       # TypeScript VS Code extension — only add auth, do not restructure
-└── start.sh                # Dev launcher for all processes
+└── scripts/dev.sh          # Backend dev launcher (uvicorn --reload)
 ```
 
 ### Endpoints the VS Code extension calls

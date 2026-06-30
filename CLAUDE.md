@@ -8,25 +8,18 @@ qLab — a competitive coding platform for kdb+/q developers. Users submit a q f
 
 ## Starting the stack
 
+Backend (FastAPI, watch mode — `.env` auto-loaded by \`api/main.py\`):
 \`\`\`bash
-cd ~/qlab
-./start.sh          # launches notebook q (5001) + FastAPI (8000)
+./scripts/dev.sh            # http://localhost:8000  (API_PORT=8080 to override)
 \`\`\`
 
-Individual processes:
+Frontend:
 \`\`\`bash
-# Notebook q process (persistent, stateful)
-/home/aiyer/.kx/bin/q -p 5001 -q
-
-# FastAPI
-PROBLEMS_DIR=/home/aiyer/qlab/problems \
-QLAB_Q_BINARY=/home/aiyer/.kx/bin/q \
-QLAB_NB_PORT=5001 \
-MONGODB_URI=mongodb://localhost:27017 \
-MONGODB_DB=qlab \
-PYTHONPATH=/home/aiyer/qlab/api \
-python3 -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+cd web && npm run dev       # http://localhost:9091
 \`\`\`
+
+\`scripts/dev.sh\` is just \`PYTHONPATH=api uv run uvicorn api.main:app --reload --reload-dir api\`.
+There is no combined launcher — run backend and frontend separately.
 
 Seed problems into MongoDB on first run (idempotent, safe to re-run):
 \`\`\`bash
@@ -74,7 +67,7 @@ Web (Next.js :9091)  VS Code extension
 
 MongoDB is injected via \`deps.get_db\` → \`request.app.state.db\`. All route handlers that touch it are \`async def\`.
 
-**kdb+ is notebook-only.** The kdb+ db process (\`db/schema.q\`) has been retired — \`start.sh\` no longer launches it. Only the notebook q process (port 5001) remains. \`PYTHONPATH\` must include the \`api/\` dir since imports are flat (\`from models import ...\`, not \`from api.models import ...\`). Routers: \`problems\`, \`submissions\`, \`notebook\`, \`users\`, \`webhooks\`.
+**kdb+ is notebook-only.** The kdb+ db process (\`db/schema.q\`) has been retired. The notebook q process is no longer launched by any startup script either — the judge runs untrusted q in the \`qlab-judge\` docker image (see \`QLAB_DOCKER_IMAGE\`). \`PYTHONPATH\` must include the \`api/\` dir since imports are flat (\`from models import ...\`, not \`from api.models import ...\`). Routers: \`problems\`, \`submissions\`, \`notebook\`, \`users\`, \`webhooks\`.
 
 ## Auth (Clerk)
 
@@ -179,7 +172,7 @@ This repo ships project-specific skills for the workflows that recur most. **Whe
 | \`qlab\` | Entry router — ambiguous or multi-step qlab work | (maps to the others) |
 | \`qlab-smoke\` | Test an HTTP endpoint; user pasted a curl + JWT; token expired | \`scripts/smoke.sh\` |
 | \`qlab-judge-check\` | Verify judge with a good + bad solution; after judge edits | \`scripts/judge_check.py\` |
-| \`qlab-stack\` | "How do I start the app", watch mode, run backend/frontend | \`start.sh\` + uvicorn |
+| \`qlab-stack\` | "How do I start the app", watch mode, run backend/frontend | \`scripts/dev.sh\` + uvicorn |
 | \`qlab-fresh\` | "Start fresh", wipe submissions/users, reset solve counts (destructive) | \`scripts/fresh_start.py\` |
 | \`qlab-handoff\` | "Make a handoff file" for another agent/session | template → \`docs/superpowers/specs/\` |
 | \`qlab-ship\` | Commit one-by-one; staging→main PR flow; merge on green CI | git + \`gh\` |
