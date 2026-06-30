@@ -3,6 +3,7 @@ import { useAuth } from '@clerk/nextjs'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
 import { Brand } from '@/components/ui/Brand'
+import { getQlabToken } from '@/lib/authToken'
 
 function AuthCallbackInner() {
   const { getToken, isLoaded } = useAuth()
@@ -20,7 +21,7 @@ function AuthCallbackInner() {
     }
 
     async function handleCallback() {
-      const token = await getToken()
+      const token = await getQlabToken(getToken)
       if (!token) {
         setMessage('Could not get token. Please try signing in again.')
         return
