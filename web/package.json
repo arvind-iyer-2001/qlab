@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev -p 9091",
     "build": "next build",
-    "start": "next start -p 9091"
+    "start": "next start -p 9091",
+    "test": "vitest run"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.0.0",
@@ -30,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.8"
   }
 }
