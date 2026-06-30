@@ -129,6 +129,25 @@ async def test_correct_submission_unlocks_reference():
 
 
 @pytest.mark.asyncio
+async def test_correct_submission_unlocks_editorial_before_attempt_gate():
+    from api.services.solutions import compute_solutions
+
+    db = MagicMock()
+    # 1 attempt total, 1 of them correct — below the 3-attempt editorial gate
+    db.submissions.count_documents = AsyncMock(side_effect=[1, 1])
+    db.hint_reveals.find_one = AsyncMock(return_value={"revealed_count": 0})
+    db.submissions.find = MagicMock()
+    db.submissions.find.return_value.sort.return_value.limit.return_value.to_list = AsyncMock(return_value=[])
+
+    result = await compute_solutions(db, make_problem(), "user_abc")
+
+    assert result["attempt_count"] == 1
+    assert result["editorial"]["locked"] is False
+    assert result["editorial"]["content"] == "## Editorial content"
+    assert result["reference"]["locked"] is False
+
+
+@pytest.mark.asyncio
 async def test_increment_hint_reveals_returns_new_count():
     from api.services.solutions import increment_hint_reveals
 

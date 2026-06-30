@@ -92,17 +92,25 @@ python3 scripts/seed_problems.py
 
 ## Running
 
+Backend (FastAPI, watch mode — restarts on save):
+
 ```bash
-./start.sh
+./scripts/dev.sh            # http://localhost:8000  (API_PORT=8080 to override)
 ```
 
-This launches the core stack:
+Frontend (Next.js):
+
+```bash
+cd web && npm run dev       # http://localhost:9091
+```
 
 | Process | Default port |
 |---|---|
-| kdb+ notebook | 5001 |
 | FastAPI | 8000 |
 | Web Frontend | 9091 |
+
+The judge runs untrusted q in the `qlab-judge` docker image — build it once with
+`docker build -t qlab-judge judge/` and set `QLAB_DOCKER_IMAGE=qlab-judge` in `.env`.
 
 API docs at `http://localhost:8000/docs`.
 

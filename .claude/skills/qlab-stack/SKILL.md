@@ -14,10 +14,10 @@ Bring up the qlab stack for local dev/demo. Two preferences are fixed from past 
 
 ## Backend (FastAPI, watch mode)
 ```bash
-PYTHONPATH=api uv run --with-requirements api/requirements.txt \
-  python3 -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+./scripts/dev.sh            # http://localhost:8000  (API_PORT=8080 to override)
 ```
-`--reload` watches `api/` and restarts on save. Env (`MONGODB_URI`, `QLAB_DOCKER_IMAGE`, `QLAB_LICENSE_B64`, etc.) loads from `.env`. The judge runs in the kdb-x docker image; ensure `QLAB_DOCKER_IMAGE` is set.
+Wraps `PYTHONPATH=api uv run uvicorn api.main:app --reload --reload-dir api`.
+`--reload` restarts on save. Env (`MONGODB_URI`, `QLAB_DOCKER_IMAGE`, `QLAB_LICENSE_B64`, etc.) is auto-loaded from `.env` by `api/main.py` (`load_dotenv`). The judge runs in the kdb-x docker image; ensure `QLAB_DOCKER_IMAGE` is set.
 
 ## Frontend (Next.js, port 9091)
 ```bash
@@ -26,6 +26,6 @@ cd web && npm run dev      # http://localhost:9091
 Needs `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` + `CLERK_SECRET_KEY` in `web/.env.local`.
 
 ## Notes
-- `./start.sh` launches notebook q + FastAPI together; prefer separate processes when debugging one side.
+- No combined launcher — `start.sh` is removed. Run backend (`./scripts/dev.sh`) and frontend (`npm run dev`) as separate processes.
 - After a backend edit, give `--reload` a moment — `qlab-judge-check --wait-reload` handles this.
 - Don't reach for docker-compose for routine local iteration; the user has repeatedly preferred separate processes.
