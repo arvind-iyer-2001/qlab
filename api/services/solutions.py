@@ -3,10 +3,11 @@ from pymongo import ReturnDocument
 
 
 def _is_unlocked(gate: str, attempts_required: int | None, attempt_count: int, has_correct: bool) -> tuple[bool, str]:
-    if gate == "correct":
-        if not has_correct:
-            return False, "Solve the problem to unlock"
+    # A correct submission always unlocks every tier, regardless of gate.
+    if has_correct:
         return True, ""
+    if gate == "correct":
+        return False, "Solve the problem to unlock"
     required = attempts_required or 1
     remaining = max(0, required - attempt_count)
     if remaining > 0:
