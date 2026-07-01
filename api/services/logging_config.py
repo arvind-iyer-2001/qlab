@@ -26,6 +26,11 @@ request_id_var: ContextVar[str] = ContextVar("request_id", default="")
 
 REQUEST_ID_HEADER = "x-request-id"
 
+# Uvicorn logs all non-access server events (startup, shutdown, reload) through a
+# logger literally named "uvicorn.error" regardless of level — misleading in JSON
+# output. Alias it back to "uvicorn" so INFO startup lines don't read as errors.
+_LOGGER_ALIASES = {"uvicorn.error": "uvicorn"}
+
 # Attributes present on every LogRecord — anything not in here is treated as a
 # caller-supplied "extra" and folded into the JSON output.
 _RESERVED = frozenset(
@@ -46,7 +51,7 @@ class JsonFormatter(logging.Formatter):
             "ts": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(record.created))
             + f".{int(record.msecs):03d}Z",
             "level": record.levelname,
-            "logger": record.name,
+            "logger": _LOGGER_ALIASES.get(record.name, record.name),
             "message": record.getMessage(),
         }
         rid = request_id_var.get()
